@@ -199,7 +199,7 @@
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Qual Sua Profissão?<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" type="text"  name="profissao" value="{{ old('profissao') }}" required='required' data-validate-length-range="8,22" /></div>
+                                                <input class="form-control" type="text"  name="profissao" value="{{ old('profissao') }}" required='required' data-validate-length-range="2,22" /></div>
                                         </div>
                                         {{-- <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Possui animal de estimação?<span class="required">*</span></label>
@@ -235,13 +235,13 @@
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">CEP<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" data-validate-length-range="9" data-mask="00000-000" name="cep" value="{{ old('cep') }}" required="required" />
+                                                <input class="form-control" data-validate-length-range="9" data-tipo="cep" data-mask="00000-000" name="cep" value="{{ old('cep') }}" required="required" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Logradouro<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" data-validate-length-range="3,50"  name="endereco" value="{{ old('endereco') }}" required="required" />
+                                                <input class="form-control" data-tipo="endereco" data-validate-length-range="3,50"  name="endereco" value="{{ old('endereco') }}" required="required" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
@@ -253,31 +253,25 @@
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Complemento<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" data-validate-length-range="0,50"  name="complemento" value="{{ old('complemento') }}"  required="required" />
+                                                <input class="form-control" data-validate-length-range="0,50" name="complemento" value="{{ old('complemento') }}"  required="required" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Bairro<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control"  name="bairro" value="{{ old('bairro') }}" required="required" />
+                                                <input class="form-control" data-tipo="bairro" name="bairro" value="{{ old('bairro') }}" required="required" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Estado<span class="required">*</span></label>
                                             <div class="col-md-3 col-sm-12 ">
-												<select name="estado" value="{{ old('estado') }}" class="select2_single form-control" tabindex="-1">
-													<option></option>
-													<option value=1>Alaska</option>
-												</select>
+                                                <input name="estado" data-tipo="estado" data-validate-length-range="0,2" value="{{ old('estado') }}" placeholder="Ex.: BA, PE..." class="select2_single form-control" tabindex="-1" />
 											</div>
                                         </div>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3 label-align">Cidade<span class="required">*</span></label>
                                             <div class="col-md-3 col-sm-12 ">
-												<select name="cidade" class="select2_single form-control" tabindex="-1">
-													<option></option>
-													<option value=1>Alaska</option>
-												</select>
+                                                <input name="cidade" data-tipo="cidade" value="{{ old('cidade') }}" class="select2_single form-control" tabindex="-1"/>
 											</div>
                                         </div>
                                         <span class="section">Dependentes</span>

@@ -63,8 +63,9 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <form id="form_atualizar_cliente" action="{{route('admin.cliente.update', $cliente->id)}}" method="put" novalidate>
+                                    <form id="form_atualizar_cliente" action="{{route('admin.cliente.update', $cliente->id)}}" method="post" novalidate>
                                         @csrf
+                                        @method('PUT')
                                         <span class="section">Informações Pessoais</span>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">CPF<span class="required">*</span></label>
@@ -179,13 +180,13 @@
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">CEP<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" data-validate-length-range="9" data-mask="00000-000" name="cep" value="{{ $cliente->cep }}" required="required" />
+                                                <input class="form-control" data-tipo="cep" data-validate-length-range="9" data-mask="00000-000" name="cep" value="{{ $cliente->cep }}" required="required" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Logradouro<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" data-validate-length-range="3,50"  name="endereco" value="{{ $cliente->endereco }}" required="required" />
+                                                <input class="form-control" data-tipo="endereco" data-validate-length-range="3,50"  name="endereco" value="{{ $cliente->endereco }}" required="required" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
@@ -203,25 +204,19 @@
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Bairro<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control"  name="bairro" value="{{ $cliente->bairro }}" required="required" />
+                                                <input class="form-control" data-tipo="bairro" name="bairro" value="{{ $cliente->bairro }}" required="required" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Estado<span class="required">*</span></label>
                                             <div class="col-md-3 col-sm-12 ">
-												<select name="estado" value="{{ $cliente->estado }}" class="select2_single form-control" tabindex="-1">
-													<option></option>
-													<option value=1>Alaska</option>
-												</select>
+                                                <input name="estado" data-tipo="estado" value="{{ $cliente->estado }}" placeholder="Ex.: BA, PE..." data-validate-length-range="0,2" class="select2_single form-control" tabindex="-1" />
 											</div>
                                         </div>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3 label-align">Cidade<span class="required">*</span></label>
                                             <div class="col-md-3 col-sm-12 ">
-												<select name="cidade" value="{{ $cliente->cidade }}"class="select2_single form-control" tabindex="-1">
-													<option></option>
-													<option value=1>Alaska</option>
-												</select>
+                                                <input name="cidade" data-tipo="cidade" value="{{ $cliente->cidade }}" class="select2_single form-control" tabindex="-1"/>
 											</div>
                                         </div>                                        
                                         <div class="ln_solid"></div>
@@ -272,7 +267,7 @@
                                                             <td>{{$dependente->parentesco}}</td>
                                                             <td>{{$dependente->ativo}}</td>
                                                             <td>
-                                                                <a target="_blank" href="{{route('admin.cliente.show', [$dependente->id])}}"><i class="fa fa-eye"></i></a>
+                                                                <a target="_blank" href="{{route('admin.dependente.show', [$dependente->id])}}"><i class="fa fa-eye"></i></a>
                                                                 <a target="_blank" href="#"><i class="fa fa-trash"></i></a>
                                                             </td>
                                                         </tr>
@@ -304,37 +299,19 @@
 
     <!-- scripts -->
     @include("admin.build.scripts", [])
+    @include("admin.build.datatables")
     <!-- /scripts -->
     <script src="{{url('admin/assets/js/chance.min.js')}}"></script>
     <script src="{{url('admin/vendors/validator/multifield.js')}}"></script>
     <script src="{{url('admin/vendors/validator/validator.js')}}"></script>
 
-    <!-- Session functions --> 
-    
-    <!-- Verifica se há erros na sessão -->
-    @if ($errors->any())
-        @php
-            $sessao_erros = "";
-            foreach ($errors->all() as $error):
-                $sessao_erros.= $error . "<br>";
-            endforeach;
-        @endphp
+    <!-- Verifica se cliente foi atualizado -->
+    @if (isset($cliente->atualizado))
         <script>
-            new PNotify({
-                title: 'Opa!',
-                text: "{{$sessao_erros}}",
-                type: 'error',
-                styling: 'bootstrap3'
-            });
-        </script>
-    @endif
-
-    <!-- Verifica se há mensagem de sucesso na sessão -->
-    @if (session('success'))
-        <script>
+            console.log("has success");
             new PNotify({
                 title: 'Sucesso',
-                text: 'Cliente adicionado com sucesso.',
+                text: "Cliente atualizado com sucesso.",
                 type: 'success',
                 styling: 'bootstrap3'
             });
@@ -349,26 +326,27 @@
 
     <script>
         $(function() {
-            document.forms['form_atualizar_cliente'].addEventListener('submit', (event) => {
-                event.preventDefault();
-                console.log("entrou em form");
-                // TODO do something here to show user that form is being submitted
-                fetch(event.target.action, {
-                    method: 'POST',
-                    body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-                }).then((resp) => {
-                    console.log("resposta form_atualizar_cliente", resp.json())
-                    //return resp.json(); // or resp.text() or whatever the server sends
-                }).then((body) => {
-                    // TODO handle body
-                    console.log("body", body);
-                }).catch((error) => {
-                    // TODO handle error
-                    console.log("error", error);
-                });
-            });
+            // document.forms['form_atualizar_cliente'].addEventListener('submit', (event) => {
+            //     event.preventDefault();
+            //     console.log("entrou em form");
+            //     // TODO do something here to show user that form is being submitted
+            //     fetch(event.target.action, {
+            //         method: 'PUT',
+            //         body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+            //     }).then((resp) => {
+            //         console.log("resposta form_atualizar_cliente", resp.json())
+            //         //return resp.json(); // or resp.text() or whatever the server sends
+            //     }).then((body) => {
+            //         // TODO handle body
+            //         if (body)
+            //             console.log("body", body);
+            //     }).catch((error) => {
+            //         // TODO handle error
+            //         console.log("error", error);
+            //     });
+            // });
 
-            $("input[name=nascimento]").val(cliente.nascimento).change();
+            $("input[name=nascimento]").val(date_pt_en(cliente.nascimento)).change();
             $("select[name=sexo]").val(cliente.sexo).change();
             $("select[name=estado_civil]").val(cliente.estado_civil).change();
             $("select[name=local_retirada]").val(cliente.local_retirada).change();
@@ -377,6 +355,11 @@
             $("select[name=estado]").val(cliente.estado).change();
             $("select[name=cidade]").val(cliente.cidade).change();
         });
+
+        function date_pt_en(date) {
+            var date_array = date.trim().split("/");
+            return "".concat(date_array[2], "-").concat(date_array[1], "-").concat(date_array[0]);
+        }
     </script>
 
     {{-- <script>

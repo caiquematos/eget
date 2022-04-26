@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class BaseModel extends Model
 {
     use HasFactory;
+    protected $guarded = ['id', '_token'];
 
     /**
      * Limpa máscara do cpf.

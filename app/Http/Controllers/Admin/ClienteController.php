@@ -6,6 +6,7 @@ use App\Models\Usuario;
 use App\Models\Dependente;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreClienteRequest;
+use App\Http\Requests\UpdateClienteRequest;
 use Illuminate\Support\Facades\Hash;
 
 class ClienteController extends Controller
@@ -113,7 +114,9 @@ class ClienteController extends Controller
      */
     public function edit(Usuario $cliente)
     {
-        return view("admin.clientes.edit");
+        $dependentes = Dependente::whereIdUsuario($cliente->id)->get();
+        $cliente->dependentes = $dependentes;
+        return view("admin.clientes.edit", ["cliente"=>$cliente]);
     }
 
     /**
@@ -123,9 +126,16 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $cliente)
+    public function update(UpdateClienteRequest $request, Usuario $cliente)
     {
-        //
+        $this->validate($request, [
+            'email' => 'required|unique:usuarios,email,'.$cliente->id,
+        ]);
+        $cliente->fill($request->all())->save();
+        $dependentes = Dependente::whereIdUsuario($cliente->id)->get();
+        $cliente->dependentes = $dependentes;
+        $cliente->atualizado = true;
+        return view("admin.clientes.edit", ["cliente"=>$cliente])->with("success", "Cliente atualizado com sucesso.");
     }
 
     /**

@@ -16,5 +16,5 @@ mix.js('resources/js/app.js', 'public/js')
         //
     ]);
 
-mix.js('resources/js/commom.js', 'public/build/js');
+mix.js('resources/js/common.js', 'public/build/js').version();
 
