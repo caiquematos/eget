@@ -30,7 +30,6 @@ class UpdateClienteRequest extends FormRequest
             'cidade' => 'required|string',
             'como_conheceu' => 'required|string|max:50',
             'complemento' => 'required|string|max:80',
-            'cpf' => 'required|size:14|unique:usuarios',
             'endereco' => 'required|string|max:255',
             'estado' => 'required|string|max:2',
             'estado_civil' => 'required|numeric',

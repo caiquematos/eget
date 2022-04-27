@@ -63,7 +63,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <form id="form_add_cliente" action="{{url('admin/cliente')}}" method="post" novalidate>
+                                    <form id="form_add_cliente" action="{{route('admin.cliente.store')}}" method="post" novalidate>
                                         @csrf
                                         <span class="section">Informações Pessoais</span>
                                         {{-- <div class="field item form-group">
@@ -188,11 +188,10 @@
 												<select name="renda" class="select2_single form-control" tabindex="-1" required='required'>
 													<option></option>
                                                     <option value=0>Até 01 (um) salário</option>
-													<option value=1>Até 01 (um) salário</option>
-													<option value=2>Até 02 (dois) salários</option>
-													<option value=3>Até 03 (três) salários</option>
-													<option value=4>Até 04 (quatro) salários</option>
-													<option value=5>Até 05 (cinco) salários</option>
+													<option value=1>Até 02 (dois) salários</option>
+													<option value=2>Até 03 (três) salários</option>
+													<option value=3>Até 04 (quatro) salários</option>
+													<option value=4>Até 05 (cinco) salários</option>
 												</select>
 											</div>
                                         </div>
@@ -275,6 +274,12 @@
 											</div>
                                         </div>
                                         <span class="section">Dependentes</span>
+                                        <div id="btn_add_dependente" class="field item form-group" style="display: none">
+                                            <label class="col-form-label col-md-3 col-sm-3 label-align">Adicionar Dependente<span class="required"></span></label>
+                                            <div class="col-md-6 col-sm-6 d-flex align-items-center">
+                                                <span class="btn-dependente glyphicon glyphicon-plus mr-2" onclick="addDependente(this)" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
                                         <div id="dependentes">
                                             <div class="dependente mb-4">
                                                 <div class="field item form-group">
@@ -360,45 +365,18 @@
     <script src="{{url('admin/vendors/validator/multifield.js')}}"></script>
     <script src="{{url('admin/vendors/validator/validator.js')}}"></script>
 
-    <!-- Session functions --> 
-    
-    <!-- Verifica se há erros na sessão -->
-    @if ($errors->any())
-        @php
-            $sessao_erros = "";
-            foreach ($errors->all() as $error):
-                $sessao_erros.= $error . "<br>";
-            endforeach;
-        @endphp
-        <script>
-            new PNotify({
-                title: 'Opa!',
-                text: "{{$sessao_erros}}",
-                type: 'error',
-                styling: 'bootstrap3'
-            });
-        </script>
-    @endif
 
-    <!-- Verifica se há mensagem de sucesso na sessão -->
-    @if (session('success'))
-        <script>
-            new PNotify({
-                title: 'Sucesso',
-                text: 'Cliente adicionado com sucesso.',
-                type: 'success',
-                styling: 'bootstrap3'
-            });
-        </script>
-    @endif
-    
     <!-- Javascript functions	-->
+
+    
+    <!-- Funçoes gerenciamento de dependente	-->
     <script>
         var dependente_counter = 2;
         function addDependente() {
+            $("#btn_add_dependente").fadeOut();
             $("#dependentes").append(
                 `
-                <div class="dependente mb-4">
+                <div id="dependente_${dependente_counter}" class="dependente mb-4" style="display:none">
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align">Dependente ${dependente_counter}<span class="required"></span></label>
                         <div class="col-md-6 col-sm-6 d-flex align-items-center">
@@ -449,38 +427,25 @@
                 `
             );
             $(`input[name="dependentes[cpf][]"]`).mask("000.000.000-00");
+            $(`#dependente_${dependente_counter}`).slideDown("normal");
             dependente_counter++;
         }
         function remDependente(e) {
             let dependente_item = $(e).closest('.dependente');
-            dependente_item.fadeOut().next().delay(500).remove();
+            dependente_item.slideUp("normal", function() { 
+                $(this).remove();
+                console.log("hasclass", $('#dependentes').find('.dependente').length);
+                if (! $('#dependentes').find('.dependente').length) {
+                    $("#btn_add_dependente").fadeIn();
+                }
+            } );
         }
     </script>
+    <!-- /Funçoes gerenciamento de dependente	-->
 
     <script>
         $(function() {
-            // $('#form_add_cliente').bind('ajax:complete', function(resposta) {
-            //     console.log("resposta", resposta);
-            // });
-
-            document.forms['form_add_cliente'].addEventListener('submit', (event) => {
-                event.preventDefault();
-                console.log("entrou em form");
-                // TODO do something here to show user that form is being submitted
-                fetch(event.target.action, {
-                    method: 'POST',
-                    body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-                }).then((resp) => {
-                    console.log("resposta form_add_cliente", resp.json())
-                    //return resp.json(); // or resp.text() or whatever the server sends
-                }).then((body) => {
-                    // TODO handle body
-                    console.log("body", body);
-                }).catch((error) => {
-                    // TODO handle error
-                    console.log("error", error);
-                });
-            });
+            // After DOM loaded.
         });
     </script>
 

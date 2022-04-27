@@ -14,3 +14,5 @@
 <script src="{{url('admin/vendors/jszip/dist/jszip.min.js')}}"></script>
 <script src="{{url('admin/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
 <script src="{{url('admin/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
+<script src="{{asset('assets\js\dataTables.searchPanes.min.js')}}"></script>
+<script src="{{asset('assets\js\dataTables.select.min.js')}}"></script>

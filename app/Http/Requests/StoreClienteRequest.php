@@ -24,8 +24,6 @@ class StoreClienteRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'animal' => 'required|numeric',
-            // 'assinatura' => 'required|numeric',
             'bairro' => 'required|string|max:100',
             'celular' => 'required|string|max:16',
             'cep' => 'required|string|max:9',
@@ -42,7 +40,6 @@ class StoreClienteRequest extends FormRequest
             'nome' => 'required|string|max:255',
             'numero' => 'required|string|max:6',
             'profissao' => 'required|string|max:255',
-            // 'regiao' => 'required|string|max:50',
             'renda' => 'required|numeric',
             'senha' => 'required|confirmed',
             'senha_confirmation' => 'required',

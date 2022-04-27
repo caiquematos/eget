@@ -13,7 +13,7 @@ class StoreDependenteRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class StoreDependenteRequest extends FormRequest
     public function rules()
     {
         return [
-            'cpf' => 'required|size:14|unique:usuarios',
+            'cpf' => 'required|size:14|unique:dependentes',
             'nascimento' => 'required|date',
             'nome' => 'required|string|max:255',
             'sexo' => 'required|numeric',

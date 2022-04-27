@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\StoreDependenteRequest;
 use App\Http\Requests\UpdateDependenteRequest;
 use App\Models\Dependente;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class DependenteController extends Controller
@@ -24,9 +25,20 @@ class DependenteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function adicionar(Usuario $cliente)
+    {
+        return view("admin.dependentes.create", ["cliente"=>$cliente]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        //
+        return view("admin.dependentes.create");
+        
     }
 
     /**
@@ -37,7 +49,13 @@ class DependenteController extends Controller
      */
     public function store(StoreDependenteRequest $request)
     {
-        //
+        $dependente = new Dependente();
+        $dependente->fill($request->validated());
+        $dependente->id_usuario = $request->input("id_usuario");
+        $dependente->save();
+
+        $cliente = Usuario::find($dependente->id_usuario);
+        return redirect()->back()->with(["success"=>"Dependente adicionado com sucesso.", "cliente"=>$cliente]);
     }
 
     /**
@@ -76,7 +94,7 @@ class DependenteController extends Controller
         ]);
         $dependente->fill($request->all())->save();
         $dependente->atualizado = true;
-        return view("admin.dependentes.edit", ["dependente"=>$dependente])->with("success", "Dependente atualizado com sucesso.");
+        return redirect()->route("admin.dependente.edit", ["dependente"=>$dependente])->with("success", "Dependente atualizado com sucesso.");
     }
 
     /**
@@ -87,6 +105,22 @@ class DependenteController extends Controller
      */
     public function destroy(Dependente $dependente)
     {
-        //
+    }
+
+    
+    /**
+     * Marca recurso como deletado no db.
+     *
+     * @param  \App\Models\Dependente  $dependente
+     * @return \Illuminate\Http\Response
+     */
+    public function deletar(Dependente $dependente)
+    {
+        $cliente = Usuario::find($dependente->id_usuario);
+        $dependente->deletado = 1;
+        $dependente->save();
+        $dependentes = Dependente::whereIdUsuario($cliente->id)->whereDeletado(0)->get();
+        $cliente->dependentes = $dependentes;
+        return redirect()->route("admin.cliente.edit", ["cliente"=>$cliente])->with("success", "Dependente removido com sucesso.");
     }
 }

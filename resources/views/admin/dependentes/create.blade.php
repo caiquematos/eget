@@ -53,7 +53,7 @@
                         <div class="col-md-12 col-sm-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2><a href="{{route('admin.cliente.edit', $dependente->id_usuario)}}">Cliente</a></h2><h2><i class="fa fa-chevron-right mx-2"></i></h2><h2>Atualizar Dependente</h2>
+                                    <h2><a href="{{route('admin.cliente.edit', $cliente->id)}}">Cliente</a></h2><h2><i class="fa fa-chevron-right mx-2"></i></h2><h2>Criar Dependente</h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -63,26 +63,26 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <form id="form_atualizar_dependente" action="{{route('admin.dependente.update', $dependente->id)}}" method="post" novalidate>
+                                    <form id="form_criar_dependente" action="{{route('admin.dependente.store')}}" method="post" novalidate>
                                         @csrf
-                                        @method('PUT')
+                                        <input type="hidden" name="id_usuario" value="{{$cliente->id}}">
                                         <span class="section">Informações Pessoais</span>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">CPF<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" data-validate-length-range="13" value="{{ $dependente->cpf }}" data-mask="000.000.000-00" name="cpf" required="required" />
+                                                <input class="form-control" data-validate-length-range="13" value="{{ old('cpf') }}" data-mask="000.000.000-00" name="cpf" required="required" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Nome completo<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" data-validate-length-range="6" value="{{ $dependente->nome }}" data-validate-words="2" name="nome" required="required" />
+                                                <input class="form-control" data-validate-length-range="6" value="{{ old('nome') }}" data-validate-words="2" name="nome" required="required" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Data de nascimento<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" class='date' type="date" name="nascimento"  value="{{ date("Y-m-d", strtotime($dependente->nascimento)) }}" required='required'></div>
+                                                <input class="form-control" class='date' type="date" name="nascimento"  value="{{ old('nascimento') }}" required='required'></div>
                                         </div>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Sexo<span class="required">*</span></label>
@@ -98,7 +98,7 @@
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Parentesco<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-12  ">
-												<select name="parentesco" class="select2_single form-control" tabindex="-1" required='required'>
+												<select name="parentesco" class="select2_single form-control" value="{{old('parentesco')}}" tabindex="-1" required='required'>
 													<option></option>
                                                     <option value=0>Irmã(o)</option>
 													<option value=1>Mãe</option>
@@ -111,7 +111,7 @@
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-6 offset-md-3">
-                                                <button type='submit' class="btn btn-success">Atualizar</button>
+                                                <button type='submit' class="btn btn-primary">Adicionar</button>
                                             </div>
                                         </div>
                                     </form>
@@ -142,38 +142,6 @@
     <script src="{{url('admin/assets/js/chance.min.js')}}"></script>
     <script src="{{url('admin/vendors/validator/multifield.js')}}"></script>
     <script src="{{url('admin/vendors/validator/validator.js')}}"></script>
-{{-- 
-    <!-- Verifica se cliente foi atualizado -->
-    @if (isset($dependente->atualizado))
-        <script>
-            console.log("has success");
-            new PNotify({
-                title: 'Sucesso',
-                text: "Dependente atualizado com sucesso.",
-                type: 'success',
-                styling: 'bootstrap3'
-            });
-        </script>
-    @endif --}}
-    
-    <!-- Javascript functions	-->
-    <script>
-        var dependente = @json($dependente,JSON_PRETTY_PRINT);
-        console.log("dependente", dependente);
-    </script>
-
-    <script>
-        $(function() {
-            $("input[name=nascimento]").val(date_pt_en(dependente.nascimento)).change();
-            $("select[name=sexo]").val(dependente.sexo).change();
-            $("select[name=parentesco]").val(dependente.parentesco).change();
-        });
-
-        function date_pt_en(date) {
-            var date_array = date.trim().split("/");
-            return "".concat(date_array[2], "-").concat(date_array[1], "-").concat(date_array[0]);
-        }
-    </script>
 
 </body>
 

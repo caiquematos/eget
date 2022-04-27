@@ -53,7 +53,7 @@
                         <div class="col-md-12 col-sm-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Atualizar Cliente</h2>
+                                    <h2><a href="{{route('admin.cliente.index')}}">Clientes</a></h2><h2><i class="fa fa-chevron-right mx-2"></i></h2><h2>Atualizar Cliente</h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -222,7 +222,7 @@
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-6 offset-md-3">
-                                                <button type='submit' class="btn btn-primary">Atualizar</button>
+                                                <button type='submit' class="btn btn-success">Atualizar</button>
                                             </div>
                                         </div>
                                     </form>
@@ -230,6 +230,17 @@
                                 </div>
                             </div>
                             <!-- Dependentes -->
+                            <div class="page-title">
+                            <div class="title_left">
+                                <h3></h3>
+                            </div>
+                
+                            <div class="title_right">
+                                <a class="btn btn-primary pull-right text-white" href="{{route('admin.dependente.adicionar', $cliente->id)}}">Adicionar dependente</a>
+                            </div>
+                            </div>
+                
+                            <div class="clearfix"></div>
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>Dependentes</h2>
@@ -267,8 +278,8 @@
                                                             <td>{{$dependente->parentesco}}</td>
                                                             <td>{{$dependente->ativo}}</td>
                                                             <td>
-                                                                <a target="_blank" href="{{route('admin.dependente.show', [$dependente->id])}}"><i class="fa fa-eye"></i></a>
-                                                                <a target="_blank" href="#"><i class="fa fa-trash"></i></a>
+                                                                <a href="{{route('admin.dependente.show', [$dependente->id])}}"><i class="fa fa-eye mx-1"></i></a>
+                                                                <a href="{{route('admin.dependente.deletar', [$dependente->id])}}"><i class="fa fa-trash mx-1"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach

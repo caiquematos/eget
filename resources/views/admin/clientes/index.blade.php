@@ -1,8 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- funcoes -->
+  @include("admin.build.funcoes")
+ <!-- /funcoes -->
+
  <!-- head -->
  @include("admin.build.head", ['title'=>"CDI - Cartões de Vantagens"])
  <!-- /head -->
+
+  <style>
+    .pagamento-status {
+      padding: 3px 5px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: smaller;
+      width:69px;
+      text-align: center;
+    }
+  </style>
 
   <body class="nav-md">
     <div class="container body">
@@ -22,7 +37,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Clientes <small>usuários clientes</small></h3>
+                <h3></h3>
               </div>
 
               <div class="title_right">
@@ -37,7 +52,7 @@
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Clientes <small>usuários clientes</small></h2>
+                    <h2>Clientes</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -51,7 +66,7 @@
                           <div class="col-sm-12">
                             <div class="card-box table-responsive">
 					
-                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <table id="datatable-clientes" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
                           <th data-priority="1">Nome</th>
@@ -69,8 +84,9 @@
                           <th>Renda</th>
                           <th>Profissão</th>
                           {{-- <th>Animal</th> --}}
-                          <th>Ofertas</th>
+                          {{-- <th>Ofertas</th> --}}
                           <th data-priority="4">Pagamento</th>
+                          <th data-priority="7">Data Pagamento</th>
                           <th data-priority="6">Ativo</th>
                           <th data-priority="5">Ações</th>
                         </tr>
@@ -84,21 +100,28 @@
                                     {{-- <td>{{$cliente->regiao}}</td>
                                     <td>{{$cliente->assinatura}}</td> --}}
                                     <td>{{$cliente->nascimento}}</td>
-                                    <td>{{$cliente->sexo}}</td>
-                                    <td>{{$cliente->estado_civil}}</td>
+                                    <td>{{CLIENTE_SEXO[$cliente->sexo]}}</td>
+                                    <td>{{CLIENTE_ESTADO_CIVIL[$cliente->estado_civil]}}</td>
                                     <td>{{$cliente->celular}}</td>
                                     <td>{{$cliente->telefone}}</td>
                                     <td>{{$cliente->local_retirada}}</td>
                                     <td>{{$cliente->como_conheceu}}</td>
-                                    <td>{{$cliente->renda}}</td>
+                                    <td>{{CLIENTE_RENDA[$cliente->renda]}}</td>
                                     <td>{{$cliente->profissao}}</td>
                                     {{-- <td>{{$cliente->animal}}</td> --}}
-                                    <td>{{$cliente->ofertas}}</td>
-                                    <td>{{$cliente->status ?? "1"}}</td>
+                                    {{-- <td>{{$cliente->ofertas}}</td> --}}
+                                    <td>
+                                        @if (now() > Carbon\Carbon::parse($cliente->data_pagamento)->addMonths(12))
+                                            {!!"<p class='pagamento-status bg-danger text-white'>expirou</p>"!!}
+                                        @else
+                                            {!!$cliente->status ? "<p class='pagamento-status bg-success text-white'>confirmado</p>" : "<p class='pagamento-status bg-warning'>pendente</p>" ?? "<p class='pagamento-status bg-warning'>pendente</p>"!!}
+                                        @endif
+                                    </td>
+                                    <td>{{$cliente->data_pagamento}}</td>
                                     <td>{{$cliente->ativo}}</td>
                                     <td>
-                                        <a target="_blank" href="{{route('admin.cliente.show', [$cliente->id])}}"><i class="fa fa-eye"></i></a>
-                                        <a target="_blank" href="#"><i class="fa fa-trash"></i></a>
+                                        <a href="{{route('admin.cliente.show', [$cliente->id])}}"><i class="fa fa-eye mx-1"></i></a>
+                                        <a href="{{route('admin.cliente.deletar', [$cliente->id])}}"><i class="fa fa-trash mx-1"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -120,7 +143,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            {{env('APP_NAME')}} <a href="https://re9agencia.com.br/">Re9 Agência</a>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -134,6 +157,52 @@
     <!-- /scripts -->
     <!-- iCheck -->
     <script src="vendors/iCheck/icheck.min.js"></script>
+
+    <script>
+    var dt = $("#datatable-clientes").DataTable({
+        searchPanes: {
+            viewTotal: true,
+            columns: [12],
+            layout: 'columns-1'
+        },
+        language: {
+            url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
+            searchPanes: {
+                title: {
+                    _: 'Filtros Selecionados - %d',
+                    0: 'Nenhum Filtro Selecionado',
+                    1: 'Um Filtro Selecionado'
+                },
+                count: '{total} encontrado',
+                countFiltered: '{shown} ({total})'
+            }
+        },
+        dom: 'Plfrtip',
+        columnDefs: [
+            {
+                orderable: false,
+                searchPanes: {
+                    header: "Filtro por status do pagamento.",
+                    show: true,
+                },
+                targets: [12]
+            },
+          ],
+          select: {
+              style:    'os',
+              selector: 'td:first-child'
+          },
+      });
+
+      
+    dt.on('select.dt', () => {          
+        dt.searchPanes.rebuildPane(0, true);
+    });
+ 
+    dt.on('deselect.dt', () => {
+        dt.searchPanes.rebuildPane(0, true);
+    });
+    </script>
     
 
   </body>

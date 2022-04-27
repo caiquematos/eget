@@ -13,8 +13,6 @@
 <script src="{{url('admin/vendors/pnotify/dist/pnotify.buttons.js')}}"></script>
 <script src="{{url('admin/vendors/pnotify/dist/pnotify.nonblock.js')}}"></script>
 
-<!-- Custom Theme Scripts -->
-<script src="{{url('admin/build/js/custom.min.js')}}"></script>
 <script src="{{ mix('build/js/common.js') }}"></script>
 
 <!-- Session functions AND Pnotify functions--> 
@@ -38,16 +36,24 @@
     @endif
 
     <!-- Verifica se há mensagem de sucesso na sessão -->
-    @if (session()->get('success'))
+    @if (session("success"))
         <script>
-            console.log("has success");
             new PNotify({
                 title: 'Sucesso',
-                text: "{{ session()->get('success') }} ",
+                text: "{{session('success')}}",
                 type: 'success',
                 styling: 'bootstrap3'
             });
         </script>
     @endif
 
+    @if (isset($success))
+        <script>
+        console.log("há uma mensagem 'success' returned as var.", "{{$success}}");
+        </script>
+    @endif
+
 <!-- /Session functions -->
+
+<!-- Custom Theme Scripts -->
+<script src="{{url('admin/build/js/custom.min.js')}}"></script>
