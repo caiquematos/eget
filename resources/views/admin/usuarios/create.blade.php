@@ -66,35 +66,9 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <form id="form_add_cliente" action="{{route('admin.cliente.store')}}" method="post" novalidate>
+                                    <form id="form_add_cliente" action="{{route('admin.usuario.store')}}" method="post" novalidate>
                                         @csrf
                                         <span class="section">Informações Pessoais</span>
-                                        {{-- <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Em qual região você está?<span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-12 ">
-												<select name="regiao" class="select2_single form-control" tabindex="-1" required='required'>
-													<option></option>
-													<option value="AK">Alaska</option>
-													<option value="HI">Hawaii</option>
-													<option value="CA">California</option>
-													<option value="NV">Nevada</option>
-													<option value="OR">Oregon</option>
-													<option value="WA">Washington</option>
-													<option value="AZ">Arizona</option>
-													<option value="CO">Colorado</option>
-												</select>
-											</div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Tipo de Assinatura<span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-12  ">
-												<select name="assinatura" class="select2_single form-control" tabindex="-1" required='required'>
-													<option></option>
-													<option value=0>Cartão CDI</option>
-													<option value=1>CDI+</option>
-												</select>
-											</div>
-                                        </div> --}}
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">CPF<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">

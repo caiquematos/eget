@@ -6,6 +6,30 @@ class Usuario extends BaseModel
 {
 
     /**
+     * The roles that belong to the user.
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_usuario', 'id_usuario', 'id_role')->withTimestamps();
+    }
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function dependentes()
+    {
+        return $this->hasMany(Dependente::class, 'id_usuario', 'id')->withTimestamps();
+    }
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function pagamentos()
+    {
+        return $this->hasMany(Pagamento::class, 'id_usuario', 'id')->withTimestamps();
+    }
+
+    /**
      * Inicializa cpf.
      *
      * @param  string  $value

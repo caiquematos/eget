@@ -161,20 +161,6 @@
     <script src="vendors/iCheck/icheck.min.js"></script>
 
     <script>
-      $(document).ready(function(){
-        $('[data-tipo=cpf]').mask('000.000.000-00', {
-            reverse: true
-        });
-        $('[data-tipo=celular]').mask('((00) 0 0000-0000', {
-            reverse: true
-        });
-        $('[data-tipo=telefone]').mask('((00) 0000-0000', {
-            reverse: true
-        });
-      });
-    </script>
-
-    <script>
     var dt = $("#datatable-clientes").DataTable({
         searchPanes: {
             viewTotal: true,

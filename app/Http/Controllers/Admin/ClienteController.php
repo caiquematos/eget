@@ -20,8 +20,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes = Usuario::leftjoin('usuarios_pagamentos', 'usuarios.id', '=', 'usuarios_pagamentos.id_usuario')
-            ->select('usuarios.*', 'usuarios_pagamentos.status', 'usuarios_pagamentos.data as data_pagamento')
+        $clientes = Usuario::leftjoin('pagamentos', 'usuarios.id', '=', 'pagamentos.id_usuario')
+            ->select('usuarios.*', 'pagamentos.status', 'pagamentos.data as data_pagamento')
             ->get();
         $this->response["clientes"] = $clientes;
         return view("admin.clientes.index", $this->response);

@@ -11,6 +11,14 @@ class Dependente extends BaseModel
     protected $guarded = ['id_usuario'];
 
     /**
+     * Get the cliente that owns the dependente.
+     */
+    public function cliente()
+    {
+        return $this->belongsTo(Usuario::class, 'id_usuario');
+    }
+
+    /**
      * Inicializa cpf.
      *
      * @param  string  $value

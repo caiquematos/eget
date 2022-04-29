@@ -93,52 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-/**
- * 
- * @param {string} date 
- * @returns string
- */
-function date_pt_en(date) {
-  var date_array = date.trim().split("/");
-  return "".concat(date_array[2], "-").concat(date_array[1], "-").concat(date_array[0]);
-}
-/**
- * @param {string} date 
- * @returns string
- */
 
-
-function date_en_pt(date) {
-  var date_array = date.trim().split("-");
-  return "".concat(date_array[0], "/").concat(date_array[1], "/").concat(date_array[2]);
-} // Busca dados por CEP.
-
-
-$("input[data-tipo='cep']").blur(consultar_cep);
-/**
- * @param {string} date 
- * @returns string
- */
-
-function consultar_cep() {
-  var cep = $(this).val();
-  cep = cep.replace("-", "");
-  var urlStr = "https://viacep.com.br/ws/" + cep + "/json/";
-  $.ajax({
-    url: urlStr,
-    type: "get",
-    dataType: "json",
-    success: function success(data) {
-      $("input[data-tipo='cidade']").val(data.localidade);
-      $("input[data-tipo='estado']").val(data.uf);
-      $("input[data-tipo='bairro']").val(data.bairro);
-      $("input[data-tipo='endereco']").val(data.logradouro);
-    },
-    error: function error(erro) {
-      console.log(erro);
-    }
-  });
-}
 
 /***/ }),
 

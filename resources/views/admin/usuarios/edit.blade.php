@@ -336,20 +336,20 @@
     
     <!-- Javascript functions	-->
     <script>
-        var cliente = @json($cliente,JSON_PRETTY_PRINT);
-        console.log("cliente", cliente);
+        var usuario = @json($usuario,JSON_PRETTY_PRINT);
+        console.log("usuario", usuario);
     </script>
 
     <script>
         $(function() {
-            $("input[name=nascimento]").val(date_pt_en(cliente.nascimento)).change();
-            $("select[name=sexo]").val(cliente.sexo).change();
-            $("select[name=estado_civil]").val(cliente.estado_civil).change();
-            $("select[name=local_retirada]").val(cliente.local_retirada).change();
-            $("select[name=como_conheceu]").val(cliente.como_conheceu).change();
-            $("select[name=renda]").val(cliente.renda).change();
-            $("select[name=estado]").val(cliente.estado).change();
-            $("select[name=cidade]").val(cliente.cidade).change();
+            $("input[name=nascimento]").val(date_pt_en(usuario.nascimento)).change();
+            $("select[name=sexo]").val(usuario.sexo).change();
+            $("select[name=estado_civil]").val(usuario.estado_civil).change();
+            $("select[name=local_retirada]").val(usuario.local_retirada).change();
+            $("select[name=como_conheceu]").val(usuario.como_conheceu).change();
+            $("select[name=renda]").val(usuario.renda).change();
+            $("select[name=estado]").val(usuario.estado).change();
+            $("select[name=cidade]").val(usuario.cidade).change();
         });
 
         function toggleAtivacao(e) {
@@ -390,35 +390,6 @@
             });
         }
     </script>
-
-    {{-- <script>
-        // initialize a validator instance from the "FormValidator" constructor.
-        // A "<form>" element is optionally passed as an argument, but is not a must
-        var validator = new FormValidator({
-            "events": ['blur', 'input', 'change'],
-        }, document.forms[0]);
-
-        // on form "submit" event
-        document.forms[0].onsubmit = function(e) {
-            var submit = true,
-                validatorResult = validator.checkAll(this);
-            console.log("validatorResult", validatorResult);
-            return !!validatorResult.valid;
-        };
-        // on form "reset" event
-        document.forms[0].onreset = function(e) {
-            validator.reset();
-        };
-        // stuff related ONLY for this demo page:
-        $('.toggleValidationTooltips').change(function() {
-            validator.settings.alerts = !this.checked;
-            if (this.checked)
-                $('form .alert').remove();
-        }).prop('checked', false);
-
-    </script> --}}
-
-
 </body>
 
 </html>
