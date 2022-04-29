@@ -71,7 +71,7 @@
                         <tr>
                           <th data-priority="1">Nome</th>
                           <th data-priority="2">E-mail</th>
-                          <th data-priority="3">CPF</th>
+                          <th class="cpf" data-priority="3">CPF</th>
                           {{-- <th>Região</th>
                           <th>Assinatura</th> --}}
                           <th>Data de Nascimento</th>
@@ -96,14 +96,14 @@
                                 <tr>
                                     <td>{{$cliente->nome}}</td>
                                     <td>{{$cliente->email}}</td>
-                                    <td>{{$cliente->cpf}}</td>
+                                    <td>{!!"<span data-tipo='cpf'>$cliente->cpf</span>"!!}</td>
                                     {{-- <td>{{$cliente->regiao}}</td>
                                     <td>{{$cliente->assinatura}}</td> --}}
                                     <td>{{$cliente->nascimento}}</td>
-                                    <td>{{CLIENTE_SEXO[$cliente->sexo]}}</td>
+                                    <td>{{GERAL_SEXO[$cliente->sexo]}}</td>
                                     <td>{{CLIENTE_ESTADO_CIVIL[$cliente->estado_civil]}}</td>
-                                    <td>{{$cliente->celular}}</td>
-                                    <td>{{$cliente->telefone}}</td>
+                                    <td>{!!"<span data-tipo='celular'>$cliente->celular</span>"!!}</td>
+                                    <td>{!!"<span data-tipo='telefone'>$cliente->telefone</span>"!!}</td>
                                     <td>{{$cliente->local_retirada}}</td>
                                     <td>{{$cliente->como_conheceu}}</td>
                                     <td>{{CLIENTE_RENDA[$cliente->renda]}}</td>
@@ -118,7 +118,9 @@
                                         @endif
                                     </td>
                                     <td>{{$cliente->data_pagamento}}</td>
-                                    <td>{{$cliente->ativo}}</td>
+                                    <td>
+                                      <input type="checkbox" data-cliente-id={{$cliente->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$cliente->ativo ? "checked" : ""}} />
+                                  </td>
                                     <td>
                                         <a href="{{route('admin.cliente.show', [$cliente->id])}}"><i class="fa fa-eye mx-1"></i></a>
                                         <a href="{{route('admin.cliente.deletar', [$cliente->id])}}"><i class="fa fa-trash mx-1"></i></a>
@@ -157,6 +159,20 @@
     <!-- /scripts -->
     <!-- iCheck -->
     <script src="vendors/iCheck/icheck.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+        $('[data-tipo=cpf]').mask('000.000.000-00', {
+            reverse: true
+        });
+        $('[data-tipo=celular]').mask('((00) 0 0000-0000', {
+            reverse: true
+        });
+        $('[data-tipo=telefone]').mask('((00) 0000-0000', {
+            reverse: true
+        });
+      });
+    </script>
 
     <script>
     var dt = $("#datatable-clientes").DataTable({
@@ -202,6 +218,45 @@
     dt.on('deselect.dt', () => {
         dt.searchPanes.rebuildPane(0, true);
     });
+
+    // Gerencia ativação do cliente.
+    function toggleAtivacao(e) {
+            var cliente_id = $(e).data("cliente-id");
+            var status = $(e).is(":checked");
+            var url = `{{route('admin.cliente.ativar')}}`;
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: {'status':status, "_token": "{{ csrf_token() }}","cliente_id":cliente_id},
+                dataType: "json",
+                success: function (data) {
+                    if (data.cliente) {
+                        if(data.cliente.ativo) {
+                            mensagem = "Cliente ativado com sucesso."
+                        }
+                        else {
+                            mensagem = "Cliente desativado com sucesso."
+                        }
+
+                        new PNotify({
+                            title: 'Sucesso',
+                            text: mensagem,
+                            type: 'success',
+                            styling: 'bootstrap3'
+                        });
+                    }
+                },
+                error: function (xhr, status) {
+                    new PNotify({
+                        title: 'Opa!',
+                        text: "Não foi possível atualizar o status do cliente.",
+                        type: 'error',
+                        styling: 'bootstrap3'
+                    });
+                    console.log("ativação falhou.");
+                }
+            });
+        }
     </script>
     
 

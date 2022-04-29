@@ -1,7 +1,7 @@
 <?php
 
 // Sexo usuários clientes
-const CLIENTE_SEXO = [
+const GERAL_SEXO = [
     '0' => 'Feminino',
     '1' => 'Masculino',
     '2' => 'Outro'
@@ -32,6 +32,15 @@ const CLIENTE_RENDA = [
     '2' => 'Até 03 (três) salários',
     '3' => 'Até 04 (quatro) salários',
     '4' => 'Até 05 (cinco) salários',
+];
+
+// Parentesco usuários dependentes
+const DEPENDENTE_PARENTESCO = [
+    '0' => 'Filho(a)',
+    '1' => 'Pai',
+    '2' => 'Mãe',
+    '3' => 'Irmã(o)',
+    '4' => 'Outro',
 ];
 
 ?>

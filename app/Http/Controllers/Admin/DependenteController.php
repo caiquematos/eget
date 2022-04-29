@@ -89,9 +89,6 @@ class DependenteController extends Controller
      */
     public function update(UpdateDependenteRequest $request, Dependente $dependente)
     {
-        $this->validate($request, [
-            'cpf' => 'required|size:14|unique:dependentes,cpf,'.$dependente->id,
-        ]);
         $dependente->fill($request->all())->save();
         $dependente->atualizado = true;
         return redirect()->route("admin.dependente.edit", ["dependente"=>$dependente])->with("success", "Dependente atualizado com sucesso.");
@@ -117,10 +114,27 @@ class DependenteController extends Controller
     public function deletar(Dependente $dependente)
     {
         $cliente = Usuario::find($dependente->id_usuario);
-        $dependente->deletado = 1;
-        $dependente->save();
-        $dependentes = Dependente::whereIdUsuario($cliente->id)->whereDeletado(0)->get();
+        $dependente->delete();
+        $dependentes = Dependente::whereIdUsuario($cliente->id)->get();
         $cliente->dependentes = $dependentes;
         return redirect()->route("admin.cliente.edit", ["cliente"=>$cliente])->with("success", "Dependente removido com sucesso.");
+    }
+
+     /**
+     * Marca recurso como ativado no db.
+     *
+     * @param  \App\Models\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function ativar(Request $request)
+    {
+        $dependente = Dependente::find($request->input("dependente_id"));
+        if ($request->input("status") == "true")
+            $dependente->ativo = 1;
+        else
+            $dependente->ativo = 0;
+        $dependente->save();
+        $this->resposta["dependente"] = $dependente;
+        return $this->resposta;
     }
 }

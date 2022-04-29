@@ -23,6 +23,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::resource("dependente", DependenteController::class);
     Route::prefix('dependente')->name('dependente.')->group(function () {
+        Route::post("ativar",[DependenteController::class, 'ativar'])->name('ativar');
         Route::get("adicionar/{cliente}", function(Usuario $cliente) {
             return App::make('App\Http\Controllers\Admin\DependenteController')->adicionar($cliente);
         })->name('adicionar');
@@ -33,6 +34,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::resource("cliente", ClienteController::class);
     Route::prefix('cliente')->name('cliente.')->group(function () {
+        Route::post("ativar",[ClienteController::class, 'ativar'])->name('ativar');
         Route::get("deletar/{cliente}", function(Usuario $cliente) {
             return App::make('App\Http\Controllers\Admin\ClienteController')->deletar($cliente);
         })->name('deletar');

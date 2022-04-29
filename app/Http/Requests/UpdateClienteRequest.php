@@ -16,6 +16,13 @@ class UpdateClienteRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'cpf' => $this->cleanCpf($this->cpf)
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,6 +31,8 @@ class UpdateClienteRequest extends FormRequest
     public function rules()
     {
         return [
+            'email' => 'required|unique:usuarios,email,'.$this->cliente->id.',id,deleted_at,NULL',
+            'cpf' => 'required|size:11|unique:usuarios,cpf,'.$this->cliente->id.',id,deleted_at,NULL',
             'bairro' => 'required|string|max:100',
             'celular' => 'required|string|max:16',
             'cep' => 'required|string|max:9',
@@ -42,5 +51,16 @@ class UpdateClienteRequest extends FormRequest
             'sexo' => 'required|numeric',
             'telefone' => 'required|string|max:14',
         ];
+    }
+
+    /**
+     * Limpa máscara do cpf.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    private function cleanCpf($cpf) {
+        $chars = ['.', '-'];
+        return str_replace($chars, "", trim($cpf));
     }
 }

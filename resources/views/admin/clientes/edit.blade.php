@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- funcoes -->
+@include("admin.build.funcoes")
+<!-- /funcoes -->
 
 <!-- head -->
 @include("admin.build.head", ['title'=>"CDI - Cartão de Vantagens"])
@@ -274,9 +277,11 @@
                                                             <td>{{$dependente->nome}}</td>
                                                             <td>{{$dependente->cpf}}</td>
                                                             <td>{{$dependente->nascimento}}</td>
-                                                            <td>{{$dependente->sexo}}</td>
-                                                            <td>{{$dependente->parentesco}}</td>
-                                                            <td>{{$dependente->ativo}}</td>
+                                                            <td>{{GERAL_SEXO[$dependente->sexo]}}</td>
+                                                            <td>{{DEPENDENTE_PARENTESCO[$dependente->parentesco]}}</td>
+                                                            <td>
+                                                                <input type="checkbox" data-dependente-id={{$dependente->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$dependente->ativo ? "checked" : ""}} />
+                                                            </td>
                                                             <td>
                                                                 <a href="{{route('admin.dependente.show', [$dependente->id])}}"><i class="fa fa-eye mx-1"></i></a>
                                                                 <a href="{{route('admin.dependente.deletar', [$dependente->id])}}"><i class="fa fa-trash mx-1"></i></a>
@@ -370,6 +375,44 @@
         function date_pt_en(date) {
             var date_array = date.trim().split("/");
             return "".concat(date_array[2], "-").concat(date_array[1], "-").concat(date_array[0]);
+        }
+
+        function toggleAtivacao(e) {
+            var dependente_id = $(e).data("dependente-id");
+            var status = $(e).is(":checked");
+            var url = `{{route('admin.dependente.ativar')}}`;
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: {'status':status, "_token": "{{ csrf_token() }}","dependente_id":dependente_id},
+                dataType: "json",
+                success: function (data) {
+                    if (data.dependente) {
+                        if(data.dependente.ativo) {
+                            mensagem = "Dependente ativado com sucesso."
+                        }
+                        else {
+                            mensagem = "Dependente desativado com sucesso."
+                        }
+
+                        new PNotify({
+                            title: 'Sucesso',
+                            text: mensagem,
+                            type: 'success',
+                            styling: 'bootstrap3'
+                        });
+                    }
+                },
+                error: function (xhr, status) {
+                    new PNotify({
+                        title: 'Opa!',
+                        text: "Não foi possível atualizar o status do dependente.",
+                        type: 'error',
+                        styling: 'bootstrap3'
+                    });
+                    console.log("ativação falhou.");
+                }
+            });
         }
     </script>
 

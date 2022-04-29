@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- funcoes -->
+@include("admin.build.funcoes")
+<!-- /funcoes -->
 
 <!-- head -->
 @include("admin.build.head", ['title'=>"CDI - Cartão de Vantagens"])
@@ -317,9 +320,9 @@
                                                     <div class="col-md-6 col-sm-12 ">
                                                         <select name="dependentes[parentesco][]" class="select2_single form-control" tabindex="-1" required='required'>
                                                             <option></option>
-                                                            <option value=0>Conjuge</option>
-                                                            <option value=1>Filhos abaixo de 21 anos</option>
-                                                            <option value=2>Pais acima de 60 anos</option>
+                                                            @foreach (DEPENDENTE_PARENTESCO as $key=>$parentesco)
+                                                            <option value={{$key}}>{{$parentesco}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>

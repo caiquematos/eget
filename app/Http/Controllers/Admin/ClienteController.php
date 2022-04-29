@@ -21,7 +21,6 @@ class ClienteController extends Controller
     public function index()
     {
         $clientes = Usuario::leftjoin('usuarios_pagamentos', 'usuarios.id', '=', 'usuarios_pagamentos.id_usuario')
-            ->whereDeletado("deletado", 0)
             ->select('usuarios.*', 'usuarios_pagamentos.status', 'usuarios_pagamentos.data as data_pagamento')
             ->get();
         $this->response["clientes"] = $clientes;
@@ -107,7 +106,7 @@ class ClienteController extends Controller
      */
     public function show(Usuario $cliente)
     {
-        $dependentes = Dependente::whereIdUsuario($cliente->id)->whereDeletado(0)->get();
+        $dependentes = Dependente::whereIdUsuario($cliente->id)->get();
         $cliente->dependentes = $dependentes;
         return view("admin.clientes.edit", ["cliente"=>$cliente]);
     }
@@ -120,7 +119,7 @@ class ClienteController extends Controller
      */
     public function edit(Usuario $cliente)
     {
-        $dependentes = Dependente::whereIdUsuario($cliente->id)->whereDeletado(0)->get();
+        $dependentes = Dependente::whereIdUsuario($cliente->id)->get();
         $cliente->dependentes = $dependentes;
         return view("admin.clientes.edit", ["cliente"=>$cliente]);
     }
@@ -134,12 +133,8 @@ class ClienteController extends Controller
      */
     public function update(UpdateClienteRequest $request, Usuario $cliente)
     {
-        $this->validate($request, [
-            'email' => 'required|unique:usuarios,email,'.$cliente->id,
-            'cpf' => 'required|size:14|unique:usuarios,cpf,'.$cliente->id,
-        ]);
         $cliente->fill($request->all())->save();
-        $dependentes = Dependente::whereIdUsuario($cliente->id)->whereDeletado(0)->get();
+        $dependentes = Dependente::whereIdUsuario($cliente->id)->get();
         $cliente->dependentes = $dependentes;
         $cliente->atualizado = true;
         return view("admin.clientes.edit", ["cliente"=>$cliente])->with("success", "Cliente atualizado com sucesso.");
@@ -181,8 +176,25 @@ class ClienteController extends Controller
      */
     public function deletar(Usuario $cliente)
     {
-        $cliente->deletado = 1;
-        $cliente->save();
+        $cliente->delete();
         return redirect()->back()->with("success", "Cliente removido com sucesso.");
+    }
+
+     /**
+     * Marca recurso como ativado no db.
+     *
+     * @param  \App\Models\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function ativar(Request $request)
+    {
+        $cliente = Usuario::find($request->input("cliente_id"));
+        if ($request->input("status") == "true")
+            $cliente->ativo = 1;
+        else
+            $cliente->ativo = 0;
+        $cliente->save();
+        $this->resposta["cliente"] = $cliente;
+        return $this->resposta;
     }
 }

@@ -16,6 +16,13 @@ class StoreClienteRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'cpf' => $this->cleanCpf($this->cpf)
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -30,8 +37,8 @@ class StoreClienteRequest extends FormRequest
             'cidade' => 'required|string',
             'como_conheceu' => 'required|string|max:50',
             'complemento' => 'required|string|max:80',
-            'cpf' => 'required|size:14|unique:usuarios',
-            'email' => 'required|unique:usuarios|email',
+            'email' => 'required|email|unique:usuarios,email,NULL,id,deleted_at,NULL',
+            'cpf' => 'required|size:11|unique:usuarios,cpf,NULL,id,deleted_at,NULL',
             'endereco' => 'required|string|max:255',
             'estado' => 'required|string|max:2',
             'estado_civil' => 'required|numeric',
@@ -47,5 +54,16 @@ class StoreClienteRequest extends FormRequest
             'telefone' => 'required|string|max:14',
 
         ];
+    }
+
+    /**
+     * Limpa máscara do cpf.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    private function cleanCpf($cpf) {
+        $chars = ['.', '-'];
+        return str_replace($chars, "", trim($cpf));
     }
 }

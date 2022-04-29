@@ -12,6 +12,12 @@
 <script src="{{url('admin/vendors/pnotify/dist/pnotify.js')}}"></script>
 <script src="{{url('admin/vendors/pnotify/dist/pnotify.buttons.js')}}"></script>
 <script src="{{url('admin/vendors/pnotify/dist/pnotify.nonblock.js')}}"></script>
+<!-- iCheck -->
+<script src="{{url('admin/vendors/iCheck/icheck.min.js')}}"></script>
+<!-- jQuery Tags Input -->
+<script src="{{url('admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js')}}"></script>
+<!-- Switchery -->
+<script src="{{url('admin/vendors/switchery/dist/switchery.min.js')}}"></script>
 
 <script src="{{ mix('build/js/common.js') }}"></script>
 
