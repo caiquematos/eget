@@ -17,6 +17,12 @@
       width:69px;
       text-align: center;
     }
+    .role-label {
+      border-radius: 3px;
+      background-color: #007bff;
+      color: white;
+      padding: 3px;
+    }
   </style>
 
   <body class="nav-md">
@@ -73,6 +79,7 @@
                           <th data-priority="2">E-mail</th>
                           <th class="cpf" data-priority="3">CPF</th>
                           <th>Celular</th>
+                          <th>Funções</th>
                           <th data-priority="6">Ativo</th>
                           <th data-priority="5">Ações</th>
                         </tr>
@@ -85,11 +92,20 @@
                                     <td>{!!"<span data-tipo='cpf'>$usuario->cpf</span>"!!}</td>
                                     <td>{!!"<span data-tipo='celular'>$usuario->celular</span>"!!}</td>
                                     <td>
+                                      @if($usuario->roles->count())
+                                        @foreach ($usuario->roles as $role)
+                                          <p><span class="role-label">{{$role->name}}</span></p>
+                                        @endforeach
+                                      @else
+                                        <p><span class="role-label">usuário</span></p>
+                                      @endif
+                                    </td>
+                                    <td>
                                         <input type="checkbox" data-usuario-id={{$usuario->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$usuario->ativo ? "checked" : ""}} />
                                     </td>
                                     <td>
                                         <a href="{{route('admin.usuario.show', [$usuario->id])}}"><i class="fa fa-eye mx-1"></i></a>
-                                        <a href="{{route('admin.usuario.deletar', [$usuario->id])}}"><i class="fa fa-trash mx-1"></i></a>
+                                        <a href="{{route('admin.usuario.destroy', [$usuario->id])}}"><i class="fa fa-trash mx-1"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

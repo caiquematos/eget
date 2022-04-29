@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\usuario;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUsuarioRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -25,7 +27,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.usuarios.create");
     }
 
     /**
@@ -34,9 +36,20 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUsuarioRequest $request)
     {
-        //
+        $usuario = new Usuario();
+        $usuario->fill($request->except(["tipo"]));
+        // gerar senha.
+        $usuario->senha = Hash::make(substr($request->input("cpf"), 0, 5));
+        $usuario->save();
+
+        if (!empty($request->input("tipo"))) {
+            $usuario->roles()->sync([$request->input("tipo")]);
+        }
+
+        return redirect()->back()->with("success","Usuário adicionado com sucesso.");
+
     }
 
     /**

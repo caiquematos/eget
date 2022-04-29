@@ -42,6 +42,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 
     Route::resource("usuario", UsuarioController::class);
+    Route::prefix('usuario')->name('usuario.')->group(function () {
+        Route::post("ativar",[UsuarioController::class, 'ativar'])->name('ativar');
+    });
     
     Route::post('/login', [LoginController::class, 'index'])->name('logar');
     
