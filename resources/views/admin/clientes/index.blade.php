@@ -97,19 +97,15 @@
                                     <td>{{$cliente->nome}}</td>
                                     <td>{{$cliente->email}}</td>
                                     <td>{!!"<span data-tipo='cpf'>$cliente->cpf</span>"!!}</td>
-                                    {{-- <td>{{$cliente->regiao}}</td>
-                                    <td>{{$cliente->assinatura}}</td> --}}
                                     <td>{{$cliente->nascimento}}</td>
                                     <td>{{GERAL_SEXO[$cliente->sexo]}}</td>
-                                    <td>{{CLIENTE_ESTADO_CIVIL[$cliente->estado_civil]}}</td>
-                                    <td>{!!"<span data-tipo='celular'>$cliente->celular</span>"!!}</td>
-                                    <td>{!!"<span data-tipo='telefone'>$cliente->telefone</span>"!!}</td>
+                                    <td>{{CLIENTE_ESTADO_CIVIL[$cliente->estado_civil] ?? "-"}}</td>
+                                    <td>{!! !empty($cliente->celular) ? "<span data-tipo='celular'>$cliente->celular</span>" : "-" !!}</td>
+                                    <td>{!! !empty($cliente->telefone) ? "<span data-tipo='telefone'>$cliente->telefone</span>"  : "-" !!}</td>
                                     <td>{{$cliente->local_retirada}}</td>
                                     <td>{{$cliente->como_conheceu}}</td>
-                                    <td>{{CLIENTE_RENDA[$cliente->renda]}}</td>
+                                    <td>{{CLIENTE_RENDA[$cliente->renda] ?? "-"}}</td>
                                     <td>{{$cliente->profissao}}</td>
-                                    {{-- <td>{{$cliente->animal}}</td> --}}
-                                    {{-- <td>{{$cliente->ofertas}}</td> --}}
                                     <td>
                                         @if (now() > Carbon\Carbon::parse($cliente->data_pagamento)->addMonths(12))
                                             {!!"<p class='pagamento-status bg-danger text-white'>expirou</p>"!!}
@@ -117,7 +113,7 @@
                                             {!!$cliente->status ? "<p class='pagamento-status bg-success text-white'>confirmado</p>" : "<p class='pagamento-status bg-warning'>pendente</p>" ?? "<p class='pagamento-status bg-warning'>pendente</p>"!!}
                                         @endif
                                     </td>
-                                    <td>{{$cliente->data_pagamento}}</td>
+                                    <td>{{$cliente->data_pagamento ?? "-"}}</td>
                                     <td>
                                       <input type="checkbox" data-cliente-id={{$cliente->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$cliente->ativo ? "checked" : ""}} />
                                   </td>

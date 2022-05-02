@@ -56,7 +56,7 @@
                         <div class="col-md-12 col-sm-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Adicionar Usuário</h2>
+                                    <h2><a href="{{route('admin.usuario.index')}}">Usuários</a></h2><h2><i class="fa fa-chevron-right mx-2"></i></h2><h2>Adicionar Usuário</h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -90,9 +90,9 @@
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Função</label>
                                             <div class="col-md-6 col-sm-12  ">
 												<select name="tipo" class="select2_single form-control" tabindex="-1" >
-													<option value=3>Consultor</option>
-													<option value=2>Editor</option>
-													<option value=1>Administrador</option>
+                                                    @foreach ($roles as $role)
+                                                        <option value={{$role->id}}>{{$role->name}}</option>
+                                                    @endforeach
 												</select>
 											</div>
                                         </div>

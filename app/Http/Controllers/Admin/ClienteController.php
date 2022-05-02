@@ -6,10 +6,12 @@ use App\Models\Usuario;
 use App\Models\Dependente;
 use App\Models\Pagamento;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreDependenteRequest;
 use App\Http\Requests\StoreClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class ClienteController extends Controller
 {
@@ -23,7 +25,7 @@ class ClienteController extends Controller
         $clientes = Usuario::select('usuarios.*', 'pagamentos.status', 'pagamentos.data as data_pagamento')
             ->leftjoin('pagamentos', 'usuarios.id', '=', 'pagamentos.id_usuario')
             ->leftjoin('role_usuario', 'usuarios.id', '=', 'role_usuario.id_usuario')
-            ->where('role_usuario.id_usuario', NULL)
+            ->where('role_usuario.id_role', config('constants.ROLES.CLIENTE.id'))
             ->get();
         $this->response["clientes"] = $clientes;
         return view("admin.clientes.index", $this->response);
@@ -71,6 +73,9 @@ class ClienteController extends Controller
         $cliente->save();
         
         if ($cliente){
+            // Gerencia papel do usuário.
+            $cliente->roles()->sync([config('constants.ROLES.CLIENTE.id')]);
+
             // Gerencia pagamento.
             $pagamento = new Pagamento();
             $pagamento->id_usuario = $cliente->id;
@@ -81,15 +86,21 @@ class ClienteController extends Controller
             if (!empty($request->input("dependentes"))) {
                $dependentes = $this->mapear_form_array($request->input("dependentes"));
                foreach($dependentes as $dependente) {
-                   $dependente = (Object) $dependente;
-                   $dependente_obj = new Dependente();
-                   $dependente_obj->id_usuario = $cliente->id;
-                   $dependente_obj->cpf = $dependente->cpf;
-                   $dependente_obj->nome = $dependente->nome;
-                   $dependente_obj->sexo = $dependente->sexo;
-                   $dependente_obj->parentesco = $dependente->parentesco;
-                   $dependente_obj->nascimento = $dependente->nascimento;
-                   $dependente_obj->save();
+                    // if ($validator = $this->validarDependente($dependente)){
+                    //     break;
+                    //     return back()
+                    //     ->withErrors($validator)
+                    //     ->withInput();
+                    // }
+                    $dependente = (Object) $dependente;
+                    $dependente_obj = new Dependente();
+                    $dependente_obj->id_usuario = $cliente->id;
+                    $dependente_obj->cpf = $dependente->cpf;
+                    $dependente_obj->nome = $dependente->nome;
+                    $dependente_obj->sexo = $dependente->sexo;
+                    $dependente_obj->parentesco = $dependente->parentesco;
+                    $dependente_obj->nascimento = $dependente->nascimento;
+                    $dependente_obj->save();
                }
             }
             $this->response["success"] = true;
@@ -198,5 +209,14 @@ class ClienteController extends Controller
         $cliente->save();
         $this->resposta["cliente"] = $cliente;
         return $this->resposta;
+    }
+
+    private function validarDependente($dependente) {
+        $dependente['cpf'] = $this->cleanCpf($dependente['cpf']);
+        $validator = Validator::make($dependente, (new StoreDependenteRequest)->rules());
+        if ($validator->fails()) {
+            return $validator;
+        }
+        return false;
     }
 }

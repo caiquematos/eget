@@ -44,6 +44,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource("usuario", UsuarioController::class);
     Route::prefix('usuario')->name('usuario.')->group(function () {
         Route::post("ativar",[UsuarioController::class, 'ativar'])->name('ativar');
+        Route::get("deletar/{usuario}", function(Usuario $usuario) {
+            return App::make('App\Http\Controllers\Admin\UsuarioController')->deletar($usuario);
+        })->name('deletar');
     });
     
     Route::post('/login', [LoginController::class, 'index'])->name('logar');

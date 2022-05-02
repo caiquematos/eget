@@ -21,4 +21,15 @@ class Controller extends BaseController
     {
         $this->response = ["success"=>false, "message"=>"Não foi possível concluir a operação, tente novamente."];
     }
+
+    /**
+     * Limpa máscara do cpf.
+     *
+     * @param  string  $cpf
+     * @return string
+     */
+    protected function cleanCpf($cpf) {
+        $chars = ['.', '-'];
+        return str_replace($chars, "", trim($cpf));
+    }
 }

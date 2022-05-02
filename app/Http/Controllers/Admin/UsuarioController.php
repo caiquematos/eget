@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\usuario;
+use App\Models\role;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUsuarioRequest;
+use App\Http\Requests\UpdateUsuarioRequest;
 use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
@@ -17,7 +19,7 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuarios = Usuario::all();
-        return view("admin.usuarios.index")->with("usuarios", $usuarios);
+        return view("admin.usuarios.index")->with(["usuarios"=> $usuarios]);
     }
 
     /**
@@ -27,7 +29,8 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view("admin.usuarios.create");
+        $roles = Role::all();
+        return view("admin.usuarios.create")->with(["roles"=> $roles]);
     }
 
     /**
@@ -49,7 +52,6 @@ class UsuarioController extends Controller
         }
 
         return redirect()->back()->with("success","Usuário adicionado com sucesso.");
-
     }
 
     /**
@@ -60,7 +62,14 @@ class UsuarioController extends Controller
      */
     public function show(usuario $usuario)
     {
-        //
+        if(count($usuario->roles)){
+            foreach($usuario->roles as $role) {
+                $usuario->tipo = $role->id;
+                break;
+            }
+        };
+        $roles = Role::all();
+        return view("admin.usuarios.edit", ["usuario"=>$usuario, "roles"=> $roles]);
     }
 
     /**
@@ -71,7 +80,14 @@ class UsuarioController extends Controller
      */
     public function edit(usuario $usuario)
     {
-        //
+        if(count($usuario->roles)){
+            foreach($usuario->roles as $role) {
+                $usuario->tipo = $role->id;
+                break;
+            }
+        };
+        $roles = Role::all();
+        return view("admin.usuarios.edit", ["usuario"=>$usuario, "roles"=> $roles]);
     }
 
     /**
@@ -81,9 +97,20 @@ class UsuarioController extends Controller
      * @param  \App\Models\usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, usuario $usuario)
+    public function update(UpdateUsuarioRequest $request, usuario $usuario)
     {
-        //
+        $usuario->fill($request->except(["tipo"]))->save();
+        if (!empty($request->input("tipo"))) {
+            $usuario->roles()->sync([$request->input("tipo")]);
+        }
+        if(count($usuario->roles)){
+            foreach($usuario->roles as $role) {
+                $usuario->tipo = $role->id;
+                break;
+            }
+        };
+        $usuario->atualizado = true;
+        return redirect()->back()->with("success","Usuário atualizado com sucesso.");
     }
 
     /**
@@ -94,8 +121,22 @@ class UsuarioController extends Controller
      */
     public function destroy(usuario $usuario)
     {
-        //
+        $usuario->delete();
+        return redirect()->back()->with("success", "Usuário removido com sucesso.");
     }
+
+      /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\usuario  $usuario
+     * @return \Illuminate\Http\Response
+     */
+    public function deletar(usuario $usuario)
+    {
+        $usuario->delete();
+        return redirect()->back()->with("success", "Usuário removido com sucesso.");
+    }
+
 
     /**
      * Marca recurso como ativado no db.

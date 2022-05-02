@@ -278,7 +278,7 @@
                                                             <td>{!!"<span data-tipo='cpf'>$dependente->cpf</span>"!!}</td>
                                                             <td>{{$dependente->nascimento}}</td>
                                                             <td>{{GERAL_SEXO[$dependente->sexo]}}</td>
-                                                            <td>{{DEPENDENTE_PARENTESCO[$dependente->parentesco]}}</td>
+                                                            <td>{{DEPENDENTE_PARENTESCO[$dependente->parentesco] ?? "-"}}</td>
                                                             <td>
                                                                 <input type="checkbox" data-dependente-id={{$dependente->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$dependente->ativo ? "checked" : ""}} />
                                                             </td>
