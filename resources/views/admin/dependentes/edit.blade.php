@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- funcoes -->
+@include("admin.build.funcoes")
+<!-- /funcoes -->
 
 <!-- head -->
 @include("admin.build.head", ['title'=>"CDI - Cartão de Vantagens"])
@@ -88,10 +91,9 @@
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Sexo<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-12  ">
 												<select name="sexo" class="select2_single form-control" tabindex="-1" required='required'>
-													<option></option>
-													<option value=0>Feminino</option>
-													<option value=1>Masculino</option>
-													<option value=2>Outro</option>
+													@foreach (GERAL_SEXO as $key=>$sexo)
+                                                        <option value={{$key}}>{{$sexo}}</option>
+                                                    @endforeach
 												</select>
 											</div>
                                         </div>
@@ -100,11 +102,9 @@
                                             <div class="col-md-6 col-sm-12  ">
 												<select name="parentesco" class="select2_single form-control" tabindex="-1" required='required'>
 													<option></option>
-                                                    <option value=0>Irmã(o)</option>
-													<option value=1>Mãe</option>
-													<option value=2>Pai</option>
-													<option value=3>Filho(a)</option>
-													<option value=4>Outro</option>
+                                                    @foreach (DEPENDENTE_PARENTESCO as $key=>$parentesco)
+                                                        <option value={{$key}}>{{$parentesco}}</option>
+                                                    @endforeach
 												</select>
 											</div>
                                         </div>                            

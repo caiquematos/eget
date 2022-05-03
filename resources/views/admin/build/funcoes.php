@@ -18,11 +18,16 @@ const CLIENTE_ESTADO_CIVIL = [
 
 // Como conheceu? usuários clientes
 const CLIENTE_COMO_CONHECEU = [
-    '0' => 'Casado',
-    '1' => 'Solteiro',
-    '2' => 'Divorciado',
-    '3' => 'Viuvo',
-    '4' => 'Outro',
+    '0'=> 'Campanha de indicação',
+    '1' => 'Facebook',
+    '2' => 'Google',
+    '3' => 'Instagram',
+    '4' => 'Outdoor',
+    '5' => 'Panfletagem',
+    '6' => 'Rádios',
+    '7' => 'Clínicas',
+    '8' => 'Indicação',
+    '9' => 'Outros',
 ];
 
 // Renda usuários clientes

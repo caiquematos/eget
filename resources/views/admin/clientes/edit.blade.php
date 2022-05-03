@@ -91,10 +91,10 @@
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Sexo<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-12  ">
 												<select name="sexo" class="select2_single form-control" tabindex="-1" required='required'>
-													<option></option>
-													<option value=0>Feminino</option>
-													<option value=1>Masculino</option>
-													<option value=2>Outro</option>
+													<option selected>Selecione uma opção</option>
+													@foreach (GERAL_SEXO as $key=>$sexo)
+                                                        <option value={{$key}}>{{$sexo}}</option>
+                                                    @endforeach
 												</select>
 											</div>
                                         </div>
@@ -102,12 +102,10 @@
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Estado civil<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-12  ">
 												<select name="estado_civil" class="select2_single form-control" tabindex="-1" required='required'>
-													<option></option>
-                                                    <option value=0>Casado</option>
-													<option value=1>Solteiro</option>
-													<option value=2>Divorciado</option>
-													<option value=3>Viuvo</option>
-													<option value=4>Outro</option>
+													<option selected>Selecione uma opção</option>
+                                                    @foreach (CLIENTE_ESTADO_CIVIL as $key=>$estado)
+                                                        <option value={{$key}}>{{$estado}}</option>
+                                                    @endforeach
 												</select>
 											</div>
                                         </div>
@@ -146,17 +144,10 @@
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Como conheceu?<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-12  ">
 												<select name="como_conheceu" class="select2_single form-control" tabindex="-1" required='required'>
-													<option></option>
-                                                    <option value="Campanha de indicação">Campanha de indicação</option>
-													<option value="Facebook">Facebook</option>
-													<option value="Google">Google</option>
-													<option value="Instagram">Instagram</option>
-													<option value="Outdoor">Outdoor</option>
-													<option value="Panfletagem">Panfletagem</option>
-													<option value="Rádios">Rádios</option>
-													<option value="Clínicas">Clínicas</option>
-													<option value="Indicação">Indicação</option>
-													<option value="Outros">Outros</option>
+													<option selected>Selecione uma opção</option>
+                                                    @foreach (CLIENTE_COMO_CONHECEU as $key=>$conheceu)
+                                                        <option value={{$key}}>{{$conheceu}}</option>
+                                                    @endforeach
 												</select>
 											</div>
                                         </div>

@@ -4,13 +4,91 @@
 
 @include('public.head')
 
+<style>
+    #section-1 {
+        height: 625px;
+        background-image: url('template/assets/img/banner-01.webp');
+        background-position: center;
+        background-size: cover;
+        margin-top: 89px;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    #section-1 h1 {
+        letter-spacing: 0px !important;
+    }
+    #dtr-header-global {
+        background-color: white;
+    }
+
+    #section-1 .dtr-intro-content {
+        font-size: 20px !important;
+        line-height: 1.1em !important;
+    }
+
+    .dtr-btn {
+        background-color: #1c4048 !important;
+        border-color: #33485c00 !important;
+        color: #fff;
+    }
+
+    #section-1 .dtr-btn-text {
+        font-size: 24px !important;
+    }
+
+    #section-3 {
+        background-image: url('template/assets/img/fundo-03.webp');
+        height: 450px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #section-3 a {
+        margin: 0;
+        width: fit-content;
+    }
+
+    #section-3 .dtr-btn-text {
+        font-size: 29px !important;
+    }
+
+    .faixa-1 {
+        height: 5px;
+        width: 80px;
+        background-color: #367e8c;
+    }
+    .faixa-2 {
+        height: 5px;
+        width: 80px;
+        background-color: #4bc192;
+    }
+
+    #process {
+        background-image: url('template/assets/img/banner-02.webp');
+        background-position: right;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+</style>
+
 <body>
 <div id="dtr-wrapper" class="clearfix">
 
     <!-- preloader starts -->
     <div class="dtr-preloader" style="display: none;">
         <div class="dtr-preloader-inner">
-            <div class="dtr-loader">Loading...</div>
+            <div class="dtr-loader">Carregando...</div>
         </div>
     </div>
     <!-- preloader ends -->
@@ -42,7 +120,7 @@
 
     <!-- header starts
 ============================================= -->
-    <header id="dtr-header-global" class="fixed-top">
+    <header id="dtr-header-global" class="fixed-top on-scroll">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between">
 
@@ -85,15 +163,16 @@
         <!-- hero section starts
 ================================================== -->
         <section id="home" class="dtr-section">
-            <div class="dtr-section bg-white dtr-hero-section-top-padding">
-                <div class="container dtr-pb-100">
+            {{-- background-image:url(template/assets/img/banner_cdi.webp) --}}
+            <div id="section-1" class="dtr-section bg-dark">
+                <div class="container">
 
                     <!--== row starts ==-->
-                    <div class="row">
-                        <div class="col-12 col-md-6">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-5">
 
                             <!-- animated hedline starts -->
-                            <p class=" dtr-animated-headline font-weight-medium text-left slide color-dark"><span class="dtr-words-wrapper w-100" style="width: 233.547px;">
+                            {{-- <p class=" dtr-animated-headline font-weight-medium text-left slide color-dark"><span class="dtr-words-wrapper w-100" style="width: 233.547px;">
                                 <!--== text starts ==-->
                                 <!-- first line -->
                                 <b class="is-hidden">Beautiful design interface <img draggable="false" role="img" class="emoji" alt="✨" src="{{url('template/assets/img/2728.svg')}}" width="22"></b>
@@ -102,48 +181,24 @@
                                 <!-- third line -->
                                 <b class="is-visible"> Cloud-focused delivery <img draggable="false" role="img" class="emoji" alt="⭐" src="{{url('template/assets/img/2b50.svg')}}" width="22"> </b>
                                 <!--== text ends ==-->
-                                </span></p>
+                                </span></p> --}}
                             <!-- animated hedline ends -->
 
-                            <h1>Discover the smartest platform</h1>
-                            <p class="dtr-intro-content color-dark">Now everything is in your power to create high end &amp; scalable interactive digital products with your team.</p>
-
+                            <h1 class="color-white fs-2">O CDI Cartão de Vantagens é para você cuidar da sua saúde com mais economia e praticiadade.</h1>
+                            <div class="d-flex dtr-my-40"><div class="faixa-1"></div><div class="faixa-2"></div></div>
+                            <p class="dtr-intro-content color-white">Agende exames com descontos especiais, sem carência ou mensalidade e ainda obtenha cacheback.</p>
                             <!-- button starts -->
                             <a class="dtr-btn dtr-btn-small dtr-mt-50" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" role="button">
-                            <!-- icon -->
-                            <i class="icon-rocket-launch-fill" aria-hidden="true"></i>
-                            <p> <!-- subtext -->
-                                <span class="dtr-btn-subtext">Get a demo</span>
-                                <!-- text -->
-                                <span class="dtr-btn-text">Start Now - It’s Free</span> </p>
+                            <p> <span class="dtr-btn-text">Quero fazer meu cartão!</span> </p>
                             </a>
                             <!-- button ends -->
 
                         </div>
-                        <div class="col-12 col-md-6 small-device-space"> <img src="{{url('template/assets/img/section-img1.png')}}" alt="image"> </div>
-                    </div>
-                    <!--== row ends ==-->
+                        <div class="col-12 col-md-5">
 
-                    <!--== row starts / logo slider ==-->
-                    <div class="row dtr-pt-100">
-                        <div class="col-12 col-md-10 offset-md-1">
-                            <div class="dtr-slick-slider dtr-slider-5col slick-initialized slick-slider slick-dotted"><button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="display: inline-block;">Previous</button>
-                                <!-- img 1 -->
-                                <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 3774px; transform: translate3d(-1554px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-5" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-2.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-4" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-3.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-3" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-4.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-2" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-5.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-1.png')}}" alt="image"> </div><div class="slick-slide" data-slick-index="0" aria-hidden="true" style="width: 192px;" tabindex="-1" role="tabpanel" id="slick-slide10" aria-describedby="slick-slide-control10"> <img src="{{url('template/assets/img/client-1.png')}}" alt="image"> </div><div class="slick-slide" data-slick-index="1" aria-hidden="true" style="width: 192px;" tabindex="-1" role="tabpanel" id="slick-slide11" aria-describedby="slick-slide-control11"> <img src="{{url('template/assets/img/client-2.png')}}" alt="image"> </div><div class="slick-slide slick-current slick-active" data-slick-index="2" aria-hidden="false" style="width: 192px;" tabindex="0" role="tabpanel" id="slick-slide12" aria-describedby="slick-slide-control12"> <img src="{{url('template/assets/img/client-3.png')}}" alt="image"> </div><div class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 192px;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13"> <img src="{{url('template/assets/img/client-4.png')}}" alt="image"> </div><div class="slick-slide slick-active" data-slick-index="4" aria-hidden="false" style="width: 192px;" tabindex="0" role="tabpanel" id="slick-slide14" aria-describedby="slick-slide-control14"> <img src="{{url('template/assets/img/client-5.png')}}" alt="image"> </div><div class="slick-slide slick-active" data-slick-index="5" aria-hidden="false" style="width: 192px;" tabindex="0" role="tabpanel" id="slick-slide15" aria-describedby="slick-slide-control15"> <img src="{{url('template/assets/img/client-1.png')}}" alt="image"> </div><div class="slick-slide slick-cloned slick-active" data-slick-index="6" id="" aria-hidden="false" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-1.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="7" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-2.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="8" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-3.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="9" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-4.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="10" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-5.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="11" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-1.png')}}" alt="image"> </div></div></div>
-                                <!-- img 2 -->
-                                
-                                <!-- img 3 -->
-                                
-                                <!-- img 4 -->
-                                
-                                <!-- img 5 -->
-                                
-                                <!-- img 6 -->
-                                
-                            <button class="slick-next slick-arrow" aria-label="Next" type="button" style="display: inline-block;">Next</button><ul class="slick-dots" style="display: block;" role="tablist"><li class="" role="presentation"><button type="button" role="tab" id="slick-slide-control10" aria-controls="slick-slide10" aria-label="1 of 2" tabindex="-1">1</button></li><li role="presentation" class=""><button type="button" role="tab" id="slick-slide-control11" aria-controls="slick-slide11" aria-label="2 of 2" tabindex="-1">2</button></li><li role="presentation" class="slick-active"><button type="button" role="tab" id="slick-slide-control12" aria-controls="slick-slide12" aria-label="3 of 2" tabindex="0" aria-selected="true">3</button></li><li role="presentation" class=""><button type="button" role="tab" id="slick-slide-control13" aria-controls="slick-slide13" aria-label="4 of 2" tabindex="-1">4</button></li><li role="presentation" class=""><button type="button" role="tab" id="slick-slide-control14" aria-controls="slick-slide14" aria-label="5 of 2" tabindex="-1">5</button></li><li role="presentation" class=""><button type="button" role="tab" id="slick-slide-control15" aria-controls="slick-slide15" aria-label="6 of 2" tabindex="-1">6</button></li></ul></div>
                         </div>
                     </div>
-                    <!--== row ends / logo slider ==-->
+                    <!--== row ends ==-->
 
                 </div>
             </div>
@@ -151,44 +206,78 @@
         <!-- hero section ends
 ================================================== -->
 
-        <!-- section starts
+   <!-- process section starts
 ================================================== -->
-        <section class="dtr-section dtr-py-100">
-            <div class="container">
+<section id="process" class="dtr-section dtr-py-100 bg-white">
+    <div class="container">
 
-                <!--== row starts ==-->
-                <div class="row">
-
-                    <!-- column 1 starts -->
-                    <div class="col-12 col-md-6"> <img src="{{url('template/assets/img/section-img2.png')}}" alt="image"> </div>
-                    <!-- column 1 ends -->
-
-                    <!-- column 2 starts -->
-                    <div class="col-12 col-md-6 small-device-space">
-
-                    	<!-- heading starts -->
-                        <div class="dtr-section-intro text-left">
-                            <div class="dtr-intro-subheading-wrapper">
-                                <p class="dtr-intro-subheading">The XaaS App</p>
-                            </div>
-                            <h2 class="dtr-intro-heading">Increase your<br>
-                                conversion rate by 100%<br>
-                                - for free.</h2>
-                            <p class="dtr-intro-content">There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by injected humour or randomised words.</p>
-                        </div>
-                        <!-- heading ends -->
-
-                        <!-- button -->
-                        <a class="dtr-btn btn-blue dtr-px-lg dtr-mt-50" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" role="button"> <span class="dtr-btn-text">Try For Free</span> </a>
-                    </div>
-                    <!-- column 2 ends -->
-
-                </div>
-                <!--== row ends ==-->
-
+        <!-- heading starts -->
+        <div class="dtr-section-intro text-left dtr-mb-50">
+            <div class="dtr-intro-subheading-wrapper">
+                <p class="dtr-intro-subheading">Quem somos</p>
             </div>
-        </section>
-        <!-- section ends
+            <h2 class="dtr-intro-heading">O que é o Cartão<br class="d-none d-md-block"> CDI de Vantagens?</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="dtr-intro-content">O CDI Cartão de Vantagens é um serviço que oferece mais 
+                        acessibilidade na área de exames de imagem, disponibilizando
+                        descontos especiais para seus usuários. É mais facilidade para
+                        sua saúde e qualidade de vida. </p>
+                </div>
+            </div>
+        </div>
+        <!-- heading ends -->
+
+        <!--== row starts ==-->
+        <div class="row">
+
+            <!-- process bar starts -->
+            {{-- <div class="dtr-process-bar-center dtr-mb-100 dtr-pt-30 color-dark">
+                <div class="dtr-process-bar dtr-shadow">
+                    <ul class="dtr-process-list">
+                        <li> Onboard </li>
+                        <li> Collaborate </li>
+                        <li> Automate </li>
+                    </ul>
+                </div>
+            </div> --}}
+            <!-- process bar ends -->
+
+            <!-- column 1 starts -->
+            <div class="col-12 col-md-4">
+                <div class="dtr-feature dtr-feature-top dtr-feature-circle dtr-feature-large text-left ">
+                    <div class="dtr-feature-icon p-4" style="background-color: #4bc192"><img src="{{url('template\assets\img\icone-01.png')}}" alt="ícone missão vantagens"/> </div>
+                    <div class="dtr-feature-content">
+                        <h4 class="dtr-feature-heading">Missão</h4>
+                    </div>
+                </div>
+                <p class="dtr-pt-20">Promover maior acesso a exames de 
+                    imagem, contribuindo assim para mais 
+                    qualidade de vida, saúde e bem-estar 
+                    na região do Vale do São Francisco.</p>
+            </div>
+            <!-- column 1 ends -->
+
+            <!-- column 2 starts -->
+            <div class="col-12 col-md-4 small-device-space">
+                <div class="dtr-feature dtr-feature-top dtr-feature-circle dtr-feature-large text-left ">
+                    <div class="dtr-feature-icon p-4" style="background-color: #4592a3"> <img src="{{url('template\assets\img\icone-02.png')}}" alt="ícone missão vantagens"/> </div>
+                    <div class="dtr-feature-content">
+                        <h4 class="dtr-feature-heading">Valores</h4>
+                    </div>
+                </div>
+                <p class="dtr-pt-20">Nossos valores são pautados
+                    na empatia, eficiência, 
+                    qualidade e transparência.</p>
+            </div>
+            <!-- column 2 ends -->
+
+        </div>
+        <!--== row ends ==-->
+
+    </div>
+</section>
+<!-- process section ends
 ================================================== -->
 
         <!-- services section starts
@@ -199,12 +288,18 @@
                 <!-- heading starts -->
                 <div class="dtr-section-intro text-left dtr-mb-50">
                     <div class="dtr-intro-subheading-wrapper">
-                        <p class="dtr-intro-subheading">The Features</p>
-                                            </div>
-                    <h2 class="dtr-intro-heading">Flexible &amp; Scalable...</h2>
-                    <p class="dtr-intro-content">There are many variations of passages of lorem ipsum available<br>
-                        but the majority have suffered alteration in some form by<br>
-                        injected humour or randomised words.</p>
+                        <p class="dtr-intro-subheading">Vantagens</p>
+                    </div>
+                    <h2 class="dtr-intro-heading">Economia e saúde andando juntas</h2>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <p class="dtr-intro-content">O cartão de vantagens do CDI disponibiliza descontos especiais em 
+                                exames de imagem, sem carência, taxa de adesão ou mensalidade. 
+                                Além disso, também tem cashback para beneficiários. Muito mais 
+                                agilidade e economia para quem precisa!</p>
+                        </div>
+                    </div>
+                   
                 </div>
                 <!-- heading ends -->
 
@@ -217,10 +312,10 @@
                             <div class="dtr-servicebox dtr-shadow bg-light-orange"> <span class="dtr-servicebox-number">01</span>
                                 <div class="dtr-servicebox-head">
                                     <div class="dtr-servicebox-icon color-orange"> <i class="icon-user-circle-plus-fill"></i> </div>
-                                    <h4 class="dtr-servicebox-heading">User<br>
-                                        Onboarding</h4>
+                                    <h4 class="dtr-servicebox-heading">Descontos<br>
+                                        especiais </h4>
                                 </div>
-                                <div class="dtr-servicebox-content">Lorem ipsum dolor amet consectetur adipiscing labore et dolore magna aliqua. </div>
+                                <div class="dtr-servicebox-content">Você pagará bem menos para realizar exames como tomografia, ressonância e ultrassom.</div>
                             </div>
                         </div>
                     </div>
@@ -232,10 +327,10 @@
                             <div class="dtr-servicebox dtr-shadow bg-light-cyan"> <span class="dtr-servicebox-number">02</span>
                                 <div class="dtr-servicebox-head">
                                     <div class="dtr-servicebox-icon color-cyan"> <i class="icon-intersect"></i> </div>
-                                    <h4 class="dtr-servicebox-heading">Flexible<br>
-                                        Workflow </h4>
+                                    <h4 class="dtr-servicebox-heading">Ganhe<br>
+                                        cashback </h4>
                                 </div>
-                                <div class="dtr-servicebox-content">Lorem ipsum dolor amet consectetur adipiscing labore et dolore magna aliqua. </div>
+                                <div class="dtr-servicebox-content">Você pagará bem menos para realizar exames como tomografia, ressonância e ultrassom.</div>
                             </div>
                         </div>
                     </div>
@@ -247,10 +342,10 @@
                             <div class="dtr-servicebox dtr-shadow bg-light-blue"> <span class="dtr-servicebox-number">03</span>
                                 <div class="dtr-servicebox-head">
                                     <div class="dtr-servicebox-icon color-sky-blue"> <i class="icon-timer-fill" aria-hidden="true"></i> </div>
-                                    <h4 class="dtr-servicebox-heading">Real-time<br>
-                                        Insights </h4>
+                                    <h4 class="dtr-servicebox-heading">Ganhe<br>
+                                        cashback </h4>
                                 </div>
-                                <div class="dtr-servicebox-content">Lorem ipsum dolor amet consectetur adipiscing labore et dolore magna aliqua. </div>
+                                <div class="dtr-servicebox-content">Você pagará bem menos para realizar exames como tomografia, ressonância e ultrassom.</div>
                             </div>
                         </div>
                     </div>
@@ -268,10 +363,10 @@
                             <div class="dtr-servicebox dtr-shadow bg-dark color-white"> <span class="dtr-servicebox-number color-dark-secondary">04</span>
                                 <div class="dtr-servicebox-head">
                                     <div class="dtr-servicebox-icon color-white"> <i class="icon-chart-pie-fill"></i> </div>
-                                    <h4 class="dtr-servicebox-heading">Advance<br>
-                                        Analytics</h4>
+                                    <h4 class="dtr-servicebox-heading">Zero<br>
+                                        carência</h4>
                                 </div>
-                                <div class="dtr-servicebox-content">Lorem ipsum dolor amet consectetur adipiscing labore et dolore magna aliqua. </div>
+                                <div class="dtr-servicebox-content"> <div class="dtr-servicebox-content">Você pagará bem menos para realizar exames como tomografia, e ultrassom.</div> </div>
                             </div>
                         </div>
                     </div>
@@ -283,10 +378,10 @@
                             <div class="dtr-servicebox dtr-shadow bg-gray"> <span class="dtr-servicebox-number">05</span>
                                 <div class="dtr-servicebox-head">
                                     <div class="dtr-servicebox-icon color-dark"> <i class="icon-app-window-fill"></i> </div>
-                                    <h4 class="dtr-servicebox-heading">Single<br>
-                                        Dashboard</h4>
+                                    <h4 class="dtr-servicebox-heading">Sem custo<br>
+                                        para você*</h4>
                                 </div>
-                                <div class="dtr-servicebox-content">Lorem ipsum dolor amet consectetur adipiscing labore et dolore magna aliqua. </div>
+                                <div class="dtr-servicebox-content">Você não paga nada para fazer seu cartão e também não precisa se preocupar com mensalidades. </div>
                             </div>
                         </div>
                     </div>
@@ -298,10 +393,10 @@
                             <div class="dtr-servicebox dtr-shadow bg-purple"> <span class="dtr-servicebox-number">06</span>
                                 <div class="dtr-servicebox-head">
                                     <div class="dtr-servicebox-icon color-blue"> <i class="icon-target-fill"></i> </div>
-                                    <h4 class="dtr-servicebox-heading">Custom<br>
-                                        Reporting</h4>
+                                    <h4 class="dtr-servicebox-heading">Sem custo<br>
+                                        para você*</h4>
                                 </div>
-                                <div class="dtr-servicebox-content">Lorem ipsum dolor amet consectetur adipiscing labore et dolore magna aliqua. </div>
+                                <div class="dtr-servicebox-content">Você não paga nada para fazer seu cartão e também não precisa se preocupar com mensalidades. </div>
                             </div>
                         </div>
                     </div>
@@ -317,40 +412,14 @@
 
         <!-- section starts
 ================================================== -->
-        <section class="dtr-section dtr-py-100">
+        <section id="section-3" class="dtr-section dtr-py-100">
             <div class="container">
 
                 <!--== row starts ==-->
                 <div class="row">
-
-                    <!-- column 1 starts -->
-                    <div class="col-12 col-md-6"> <img src="{{url('template/assets/img/section-img4.png')}}" alt="image"> </div>
-                    <!-- column 1 ends -->
-
-                    <!-- column 2 starts -->
-                    <div class="col-12 col-md-6 small-device-space">
-
-                        <!-- heading starts -->
-                        <div class="dtr-section-intro text-left dtr-mb-50">
-                            <div class="dtr-intro-subheading-wrapper">
-                                <p class="dtr-intro-subheading">Power up workflow</p>
-                            </div>
-                            <h2 class="dtr-intro-heading">Everything you need to bring ideas to life</h2>
-                            <p class="dtr-intro-content">There are many variations of passages of lorem ipsum available but the majority have suffered alteration.</p>
-                        </div>
-                        <!-- heading ends -->
-
-                        <!-- list starts -->
-                        <ul class="dtr-icon-list">
-                            <li> <span class="dtr-list-content"> <span class="dtr-list-icon"> <i class="icon-check-fill"></i> </span> <span class="dtr-list-text">Power up your workflow with integrations </span> </span> </li>
-                            <li> <span class="dtr-list-content"> <span class="dtr-list-icon"> <i class="icon-check-fill"></i> </span> <span class="dtr-list-text">Blazing fast technology with productive features </span> </span> </li>
-                            <li> <span class="dtr-list-content"> <span class="dtr-list-icon"> <i class="icon-check-fill"></i> </span> <span class="dtr-list-text">Centralise feedback and ideas </span> </span> </li>
-                        </ul>
-                        <!-- list ends -->
-
-                        <a class="dtr-btn dtr-px-lg btn-blue dtr-mt-50" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" role="button"> <span class="dtr-btn-text">Try For Free</span> </a> </div>
-                    <!-- column 2 ends -->
-
+                    <div class="col d-flex">
+                        <a class="dtr-btn dtr-pricing-btn btn-blue mx-auto" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" role="button"><span class="dtr-btn-text">Quero fazer o meu cartão!</span></a>
+                    </div>
                 </div>
                 <!--== row ends ==-->
 
@@ -359,85 +428,9 @@
         <!-- section ends
 ================================================== -->
 
-        <!-- process section starts
-================================================== -->
-        <section id="process" class="dtr-section dtr-py-100 bg-white">
-            <div class="container">
-
-                <!-- heading starts -->
-                <div class="dtr-section-intro text-left dtr-mb-50">
-                    <div class="dtr-intro-subheading-wrapper">
-                        <p class="dtr-intro-subheading">The Process</p>
-                    </div>
-                    <h2 class="dtr-intro-heading">Experience the better</h2>
-                    <p class="dtr-intro-content">There are many variations of passages of lorem ipsum available<br>
-                        but the majority have suffered alteration in some form by<br>
-                        injected humour or randomised words.</p>
-                </div>
-                <!-- heading ends -->
-
-                <!--== row starts ==-->
-                <div class="row">
-
-                    <!-- process bar starts -->
-                    <div class="dtr-process-bar-center dtr-mb-100 dtr-pt-30 color-dark">
-                        <div class="dtr-process-bar dtr-shadow">
-                            <ul class="dtr-process-list">
-                                <li> Onboard </li>
-                                <li> Collaborate </li>
-                                <li> Automate </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- process bar ends -->
-
-                    <!-- column 1 starts -->
-                    <div class="col-12 col-md-4">
-                        <div class="dtr-feature dtr-feature-top dtr-feature-circle dtr-feature-large text-left ">
-                            <div class="dtr-feature-icon bg-orange"> <i class="icon-user-plus" aria-hidden="true"></i> </div>
-                            <div class="dtr-feature-content">
-                                <h4 class="dtr-feature-heading">Onboard</h4>
-                            </div>
-                        </div>
-                        <p class="dtr-pt-20">There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form.</p>
-                    </div>
-                    <!-- column 1 ends -->
-
-                    <!-- column 2 starts -->
-                    <div class="col-12 col-md-4 small-device-space">
-                        <div class="dtr-feature dtr-feature-top dtr-feature-circle dtr-feature-large text-left ">
-                            <div class="dtr-feature-icon bg-cyan"> <i class="icon-intersect" aria-hidden="true"></i> </div>
-                            <div class="dtr-feature-content">
-                                <h4 class="dtr-feature-heading">Collaborate</h4>
-                            </div>
-                        </div>
-                        <p class="dtr-pt-20">There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form.</p>
-                    </div>
-                    <!-- column 2 ends -->
-
-                    <!-- column 3 starts -->
-                    <div class="col-12 col-md-4">
-                        <div class="dtr-feature dtr-feature-top dtr-feature-circle dtr-feature-large text-left ">
-                            <div class="dtr-feature-icon bg-sky-blue"> <i class="icon-timer-fill" aria-hidden="true"></i> </div>
-                            <div class="dtr-feature-content">
-                                <h4 class="dtr-feature-heading">Automate</h4>
-                            </div>
-                        </div>
-                        <p class="dtr-pt-20">There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form.</p>
-                    </div>
-                    <!-- column 3 ends -->
-
-                </div>
-                <!--== row ends ==-->
-
-            </div>
-        </section>
-        <!-- process section ends
-================================================== -->
-
         <!-- team section starts
 ================================================== -->
-        <section id="team" class="dtr-section dtr-pt-100 dtr-pb-70">
+        {{-- <section id="team" class="dtr-section dtr-pt-100 dtr-pb-70">
             <div class="container">
 
                 <!-- heading starts -->
@@ -565,13 +558,13 @@
                 </div>
                 <!--== row ends ==-->
             </div>
-        </section>
+        </section> --}}
         <!-- team section ends
 ================================================== -->
 
         <!-- tab section starts
 ================================================== -->
-        <section class="dtr-section dtr-py-100 bg-white">
+        {{-- <section class="dtr-section dtr-py-100 bg-white">
             <div class="container">
 
                 <!-- heading starts -->
@@ -637,13 +630,13 @@
                 <!-- tabs ends -->
 
             </div>
-        </section>
+        </section> --}}
         <!-- tab section ends
 ================================================== -->
 
         <!-- testimonial section starts
 ================================================== -->
-        <section id="reviews" class="dtr-section dtr-section-with-bg dtr-py-100" style="background-image: url(template/assets/img/section-bg-img2.jpg);">
+        {{-- <section id="reviews" class="dtr-section dtr-section-with-bg dtr-py-100" style="background-image: url(template/assets/img/section-bg-img2.jpg);">
 
             <!-- overlay -->
             <div class="dtr-overlay dtr-overlay-dark"></div>
@@ -775,13 +768,13 @@
             </div>
             <!-- content on overlay ends -->
 
-        </section>
+        </section> --}}
         <!-- testimonial section ends
 ================================================== -->
 
         <!-- section starts
 ================================================== -->
-        <section class="dtr-section dtr-pt-100">
+        {{-- <section class="dtr-section dtr-pt-100">
             <div class="container">
 
                 <!-- heading starts -->
@@ -868,13 +861,13 @@
                 <!--== video ends ==-->
 
             </div>
-        </section>
+        </section> --}}
         <!-- section ends
 ================================================== -->
 
         <!-- pricing section starts
 ================================================== -->
-        <section id="pricing" class="dtr-section dtr-py-100">
+        {{-- <section id="pricing" class="dtr-section dtr-py-100">
             <div class="container">
 
                 <!-- heading starts -->
@@ -983,7 +976,7 @@
                 <!--== row ends ==-->
 
             </div>
-        </section>
+        </section> --}}
         <!-- pricing section ends
 ================================================== -->
 
@@ -995,9 +988,9 @@
                 <!-- heading starts -->
                 <div class="dtr-section-intro text-center dtr-mb-30">
                     <div class="dtr-intro-subheading-wrapper">
-                        <p class="dtr-intro-subheading">The FAQ</p>
+                        <p class="dtr-intro-subheading">FAQ</p>
                     </div>
-                    <h2 class="dtr-intro-heading">Have questions in mind?</h2>
+                    <h2 class="dtr-intro-heading">Alguma pergunta em mente?</h2>
                     <p class="dtr-intro-content">There are many variations of passages of lorem ipsum available<br>
                         but the majority have suffered alteration</p>
                 </div>
@@ -1080,7 +1073,7 @@
 
         <!-- screenshot section starts
 ================================================== -->
-        <section class="dtr-section dtr-section-with-bg dtr-py-100" style="background-image: url(template/assets/img/section-bg-img2.jpg);">
+        {{-- <section class="dtr-section dtr-section-with-bg dtr-py-100" style="background-image: url(template/assets/img/section-bg-img2.jpg);">
 
             <!--overlay -->
             <div class="dtr-overlay dtr-overlay-dark"></div>
@@ -1117,13 +1110,13 @@
             </div>
             <!-- content on overlay ends -->
 
-        </section>
+        </section> --}}
         <!-- screenshot section ends
 ================================================== -->
 
         <!-- blog section starts
 ================================================== -->
-        <section id="blog" class="dtr-section dtr-py-100 bg-white">
+        {{-- <section id="blog" class="dtr-section dtr-py-100 bg-white">
             <div class="container">
 
                 <!-- heading starts -->
@@ -1183,13 +1176,13 @@
                 <!--== row ends ==-->
 
             </div>
-        </section>
+        </section> --}}
         <!-- blog section ends
 ================================================== -->
 
         <!-- contact section starts
 ================================================== -->
-        <section id="contact" class="dtr-section dtr-py-100">
+        {{-- <section id="contact" class="dtr-section dtr-py-100">
             <div class="container">
 
                 <!-- heading starts -->
@@ -1247,7 +1240,7 @@
                 <!--== row ends ==-->
 
             </div>
-        </section>
+        </section> --}}
         <!-- contact section ends
 ================================================== -->
 
