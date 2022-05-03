@@ -8,10 +8,16 @@
             <li><a href="{{url('admin/usuario/create')}}">Adicionar</a></li>
           </ul>
         </li>
-        <li><a><i class="fa fa-home"></i> Clientes <span class="fa fa-chevron-down"></span></a>
+        <li><a><i class="fa fa-users"></i> Clientes <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
             <li><a href="{{url('admin/cliente')}}">Listar</a></li>
             <li><a href="{{url('admin/cliente/create')}}">Adicionar</a></li>
+          </ul>
+        </li>
+        <li><a><i class="fa fa-question-circle"></i> Faqs <span class="fa fa-chevron-down"></span></a>
+          <ul class="nav child_menu">
+            <li><a href="{{url('admin/faq')}}">Listar</a></li>
+            <li><a href="{{url('admin/faq/create')}}">Adicionar</a></li>
           </ul>
         </li>
     </div>
