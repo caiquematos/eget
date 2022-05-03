@@ -21,7 +21,7 @@
         <div class="container">
 
             <!-- small devices logo -->
-            <div class="dtr-responsive-header-left"> <a class="dtr-logo" href="http://tanshcreative.com/xaasvik-lp-preview/index.html"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/logo-dark.png" alt="logo"></a> </div>
+            <div class="dtr-responsive-header-left"> <a class="dtr-logo" href="http://tanshcreative.com/xaasvik-lp-preview/index.html"><img src="{{url('template/assets/img/logo-dark.png')}}" alt="logo"></a> </div>
             <!-- small devices logo ends -->
 
             <!-- menu button -->
@@ -50,10 +50,10 @@
                 <div class="dtr-header-left">
 
                     <!-- logo -->
-                    <a class="logo-default dtr-scroll-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#home"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/logo-dark.png" alt="logo"></a>
+                    <a class="logo-default dtr-scroll-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#home"><img src="{{url('template/assets/img/logo-dark.png')}}" alt="logo"></a>
 
                     <!-- logo on scroll -->
-                    <a class="logo-alt dtr-scroll-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#home"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/logo-dark.png" alt="logo"></a>
+                    <a class="logo-alt dtr-scroll-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#home"><img src="{{url('template/assets/img/logo-dark.png')}}" alt="logo"></a>
                     <!-- logo on scroll ends -->
 
                 </div>
@@ -96,11 +96,11 @@
                             <p class=" dtr-animated-headline font-weight-medium text-left slide color-dark"><span class="dtr-words-wrapper w-100" style="width: 233.547px;">
                                 <!--== text starts ==-->
                                 <!-- first line -->
-                                <b class="is-hidden">Beautiful design interface <img draggable="false" role="img" class="emoji" alt="✨" src="./Xassvik - XaaS Services One Page Landing Page Template_files/2728.svg" width="22"></b>
+                                <b class="is-hidden">Beautiful design interface <img draggable="false" role="img" class="emoji" alt="✨" src="{{url('template/assets/img/2728.svg')}}" width="22"></b>
                                 <!-- second line -->
-                                <b class="is-hidden"> Blazing fast technology <img draggable="false" role="img" class="emoji" alt="⚡" src="./Xassvik - XaaS Services One Page Landing Page Template_files/26a1.svg" width="22"> </b>
+                                <b class="is-hidden"> Blazing fast technology <img draggable="false" role="img" class="emoji" alt="⚡" src="{{url('template/assets/img/26a1.svg')}}" width="22"> </b>
                                 <!-- third line -->
-                                <b class="is-visible"> Cloud-focused delivery <img draggable="false" role="img" class="emoji" alt="⭐" src="./Xassvik - XaaS Services One Page Landing Page Template_files/2b50.svg" width="22"> </b>
+                                <b class="is-visible"> Cloud-focused delivery <img draggable="false" role="img" class="emoji" alt="⭐" src="{{url('template/assets/img/2b50.svg')}}" width="22"> </b>
                                 <!--== text ends ==-->
                                 </span></p>
                             <!-- animated hedline ends -->
@@ -120,7 +120,7 @@
                             <!-- button ends -->
 
                         </div>
-                        <div class="col-12 col-md-6 small-device-space"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/section-img1.png" alt="image"> </div>
+                        <div class="col-12 col-md-6 small-device-space"> <img src="{{url('template/assets/img/section-img1.png')}}" alt="image"> </div>
                     </div>
                     <!--== row ends ==-->
 
@@ -129,7 +129,7 @@
                         <div class="col-12 col-md-10 offset-md-1">
                             <div class="dtr-slick-slider dtr-slider-5col slick-initialized slick-slider slick-dotted"><button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="display: inline-block;">Previous</button>
                                 <!-- img 1 -->
-                                <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 3774px; transform: translate3d(-1554px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-5" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-2.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-4" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-3.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-3" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-4.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-2" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-5.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-1.png" alt="image"> </div><div class="slick-slide" data-slick-index="0" aria-hidden="true" style="width: 192px;" tabindex="-1" role="tabpanel" id="slick-slide10" aria-describedby="slick-slide-control10"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-1.png" alt="image"> </div><div class="slick-slide" data-slick-index="1" aria-hidden="true" style="width: 192px;" tabindex="-1" role="tabpanel" id="slick-slide11" aria-describedby="slick-slide-control11"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-2.png" alt="image"> </div><div class="slick-slide slick-current slick-active" data-slick-index="2" aria-hidden="false" style="width: 192px;" tabindex="0" role="tabpanel" id="slick-slide12" aria-describedby="slick-slide-control12"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-3.png" alt="image"> </div><div class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 192px;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-4.png" alt="image"> </div><div class="slick-slide slick-active" data-slick-index="4" aria-hidden="false" style="width: 192px;" tabindex="0" role="tabpanel" id="slick-slide14" aria-describedby="slick-slide-control14"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-5.png" alt="image"> </div><div class="slick-slide slick-active" data-slick-index="5" aria-hidden="false" style="width: 192px;" tabindex="0" role="tabpanel" id="slick-slide15" aria-describedby="slick-slide-control15"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-1.png" alt="image"> </div><div class="slick-slide slick-cloned slick-active" data-slick-index="6" id="" aria-hidden="false" style="width: 192px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-1.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="7" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-2.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="8" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-3.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="9" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-4.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="10" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-5.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="11" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/client-1.png" alt="image"> </div></div></div>
+                                <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 3774px; transform: translate3d(-1554px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-5" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-2.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-4" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-3.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-3" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-4.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-2" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-5.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-1.png')}}" alt="image"> </div><div class="slick-slide" data-slick-index="0" aria-hidden="true" style="width: 192px;" tabindex="-1" role="tabpanel" id="slick-slide10" aria-describedby="slick-slide-control10"> <img src="{{url('template/assets/img/client-1.png')}}" alt="image"> </div><div class="slick-slide" data-slick-index="1" aria-hidden="true" style="width: 192px;" tabindex="-1" role="tabpanel" id="slick-slide11" aria-describedby="slick-slide-control11"> <img src="{{url('template/assets/img/client-2.png')}}" alt="image"> </div><div class="slick-slide slick-current slick-active" data-slick-index="2" aria-hidden="false" style="width: 192px;" tabindex="0" role="tabpanel" id="slick-slide12" aria-describedby="slick-slide-control12"> <img src="{{url('template/assets/img/client-3.png')}}" alt="image"> </div><div class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 192px;" tabindex="0" role="tabpanel" id="slick-slide13" aria-describedby="slick-slide-control13"> <img src="{{url('template/assets/img/client-4.png')}}" alt="image"> </div><div class="slick-slide slick-active" data-slick-index="4" aria-hidden="false" style="width: 192px;" tabindex="0" role="tabpanel" id="slick-slide14" aria-describedby="slick-slide-control14"> <img src="{{url('template/assets/img/client-5.png')}}" alt="image"> </div><div class="slick-slide slick-active" data-slick-index="5" aria-hidden="false" style="width: 192px;" tabindex="0" role="tabpanel" id="slick-slide15" aria-describedby="slick-slide-control15"> <img src="{{url('template/assets/img/client-1.png')}}" alt="image"> </div><div class="slick-slide slick-cloned slick-active" data-slick-index="6" id="" aria-hidden="false" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-1.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="7" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-2.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="8" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-3.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="9" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-4.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="10" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-5.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="11" id="" aria-hidden="true" style="width: 192px;" tabindex="-1"> <img src="{{url('template/assets/img/client-1.png')}}" alt="image"> </div></div></div>
                                 <!-- img 2 -->
                                 
                                 <!-- img 3 -->
@@ -160,7 +160,7 @@
                 <div class="row">
 
                     <!-- column 1 starts -->
-                    <div class="col-12 col-md-6"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/section-img2.png" alt="image"> </div>
+                    <div class="col-12 col-md-6"> <img src="{{url('template/assets/img/section-img2.png')}}" alt="image"> </div>
                     <!-- column 1 ends -->
 
                     <!-- column 2 starts -->
@@ -324,7 +324,7 @@
                 <div class="row">
 
                     <!-- column 1 starts -->
-                    <div class="col-12 col-md-6"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/section-img4.png" alt="image"> </div>
+                    <div class="col-12 col-md-6"> <img src="{{url('template/assets/img/section-img4.png')}}" alt="image"> </div>
                     <!-- column 1 ends -->
 
                     <!-- column 2 starts -->
@@ -460,7 +460,7 @@
                         <!-- member starts -->
                         <div class="dtr-team dtr-team-social-onhover text-center dtr-team-offset-border dtr-box-rounded">
                             <div class="dtr-team-content-wrapper dtr-shadow">
-                                <div class="dtr-team-img"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/team-member-1.jpg" alt="image"> </div>
+                                <div class="dtr-team-img"> <img src="{{url('template/assets/img/team-member-1.jpg')}}" alt="image"> </div>
                                 <div class="dtr-team-content bg-white">
                                     <h5 class="dtr-team-title">Will McMilan</h5>
                                     <p class="dtr-team-subtitle">CEO</p>
@@ -487,7 +487,7 @@
                         <!-- member starts -->
                         <div class="dtr-team dtr-team-social-onhover text-center dtr-team-offset-border dtr-box-rounded">
                             <div class="dtr-team-content-wrapper dtr-shadow">
-                                <div class="dtr-team-img"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/team-member-2.jpg" alt="image"> </div>
+                                <div class="dtr-team-img"> <img src="{{url('template/assets/img/team-member-2.jpg')}}" alt="image"> </div>
                                 <div class="dtr-team-content bg-white">
                                     <h5 class="dtr-team-title">Alexa Smith</h5>
                                     <p class="dtr-team-subtitle">Business Head</p>
@@ -514,7 +514,7 @@
                         <!-- member starts -->
                         <div class="dtr-team dtr-team-social-onhover text-center dtr-team-offset-border dtr-box-rounded">
                             <div class="dtr-team-content-wrapper dtr-shadow">
-                                <div class="dtr-team-img"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/team-member-3.jpg" alt="image"> </div>
+                                <div class="dtr-team-img"> <img src="{{url('template/assets/img/team-member-3.jpg')}}" alt="image"> </div>
                                 <div class="dtr-team-content bg-white">
                                     <h5 class="dtr-team-title">Anthony Sommers</h5>
                                     <p class="dtr-team-subtitle">Product Lead</p>
@@ -541,7 +541,7 @@
                         <!-- member starts -->
                         <div class="dtr-team dtr-team-social-onhover text-center dtr-team-offset-border dtr-box-rounded">
                             <div class="dtr-team-content-wrapper dtr-shadow">
-                                <div class="dtr-team-img"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/team-member-4.jpg" alt="image"> </div>
+                                <div class="dtr-team-img"> <img src="{{url('template/assets/img/team-member-4.jpg')}}" alt="image"> </div>
                                 <div class="dtr-team-content bg-white">
                                     <h5 class="dtr-team-title">Jade Anderson</h5>
                                     <p class="dtr-team-subtitle">CTO</p>
@@ -594,11 +594,11 @@
                         <div class="col-12 col-md-5">
                             <div class="tab-content">
                                 <!-- tab 1 -->
-                                <div class="tab-pane active" id="features-tab-1" role="tabpanel" aria-labelledby="features-tab-1-tab"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/tab-img1.png" alt="image"> </div>
+                                <div class="tab-pane active" id="features-tab-1" role="tabpanel" aria-labelledby="features-tab-1-tab"> <img src="{{url('template/assets/img/tab-img1.png')}}" alt="image"> </div>
                                 <!-- tab 2 -->
-                                <div class="tab-pane" id="features-tab-2" role="tabpanel" aria-labelledby="features-tab-2-tab"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/tab-img2.png" alt="image"></div>
+                                <div class="tab-pane" id="features-tab-2" role="tabpanel" aria-labelledby="features-tab-2-tab"><img src="{{url('template/assets/img/tab-img2.png')}}" alt="image"></div>
                                 <!-- tab 3 -->
-                                <div class="tab-pane" id="features-tab-3" role="tabpanel" aria-labelledby="features-tab-3-tab"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/tab-img3.png" alt="image"></div>
+                                <div class="tab-pane" id="features-tab-3" role="tabpanel" aria-labelledby="features-tab-3-tab"><img src="{{url('template/assets/img/tab-img3.png')}}" alt="image"></div>
                             </div>
                         </div>
                         <!-- left column ends -->
@@ -643,7 +643,7 @@
 
         <!-- testimonial section starts
 ================================================== -->
-        <section id="reviews" class="dtr-section dtr-section-with-bg dtr-py-100" style="background-image: url(assets/images/section-bg-img2.jpg);">
+        <section id="reviews" class="dtr-section dtr-section-with-bg dtr-py-100" style="background-image: url(template/assets/img/section-bg-img2.jpg);">
 
             <!-- overlay -->
             <div class="dtr-overlay dtr-overlay-dark"></div>
@@ -668,7 +668,7 @@
                     <!--== slide 1 starts ==-->
                     <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 7007px; transform: translate3d(-2548px, 0px, 0px);"><div class="dtr-testimonial bg-white slick-slide slick-cloned" data-slick-index="-3" id="" aria-hidden="true" style="width: 607px;" tabindex="-1">
                         <div class="dtr-client-info">
-                            <p class="dtr-testimonial-user"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/user-2-80x80.jpg" alt="Eleanor Jensen"></p>
+                            <p class="dtr-testimonial-user"><img src="{{url('template/assets/img/user-2-80x80.jpg')}}" alt="Eleanor Jensen"></p>
                             <div>
                                 <h5 class="dtr-client-name">Eleanor Jensen</h5>
                                 <span class="dtr-client-job">Entrepreneur</span> </div>
@@ -676,7 +676,7 @@
                         <p class="dtr-testimonial-content">“There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by injected humour or randomised words which don’t look even slightly believable.”</p>
                     </div><div class="dtr-testimonial bg-white slick-slide slick-cloned" data-slick-index="-2" id="" aria-hidden="true" style="width: 607px;" tabindex="-1">
                         <div class="dtr-client-info">
-                            <p class="dtr-testimonial-user"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/user-3-80x80.jpg" alt="Eleanor Jensen"></p>
+                            <p class="dtr-testimonial-user"><img src="{{url('template/assets/img/user-3-80x80.jpg')}}" alt="Eleanor Jensen"></p>
                             <div>
                                 <h5 class="dtr-client-name">Alizee Denten</h5>
                                 <span class="dtr-client-job">Kantole Global</span> </div>
@@ -684,7 +684,7 @@
                         <p class="dtr-testimonial-content">“There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by injected humour or randomised words which don’t look even slightly believable.”</p>
                     </div><div class="dtr-testimonial bg-white slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" style="width: 607px;" tabindex="-1">
                         <div class="dtr-client-info">
-                            <p class="dtr-testimonial-user"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/user-1-80x80.jpg" alt="Eleanor Jensen"></p>
+                            <p class="dtr-testimonial-user"><img src="{{url('template/assets/img/user-1-80x80.jpg')}}" alt="Eleanor Jensen"></p>
                             <div>
                                 <h5 class="dtr-client-name">Andrew Graham</h5>
                                 <span class="dtr-client-job">Entrepreneur</span> </div>
@@ -692,7 +692,7 @@
                         <p class="dtr-testimonial-content">“There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by injected humour or randomised words which don’t look even slightly believable.”</p>
                     </div><div class="dtr-testimonial bg-white slick-slide" data-slick-index="0" aria-hidden="true" style="width: 607px;" tabindex="-1" role="tabpanel" id="slick-slide00" aria-describedby="slick-slide-control00">
                         <div class="dtr-client-info">
-                            <p class="dtr-testimonial-user"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/user-1-80x80.jpg" alt="Eleanor Jensen"></p>
+                            <p class="dtr-testimonial-user"><img src="{{url('template/assets/img/user-1-80x80.jpg')}}" alt="Eleanor Jensen"></p>
                             <div>
                                 <h5 class="dtr-client-name">David James</h5>
                                 <span class="dtr-client-job">Spin Automation</span> </div>
@@ -700,7 +700,7 @@
                         <p class="dtr-testimonial-content">“There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by injected humour or randomised words which don’t look even slightly believable.”</p>
                     </div><div class="dtr-testimonial bg-white slick-slide slick-current slick-active" data-slick-index="1" aria-hidden="false" style="width: 607px;" tabindex="0" role="tabpanel" id="slick-slide01" aria-describedby="slick-slide-control01">
                         <div class="dtr-client-info">
-                            <p class="dtr-testimonial-user"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/user-2-80x80.jpg" alt="Eleanor Jensen"></p>
+                            <p class="dtr-testimonial-user"><img src="{{url('template/assets/img/user-2-80x80.jpg')}}" alt="Eleanor Jensen"></p>
                             <div>
                                 <h5 class="dtr-client-name">Eleanor Jensen</h5>
                                 <span class="dtr-client-job">Entrepreneur</span> </div>
@@ -708,7 +708,7 @@
                         <p class="dtr-testimonial-content">“There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by injected humour or randomised words which don’t look even slightly believable.”</p>
                     </div><div class="dtr-testimonial bg-white slick-slide slick-active" data-slick-index="2" aria-hidden="false" style="width: 607px;" tabindex="0" role="tabpanel" id="slick-slide02" aria-describedby="slick-slide-control02">
                         <div class="dtr-client-info">
-                            <p class="dtr-testimonial-user"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/user-3-80x80.jpg" alt="Eleanor Jensen"></p>
+                            <p class="dtr-testimonial-user"><img src="{{url('template/assets/img/user-3-80x80.jpg')}}" alt="Eleanor Jensen"></p>
                             <div>
                                 <h5 class="dtr-client-name">Alizee Denten</h5>
                                 <span class="dtr-client-job">Kantole Global</span> </div>
@@ -716,7 +716,7 @@
                         <p class="dtr-testimonial-content">“There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by injected humour or randomised words which don’t look even slightly believable.”</p>
                     </div><div class="dtr-testimonial bg-white slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 607px;" tabindex="0" role="tabpanel" id="slick-slide03" aria-describedby="slick-slide-control03">
                         <div class="dtr-client-info">
-                            <p class="dtr-testimonial-user"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/user-1-80x80.jpg" alt="Eleanor Jensen"></p>
+                            <p class="dtr-testimonial-user"><img src="{{url('template/assets/img/user-1-80x80.jpg')}}" alt="Eleanor Jensen"></p>
                             <div>
                                 <h5 class="dtr-client-name">Andrew Graham</h5>
                                 <span class="dtr-client-job">Entrepreneur</span> </div>
@@ -724,7 +724,7 @@
                         <p class="dtr-testimonial-content">“There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by injected humour or randomised words which don’t look even slightly believable.”</p>
                     </div><div class="dtr-testimonial bg-white slick-slide slick-cloned" data-slick-index="4" id="" aria-hidden="true" style="width: 607px;" tabindex="-1">
                         <div class="dtr-client-info">
-                            <p class="dtr-testimonial-user"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/user-1-80x80.jpg" alt="Eleanor Jensen"></p>
+                            <p class="dtr-testimonial-user"><img src="{{url('template/assets/img/user-1-80x80.jpg')}}" alt="Eleanor Jensen"></p>
                             <div>
                                 <h5 class="dtr-client-name">David James</h5>
                                 <span class="dtr-client-job">Spin Automation</span> </div>
@@ -732,7 +732,7 @@
                         <p class="dtr-testimonial-content">“There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by injected humour or randomised words which don’t look even slightly believable.”</p>
                     </div><div class="dtr-testimonial bg-white slick-slide slick-cloned" data-slick-index="5" id="" aria-hidden="true" style="width: 607px;" tabindex="-1">
                         <div class="dtr-client-info">
-                            <p class="dtr-testimonial-user"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/user-2-80x80.jpg" alt="Eleanor Jensen"></p>
+                            <p class="dtr-testimonial-user"><img src="{{url('template/assets/img/user-2-80x80.jpg')}}" alt="Eleanor Jensen"></p>
                             <div>
                                 <h5 class="dtr-client-name">Eleanor Jensen</h5>
                                 <span class="dtr-client-job">Entrepreneur</span> </div>
@@ -740,7 +740,7 @@
                         <p class="dtr-testimonial-content">“There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by injected humour or randomised words which don’t look even slightly believable.”</p>
                     </div><div class="dtr-testimonial bg-white slick-slide slick-cloned" data-slick-index="6" id="" aria-hidden="true" style="width: 607px;" tabindex="-1">
                         <div class="dtr-client-info">
-                            <p class="dtr-testimonial-user"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/user-3-80x80.jpg" alt="Eleanor Jensen"></p>
+                            <p class="dtr-testimonial-user"><img src="{{url('template/assets/img/user-3-80x80.jpg')}}" alt="Eleanor Jensen"></p>
                             <div>
                                 <h5 class="dtr-client-name">Alizee Denten</h5>
                                 <span class="dtr-client-job">Kantole Global</span> </div>
@@ -748,7 +748,7 @@
                         <p class="dtr-testimonial-content">“There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by injected humour or randomised words which don’t look even slightly believable.”</p>
                     </div><div class="dtr-testimonial bg-white slick-slide slick-cloned" data-slick-index="7" id="" aria-hidden="true" style="width: 607px;" tabindex="-1">
                         <div class="dtr-client-info">
-                            <p class="dtr-testimonial-user"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/user-1-80x80.jpg" alt="Eleanor Jensen"></p>
+                            <p class="dtr-testimonial-user"><img src="{{url('template/assets/img/user-1-80x80.jpg')}}" alt="Eleanor Jensen"></p>
                             <div>
                                 <h5 class="dtr-client-name">Andrew Graham</h5>
                                 <span class="dtr-client-job">Entrepreneur</span> </div>
@@ -851,7 +851,7 @@
                     <div class="dtr-overlay"></div>
 
                     <!-- image -->
-                    <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/video-bg.jpg" alt="image">
+                    <img src="{{url('template/assets/img/video-bg.jpg')}}" alt="image">
 
                     <!-- pulsating button starts -->
                     <div class="dtr-video-pulse-wrapper dtr-overlay-content">
@@ -923,7 +923,7 @@
                     <!-- pricing column 2 starts -->
                     <div class="col-12 col-md-4 dtr-mx-0">
                         <div class="dtr-pricing dtr-pricing-has-stamp dtr-pricing-focused dtr-box-rounded dtr-shadow bg-white">
-                            <div class="dtr-pricing-stamp"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/pricing-best-plan-label.png" alt="image"> </div>
+                            <div class="dtr-pricing-stamp"> <img src="{{url('template/assets/img/pricing-best-plan-label.png')}}" alt="image"> </div>
 
                             <!-- heading -->
                             <h4 class="dtr-pricing-heading">Pro</h4>
@@ -1080,7 +1080,7 @@
 
         <!-- screenshot section starts
 ================================================== -->
-        <section class="dtr-section dtr-section-with-bg dtr-py-100" style="background-image: url(assets/images/section-bg-img2.jpg);">
+        <section class="dtr-section dtr-section-with-bg dtr-py-100" style="background-image: url(template/assets/img/section-bg-img2.jpg);">
 
             <!--overlay -->
             <div class="dtr-overlay dtr-overlay-dark"></div>
@@ -1102,7 +1102,7 @@
                 <!-- slider starts -->
                 <div class="dtr-slick-slider dtr-slider-3col dtr-slick-has-dots dtr-mt-50 slick-initialized slick-slider slick-dotted"><button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="display: inline-block;">Previous</button>
                     <!-- img 1 -->
-                    <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 8281px; transform: translate3d(-1911px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-3" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/carousel-img3.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-2" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/carousel-img1.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/carousel-img2.png" alt="image"> </div><div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 607px;" tabindex="0" role="tabpanel" id="slick-slide20" aria-describedby="slick-slide-control20"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/carousel-img1.png" alt="image"> </div><div class="slick-slide slick-active" data-slick-index="1" aria-hidden="false" style="width: 607px;" tabindex="0" role="tabpanel" id="slick-slide21" aria-describedby="slick-slide-control21"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/carousel-img2.png" alt="image"> </div><div class="slick-slide slick-active" data-slick-index="2" aria-hidden="false" style="width: 607px;" tabindex="0" role="tabpanel" id="slick-slide22" aria-describedby="slick-slide-control22"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/carousel-img3.png" alt="image"> </div><div class="slick-slide" data-slick-index="3" aria-hidden="true" style="width: 607px;" tabindex="-1" role="tabpanel" id="slick-slide23" aria-describedby="slick-slide-control23"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/carousel-img1.png" alt="image"> </div><div class="slick-slide" data-slick-index="4" aria-hidden="true" style="width: 607px;" tabindex="-1" role="tabpanel" id="slick-slide24" aria-describedby="slick-slide-control24"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/carousel-img2.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="5" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/carousel-img1.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="6" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/carousel-img2.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="7" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/carousel-img3.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="8" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/carousel-img1.png" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="9" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/carousel-img2.png" alt="image"> </div></div></div>
+                    <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 8281px; transform: translate3d(-1911px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-3" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="{{url('template/assets/img/carousel-img3.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-2" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="{{url('template/assets/img/carousel-img1.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="{{url('template/assets/img/carousel-img2.png')}}" alt="image"> </div><div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 607px;" tabindex="0" role="tabpanel" id="slick-slide20" aria-describedby="slick-slide-control20"> <img src="{{url('template/assets/img/carousel-img1.png')}}" alt="image"> </div><div class="slick-slide slick-active" data-slick-index="1" aria-hidden="false" style="width: 607px;" tabindex="0" role="tabpanel" id="slick-slide21" aria-describedby="slick-slide-control21"> <img src="{{url('template/assets/img/carousel-img2.png')}}" alt="image"> </div><div class="slick-slide slick-active" data-slick-index="2" aria-hidden="false" style="width: 607px;" tabindex="0" role="tabpanel" id="slick-slide22" aria-describedby="slick-slide-control22"> <img src="{{url('template/assets/img/carousel-img3.png')}}" alt="image"> </div><div class="slick-slide" data-slick-index="3" aria-hidden="true" style="width: 607px;" tabindex="-1" role="tabpanel" id="slick-slide23" aria-describedby="slick-slide-control23"> <img src="{{url('template/assets/img/carousel-img1.png')}}" alt="image"> </div><div class="slick-slide" data-slick-index="4" aria-hidden="true" style="width: 607px;" tabindex="-1" role="tabpanel" id="slick-slide24" aria-describedby="slick-slide-control24"> <img src="{{url('template/assets/img/carousel-img2.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="5" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="{{url('template/assets/img/carousel-img1.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="6" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="{{url('template/assets/img/carousel-img2.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="7" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="{{url('template/assets/img/carousel-img3.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="8" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="{{url('template/assets/img/carousel-img1.png')}}" alt="image"> </div><div class="slick-slide slick-cloned" data-slick-index="9" id="" aria-hidden="true" style="width: 607px;" tabindex="-1"> <img src="{{url('template/assets/img/carousel-img2.png')}}" alt="image"> </div></div></div>
                     <!-- img 2 -->
                     
                     <!-- img 3 -->
@@ -1143,10 +1143,10 @@
                     <!-- column 1 starts -->
                     <div class="col-12 col-md-4">
                         <div class="dtr-post-item">
-                            <div class="dtr-post-img"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/post-img1.jpg" alt="image"> </div>
+                            <div class="dtr-post-img"> <img src="{{url('template/assets/img/post-img1.jpg')}}" alt="image"> </div>
                             <div class="dtr-post-content"> <span class="dtr-meta-category"><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#">DevOps</a></span>
                                 <h5 class="dtr-post-title"><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" rel="bookmark">Adapting &amp; onboarding users in a virtual workplace</a></h5>
-                                <div class="dtr-meta color-dark-gray"> <span class="dtr-meta-author-avatar"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/user-1-80x80.jpg" alt="image"></span> Aurora Walker<span class="dtr-meta-date">15. 08. 2021</span></div>
+                                <div class="dtr-meta color-dark-gray"> <span class="dtr-meta-author-avatar"><img src="{{url('template/assets/img/user-1-80x80.jpg')}}" alt="image"></span> Aurora Walker<span class="dtr-meta-date">15. 08. 2021</span></div>
                                 <p class="dtr-post-excerpt">There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by…</p>
                                 <a class="dtr-read-more" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#"><span class="dtr-read-more-content">Continue Reading ...</span></a></div>
                         </div>
@@ -1156,10 +1156,10 @@
                     <!-- column 2 starts -->
                     <div class="col-12 col-md-4">
                         <div class="dtr-post-item">
-                            <div class="dtr-post-img"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/post-img2.jpg" alt="image"> </div>
+                            <div class="dtr-post-img"> <img src="{{url('template/assets/img/post-img2.jpg')}}" alt="image"> </div>
                             <div class="dtr-post-content"> <span class="dtr-meta-category"><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#">Application</a></span>
                                 <h5 class="dtr-post-title"><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" rel="bookmark">The Benefits of XaaS Cloud Solutions</a></h5>
-                                <div class="dtr-meta color-dark-gray"> <span class="dtr-meta-author-avatar"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/user-2-80x80.jpg" alt="image"></span> Noah Wilson<span class="dtr-meta-date">20. 07. 2021</span></div>
+                                <div class="dtr-meta color-dark-gray"> <span class="dtr-meta-author-avatar"><img src="{{url('template/assets/img/user-2-80x80.jpg')}}" alt="image"></span> Noah Wilson<span class="dtr-meta-date">20. 07. 2021</span></div>
                                 <p class="dtr-post-excerpt">There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by…</p>
                                 <a class="dtr-read-more" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#"><span class="dtr-read-more-content">Continue Reading ...</span></a></div>
                         </div>
@@ -1169,10 +1169,10 @@
                     <!-- column 3 starts -->
                     <div class="col-12 col-md-4">
                         <div class="dtr-post-item">
-                            <div class="dtr-post-img"> <img src="./Xassvik - XaaS Services One Page Landing Page Template_files/post-img3.jpg" alt="image"> </div>
+                            <div class="dtr-post-img"> <img src="{{url('template/assets/img/post-img3.jpg')}}" alt="image"> </div>
                             <div class="dtr-post-content"> <span class="dtr-meta-category"><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#">DevOps</a></span>
                                 <h5 class="dtr-post-title"><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" rel="bookmark">Why SaaS application usage exploding!</a></h5>
-                                <div class="dtr-meta color-dark-gray"> <span class="dtr-meta-author-avatar"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/user-1-80x80.jpg" alt="image"></span> Aurora Walker<span class="dtr-meta-date">22. 06. 2021</span></div>
+                                <div class="dtr-meta color-dark-gray"> <span class="dtr-meta-author-avatar"><img src="{{url('template/assets/img/user-1-80x80.jpg')}}" alt="image"></span> Aurora Walker<span class="dtr-meta-date">22. 06. 2021</span></div>
                                 <p class="dtr-post-excerpt">There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by…</p>
                                 <a class="dtr-read-more" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#"><span class="dtr-read-more-content">Continue Reading ...</span></a></div>
                         </div>
@@ -1198,7 +1198,7 @@
                         <p class="dtr-intro-subheading">Contact Us</p>
                     </div>
                     <h2 class="dtr-intro-heading">How can we help you</h2>
-                    <p class="dtr-intro-content">Have a question, or just want to say Hi <img draggable="false" role="img" class="emoji" alt="👋" src="./Xassvik - XaaS Services One Page Landing Page Template_files/1f44b.svg" width="20px"> Fill in the form below</p>
+                    <p class="dtr-intro-content">Have a question, or just want to say Hi <img draggable="false" role="img" class="emoji" alt="👋" src="{{url('template/assets/img/1f44b.svg')}}" width="20px"> Fill in the form below</p>
                 </div>
                 <!-- heading ends -->
 
@@ -1264,7 +1264,7 @@
                 <div class="row">
 
                     <!--== column 1 starts ==-->
-                    <div class="col-12 col-md-6 col-lg-5"><a class="dtr-scroll-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#home"><img src="./Xassvik - XaaS Services One Page Landing Page Template_files/logo-light.png" alt="logo"></a>
+                    <div class="col-12 col-md-6 col-lg-5"><a class="dtr-scroll-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#home"><img src="{{url('template/assets/img/logo-light.png')}}" alt="logo"></a>
                         <p class="dtr-mt-20 dtr-mb-40">There are many variations of passages of<br>
                             lorem ipsum available but the majority<br>
                             have suffered alteration.</p>
