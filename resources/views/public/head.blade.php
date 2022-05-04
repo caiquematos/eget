@@ -2,11 +2,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="telephone=yes">
     <title>{{env('APP_NAME')}}</title>
     <meta name="author" content="Re9 Agência">
-    <meta name="description" content="HTML Landing Page Teamplate">
-    <meta name="keywords" content="digital marketing, leads, pay per click, advertising, social media, SEO, email marketing">
+    <meta name="description" content="O CDI Cartão de Vantagens é um serviço que oferece mais acessibilidade na área de exames de imagem, disponibilizando descontos especiais para seus usuários. É mais facilidade para sua saúde e qualidade de vida.">
+    <meta name="keywords" content="cartão de vantagens, saúde, economia, desconto, cashback.">
     <!-- FAVICON FILES -->
     <link href="http://tanshcreative.com/xaasvik-lp-preview/assets/images/icons/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon" sizes="144x144">
     <link href="http://tanshcreative.com/xaasvik-lp-preview/assets/images/icons/apple-touch-icon-120-precomposed.png" rel="apple-touch-icon" sizes="120x120">

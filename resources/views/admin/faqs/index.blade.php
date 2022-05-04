@@ -84,7 +84,7 @@
                                     <td>{{$faq->pergunta}}</td>
                                     <td>{!!$faq->resposta!!}</td>
                                     <td>
-                                        <input type="checkbox" data-cliente-id={{$faq->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$faq->ativo ? "checked" : ""}} />
+                                        <input type="checkbox" data-faq-id={{$faq->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$faq->ativo ? "checked" : ""}} />
                                     </td>
                                     <td>{{date("d/m/Y", strtotime($faq->created_at))}}</td>
                                     <td>

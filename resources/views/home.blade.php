@@ -5,8 +5,48 @@
 @include('public.head')
 
 <style>
+
+    @media (max-width: 1400px) {
+        #section-1 {
+            height: 625px !important;
+        }
+     }
+
+
+    html {
+        scroll-behavior: smooth !important;
+    }
+
+    h1 {
+        padding: 0;
+        margin: 0;
+        line-height: 0;
+    }
+
+    .slicknav_nav .nav-link {
+        color: #367e8c;
+    }
+
+    .slicknav_nav .nav-link:hover {
+        color: #4bc192 !important;
+    }
+    .slicknav_nav .active {
+        color: #4bc192 !important;
+    }
+
+
+    .dtr-menu-dark .nav-link {
+        color: #367e8c;
+    }
+    .dtr-menu-dark .nav-link:hover {
+        color: #4bc192 !important;
+    }
+    .dtr-menu-dark .active {
+        color: #4bc192 !important;
+    }
+
     #section-1 {
-        height: 625px;
+        height: 780px;
         background-image: url('template/assets/img/banner-01.webp');
         background-position: center;
         background-size: cover;
@@ -80,6 +120,98 @@
         background-repeat: no-repeat;
     }
 
+    .bg-my-green {
+        background-color: #4bc192 !important;
+    }
+
+    .bg-my-light-green {
+        background-color: #97cdb8 !important;
+    }
+
+    .bg-my-blue {
+        background-color: #5db0c1 !important;
+    }
+
+    .bg-my-light-blue {
+        background-color: #92c5d2 !important;
+    }
+
+    #services .mh {
+        min-height: 283.4px;
+    }
+
+    #services .ico-size-6 {
+        width: 60px !important;
+    }
+
+    #services .ico-size-5 {
+        width: 50px !important;
+    }
+
+    #faq .dtr-accordion .accordion-button:not(.collapsed) {
+        background-color: transparent;
+        color: #4bc192;
+    }
+
+    textarea[type="text"] {
+        background-color: #f7f8f8;
+        border-color: #f7f8f8;
+        border-radius: 32px;
+        padding: 32px;
+    }
+    button[type="submit"] {
+        background-color: #4bc192;
+        border-color: #4bc192;
+        color: #fff;
+        font-size: 18px;
+        line-height: 0px;
+        padding: 18px 30px;
+    }
+    .btn-primary:hover, .btn-primary:focus , .btn-primary:active  {
+        background-color: #367e8c;
+        border-color: #367e8c;
+    }
+
+    #dtr-footer a:hover {
+        color: #4bc192;
+    }
+
+    @media (max-width: 576px) {
+
+        .mx-sm-auto {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        .w-sm-100 {
+            width: 100% !important;
+        }
+        #section-1 {
+            background-image: url('template/assets/img/banner_mob.webp');
+        }
+
+        #section-1 .dtr-btn-text {
+            font-size: 23px !important;
+        }
+
+        h2 {
+            font-size: 34px !important;
+        }
+
+        #process .dtr-feature-top.text-left {
+            text-align: center;
+        }
+
+        #process p {
+            text-align: justify !important;
+        }
+
+        #section-3 .dtr-btn-text {
+            font-size: 20px !important;
+        }
+
+    }
+
 </style>
 
 <body>
@@ -99,20 +231,18 @@
         <div class="container">
 
             <!-- small devices logo -->
-            <div class="dtr-responsive-header-left"> <a class="dtr-logo" href="http://tanshcreative.com/xaasvik-lp-preview/index.html"><img src="{{url('template/assets/img/logo-dark.png')}}" alt="logo"></a> </div>
+            <div class="dtr-responsive-header-left"> <a class="dtr-logo" href="{{url('/')}}#home"><img src="{{url('template/assets/img/logo.png')}}" alt="CDI Cartão de Vantagens"></a> </div>
             <!-- small devices logo ends -->
 
             <!-- menu button -->
             <button id="dtr-menu-button" class="dtr-hamburger" type="button"><span class="dtr-hamburger-lines-wrapper"><span class="dtr-hamburger-lines"></span></span></button>
         </div>
         <div class="dtr-responsive-header-menu"><div class="slicknav_menu"><ul class="slicknav_nav slicknav_hidden" style="touch-action: pan-y; display: none;" aria-hidden="true" role="menu">
-                        <li> <a class="nav-link active" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#home" role="menuitem" tabindex="-1">Home</a> </li>
-                        <li> <a class="nav-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#services" role="menuitem" tabindex="-1">Features</a> </li>
-                        <li> <a class="nav-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#team" role="menuitem" tabindex="-1">The Team</a> </li>
-                        <li> <a class="nav-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#reviews" role="menuitem" tabindex="-1">Reviews</a> </li>
-                        <li> <a class="nav-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#pricing" role="menuitem" tabindex="-1">Pricing</a> </li>
-                        <li> <a class="nav-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#blog" role="menuitem" tabindex="-1">Blog</a> </li>
-                        <li> <a class="nav-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#contact" role="menuitem" tabindex="-1">Contact</a> </li>
+                        <li> <a class="nav-link active" href="{{url('/')}}#home" role="menuitem" tabindex="-1">Home</a> </li>
+                        <li> <a class="nav-link" href="{{url('/')}}#process" role="menuitem" tabindex="-1">Quem somos</a> </li>
+                        <li> <a class="nav-link" href="{{url('/')}}#services" role="menuitem" tabindex="-1">Vantagens</a> </li>
+                        <li> <a class="nav-link" href="{{url('/')}}#faq" role="menuitem" tabindex="-1">Perguntas frequentes</a> </li>
+                        <li> <a class="nav-link"  data-bs-toggle="modal" href="#contatoModal" role="menuitem" tabindex="-1">Contato</a> </li>
                     </ul></div></div>
     </div>
     <!-- Small Devices Header ends
@@ -128,10 +258,10 @@
                 <div class="dtr-header-left">
 
                     <!-- logo -->
-                    <a class="logo-default dtr-scroll-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#home"><img src="{{url('template/assets/img/logo-dark.png')}}" alt="logo"></a>
+                    <a class="logo-default dtr-scroll-link" href="{{url('/')}}#home"><img src="{{url('template/assets/img/logo.png')}}" alt="CDI Cartão de Vantagens"></a>
 
                     <!-- logo on scroll -->
-                    <a class="logo-alt dtr-scroll-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#home"><img src="{{url('template/assets/img/logo-dark.png')}}" alt="logo"></a>
+                    <a class="logo-alt dtr-scroll-link" href="{{url('/')}}#home"><h1><img src="{{url('template/assets/img/logo.png')}}" alt="CDI Cartão de Vantagens"></h1></a>
                     <!-- logo on scroll ends -->
 
                 </div>
@@ -140,13 +270,11 @@
                 <!-- menu starts-->
                 <div class="main-navigation">
                     <ul class="sf-menu dtr-nav dark-nav-on-load dark-nav-on-scroll dtr-menu-dark sf-js-enabled sf-arrows" style="touch-action: pan-y;">
-                        <li> <a class="nav-link active" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#home">Home</a> </li>
-                        <li> <a class="nav-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#services">Features</a> </li>
-                        <li> <a class="nav-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#team">The Team</a> </li>
-                        <li> <a class="nav-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#reviews">Reviews</a> </li>
-                        <li> <a class="nav-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#pricing">Pricing</a> </li>
-                        <li> <a class="nav-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#blog">Blog</a> </li>
-                        <li> <a class="nav-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#contact">Contact</a> </li>
+                        <li> <a class="nav-link active" href="{{url('/')}}#home">Home</a> </li>
+                        <li> <a class="nav-link" href="{{url('/')}}#process">Quem somos</a> </li>
+                        <li> <a class="nav-link" href="{{url('/')}}#services">Vantagens</a> </li>
+                        <li> <a class="nav-link" href="{{url('/')}}#faq">Perguntas frequentes</a> </li>
+                        <li> <a class="nav-link" data-bs-toggle="modal" href="#contatoModal" role="button">Contato</a> </li>
                     </ul>
                 </div>
                 <!-- menu ends -->
@@ -184,12 +312,12 @@
                                 </span></p> --}}
                             <!-- animated hedline ends -->
 
-                            <h1 class="color-white fs-2">O CDI Cartão de Vantagens é para você cuidar da sua saúde com mais economia e praticiadade.</h1>
+                            <h2 class="color-white fs-2">O CDI Cartão de Vantagens é para você cuidar da sua saúde com mais economia e praticiadade.</h2>
                             <div class="d-flex dtr-my-40"><div class="faixa-1"></div><div class="faixa-2"></div></div>
                             <p class="dtr-intro-content color-white">Agende exames com descontos especiais, sem carência ou mensalidade e ainda obtenha cacheback.</p>
                             <!-- button starts -->
-                            <a class="dtr-btn dtr-btn-small dtr-mt-50" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" role="button">
-                            <p> <span class="dtr-btn-text">Quero fazer meu cartão!</span> </p>
+                            <a class="dtr-btn dtr-btn-small dtr-mt-50 my-sm-auto w-sm-100" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" role="button">
+                                <p style="text-align: center" class="dtr-btn-text">Quero fazer meu cartão!</p>
                             </a>
                             <!-- button ends -->
 
@@ -206,78 +334,100 @@
         <!-- hero section ends
 ================================================== -->
 
-   <!-- process section starts
+    <!-- process section starts
 ================================================== -->
-<section id="process" class="dtr-section dtr-py-100 bg-white">
-    <div class="container">
+    <section id="process" class="dtr-section dtr-py-100 bg-white">
+        <div class="container">
 
-        <!-- heading starts -->
-        <div class="dtr-section-intro text-left dtr-mb-50">
-            <div class="dtr-intro-subheading-wrapper">
-                <p class="dtr-intro-subheading">Quem somos</p>
-            </div>
-            <h2 class="dtr-intro-heading">O que é o Cartão<br class="d-none d-md-block"> CDI de Vantagens?</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="dtr-intro-content">O CDI Cartão de Vantagens é um serviço que oferece mais 
-                        acessibilidade na área de exames de imagem, disponibilizando
-                        descontos especiais para seus usuários. É mais facilidade para
-                        sua saúde e qualidade de vida. </p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <!-- heading starts -->
+                    <div class="dtr-section-intro text-left dtr-mb-50">
+                        <div class="dtr-intro-subheading-wrapper">
+                            <p class="dtr-intro-subheading">Quem somos</p>
+                        </div>
+                        <h2 class="dtr-intro-heading">O que é o CDI<br class="d-none d-md-block">Cartão de Vantagens?</h2>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="dtr-intro-content">O CDI Cartão de Vantagens é um serviço que oferece mais 
+                                    acessibilidade na área de exames de imagem, disponibilizando
+                                    descontos especiais para seus usuários. É mais facilidade para
+                                    sua saúde e qualidade de vida. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- heading ends -->
+
+                    <!--== row starts ==-->
+                    <div class="row">
+
+                        <!-- process bar starts -->
+                        {{-- <div class="dtr-process-bar-center dtr-mb-100 dtr-pt-30 color-dark">
+                            <div class="dtr-process-bar dtr-shadow">
+                                <ul class="dtr-process-list">
+                                    <li> Onboard </li>
+                                    <li> Collaborate </li>
+                                    <li> Automate </li>
+                                </ul>
+                            </div>
+                        </div> --}}
+                        <!-- process bar ends -->
+
+                        <!-- column 1 starts -->
+                        <div class="col-12 col-md-5">
+                            <div class="dtr-feature dtr-feature-top dtr-feature-circle dtr-feature-large text-left ">
+                                <div class="dtr-feature-icon p-4 mx-sm-auto mx-md-0" style="background-color: #4bc192"><img src="{{url('template\assets\img\icone-01.png')}}" alt="CDI - missão"/> </div>
+                                <div class="dtr-feature-content">
+                                    <h4 class="dtr-feature-heading">Missão</h4>
+                                </div>
+                            </div>
+                            <p class="dtr-pt-20">Promover maior acesso a exames de 
+                                imagem, contribuindo assim para mais 
+                                qualidade de vida, saúde e bem-estar 
+                                na região do Vale do São Francisco.</p>
+                        </div>
+                        <!-- column 1 ends -->
+
+                        <!-- column 2 starts -->
+                        <div class="col-12 col-md-5 small-device-space">
+                            <div class="dtr-feature dtr-feature-top dtr-feature-circle dtr-feature-large text-left ">
+                                <div class="dtr-feature-icon p-4 mx-sm-auto mx-md-0" style="background-color: #4592a3"> <img src="{{url('template\assets\img\icone-02.png')}}" alt="CDI -  valores"/> </div>
+                                <div class="dtr-feature-content">
+                                    <h4 class="dtr-feature-heading">Valores</h4>
+                                </div>
+                            </div>
+                            <p class="dtr-pt-20">Nossos valores são pautados
+                                na empatia, eficiência, 
+                                qualidade e transparência.</p>
+                        </div>
+                        <!-- column 2 ends -->
+
+                    </div>
+                    <!--== row ends ==-->
                 </div>
+                <div class="col-md-2"></div>
             </div>
         </div>
-        <!-- heading ends -->
+    </section>
+    <!-- process section ends
+================================================== -->
+
+ <!-- section starts
+================================================== -->
+<section id="section-3" class="dtr-section dtr-py-100">
+    <div class="container">
 
         <!--== row starts ==-->
         <div class="row">
-
-            <!-- process bar starts -->
-            {{-- <div class="dtr-process-bar-center dtr-mb-100 dtr-pt-30 color-dark">
-                <div class="dtr-process-bar dtr-shadow">
-                    <ul class="dtr-process-list">
-                        <li> Onboard </li>
-                        <li> Collaborate </li>
-                        <li> Automate </li>
-                    </ul>
-                </div>
-            </div> --}}
-            <!-- process bar ends -->
-
-            <!-- column 1 starts -->
-            <div class="col-12 col-md-4">
-                <div class="dtr-feature dtr-feature-top dtr-feature-circle dtr-feature-large text-left ">
-                    <div class="dtr-feature-icon p-4" style="background-color: #4bc192"><img src="{{url('template\assets\img\icone-01.png')}}" alt="ícone missão vantagens"/> </div>
-                    <div class="dtr-feature-content">
-                        <h4 class="dtr-feature-heading">Missão</h4>
-                    </div>
-                </div>
-                <p class="dtr-pt-20">Promover maior acesso a exames de 
-                    imagem, contribuindo assim para mais 
-                    qualidade de vida, saúde e bem-estar 
-                    na região do Vale do São Francisco.</p>
+            <div class="col d-flex">
+                <a class="dtr-btn dtr-pricing-btn btn-blue mx-auto" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" role="button"><span class="dtr-btn-text">Quero fazer o meu cartão!</span></a>
             </div>
-            <!-- column 1 ends -->
-
-            <!-- column 2 starts -->
-            <div class="col-12 col-md-4 small-device-space">
-                <div class="dtr-feature dtr-feature-top dtr-feature-circle dtr-feature-large text-left ">
-                    <div class="dtr-feature-icon p-4" style="background-color: #4592a3"> <img src="{{url('template\assets\img\icone-02.png')}}" alt="ícone missão vantagens"/> </div>
-                    <div class="dtr-feature-content">
-                        <h4 class="dtr-feature-heading">Valores</h4>
-                    </div>
-                </div>
-                <p class="dtr-pt-20">Nossos valores são pautados
-                    na empatia, eficiência, 
-                    qualidade e transparência.</p>
-            </div>
-            <!-- column 2 ends -->
-
         </div>
         <!--== row ends ==-->
 
     </div>
 </section>
-<!-- process section ends
+<!-- section ends
 ================================================== -->
 
         <!-- services section starts
@@ -309,10 +459,10 @@
                     <!-- column 1 starts -->
                     <div class="col-12 col-md-4">
                         <div class="dtr-servicebox-wrapper dtr-servicebox-offset-border dtr-box-rounded">
-                            <div class="dtr-servicebox dtr-shadow bg-light-orange"> <span class="dtr-servicebox-number">01</span>
+                            <div class="dtr-servicebox dtr-shadow bg-my-green color-dark" > <span class="dtr-servicebox-number">01</span>
                                 <div class="dtr-servicebox-head">
-                                    <div class="dtr-servicebox-icon color-orange"> <i class="icon-user-circle-plus-fill"></i> </div>
-                                    <h4 class="dtr-servicebox-heading">Descontos<br>
+                                    <div class="dtr-servicebox-icon color-orange"> <img class="ico-size-5" src="{{url('template/assets/img/card-01.png')}}" alt="Cartão de Vantagens - Descontos especiais"> </div>
+                                    <h4 class="dtr-servicebox-heading text-white">Descontos<br>
                                         especiais </h4>
                                 </div>
                                 <div class="dtr-servicebox-content">Você pagará bem menos para realizar exames como tomografia, ressonância e ultrassom.</div>
@@ -324,10 +474,10 @@
                     <!-- column 2 starts -->
                     <div class="col-12 col-md-4">
                         <div class="dtr-servicebox-wrapper dtr-servicebox-offset-border dtr-box-rounded">
-                            <div class="dtr-servicebox dtr-shadow bg-light-cyan"> <span class="dtr-servicebox-number">02</span>
+                            <div class="dtr-servicebox dtr-shadow bg-my-blue color-dark"> <span class="dtr-servicebox-number">02</span>
                                 <div class="dtr-servicebox-head">
-                                    <div class="dtr-servicebox-icon color-cyan"> <i class="icon-intersect"></i> </div>
-                                    <h4 class="dtr-servicebox-heading">Ganhe<br>
+                                    <div class="dtr-servicebox-icon color-cyan"> <img class="ico-size-6" src="{{url('template/assets/img/card-02.png')}}" alt="Cartão de Vantagens - Cashback"> </div>
+                                    <h4 class="dtr-servicebox-heading text-white">Ganhe<br>
                                         cashback </h4>
                                 </div>
                                 <div class="dtr-servicebox-content">Você pagará bem menos para realizar exames como tomografia, ressonância e ultrassom.</div>
@@ -339,10 +489,10 @@
                     <!-- column 3 starts -->
                     <div class="col-12 col-md-4">
                         <div class="dtr-servicebox-wrapper dtr-servicebox-offset-border dtr-box-rounded">
-                            <div class="dtr-servicebox dtr-shadow bg-light-blue"> <span class="dtr-servicebox-number">03</span>
+                            <div class="dtr-servicebox dtr-shadow bg-my-blue color-dark"> <span class="dtr-servicebox-number">03</span>
                                 <div class="dtr-servicebox-head">
-                                    <div class="dtr-servicebox-icon color-sky-blue"> <i class="icon-timer-fill" aria-hidden="true"></i> </div>
-                                    <h4 class="dtr-servicebox-heading">Ganhe<br>
+                                    <div class="dtr-servicebox-icon color-sky-blue"> <img  class="ico-size-6"  src="{{url('template/assets/img/card-02.png')}}" alt="Cartão de Vantagens - Cashback"> </div>
+                                    <h4 class="dtr-servicebox-heading text-white">Ganhe<br>
                                         cashback </h4>
                                 </div>
                                 <div class="dtr-servicebox-content">Você pagará bem menos para realizar exames como tomografia, ressonância e ultrassom.</div>
@@ -360,10 +510,10 @@
                     <!-- column 1 starts -->
                     <div class="col-12 col-md-4">
                         <div class="dtr-servicebox-wrapper dtr-servicebox-offset-border dtr-box-rounded">
-                            <div class="dtr-servicebox dtr-shadow bg-dark color-white"> <span class="dtr-servicebox-number color-dark-secondary">04</span>
+                            <div class="dtr-servicebox dtr-shadow bg-my-light-blue color-dark mh"> <span class="dtr-servicebox-number">04</span>
                                 <div class="dtr-servicebox-head">
-                                    <div class="dtr-servicebox-icon color-white"> <i class="icon-chart-pie-fill"></i> </div>
-                                    <h4 class="dtr-servicebox-heading">Zero<br>
+                                    <div class="dtr-servicebox-icon color-dark"><img  class="ico-size-5"  src="{{url('template/assets/img/card-04.png')}}" alt="Cartão de Vantagens - Zero carência"></div>
+                                    <h4 class="dtr-servicebox-heading text-dark">Zero<br>
                                         carência</h4>
                                 </div>
                                 <div class="dtr-servicebox-content"> <div class="dtr-servicebox-content">Você pagará bem menos para realizar exames como tomografia, e ultrassom.</div> </div>
@@ -375,10 +525,10 @@
                     <!-- column 2 starts -->
                     <div class="col-12 col-md-4">
                         <div class="dtr-servicebox-wrapper dtr-servicebox-offset-border dtr-box-rounded">
-                            <div class="dtr-servicebox dtr-shadow bg-gray"> <span class="dtr-servicebox-number">05</span>
+                            <div class="dtr-servicebox dtr-shadow bg-my-light-green color-dark"> <span class="dtr-servicebox-number">05</span>
                                 <div class="dtr-servicebox-head">
-                                    <div class="dtr-servicebox-icon color-dark"> <i class="icon-app-window-fill"></i> </div>
-                                    <h4 class="dtr-servicebox-heading">Sem custo<br>
+                                    <div class="dtr-servicebox-icon color-dark"> <img  class="ico-size-6"  src="{{url('template/assets/img/card-05.png')}}" alt="Cartão de Vantagens - Sem custo para você"> </div>
+                                    <h4 class="dtr-servicebox-heading text-dark">Sem custo<br>
                                         para você*</h4>
                                 </div>
                                 <div class="dtr-servicebox-content">Você não paga nada para fazer seu cartão e também não precisa se preocupar com mensalidades. </div>
@@ -390,10 +540,10 @@
                     <!-- column 3 starts -->
                     <div class="col-12 col-md-4">
                         <div class="dtr-servicebox-wrapper dtr-servicebox-offset-border dtr-box-rounded">
-                            <div class="dtr-servicebox dtr-shadow bg-purple"> <span class="dtr-servicebox-number">06</span>
+                            <div class="dtr-servicebox dtr-shadow bg-my-light-green color-dark"> <span class="dtr-servicebox-number">06</span>
                                 <div class="dtr-servicebox-head">
-                                    <div class="dtr-servicebox-icon color-blue"> <i class="icon-target-fill"></i> </div>
-                                    <h4 class="dtr-servicebox-heading">Sem custo<br>
+                                    <div class="dtr-servicebox-icon color-blue"> <img  class="ico-size-6"  src="{{url('template/assets/img/card-05.png')}}" alt="Cartão de Vantagens - Sem custo para você"> </div>
+                                    <h4 class="dtr-servicebox-heading text-dark">Sem custo<br>
                                         para você*</h4>
                                 </div>
                                 <div class="dtr-servicebox-content">Você não paga nada para fazer seu cartão e também não precisa se preocupar com mensalidades. </div>
@@ -408,24 +558,6 @@
             </div>
         </section>
         <!-- services section ends
-================================================== -->
-
-        <!-- section starts
-================================================== -->
-        <section id="section-3" class="dtr-section dtr-py-100">
-            <div class="container">
-
-                <!--== row starts ==-->
-                <div class="row">
-                    <div class="col d-flex">
-                        <a class="dtr-btn dtr-pricing-btn btn-blue mx-auto" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" role="button"><span class="dtr-btn-text">Quero fazer o meu cartão!</span></a>
-                    </div>
-                </div>
-                <!--== row ends ==-->
-
-            </div>
-        </section>
-        <!-- section ends
 ================================================== -->
 
         <!-- team section starts
@@ -982,7 +1114,7 @@
 
         <!-- accordion section starts
 ================================================== -->
-        <section class="dtr-section dtr-py-100 bg-white">
+        <section id="faq" class="dtr-section dtr-pb-100 dtr-py-90 bg-white">
             <div class="container">
 
                 <!-- heading starts -->
@@ -990,7 +1122,7 @@
                     <div class="dtr-intro-subheading-wrapper">
                         <p class="dtr-intro-subheading">FAQ</p>
                     </div>
-                    <h2 class="dtr-intro-heading">Alguma pergunta em mente?</h2>
+                    <h2 class="dtr-intro-heading">Dúvidas sobre o Cartão de Vantagens?</h2>
                     <p class="dtr-intro-content">There are many variations of passages of lorem ipsum available<br>
                         but the majority have suffered alteration</p>
                 </div>
@@ -1003,60 +1135,18 @@
                         <!--== accordion starts ==-->
                         <div class="dtr-accordion accordion dtr-mt-30" id="accordion1">
 
-                            <!-- item 1 starts -->
-                            <div class="accordion-item">
-                                <p class="accordion-header" id="accordion1-headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion1-collapseOne" aria-expanded="false" aria-controls="accordion1-collapseOne"> What is XaaS based service? </button>
-                                </p>
-                                <div id="accordion1-collapseOne" class="accordion-collapse collapse" aria-labelledby="accordion1-headingOne" data-bs-parent="#accordion1" style="">
-                                    <div class="accordion-body">There are many variations of passages of lorem ipsum available, but the majority have suffered alteration in some form by injected humour or randomised words which don't look even slightly believable.</div>
+                            @foreach ($faqs as $key=>$faq)
+                                <!-- item 1 starts -->
+                                <div class="accordion-item">
+                                    <p class="accordion-header" id="accordion{{$key}}-headingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion{{$key}}-collapseOne" aria-expanded="false" aria-controls="accordion{{$key}}-collapseOne"> {{$faq->pergunta}} </button>
+                                    </p>
+                                    <div id="accordion{{$key}}-collapseOne" class="accordion-collapse collapse" aria-labelledby="accordion{{$key}}-headingOne" data-bs-parent="#accordion{{$key}}" style="">
+                                        <div class="accordion-body">{!!$faq->resposta!!}</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- item 1 ends -->
-
-                            <!-- item 2 starts -->
-                            <div class="accordion-item">
-                                <p class="accordion-header" id="accordion1-headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion1-collapseTwo" aria-expanded="false" aria-controls="accordion1-collapseTwo"> Can I see application in full action before purchase? </button>
-                                </p>
-                                <div id="accordion1-collapseTwo" class="accordion-collapse collapse" aria-labelledby="accordion1-headingTwo" data-bs-parent="#accordion1" style="">
-                                    <div class="accordion-body">There are many variations of passages of lorem ipsum available, but the majority have suffered alteration in some form by injected humour or randomised words which don't look even slightly believable.</div>
-                                </div>
-                            </div>
-                            <!-- item 2 ends -->
-
-                            <!-- item 3 starts -->
-                            <div class="accordion-item">
-                                <p class="accordion-header" id="accordion1-headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion1-collapseThree" aria-expanded="false" aria-controls="accordion1-collapseThree"> Does service required virtualized hardware? </button>
-                                </p>
-                                <div id="accordion1-collapseThree" class="accordion-collapse collapse" aria-labelledby="accordion1-headingThree" data-bs-parent="#accordion1" style="">
-                                    <div class="accordion-body">There are many variations of passages of lorem ipsum available, but the majority have suffered alteration in some form by injected humour or randomised words which don't look even slightly believable.</div>
-                                </div>
-                            </div>
-                            <!-- item 3 ends -->
-
-                            <!-- item 4 starts -->
-                            <div class="accordion-item">
-                                <p class="accordion-header" id="accordion1-headingFour">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion1-collapseFour" aria-expanded="true" aria-controls="accordion1-collapseFour"> What are the benefits of XaaS? </button>
-                                </p>
-                                <div id="accordion1-collapseFour" class="accordion-collapse collapse" aria-labelledby="accordion1-headingFour" data-bs-parent="#accordion1" style="">
-                                    <div class="accordion-body">There are many variations of passages of lorem ipsum available, but the majority have suffered alteration in some form by injected humour or randomised words which don't look even slightly believable.</div>
-                                </div>
-                            </div>
-                            <!-- item 4 ends -->
-
-                            <!-- item 5 starts -->
-                            <div class="accordion-item">
-                                <p class="accordion-header" id="accordion1-headingFive">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion1-collapseFour" aria-expanded="true" aria-controls="accordion1-collapseFour"> How much is the operation cost? </button>
-                                </p>
-                                <div id="accordion1-collapseFour" class="accordion-collapse collapse show" aria-labelledby="accordion1-headingFour" data-bs-parent="#accordion1" style="">
-                                    <div class="accordion-body">There are many variations of passages of lorem ipsum available, but the majority have suffered alteration in some form by injected humour or randomised words which don't look even slightly believable.</div>
-                                </div>
-                            </div>
-                            <!-- item 5 ends -->
+                                <!-- item 1 ends -->
+                            @endforeach
 
                         </div>
                         <!--== accordion ends ==-->
@@ -1064,8 +1154,6 @@
                     </div>
                 </div>
                 <!--== row ends ==-->
-
-                <p class="d-flex align-items-center justify-content-center dtr-mt-20 color-dark"><i class="icon-circle-wavy-question text-size-lg dtr-mr-10"></i>Still have a question? <a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#">Ask your question here</a></p>
             </div>
         </section>
         <!-- accordion section ends
@@ -1257,7 +1345,7 @@
                 <div class="row">
 
                     <!--== column 1 starts ==-->
-                    <div class="col-12 col-md-6 col-lg-5"><a class="dtr-scroll-link" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#home"><img src="{{url('template/assets/img/logo-light.png')}}" alt="logo"></a>
+                    <div class="col-12 col-md-6 col-lg-5"><a class="dtr-scroll-link" href="{{url('/')}}#home"><img src="{{url('template/assets/img/logo.png')}}" alt="CDI Cartão de Vantagens"></a>
                         <p class="dtr-mt-20 dtr-mb-40">There are many variations of passages of<br>
                             lorem ipsum available but the majority<br>
                             have suffered alteration.</p>
@@ -1291,22 +1379,19 @@
 
                     <!--== column 3 starts ==-->
                     <div class="col-12 col-md-6 col-lg-2 small-device-space">
-                        <h6>Company</h6>
+                        <h6>CDI</h6>
                         <ul class="dtr-list-line line-accent">
                             <li>
-                                <p><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#">About Us</a></p>
+                                <p><a href="{{url('/')}}#process">Quem somos</a></p>
                             </li>
                             <li>
-                                <p><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#">Our Team</a></p>
+                                <p><a href="{{url('/')}}#services">Vantagens</a></p>
                             </li>
                             <li>
-                                <p><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#">The Process</a></p>
+                                <p><a href="{{url('/')}}#faq">FAQ</a></p>
                             </li>
                             <li>
-                                <p><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#">Blog</a></p>
-                            </li>
-                            <li>
-                                <p><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#">Contact</a></p>
+                                <p><a  data-bs-toggle="modal" href="#contatoModal" role="button">Contato</a></p>
                             </li>
                         </ul>
                     </div>
@@ -1365,13 +1450,54 @@
     </footer>
     <!-- footer section ends
 ================================================== -->
-<!-- take top arrow -->
-<a id="take-to-top" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" class="dtr-fade-scroll " style="display: none;"></a>
-</div>
-<!-- #dtr-wrapper ends -->
 
-<!-- JS FILES -->
-@include('public.scripts')
+    <!-- take top arrow -->
+    <a id="take-to-top" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" class="dtr-fade-scroll " style="display: none;"></a>
+    </div>
+    <!-- #dtr-wrapper ends -->
 
+    <!-- modal starts -->
+        <!-- Modal -->
+        <div class="modal fade" id="contatoModal" tabindex="-1" aria-labelledby="contatoModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{route('contato')}}" method='POST'>
+                    @csrf
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="contatoModalLabel">Envie uma mensagem pra gente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            {{-- <label for="exampleInputEmail1" class="form-label">Email</label> --}}
+                            <input type="email" name="email" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            {{-- <label for="exampleInputassunto" class="form-label">Assunto</label> --}}
+                            <input type="text" name="assunto" placeholder="Assunto" class="form-control" id="exampleInputassunto">
+                        </div>
+                        <div class="mb-3">
+                            {{-- <label for="exampleInputmensagem" class="form-label">Mensagem</label> --}}
+                            <textarea type="text" name="mensagem" placeholder="Digite sua mensagem aqui"  row=6 class="form-control" id="exampleInputmensagem"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    <!-- modal ends -->
+
+    <!-- JS FILES -->
+    @include('public.scripts')
+    <script>
+        $(".nav-link").click(function() {
+            $(".nav-link").removeClass("active");
+            $(this).addClass("active");
+        })
+    </script>
 
 </body></html>

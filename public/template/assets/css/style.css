@@ -451,7 +451,13 @@ ol li, ul li { margin-bottom: 10px; }
 .dtr-copyright { padding: 30px 0; border-width: 1px 0 0 0; border-style: solid; }
 /* take-to-top */
 #take-to-top { width: 40px; height: 40px; z-index: 999; text-align: center; text-decoration: none; border-radius: 50%; -webkit-transition: all .3s ease; transition: all .3s ease; display: block; }
-#take-to-top::before { display: block; font-family: 'icomoon'; content: "\eac4"; font-size: 16px; line-height: 38px; color: inherit; }
+#take-to-top::before { display: block;
+    font-family: 'icomoon';
+    content: "\ea50";
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 49px;
+    color: inherit; }
 #take-to-top.dtr-fade-scroll { position: fixed; right: 30px; bottom: 30px; display: none; }
 /*----------------------------------------*/
 /*----- 13 Forms -----*/
@@ -665,7 +671,7 @@ form label.error { font-size: 10px; }
 .dtr-accordion .accordion-item { border: 1px; border-style: solid; margin-bottom: 10px; }
 .dtr-accordion .accordion-body { padding: 5px 30px 20px 30px; border: 0; border-radius: 0; }
 .dtr-accordion .accordion-button { padding: 20px 30px; border-radius: 0; font-size: 1em; font-weight: 600; line-height: 1.3em; }
-.dtr-accordion .accordion-button::after { font-family: 'icomoon'; content: "\eac0"; font-size: 16px; font-weight: normal; background-image: none; width: auto; height: auto; }
+.dtr-accordion .accordion-button::after { font-family: 'icomoon'; content: "\ea43"; font-size: 16px; font-weight: normal; background-image: none; width: auto; height: auto; }
 .dtr-accordion .accordion-button:focus { border: 0; outline: 0; box-shadow: none !important; }
 .dtr-accordion .accordion-button:not(.collapsed) { border-radius: 0; box-shadow: none !important; outline: 0; }
 /*===== Tabs =====*/

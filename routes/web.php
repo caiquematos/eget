@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ClienteController;
 use App\Http\Controllers\Admin\DependenteController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\UsuarioController;
+use App\Http\Controllers\HomeController;
 use App\Models\Dependente;
 use App\Models\Faq;
 use App\Models\Usuario;
@@ -27,7 +28,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Rotas 'Faq'
     Route::resource("faq", FaqController::class);
     Route::prefix('faq')->name('faq.')->group(function () {
-        Route::post("ativar",[ClienteController::class, 'ativar'])->name('ativar');
+        Route::post("ativar",[FaqController::class, 'ativar'])->name('ativar');
         Route::get("deletar/{faq}", function(Faq $faq) {
             return App::make('App\Http\Controllers\Admin\FaqController')->deletar($faq);
         })->name('deletar');
@@ -75,6 +76,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 });
 
-Route::get('/', function () {
-    return view('home');
-});
+  
+Route::post('/contato', [HomeController::class, 'contato'])->name('contato');
+Route::get('/', [HomeController::class, 'index'])->name('home');
