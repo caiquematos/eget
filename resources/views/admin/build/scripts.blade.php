@@ -19,7 +19,7 @@
 <!-- Switchery -->
 <script src="{{url('admin/vendors/switchery/dist/switchery.min.js')}}"></script>
 
-<script src="{{ mix('build/js/common.js') }}"></script>
+{{-- <script src="{{ mix('build/js/common.js') }}"></script> --}}
 
 <!-- Session functions AND Pnotify functions--> 
     

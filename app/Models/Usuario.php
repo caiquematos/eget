@@ -1,9 +1,19 @@
 <?php
 
 namespace App\Models;
+use App\Models\User;
 
 class Usuario extends BaseModel
 {
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'senha', 'remember_token',
+    ];
 
     /**
      * The roles that belong to the user.
@@ -81,5 +91,14 @@ class Usuario extends BaseModel
     public function getNascimentoAttribute($value)
     {
         return date("d/m/Y", strtotime($value));
+    }
+
+    /**
+     * Get data de senha do usuário para o mecanismo de autenticação.
+     *
+     * @return string
+     */
+    public function getAuthPassword() {
+        return $this->senha;
     }
 }

@@ -67,4 +67,33 @@
 
     <!-- Custom Theme Style -->
     <link href="{{url('admin/build/css/custom.min.css')}}" rel="stylesheet">
+
+    <!-- Personalizando o estilo do painel de filtros do datatables -->
+    <style>
+        .dtsp-panesContainer {
+            width:390px;
+        }
+
+        div.dtsp-panesContainer div.dtsp-searchPanes div.dtsp-searchPane {
+            margin-top:0px !important;
+        }
+
+        div.dtsp-panesContainer .dataTables_scrollBody {
+            max-height:100px;
+        }
+
+        div.dtsp-panesContainer div.dataTables_wrapper div.dataTables_scrollBody div.dtsp-nameCont span.dtsp-name p {
+            margin:0px !important;
+        }
+
+        div.dtsp-panesContainer div.dtsp-searchPanes div.dtsp-searchPane div.dataTables_wrapper {
+            padding:0px !important;
+        }
+
+        div.dtsp-panesContainer .dtsp-titleRow button {
+            margin-bottom: 0px !important;
+        }
+    </style>
+
+
 </head>

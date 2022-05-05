@@ -43,8 +43,9 @@ class UsuarioController extends Controller
     {
         $usuario = new Usuario();
         $usuario->fill($request->except(["tipo"]));
+
         // gerar senha.
-        $usuario->senha = Hash::make(substr($request->input("cpf"), 0, 5));
+        $usuario->senha = Hash::make(substr($request->input("cpf"), 0, 6));
         $usuario->save();
 
         if (!empty($request->input("tipo"))) {

@@ -17,10 +17,11 @@
               
               <h1>Admin</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" class="form-control" data-tipo="cpf" name="cpf" placeholder="000.000.000-00
+                " required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" class="form-control" name="password" placeholder="Password" required="" />
               </div>
               <div>
                 <button type="submit" class="btn btn-default">Entrar</button>
@@ -44,5 +45,9 @@
         </div>
       </div>
     </div>
+
+    <!-- scripts -->
+    @include('admin.build.scripts')
+    <!-- /scripts -->
   </body>
 </html>

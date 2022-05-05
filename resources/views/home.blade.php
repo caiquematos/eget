@@ -8,7 +8,7 @@
 
     @media (max-width: 1400px) {
         #section-1 {
-            height: 625px !important;
+            height: 600px !important;
         }
      }
 
@@ -46,8 +46,8 @@
     }
 
     #section-1 {
-        height: 780px;
-        background-image: url('template/assets/img/banner-01.webp');
+        height: 600px;
+        background-image: url('template/assets/img/banner_mob.webp');
         background-position: center;
         background-size: cover;
         margin-top: 89px;
@@ -58,7 +58,12 @@
         justify-content: center;
     }
 
+    #section-1 img {
+        max-height: 475px;
+    }
+
     #section-1 h1 {
+        
         letter-spacing: 0px !important;
     }
     #dtr-header-global {
@@ -297,7 +302,7 @@
 
                     <!--== row starts ==-->
                     <div class="row justify-content-center">
-                        <div class="col-12 col-md-5">
+                        <div class="col-12 col-md-5 d-flex">
 
                             <!-- animated hedline starts -->
                             {{-- <p class=" dtr-animated-headline font-weight-medium text-left slide color-dark"><span class="dtr-words-wrapper w-100" style="width: 233.547px;">
@@ -311,19 +316,20 @@
                                 <!--== text ends ==-->
                                 </span></p> --}}
                             <!-- animated hedline ends -->
-
-                            <h2 class="color-white fs-2">O CDI Cartão de Vantagens é para você cuidar da sua saúde com mais economia e praticiadade.</h2>
-                            <div class="d-flex dtr-my-40"><div class="faixa-1"></div><div class="faixa-2"></div></div>
-                            <p class="dtr-intro-content color-white">Agende exames com descontos especiais, sem carência ou mensalidade e ainda obtenha cacheback.</p>
-                            <!-- button starts -->
-                            <a class="dtr-btn dtr-btn-small dtr-mt-50 my-sm-auto w-sm-100" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" role="button">
-                                <p style="text-align: center" class="dtr-btn-text">Quero fazer meu cartão!</p>
-                            </a>
+                            <div class="my-auto">
+                                <h2 class="color-white fs-2">O CDI Cartão de Vantagens é para você cuidar da sua saúde com mais economia e praticiadade.</h2>
+                                <div class="d-flex dtr-my-40"><div class="faixa-1"></div><div class="faixa-2"></div></div>
+                                <p class="dtr-intro-content color-white">Agende exames com descontos especiais, sem carência ou mensalidade e ainda obtenha cacheback.</p>
+                                <!-- button starts -->
+                                <a class="dtr-btn dtr-btn-small dtr-mt-50 my-sm-auto w-sm-100" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" role="button">
+                                    <p style="text-align: center" class="dtr-btn-text">Quero fazer meu cartão!</p>
+                                </a>
+                            </div>
                             <!-- button ends -->
 
                         </div>
-                        <div class="col-12 col-md-5">
-
+                        <div class="col-12 col-md-5 d-flex">
+                            <img class="m-auto d-none d-md-block" src="{{url('template/assets/img/cartoes.webp')}}" alt="CDI Cartão de vantagens" >
                         </div>
                     </div>
                     <!--== row ends ==-->

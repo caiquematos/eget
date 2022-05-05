@@ -21,4 +21,15 @@ class Controller extends BaseController
     {
         $this->response = ["success"=>true, "message"=>""];
     }
+
+    /**
+     * Limpa máscara do cpf.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    protected function cleanCpf($cpf) {
+        $chars = ['.', '-'];
+        return str_replace($chars, "", trim($cpf));
+    }
 }

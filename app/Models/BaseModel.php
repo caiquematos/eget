@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class BaseModel extends Model
+class BaseModel extends Authenticatable
 {
     use HasFactory, SoftDeletes;
-    protected $guarded = ['id', '_token'];
 
+    // Guarded from mass attribution.
+    protected $guarded = ['id', '_token'];
 
     /**
      * Limpa máscara do cpf.
