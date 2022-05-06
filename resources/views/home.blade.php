@@ -325,7 +325,7 @@
                                 <div class="d-flex dtr-my-40"><div class="faixa-1"></div><div class="faixa-2"></div></div>
                                 <p class="dtr-intro-content color-white">Agende exames com descontos especiais, sem carência ou mensalidade e ainda obtenha cacheback.</p>
                                 <!-- button starts -->
-                                <a class="dtr-btn dtr-btn-small dtr-mt-50 my-sm-auto w-sm-100" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" role="button">
+                                <a class="dtr-btn dtr-btn-small dtr-mt-50 my-sm-auto w-sm-100" href="{{route('cliente.create')}}" role="button">
                                     <p style="text-align: center" class="dtr-btn-text">Quero fazer meu cartão!</p>
                                 </a>
                             </div>
