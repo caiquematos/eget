@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
-use App\Http\Controllers\Admin\ClienteController;
+use App\Http\Controllers\Admin\ClienteController as AdminClienteController;
 use App\Http\Controllers\Admin\DependenteController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\UsuarioController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HomeController;
 use App\Models\Dependente;
 use App\Models\Faq;
@@ -26,7 +27,7 @@ use App\Models\Usuario;
 // Rotas 'Admin'
 Route::prefix('/admin')->name('admin.')->group(function () {
 
-    Route::middleware(['auth'])->group(function () {
+    Route::middleware(['auth', 'role:admnistrador'])->group(function () {
 
         // Rotas 'Faq'
         Route::resource("faq", FaqController::class);
@@ -50,9 +51,9 @@ Route::prefix('/admin')->name('admin.')->group(function () {
         });
 
         // Rotas 'Cliente'
-        Route::resource("cliente", ClienteController::class);
+        Route::resource("cliente", AdminClienteController::class);
         Route::prefix('cliente')->name('cliente.')->group(function () {
-            Route::post("ativar",[ClienteController::class, 'ativar'])->name('ativar');
+            Route::post("ativar",[AdminClienteController::class, 'ativar'])->name('ativar');
             Route::get("deletar/{cliente}", function(Usuario $cliente) {
                 return App::make('App\Http\Controllers\Admin\ClienteController')->deletar($cliente);
             })->name('deletar');
@@ -84,10 +85,11 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 });
 
 // Rotas 'Admin' (por algum motivo o laravel não aceita 'admin' como rota)
-Route::get('/admin', function() {
+Route::get('/adm', function() {
     return redirect()->route('admin.usuario.index');
-})->name('admin')->middleware('auth');
+})->name('adm')->middleware(['auth', 'role:admnistrador']);
 
 // Rotas 'Landing Page'
 Route::post('/contato', [HomeController::class, 'contato'])->name('contato');
+Route::resource("cliente", ClienteController::class);
 Route::get('/', [HomeController::class, 'index'])->name('home');

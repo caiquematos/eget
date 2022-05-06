@@ -1,6 +1,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <meta http-equiv="content-language" content="pt-BR">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=yes">
     <title>{{env('APP_NAME')}}</title>
@@ -8,10 +8,10 @@
     <meta name="description" content="O CDI Cartão de Vantagens é um serviço que oferece mais acessibilidade na área de exames de imagem, disponibilizando descontos especiais para seus usuários. É mais facilidade para sua saúde e qualidade de vida.">
     <meta name="keywords" content="cartão de vantagens, saúde, economia, desconto, cashback.">
     <!-- FAVICON FILES -->
-    <link href="http://tanshcreative.com/xaasvik-lp-preview/assets/images/icons/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon" sizes="144x144">
-    <link href="http://tanshcreative.com/xaasvik-lp-preview/assets/images/icons/apple-touch-icon-120-precomposed.png" rel="apple-touch-icon" sizes="120x120">
-    <link href="http://tanshcreative.com/xaasvik-lp-preview/assets/images/icons/apple-touch-icon-76-precomposed.png" rel="apple-touch-icon" sizes="76x76">
-    <link href="http://tanshcreative.com/xaasvik-lp-preview/assets/images/icons/favicon.png" rel="shortcut icon">
+    <link href="{{url('favicon.ico')}}" rel="apple-touch-icon" sizes="144x144">
+    <link href="{{url('favicon.ico')}}" rel="apple-touch-icon" sizes="120x120">
+    <link href="{{url('favicon.ico')}}" rel="apple-touch-icon" sizes="76x76">
+    <link href="{{url('favicon.ico')}}" rel="shortcut icon">
     <!-- CSS FILES -->
     <link rel="stylesheet" href="{{url('template/assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('template/assets/css/iconfont.css')}}">

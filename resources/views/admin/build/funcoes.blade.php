@@ -1,13 +1,13 @@
 <?php
 
-// Sexo usuários clientes
+// Sexo
 const GERAL_SEXO = [
     '0' => 'Feminino',
     '1' => 'Masculino',
     '2' => 'Outro'
 ];
 
-// Estado civil usuários clientes
+// Estado civil
 const CLIENTE_ESTADO_CIVIL = [
     '0' => 'Casado',
     '1' => 'Solteiro',

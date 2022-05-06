@@ -94,11 +94,25 @@ class Usuario extends BaseModel
     }
 
     /**
-     * Get data de senha do usuário para o mecanismo de autenticação.
+     * Modifica a referência padrão do atributo de senha 'password' para o mecanismo de autenticação.
      *
      * @return string
      */
     public function getAuthPassword() {
         return $this->senha;
+    }
+
+    /**
+     * Verifica se o usuário tem o respectivo papel.
+     *
+     * @param  string  $role
+     * @return boolean
+     */
+    public function hasRole($role)
+    {
+      if ($this->roles()->where("name", $role)->first()) {
+        return true;
+      }
+      return false;
     }
 }

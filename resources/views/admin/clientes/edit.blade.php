@@ -155,13 +155,10 @@
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Qual sua renda familiar?<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-12  ">
 												<select name="renda" class="select2_single form-control" tabindex="-1" required='required'>
-													<option></option>
-                                                    <option value=0>Até 01 (um) salário</option>
-													<option value=1>Até 01 (um) salário</option>
-													<option value=2>Até 02 (dois) salários</option>
-													<option value=3>Até 03 (três) salários</option>
-													<option value=4>Até 04 (quatro) salários</option>
-													<option value=5>Até 05 (cinco) salários</option>
+													<option selected>Selecione uma opção</option>
+                                                    @foreach (CLIENTE_RENDA as $key=>$renda)
+                                                        <option value={{$key}}>{{$renda}}</option>
+                                                    @endforeach
 												</select>
 											</div>
                                         </div>
@@ -333,6 +330,7 @@
 
     <script>
         $(function() {
+            console.log("como conheceu", cliente.como_conheceu);
             $("input[name=nascimento]").val(date_pt_en(cliente.nascimento)).change();
             $("select[name=sexo]").val(cliente.sexo).change();
             $("select[name=estado_civil]").val(cliente.estado_civil).change();

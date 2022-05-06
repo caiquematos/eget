@@ -18,7 +18,9 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::all();
+        $usuarios = Usuario::whereHas('roles', function ($query) {
+            $query->where('name','!=', config('constants.ROLES.CLIENTE.name'));
+        })->get();
         return view("admin.usuarios.index")->with(["usuarios"=> $usuarios]);
     }
 

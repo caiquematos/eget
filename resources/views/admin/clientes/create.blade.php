@@ -116,10 +116,10 @@
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Sexo<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-12  ">
 												<select name="sexo" class="select2_single form-control" tabindex="-1" required='required'>
-													<option></option>
-													<option value=0>Feminino</option>
-													<option value=1>Masculino</option>
-													<option value=2>Outro</option>
+													<option selected>Selecione uma opção</option>
+													@foreach (GERAL_SEXO as $key=>$sexo)
+                                                        <option {{old('sexo') == $key ? 'selected': ''}} value={{$key}}>{{$sexo}}</option>
+                                                    @endforeach
 												</select>
 											</div>
                                         </div>
@@ -127,12 +127,10 @@
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Estado civil<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-12  ">
 												<select name="estado_civil" class="select2_single form-control" tabindex="-1" required='required'>
-													<option></option>
-                                                    <option value=0>Casado</option>
-													<option value=1>Solteiro</option>
-													<option value=2>Divorciado</option>
-													<option value=3>Viuvo</option>
-													<option value=4>Outro</option>
+													<option selected>Selecione uma opção</option>
+                                                    @foreach (CLIENTE_ESTADO_CIVIL as $key=>$estado)
+                                                        <option {{old('estado_civil') == $key ? 'selected': ''}} value={{$key}}>{{$estado}}</option>
+                                                    @endforeach
 												</select>
 											</div>
                                         </div>
@@ -171,17 +169,10 @@
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Como conheceu?<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-12  ">
 												<select name="como_conheceu" class="select2_single form-control" tabindex="-1" required='required'>
-													<option></option>
-                                                    <option value="Campanha de indicação">Campanha de indicação</option>
-													<option value="Facebook">Facebook</option>
-													<option value="Google">Google</option>
-													<option value="Instagram">Instagram</option>
-													<option value="Outdoor">Outdoor</option>
-													<option value="Panfletagem">Panfletagem</option>
-													<option value="Rádios">Rádios</option>
-													<option value="Clínicas">Clínicas</option>
-													<option value="Indicação">Indicação</option>
-													<option value="Outros">Outros</option>
+                                                    <option selected>Selecione uma opção</option>
+                                                    @foreach (CLIENTE_COMO_CONHECEU as $key=>$conheceu)
+                                                        <option {{old('como_conheceu') == $key ? 'selected': ''}} value={{$key}}>{{$conheceu}}</option>
+                                                    @endforeach
 												</select>
 											</div>
                                         </div>
@@ -189,12 +180,10 @@
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Qual sua renda familiar?<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-12  ">
 												<select name="renda" class="select2_single form-control" tabindex="-1" required='required'>
-													<option></option>
-                                                    <option value=0>Até 01 (um) salário</option>
-													<option value=1>Até 02 (dois) salários</option>
-													<option value=2>Até 03 (três) salários</option>
-													<option value=3>Até 04 (quatro) salários</option>
-													<option value=4>Até 05 (cinco) salários</option>
+													<option selected>Selecione uma opção</option>
+                                                    @foreach (CLIENTE_RENDA as $key=>$renda)
+                                                        <option {{old('renda') == $key ? 'selected': ''}} value={{$key}}>{{$renda}}</option>
+                                                    @endforeach
 												</select>
 											</div>
                                         </div>
@@ -295,23 +284,23 @@
                                                 <div class="field item form-group">
                                                     <label class="col-form-label col-md-3 col-sm-3  label-align">CPF<span class="required">*</span></label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <input class="form-control" data-validate-length-range="13" data-mask="000.000.000-00"  name="dependentes[cpf][]" required="required" />
+                                                        <input class="form-control" data-validate-length-range="13" data-mask="000.000.000-00"  value="{{old('dependentes.cpf.0')}}" name="dependentes[cpf][]" required="required" />
                                                     </div>
                                                 </div>
                                                 <div class="field item form-group">
                                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Nome<span class="required">*</span></label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <input class="form-control" data-validate-length-range="2,100"  name="dependentes[nome][]" required="required" />
+                                                        <input class="form-control" data-validate-length-range="2,100" value="{{old('dependentes.nome.0')}}"  name="dependentes.nome.0" required="required" />
                                                     </div>
                                                 </div>
                                                 <div class="field item form-group">
                                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Sexo<span class="required">*</span></label>
                                                     <div class="col-md-6 col-sm-12 ">
                                                         <select name="dependentes[sexo][]" class="select2_single form-control" tabindex="-1" required='required'>
-                                                            <option></option>
-                                                            <option value=0>Feminino</option>
-                                                            <option value=1>Masculino</option>
-                                                            <option value=2>Outro</option>
+                                                            <option selected>Selecione uma opção</option>
+                                                            @foreach (GERAL_SEXO as $key=>$sexo)
+                                                                <option  {{old('dependentes.sexo.0') == $key ? 'selected': ''}} value={{$key}}>{{$sexo}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -319,9 +308,9 @@
                                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Parentesco<span class="required">*</span></label>
                                                     <div class="col-md-6 col-sm-12 ">
                                                         <select name="dependentes[parentesco][]" class="select2_single form-control" tabindex="-1" required='required'>
-                                                            <option></option>
+                                                            <option selected>Selecione uma opção</option>
                                                             @foreach (DEPENDENTE_PARENTESCO as $key=>$parentesco)
-                                                            <option value={{$key}}>{{$parentesco}}</option>
+                                                            <option {{old('dependentes.parentesco.0') == $key ? 'selected': ''}} value={{$key}}>{{$parentesco}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -329,7 +318,7 @@
                                                 <div class="field item form-group">
                                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Data de nascimento<span class="required">*</span></label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <input class="form-control" class='date' type="date" name="dependentes[nascimento][]" required='required'></div>
+                                                        <input class="form-control" class='date' type="date" name="dependentes[nascimento][]" value="{{old('dependentes.nascimento.0')}}" required='required'></div>
                                                 </div>
                                             </div>
                                         </div>
