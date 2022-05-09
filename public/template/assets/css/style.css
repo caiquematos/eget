@@ -468,7 +468,7 @@ form p { margin: 0; padding: 0; }
 input[type=radio], input[type=checkbox] { margin: 0 5px 0 0; vertical-align: baseline; }
 label { width: 100%; height: auto; line-height: 1.2em; font-weight: normal; margin-bottom: 10px; }
 form label.error { line-height: 1em; font-weight: normal; }
-select, textarea, input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="number"], input[type="tel"], input[type="search"] { position: relative; display: block; width: 100%; padding: 20px 25px; margin: 0 0 10px 0; border-width: 1px; border-style: solid; border-radius: 9999px; font-size: 16px; font-weight: normal; line-height: 25px !important; vertical-align: top; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+select, textarea, input[type="text"], input[type="date"], input[type="email"], input[type="url"], input[type="password"], input[type="number"], input[type="tel"], input[type="search"] { position: relative; display: block; width: 100%; padding: 20px 25px; margin: 0 0 10px 0; border-width: 1px; border-style: solid; border-radius: 9999px; font-size: 16px; font-weight: normal; line-height: 25px !important; vertical-align: top; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 textarea, #commentform textarea { width: 100% !important; height: auto; border-radius: 20px; }
 #commentform textarea { margin-bottom: 15px; }
 .antispam { display: none; }
@@ -832,4 +832,4 @@ form label.error { font-size: 10px; }
 :root { scroll-behavior: auto }
 }
 /*===== common transitions =====*/
-.dtr-btn, button, input[type="submit"], input[type="reset"], .dtr-form-btn, .dtr-logo, a:link, select, textarea, input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="number"], input[type="tel"], input[type="search"], #dtr-header-global, .dtr-social a, .dtr-team-social a i { -webkit-transition: all .3s ease; transition: all .3s ease; }
+.dtr-btn, button, input[type="submit"], input[type="reset"], .dtr-form-btn, .dtr-logo, a:link, select, textarea, input[type="text"], input[type="date"], input[type="email"], input[type="url"], input[type="password"], input[type="number"], input[type="tel"], input[type="search"], #dtr-header-global, .dtr-social a, .dtr-team-social a i { -webkit-transition: all .3s ease; transition: all .3s ease; }

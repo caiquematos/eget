@@ -291,6 +291,41 @@
             </div>
         </div>
     </header>
+
+        <!-- modal starts -->
+            <!-- Modal -->
+            <div class="modal fade" id="contatoModal" tabindex="-1" aria-labelledby="contatoModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="{{route('contato')}}" method='POST'>
+                        @csrf
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="contatoModalLabel">Envie uma mensagem pra gente</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                {{-- <label for="exampleInputEmail1" class="form-label">Email</label> --}}
+                                <input type="email" name="email" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                {{-- <label for="exampleInputassunto" class="form-label">Assunto</label> --}}
+                                <input type="text" name="assunto" placeholder="Assunto" class="form-control" id="exampleInputassunto">
+                            </div>
+                            <div class="mb-3">
+                                {{-- <label for="exampleInputmensagem" class="form-label">Mensagem</label> --}}
+                                <textarea type="text" name="mensagem" placeholder="Digite sua mensagem aqui"  row=6 class="form-control" id="exampleInputmensagem"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        <!-- modal ends -->
     <!-- header ends
 ================================================== -->
 
@@ -1465,41 +1500,6 @@
     <a id="take-to-top" href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" class="dtr-fade-scroll " style="display: none;"></a>
     </div>
     <!-- #dtr-wrapper ends -->
-
-    <!-- modal starts -->
-        <!-- Modal -->
-        <div class="modal fade" id="contatoModal" tabindex="-1" aria-labelledby="contatoModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <form action="{{route('contato')}}" method='POST'>
-                    @csrf
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="contatoModalLabel">Envie uma mensagem pra gente</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            {{-- <label for="exampleInputEmail1" class="form-label">Email</label> --}}
-                            <input type="email" name="email" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                            {{-- <label for="exampleInputassunto" class="form-label">Assunto</label> --}}
-                            <input type="text" name="assunto" placeholder="Assunto" class="form-control" id="exampleInputassunto">
-                        </div>
-                        <div class="mb-3">
-                            {{-- <label for="exampleInputmensagem" class="form-label">Mensagem</label> --}}
-                            <textarea type="text" name="mensagem" placeholder="Digite sua mensagem aqui"  row=6 class="form-control" id="exampleInputmensagem"></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                    </div>
-                </form>
-            </div>
-            </div>
-        </div>
-    <!-- modal ends -->
 
     <!-- JS FILES -->
     @include('public.scripts')

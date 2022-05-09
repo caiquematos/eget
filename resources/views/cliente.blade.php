@@ -2,14 +2,20 @@
 <!-- saved from url=(0072)http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements# -->
 <html lang="en">
 
+<!-- funcoes -->
+@include("public.funcoes")
+<!-- /funcoes -->
+<!-- head -->
 @include('public.head')
+<!-- /head -->
+
+<link rel="stylesheet" href="{{url('assets/css/smartwizard.css')}}">
 
 <style>
 
     @media (max-width: 1400px) {
        
-     }
-
+    }
 
     html {
         scroll-behavior: smooth !important;
@@ -157,6 +163,69 @@
         background-image:url("{{url('template/assets/img/banner-02.webp')}}");
     }
 
+    /* Style da página add clientes */
+    select, textarea, input[type="text"], input[type="date"], input[type="email"], input[type="url"], input[type="password"], input[type="number"], input[type="tel"], input[type="search"]
+    {
+        background-color: #e9e9e9 !important;
+    }
+
+    .StepTitle {
+        color: #525252;
+    }
+
+    #btn_add_dependente .btn-success, .dependente .btn-success {
+        font-size: small !important;
+        color: #fff !important;
+        background-color: #3d88f8 !important;
+        border-color: #3d88f8 !important;
+    }
+
+    #btn_add_dependente .btn-success:hover, .dependente .btn-success:hover {
+        color: #fff !important;
+        background-color: #0d6efd !important;
+        border-color: #0d6efd !important;
+    }
+
+    #btn_add_dependente .btn-danger, .dependente .btn-danger {
+        font-size: small !important;
+    }
+
+    .form_wizard .stepContainer {
+        height: auto !important;
+    }
+
+    .buttonNext {
+        color: #fff;
+        background-color: #367e8c !important;
+        border-color: #367e8c !important;
+    }
+
+    .buttonNext:hover {
+        color: #fff;
+        background-color: #169F85 !important;
+        border-color: #169F85 !important;
+    }
+
+    
+    .buttonPrevious  {
+        color: #fff;
+        background-color: #34495E !important;
+        border-color: #34495E !important;
+    }
+
+    .buttonPrevious:hover {
+        color: #fff;
+        background-color: #243241 !important;
+        border-color: #243241 !important;
+    }
+
+    input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus {
+        border-color: #169F85 !important;
+        -webkit-text-fill-color: black !important;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+
 </style>
 
 <body>
@@ -227,6 +296,41 @@
             </div>
         </div>
     </header>
+
+        <!-- modal starts -->
+            <!-- Modal -->
+            <div class="modal fade" id="contatoModal" tabindex="-1" aria-labelledby="contatoModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="{{route('contato')}}" method='POST'>
+                        @csrf
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="contatoModalLabel">Envie uma mensagem pra gente</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                {{-- <label for="exampleInputEmail1" class="form-label">Email</label> --}}
+                                <input type="email" name="email" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                {{-- <label for="exampleInputassunto" class="form-label">Assunto</label> --}}
+                                <input type="text" name="assunto" placeholder="Assunto" class="form-control" id="exampleInputassunto">
+                            </div>
+                            <div class="mb-3">
+                                {{-- <label for="exampleInputmensagem" class="form-label">Mensagem</label> --}}
+                                <textarea type="text" name="mensagem" placeholder="Digite sua mensagem aqui"  row=6 class="form-control" id="exampleInputmensagem"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        <!-- modal ends -->
     <!-- header ends
 ================================================== -->
 
@@ -261,16 +365,131 @@
                     <div class="dtr-intro-subheading-wrapper">
                         <p class="dtr-intro-subheading">Clientes</p>
                     </div>
-                    <h2 class="dtr-intro-heading">Faça o cadastro para receber nosso Cartão de Vantagens</h2>
-                    {{-- <div class="row">
-                        <div class="col-md-7">
-                            <p class="dtr-intro-content">O cartão de vantagens do CDI disponibiliza descontos especiais em 
-                                exames de imagem, sem carência, taxa de adesão ou mensalidade. 
-                                Além disso, também tem cashback para beneficiários. Muito mais 
-                                agilidade e economia para quem precisa!</p>
+                    <h2 class="dtr-intro-heading">Cadastro - Cartão de Vantagens</h2>
+                    <!-- Smart Wizard -->
+                    <p>Faça o cadastro para receber nosso Cartão de Vantagens.</p>
+                    <form action="{{route('cliente.store')}}" method="post">
+                        @csrf
+                        <div id="wizard" class="form_wizard wizard_horizontal mt-5">
+                            <ul class="wizard_steps">
+                                <li>
+                                <a href="#step-1">
+                                    <span class="step_no">1</span>
+                                    <span class="step_descr">
+                                        Passo 1<br />
+                                    </span>
+                                </a>
+                                </li>
+                                <li>
+                                <a href="#step-2">
+                                    <span class="step_no">2</span>
+                                    <span class="step_descr">
+                                        Passo 2<br />
+                                    </span>
+                                </a>
+                                </li>
+                                <li>
+                                <a href="#step-3">
+                                    <span class="step_no">3</span>
+                                    <span class="step_descr">
+                                        Passo 3<br />
+                                    </span>
+                                </a>
+                                </li>
+                                <li>
+                                <a href="#step-4">
+                                    <span class="step_no">4</span>
+                                    <span class="step_descr">
+                                                    Passo 4<br />
+                                    </span>
+                                </a>
+                                </li>
+                            </ul>
+                            <div id="step-1">
+                                <h4 class="StepTitle text-center">Informações Pessoais</h4>
+                                <div class="form-group row justify-content-center">
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input type="text" name="nome" placeholder="Nome" class="form-control">
+                                </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input id="cliente-email" type="email" name="email" placeholder="Email" class="form-control">
+                                </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" data-tipo="celular" name="celular" placeholder="Whatsapp" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="step-2">
+                                <h4 class="StepTitle text-center">Informações de Login</h4>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" data-tipo="cpf" name="cpf" placeholder="CPF" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="password" name="password" autocomplete="new-password" placeholder="Senha" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="password" name="confirm-password" autocomplete="new-password" placeholder="Confirmar senha" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="step-3">
+                                <h4 class="StepTitle text-center">Endereço</h4>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" data-tipo="cep" name="cep" placeholder="CEP" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" data-tipo="endereco" name="logradouro" placeholder="Logradouro" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-md-2 col-sm-6 ">
+                                        <input type="text" data-tipo="numero" name="numero" placeholder="Número" class="form-control">
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 ">
+                                        <input type="text" data-tipo="complemento" name="complemento" placeholder="Complemento" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" data-tipo="bairro" name="bairro" placeholder="Bairro" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-md-3 col-sm-6 ">
+                                        <input type="text" data-tipo="estado" name="estado" placeholder="Estado" class="form-control">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 ">
+                                        <input type="text" data-tipo="cidade" name="cidade" placeholder="Cidade" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="step-4">
+                                <h4 class="StepTitle text-center">Dependentes</h4>
+                                <div id="btn_add_dependente" class="row justify-content-center">
+                                    <div class="col-md-6 col-sm-6 d-flex align-items-center">
+                                        <button class="btn btn-success mx-auto" onclick="addDependente(this)"><span>Adicionar Dependente</span></button>
+                                    </div>
+                                </div>
+                                <div id="dependentes"></div>
+                            </div>
                         </div>
-                    </div> --}}
-                   
+                    </form>
+                    <div class="wizard-btns-wrapper float-end">
+                        <button class="next btn btn-danger m-1">Voltar</button><button class="next btn btn-success m-1">Avançar</button><button class="btn d-none m-1" type="submit"></button>
+                    </div>
+                    <!-- End SmartWi zard Content -->
                 </div>
                 <!-- heading ends -->
 
@@ -413,48 +632,200 @@
     </div>
     <!-- #dtr-wrapper ends -->
 
-    <!-- modal starts -->
-        <!-- Modal -->
-        <div class="modal fade" id="contatoModal" tabindex="-1" aria-labelledby="contatoModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <form action="{{route('contato')}}" method='POST'>
-                    @csrf
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="contatoModalLabel">Envie uma mensagem pra gente</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            {{-- <label for="exampleInputEmail1" class="form-label">Email</label> --}}
-                            <input type="email" name="email" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                            {{-- <label for="exampleInputassunto" class="form-label">Assunto</label> --}}
-                            <input type="text" name="assunto" placeholder="Assunto" class="form-control" id="exampleInputassunto">
-                        </div>
-                        <div class="mb-3">
-                            {{-- <label for="exampleInputmensagem" class="form-label">Mensagem</label> --}}
-                            <textarea type="text" name="mensagem" placeholder="Digite sua mensagem aqui"  row=6 class="form-control" id="exampleInputmensagem"></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                    </div>
-                </form>
-            </div>
-            </div>
-        </div>
-    <!-- modal ends -->
-
     <!-- JS FILES -->
     @include('public.scripts')
+    <!-- jQuery Smart Wizard -->
+    <script src="{{url('assets/js/jquery.smartWizard.js')}}"></script>
     <script>
-        $(".nav-link").click(function() {
-            $(".nav-link").removeClass("active");
-            $(this).addClass("active");
-        })
+        /* SMART WIZARD */
+        var smartwizard;
+        var step = 1;
+
+        $(function(){
+           
+            init_SmartWizard();
+
+            $('.next').click(function() {
+                console.log("step", step);
+                switch (step) {
+                    case 1:
+                        if(!validar_step_1())
+                            return;
+                    break;
+                    case 2:
+                        if(!validar_step_2())
+                            return;
+                    break;
+                    case 3:
+                        if(!validar_step_3())
+                            return;
+                    break;
+                }
+                step++;
+                $('.buttonNext').click();
+
+            });
+
+            $('.prev').click(function() {
+                console.log("step", step);
+                step--;
+                $('.buttonPrevious').click();
+            });
+        });
+
+        function init_SmartWizard() {
+
+            if (typeof ($.fn.smartWizard) === 'undefined') { return; }
+            console.log('init_SmartWizard');
+
+            smartwizard = $('#wizard').smartWizard({
+                justified: true,
+                keyboardSettings: {
+                    keyNavigation: true, // Enable/Disable keyboard navigation(left and right keys are used if enabled)
+                    keyLeft: [37], // Left key code
+                    keyRight: [39] // Right key code
+                },
+            });
+            $('.buttonNext').addClass('btn btn-success').text("Avançar");
+            $('.buttonPrevious').addClass('btn btn-primary').text("Voltar");
+            $('.buttonFinish').hide();
+
+        };
+
+        function validar_step_1() {
+            let input, cancelar = false;
+            let whatsapp = $("input[name=celular]");
+            let email = $("#cliente-email");
+            let nome = $("input[name=nome]");
+
+            if (!whatsapp.val()) {
+                input = whatsapp;
+                cancelar = true;
+            }
+
+            if (!email.val() || !is_email_valid(email.val())) {
+                input = email;
+                cancelar = true;
+            }
+
+            if (!nome.val()) {
+                input = nome;
+                cancelar = true;
+            }
+
+            if (cancelar) {
+                input.focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        function validar_step_2() {
+            let input, cancelar = false;
+            let cpf = $("input[name=cpf]");
+            let password = $("input[name=password]");
+            let confirm_password = $("input[name=confirm-password]");
+
+            if (!confirm_password.val()) {
+                input = confirm_password;
+                cancelar = true;
+            }
+
+            if (!cpf.val() || !is_cpf_valid(cpf.val())) {
+                input = cpf;
+                cancelar = true;
+            }
+
+            if (!password.val()) {
+                input = nome;
+                cancelar = true;
+            }
+
+            if (cancelar) {
+                input.focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        function validar_step_3() {
+
+        }
+
     </script>
+
+    <!-- Funçoes gerenciamento de dependente	-->
+    <script>
+        var dependente_counter = 1;
+        function addDependente() {
+            $("#btn_add_dependente").fadeOut();
+            $("#dependentes").append(
+                `
+                <div id="dependente_${dependente_counter}" class="dependente mb-4" style="display:none">
+                    <div class="form-group row justify-content-center">
+                        <div class="col-md-6 col-sm-6 ">
+                            <input type="text" name="dependentes[nome][]" placeholder="Nome" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <div class="col-md-6 col-sm-6 ">
+                            <input type="text" data-tipo="cpf" name="dependentes[cpf][]" placeholder="CPF" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <div class="col-md-6 col-sm-6 ">
+                            <select name="dependentes[sexo][]" class="select2_single" tabindex="-1" required='required'>
+                                <option selected>Selecione uma opção</option>
+                                @foreach (GERAL_SEXO as $key=>$sexo)
+                                    <option  {{old('dependentes.sexo.0') == $key ? 'selected': ''}} value={{$key}}>{{$sexo}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <div class="col-md-6 col-sm-6 ">
+                            <select name="dependentes[parentesco][]" class="select2_single" tabindex="-1" required='required'>
+                                <option selected>Selecione uma opção</option>
+                                @foreach (DEPENDENTE_PARENTESCO as $key=>$parentesco)
+                                <option {{old('dependentes.parentesco.0') == $key ? 'selected': ''}} value={{$key}}>{{$parentesco}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <div class="col-md-6 col-sm-6 ">
+                            <input class="form-control" class='date' type="date" name="dependentes[nascimento][]" value="{{old('dependentes.nascimento.0')}}" required='required'>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-sm-6 d-flex align-items-center">
+                            <button class="btn btn-success ms-auto m-1" onclick="addDependente(this)"><span class="glyphicon glyphicon-plus" aria-hidden="true">Adicionar</span></button>
+                            <button class="btn btn-danger me-auto m-1" onclick="remDependente(this)"><span class="glyphicon glyphicon-minus" aria-hidden="true">Remover</span></button>
+                        </div>
+                    </div>
+                </div>
+                `
+            );
+            $(`input[name="dependentes[cpf][]"]`).mask("000.000.000-00");
+            $(`#dependente_${dependente_counter}`).slideDown("normal");
+            dependente_counter++;
+            return false;
+        }
+        function remDependente(e) {
+            let dependente_item = $(e).closest('.dependente');
+            dependente_item.slideUp("normal", function() { 
+                $(this).remove();
+                console.log("hasclass", $('#dependentes').find('.dependente').length);
+                if (! $('#dependentes').find('.dependente').length) {
+                    $("#btn_add_dependente").fadeIn();
+                }
+            } );
+            return false;
+        }
+    </script>
+    <!-- /Funçoes gerenciamento de dependente	-->
+
 
 </body></html>

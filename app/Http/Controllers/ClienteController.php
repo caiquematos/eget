@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreClienteRequest;
 use App\Models\Usuario;
+use App\Models\Pagamento;
+use App\Models\Dependente;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -30,12 +33,41 @@ class ClienteController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\StoreClienteRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreClienteRequest $request)
     {
-        //
+        $cliente = new Usuario();
+        $cliente->fill($request->all())->save();
+
+        // Gerencia papel do usuário.
+        $cliente->roles()->sync([config('constants.ROLES.CLIENTE.id')]);
+
+        // Gerencia pagamento.
+        $pagamento = new Pagamento();
+        $pagamento->id_usuario = $cliente->id;
+        $pagamento->status = 1;
+        $pagamento->save();
+
+        // Gerencia dependentes.
+        if (!empty($request->input("dependentes"))) {
+            $dependentes = $this->mapear_form_array($request->input("dependentes"));
+            foreach($dependentes as $dependente) {
+                 $dependente = (Object) $dependente;
+                 $dependente_obj = new Dependente();
+                 $dependente_obj->id_usuario = $cliente->id;
+                 $dependente_obj->cpf = $dependente->cpf;
+                 $dependente_obj->nome = $dependente->nome;
+                 $dependente_obj->sexo = $dependente->sexo;
+                 $dependente_obj->parentesco = $dependente->parentesco;
+                 $dependente_obj->nascimento = $dependente->nascimento;
+                 $dependente_obj->save();
+            }
+        }
+        $this->response["success"] = true;
+        $this->response["cliente"] = $cliente;
+        return redirect()->route('cliente.create')->with(["success"=>"Cliente adicionado com sucesso."]);
     }
 
     /**
