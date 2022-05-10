@@ -4,6 +4,9 @@
 <script src="{{url('template/assets/js/slick.min.js')}}"></script>
 <!-- jQuery Mask -->
 <script src="{{url('admin/assets/js/jquery.mask.min.js')}}"></script>
+<!-- Sweet Alert 2 -->
+<script src="{{url('assets/js/sweetalert2.all.min.js')}}"></script>
+<!-- Costum File -->
 <script src="{{url('template/assets/js/custom.js')}}"></script>
 
 
@@ -29,17 +32,20 @@
         @php
             $sessao_erros = "";
             foreach ($errors->all() as $error):
-                $sessao_erros.= $error;
+                $sessao_erros.= $error . '<br>';
             endforeach;
         @endphp
         <script>
-            console.log("{{$sessao_erros}}");
-            // new PNotify({
-            //     title: 'Opa!',
-            //     text: "{{$sessao_erros}}",
-            //     type: 'error',
-            //     styling: 'bootstrap3'
-            // });
+            console.error("{{$sessao_erros}}");
+            Swal.fire({
+                title: 'Ops!',
+                icon: 'info',
+                html:"{!!$sessao_erros!!}",
+                showCloseButton: false,
+                showCancelButton: false,
+                focusConfirm: false,
+                confirmButtonText:'OK',
+            });
         </script>
     @endif
 
@@ -47,12 +53,6 @@
     @if (session("success"))
         <script>
             console.log("{{session('success')}}");
-            // new PNotify({
-            //     title: 'Sucesso',
-            //     text: "{{session('success')}}",
-            //     type: 'success',
-            //     styling: 'bootstrap3'
-            // });
         </script>
     @endif
 

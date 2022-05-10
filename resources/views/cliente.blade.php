@@ -63,7 +63,7 @@
     #section-3 {
         background-image: url("{{url('template/assets/img/fundo-03.webp')}}");
         margin-top: 102px;
-        height: 400px;
+        height: 295px;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -263,108 +263,8 @@
 <body>
 <div id="dtr-wrapper" class="clearfix">
 
-    <!-- preloader starts -->
-    <div class="dtr-preloader" style="display: none;">
-        <div class="dtr-preloader-inner">
-            <div class="dtr-loader">Carregando...</div>
-        </div>
-    </div>
-    <!-- preloader ends -->
-
-    <!-- Small Devices Header
-============================================= -->
-    <div class="dtr-responsive-header header-with-slick-menu fixed-top" style="">
-        <div class="container">
-
-            <!-- small devices logo -->
-            <div class="dtr-responsive-header-left"> <a class="dtr-logo" href="{{url('/')}}#home"><img src="{{url('template/assets/img/logo.png')}}" alt="Cadastro"></a> </div>
-            <!-- small devices logo ends -->
-
-            <!-- menu button -->
-            <button id="dtr-menu-button" class="dtr-hamburger" type="button"><span class="dtr-hamburger-lines-wrapper"><span class="dtr-hamburger-lines"></span></span></button>
-        </div>
-        <div class="dtr-responsive-header-menu"><div class="slicknav_menu"><ul class="slicknav_nav slicknav_hidden" style="touch-action: pan-y; display: none;" aria-hidden="true" role="menu">
-                        <li> <a class="nav-link active" href="{{url('/')}}#home" role="menuitem" tabindex="-1">Home</a> </li>
-                        <li> <a class="nav-link" href="{{url('/')}}#process" role="menuitem" tabindex="-1">Quem somos</a> </li>
-                        <li> <a class="nav-link" href="{{url('/')}}#services" role="menuitem" tabindex="-1">Vantagens</a> </li>
-                        <li> <a class="nav-link" href="{{url('/')}}#faq" role="menuitem" tabindex="-1">Perguntas frequentes</a> </li>
-                        <li> <a class="nav-link"  data-bs-toggle="modal" href="#contatoModal" role="menuitem" tabindex="-1">Contato</a> </li>
-                    </ul></div></div>
-    </div>
-    <!-- Small Devices Header ends
-============================================= -->
-
-    <!-- header starts
-============================================= -->
-    <header id="dtr-header-global" class="fixed-top on-scroll">
-        <div class="container">
-            <div class="d-flex align-items-center justify-content-between">
-
-                <!-- header left starts -->
-                <div class="dtr-header-left">
-
-                    <!-- logo -->
-                    <a class="logo-default dtr-scroll-link" href="{{url('/')}}#home"><img src="{{url('template/assets/img/logo.png')}}" alt="Cadastro"></a>
-
-                    <!-- logo on scroll -->
-                    <a class="logo-alt dtr-scroll-link" href="{{url('/')}}#home"><h1><img src="{{url('template/assets/img/logo.png')}}" alt="Cadastro"></h1></a>
-                    <!-- logo on scroll ends -->
-
-                </div>
-                <!-- header left ends -->
-
-                <!-- menu starts-->
-                <div class="main-navigation">
-                    <ul class="sf-menu dtr-nav dark-nav-on-load dark-nav-on-scroll dtr-menu-dark sf-js-enabled sf-arrows" style="touch-action: pan-y;">
-                        <li> <a class="nav-link active" href="{{url('/')}}#home">Home</a> </li>
-                        <li> <a class="nav-link" href="{{url('/')}}#process">Quem somos</a> </li>
-                        <li> <a class="nav-link" href="{{url('/')}}#services">Vantagens</a> </li>
-                        <li> <a class="nav-link" href="{{url('/')}}#faq">Perguntas frequentes</a> </li>
-                        <li> <a class="nav-link" data-bs-toggle="modal" href="#contatoModal" role="button">Contato</a> </li>
-                    </ul>
-                </div>
-                <!-- menu ends -->
-
-            </div>
-        </div>
-    </header>
-
-        <!-- modal starts -->
-            <!-- Modal -->
-            <div class="modal fade" id="contatoModal" tabindex="-1" aria-labelledby="contatoModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="{{route('contato')}}" method='POST'>
-                        @csrf
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="contatoModalLabel">Envie uma mensagem pra gente</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                {{-- <label for="exampleInputEmail1" class="form-label">Email</label> --}}
-                                <input type="email" name="email" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            </div>
-                            <div class="mb-3">
-                                {{-- <label for="exampleInputassunto" class="form-label">Assunto</label> --}}
-                                <input type="text" name="assunto" placeholder="Assunto" class="form-control" id="exampleInputassunto">
-                            </div>
-                            <div class="mb-3">
-                                {{-- <label for="exampleInputmensagem" class="form-label">Mensagem</label> --}}
-                                <textarea type="text" name="mensagem" placeholder="Digite sua mensagem aqui"  row=6 class="form-control" id="exampleInputmensagem"></textarea>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
-                        </div>
-                    </form>
-                </div>
-                </div>
-            </div>
-        <!-- modal ends -->
-    <!-- header ends
-================================================== -->
+<!-- Navbar e Modais Comuns -->
+@include('public.nav')
 
  <!-- section starts
 ================================================== -->
@@ -441,19 +341,19 @@
                                 <h4 class="StepTitle text-center">Informações Pessoais</h4>
                                 <div class="form-group row justify-content-center">
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input type="text" name="nome" placeholder="Nome*" required class="form-control">
+                                    <input type="text" name="nome"  value="{{ old('nome') }}" placeholder="Nome*" required class="form-control">
                                     <p class="feedback-error">Esse campo é obrigatório.</p>
                                 </div>
                                 </div>
                                 <div class="form-group row justify-content-center">
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input id="cliente-email" type="email" name="email" placeholder="Email*" required class="form-control">
+                                    <input id="cliente-email" type="email" value="{{ old('email') }}"  name="email" placeholder="Email*" required class="form-control">
                                     <p class="feedback-error">Utilize um email válido.</p>
                                 </div>
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" data-tipo="celular" name="celular" placeholder="Whatsapp*" required class="form-control">
+                                        <input type="text" data-tipo="celular"  value="{{ old('celular') }}" name="celular" placeholder="Whatsapp*" required class="form-control">
                                         <p class="feedback-error">Esse campo é obrigatório.</p>
                                     </div>
                                 </div>
@@ -462,7 +362,7 @@
                                 <h4 class="StepTitle text-center">Informações de Login</h4>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" data-tipo="cpf" name="cpf" placeholder="CPF*" required class="form-control">
+                                        <input type="text" data-tipo="cpf" value="{{ old('cpf') }}" name="cpf" placeholder="CPF*" required class="form-control">
                                         <p class="feedback-error">Utilize um CPF válido.</p>
                                     </div>
                                 </div>
@@ -483,38 +383,38 @@
                                 <h4 class="StepTitle text-center">Endereço</h4>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" data-tipo="cep" name="cep" placeholder="CEP*" required class="form-control">
+                                        <input type="text" data-tipo="cep" value="{{ old('cep') }}" name="cep" placeholder="CEP*" required class="form-control">
                                         <p class="feedback-error">Utilize um CEP válido.</p>
                                     </div>
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" data-tipo="endereco" name="endereco" placeholder="endereco*" required class="form-control">
+                                        <input type="text" data-tipo="endereco"  value="{{ old('endereco') }}"  name="endereco" placeholder="endereco*" required class="form-control">
                                         <p class="feedback-error">Esse campo é obrigatório.</p>
                                     </div>
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-2 col-sm-6 ">
-                                        <input type="text" data-tipo="numero" name="numero" placeholder="Número*" required class="form-control">
+                                        <input type="text" data-tipo="numero"  value="{{ old('numero') }}" name="numero" placeholder="Número*" required class="form-control">
                                         <p class="feedback-error">Esse campo é obrigatório.</p>
                                     </div>
                                     <div class="col-md-4 col-sm-6 ">
-                                        <input type="text" data-tipo="complemento" name="complemento" placeholder="Complemento" class="form-control">
+                                        <input type="text" data-tipo="complemento"  value="{{ old('complemento') }}"  name="complemento" placeholder="Complemento" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" data-tipo="bairro" name="bairro" placeholder="Bairro*" required class="form-control">
+                                        <input type="text" data-tipo="bairro" value="{{ old('bairro') }}" name="bairro" placeholder="Bairro*" required class="form-control">
                                         <p class="feedback-error">Esse campo é obrigatório.</p>
                                     </div>
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-3 col-sm-6 ">
-                                        <input type="text" data-tipo="estado" name="estado" placeholder="Estado*" required class="form-control">
+                                        <input type="text" data-tipo="estado"  value="{{ old('estado') }}"  name="estado" placeholder="Estado*" required class="form-control">
                                         <p class="feedback-error">Esse campo é obrigatório.</p>
                                     </div>
                                     <div class="col-md-3 col-sm-6 ">
-                                        <input type="text" data-tipo="cidade" name="cidade" placeholder="Cidade*" required class="form-control">
+                                        <input type="text" data-tipo="cidade" name="cidade"  value="{{ old('cidade') }}" placeholder="Cidade*" required class="form-control">
                                         <p class="feedback-error">Esse campo é obrigatório.</p>
                                     </div>
                                 </div>
@@ -538,16 +438,6 @@
                     <!-- End SmartWi zard Content -->
                 </div>
                 <!-- heading ends -->
-
-                <!--== row 1 starts ==-->
-                <div class="row wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-
-                   <div class="col-md-12">
-
-                   </div>
-
-                </div>
-                <!--== row 1 ends ==-->
 
             </div>
         </section>
@@ -688,7 +578,7 @@
         var step = 1;
 
         $(function(){
-           
+
             init_SmartWizard();
 
             $('.next').click(function() {
@@ -877,6 +767,25 @@
         }
 
     </script>
+
+    <!-- Verifica se há mensagem de sucesso na sessão -->
+    @if (session("success"))
+    <script>
+        Swal.fire({
+            title: 'Sucesso',
+            text: "{{session('success')}}Agora você pode acompanhar o andamento do seu cartão acessando a área 'Meu Cartão'.",
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: "Ok, ir para área 'Meu Cartão'"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "{{route('cliente.cartao')}}";
+            }
+        });
+    </script>
+    @endif
+    <!-- /Verifica se há mensagem de sucesso na sessão -->
 
     <!-- Funçoes gerenciamento de dependente	-->
     <script>

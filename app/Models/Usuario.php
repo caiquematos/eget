@@ -27,7 +27,7 @@ class Usuario extends BaseModel
      */
     public function dependentes()
     {
-        return $this->hasMany(Dependente::class, 'id_usuario', 'id')->withTimestamps();
+        return $this->hasMany(Dependente::class, 'id_usuario', 'id');
     }
 
     /**
@@ -35,7 +35,7 @@ class Usuario extends BaseModel
      */
     public function pagamentos()
     {
-        return $this->hasMany(Pagamento::class, 'id_usuario', 'id')->withTimestamps();
+        return $this->hasMany(Pagamento::class, 'id_usuario', 'id');
     }
 
     /**

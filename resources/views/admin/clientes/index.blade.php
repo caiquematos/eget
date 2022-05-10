@@ -75,14 +75,15 @@
                           {{-- <th>Região</th>
                           <th>Assinatura</th> --}}
                           <th>Data de Nascimento</th>
-                          <th>Sexo</th>
-                          <th>Estado Civil</th>
+                          {{-- <th>Sexo</th>
+                          <th>Estado Civil</th> --}}
                           <th>Celular</th>
-                          <th>Telefone</th>
-                          <th>Local de Retirada</th>
+                          {{-- <th>Telefone</th> --}}
+                          <th>Dependentes</th>
+                          {{-- <th>Local de Retirada</th>
                           <th>Como Conheceu?</th>
                           <th>Renda</th>
-                          <th>Profissão</th>
+                          <th>Profissão</th> --}}
                           {{-- <th>Animal</th> --}}
                           {{-- <th>Ofertas</th> --}}
                           <th data-priority="4">Pagamento</th>
@@ -98,14 +99,15 @@
                                     <td>{{$cliente->email ?? "-"}}</td>
                                     <td>{!!"<span data-tipo='cpf'>$cliente->cpf</span>"!!}</td>
                                     <td>{{$cliente->nascimento ?? "-"}}</td>
-                                    <td>{{GERAL_SEXO[$cliente->sexo] ?? "-"}}</td>
-                                    <td>{{CLIENTE_ESTADO_CIVIL[$cliente->estado_civil] ?? "-"}}</td>
+                                    {{-- <td>{{GERAL_SEXO[$cliente->sexo] ?? "-"}}</td>
+                                    <td>{{CLIENTE_ESTADO_CIVIL[$cliente->estado_civil] ?? "-"}}</td> --}}
                                     <td>{!! !empty($cliente->celular) ? "<span data-tipo='celular'>$cliente->celular</span>" : "-" !!}</td>
-                                    <td>{!! !empty($cliente->telefone) ? "<span data-tipo='telefone'>$cliente->telefone</span>"  : "-" !!}</td>
-                                    <td>{{$cliente->local_retirada ?? "-"}}</td>
+                                    {{-- <td>{!! !empty($cliente->telefone) ? "<span data-tipo='telefone'>$cliente->telefone</span>"  : "-" !!}</td> --}}
+                                    <td>{{$cliente->dependentes->count()}}</td>
+                                    {{-- <td>{{$cliente->local_retirada ?? "-"}}</td>
                                     <td>{{$cliente->como_conheceu ?? "-"}}</td>
                                     <td>{{CLIENTE_RENDA[$cliente->renda] ?? "-"}}</td>
-                                    <td>{{$cliente->profissao ?? "-"}}</td>
+                                    <td>{{$cliente->profissao ?? "-"}}</td> --}}
                                     <td>
                                         @if (now() > Carbon\Carbon::parse($cliente->data_pagamento)->addMonths(12))
                                             {!!"<p class='pagamento-status bg-danger text-white'>expirou</p>"!!}

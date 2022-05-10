@@ -88,9 +88,9 @@
                                                 <input class="form-control" name="email"  value="{{ $usuario->email }}" class='email' required="required" type="email" /></div>
                                         </div>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Função</label>
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Função<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-12  ">
-												<select name="tipo" class="select2_single form-control" tabindex="-1" >
+												<select name="tipo" class="select2_single form-control" tabindex="-1" required >
                                                     @foreach ($roles as $role)
                                                         <option value={{$role->id}}>{{$role->name}}</option>
                                                     @endforeach
@@ -114,9 +114,9 @@
 											</div>
                                         </div>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Celular</label>
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Celular<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" type="text" class='tel' name="celular" value="{{ $usuario->celular }}" data-mask="(00) 0 0000-0000"/></div>
+                                                <input class="form-control" type="text" class='tel' name="celular" value="{{ $usuario->celular }}" data-mask="(00) 0 0000-0000" required/></div>
                                         </div>
                                         <div class="ln_solid"></div>
                                         <div class="form-group">

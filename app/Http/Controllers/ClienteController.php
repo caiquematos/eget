@@ -17,7 +17,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        return view('cartao');
     }
 
     /**
@@ -67,7 +67,7 @@ class ClienteController extends Controller
         }
         $this->response["success"] = true;
         $this->response["cliente"] = $cliente;
-        return redirect()->route('cliente.create')->with(["success"=>"Cliente adicionado com sucesso."]);
+        return redirect()->route('cliente.create')->with(["success"=>"Cadastro realizado com sucesso."]);
     }
 
     /**

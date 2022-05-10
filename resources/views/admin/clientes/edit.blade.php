@@ -71,26 +71,31 @@
                                         @method('PUT')
                                         <span class="section">Informações Pessoais</span>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">CPF<span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" data-validate-length-range="13" value="{{ $cliente->cpf }}" data-mask="000.000.000-00" name="cpf" required="required" />
-                                            </div>
-                                        </div>
-                                        <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Nome completo<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" data-validate-length-range="6" value="{{ $cliente->nome }}" data-validate-words="2" name="nome" required="required" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Data de nascimento<span class="required">*</span></label>
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">CPF<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" class='date' type="date" name="nascimento"  value="{{ date("Y-m-d", strtotime($cliente->nascimento)) }}" required='required'></div>
+                                                <input class="form-control" data-validate-length-range="13" value="{{ $cliente->cpf }}" data-mask="000.000.000-00" name="cpf" required="required" />
+                                            </div>
                                         </div>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Sexo<span class="required">*</span></label>
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">E-mail<span class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" name="email"  value="{{ $cliente->email }}" class='email' required="required" type="email" /></div>
+                                        </div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Data de nascimento</label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" class='date' type="date" name="nascimento"  value="{{ date("Y-m-d", strtotime($cliente->nascimento)) }}" </div>
+                                        </div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Sexo</label>
                                             <div class="col-md-6 col-sm-12  ">
-												<select name="sexo" class="select2_single form-control" tabindex="-1" required='required'>
+												<select name="sexo" class="select2_single form-control" tabindex="-1" >
 													<option selected>Selecione uma opção</option>
 													@foreach (GERAL_SEXO as $key=>$sexo)
                                                         <option value={{$key}}>{{$sexo}}</option>
@@ -98,7 +103,7 @@
 												</select>
 											</div>
                                         </div>
-                                        <div class="field item form-group">
+                                        {{-- <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Estado civil<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-12  ">
 												<select name="estado_civil" class="select2_single form-control" tabindex="-1" required='required'>
@@ -108,18 +113,13 @@
                                                     @endforeach
 												</select>
 											</div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">E-mail<span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" name="email"  value="{{ $cliente->email }}" class='email' required="required" type="email" /></div>
-                                        </div>
+                                        </div> --}}
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Celular<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" type="text" class='tel' name="celular" value="{{ $cliente->celular }}" data-mask="(00) 0 0000-0000" required='required'/></div>
                                         </div>
-                                        <div class="field item form-group">
+                                        {{-- <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Telefone<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" type="text" class='tel' name="telefone" value="{{ $cliente->telefone }}" data-mask="(00) 0000-0000" required='required' /></div>
@@ -166,7 +166,7 @@
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Qual Sua Profissão?<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" type="text"  name="profissao" value="{{  $cliente->profissao }}" required='required' data-validate-length-range="8,22" /></div>
-                                        </div>
+                                        </div> --}}
                                         <span class="section">Endereço</span>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">CEP<span class="required">*</span></label>
@@ -247,7 +247,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                         <div class="card-box table-responsive">
-                                            <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                            <table id="datatable-dependentes" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                                 <thead>
                                                 <tr>
                                                     <th data-priority="1">Nome</th>
@@ -330,7 +330,6 @@
 
     <script>
         $(function() {
-            console.log("como conheceu", cliente.como_conheceu);
             $("input[name=nascimento]").val(date_pt_en(cliente.nascimento)).change();
             $("select[name=sexo]").val(cliente.sexo).change();
             $("select[name=estado_civil]").val(cliente.estado_civil).change();
@@ -339,6 +338,11 @@
             $("select[name=renda]").val(cliente.renda).change();
             $("select[name=estado]").val(cliente.estado).change();
             $("select[name=cidade]").val(cliente.cidade).change();
+            $("#datatable-dependentes").DataTable({
+                language: {
+                    url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
+                }
+            });
         });
 
         function toggleAtivacao(e) {

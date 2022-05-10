@@ -90,6 +90,7 @@ Route::get('/adm', function() {
 })->name('adm')->middleware(['auth', 'role:admnistrador']);
 
 // Rotas 'Landing Page'
+Route::get('/cliente/cartao', [ClienteController::class, 'index'])->name('cliente.cartao');
 Route::post('/contato', [HomeController::class, 'contato'])->name('contato');
 Route::resource("cliente", ClienteController::class);
 Route::get('/', [HomeController::class, 'index'])->name('home');

@@ -96,26 +96,31 @@
 											</div>
                                         </div> --}}
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">CPF<span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" data-validate-length-range="13" value="{{ old('cpf') }}" data-mask="000.000.000-00" name="cpf" required="required" />
-                                            </div>
-                                        </div>
-                                        <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Nome completo<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" data-validate-length-range="6" value="{{ old('nome') }}" data-validate-words="2" name="nome" required="required" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Data de nascimento<span class="required">*</span></label>
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">CPF<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" class='date' type="date" name="nascimento"  value="{{ old('nascimento') }}" required='required'></div>
+                                                <input class="form-control" data-validate-length-range="13" value="{{ old('cpf') }}" data-mask="000.000.000-00" name="cpf" required="required" />
+                                            </div>
                                         </div>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Sexo<span class="required">*</span></label>
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">E-mail<span class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" name="email"  value="{{ old('email') }}" class='email' required="required" type="email" /></div>
+                                        </div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Data de nascimento</label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" class='date' type="date" name="nascimento"  value="{{ old('nascimento') }}"></div>
+                                        </div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Sexo</label>
                                             <div class="col-md-6 col-sm-12  ">
-												<select name="sexo" class="select2_single form-control" tabindex="-1" required='required'>
+												<select name="sexo" class="select2_single form-control" tabindex="-1">
 													<option selected>Selecione uma opção</option>
 													@foreach (GERAL_SEXO as $key=>$sexo)
                                                         <option {{old('sexo') == $key ? 'selected': ''}} value={{$key}}>{{$sexo}}</option>
@@ -123,7 +128,7 @@
 												</select>
 											</div>
                                         </div>
-                                        <div class="field item form-group">
+                                        {{-- <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Estado civil<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-12  ">
 												<select name="estado_civil" class="select2_single form-control" tabindex="-1" required='required'>
@@ -133,23 +138,18 @@
                                                     @endforeach
 												</select>
 											</div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">E-mail<span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" name="email"  value="{{ old('email') }}" class='email' required="required" type="email" /></div>
-                                        </div>
+                                        </div> --}}
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Celular<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" type="text" class='tel' name="celular" value="{{ old('celular') }}" data-mask="(00) 0 0000-0000" required='required'/></div>
                                         </div>
-                                        <div class="field item form-group">
+                                        {{-- <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Telefone<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" type="text" class='tel' name="telefone" value="{{ old('telefone') }}" data-mask="(00) 0000-0000" required='required' /></div>
-                                        </div>
-                                        <div class="field item form-group">
+                                        </div> --}}
+                                        {{-- <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Local de retirada das carteirinhas<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-12  ">
 												<select name="local_retirada" class="select2_single form-control" tabindex="-1" required='required'>
@@ -191,7 +191,7 @@
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Qual Sua Profissão?<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" type="text"  name="profissao" value="{{ old('profissao') }}" required='required' data-validate-length-range="2,50" /></div>
-                                        </div>
+                                        </div> --}}
                                         {{-- <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Possui animal de estimação?<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-12  "> 
@@ -242,9 +242,9 @@
                                             </div>
                                         </div>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Complemento<span class="required">*</span></label>
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Complemento</label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" data-validate-length-range="0,50" name="complemento" value="{{ old('complemento') }}"  required="required" />
+                                                <input class="form-control" data-validate-length-range="0,50" name="complemento" value="{{ old('complemento') }}" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
@@ -269,7 +269,7 @@
                                         <div id="btn_add_dependente" class="field item form-group" style="display: none">
                                             <label class="col-form-label col-md-3 col-sm-3 label-align">Adicionar Dependente<span class="required"></span></label>
                                             <div class="col-md-6 col-sm-6 d-flex align-items-center">
-                                                <button class="btn btn-success mr-2" onclick="addDependente(this)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                                                <button class="btn btn-success mr-2" type="button" onclick="addDependente(this)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
                                             </div>
                                         </div>
                                         <div id="dependentes">
@@ -277,8 +277,8 @@
                                                 <div class="field item form-group">
                                                     <label class="col-form-label col-md-3 col-sm-3 label-align">Dependente 1<span class="required"></span></label>
                                                     <div class="col-md-6 col-sm-6 d-flex align-items-center">
-                                                        <button class="btn btn-success mr-2" onclick="addDependente(this)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-                                                        <button class="btn btn-danger mr-2 " onclick="remDependente(this)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+                                                        <button class="btn btn-success mr-2" type="button" onclick="addDependente(this)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                                                        <button class="btn btn-danger mr-2 " type="button" onclick="remDependente(this)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
                                                     </div>
                                                 </div>
                                                 <div class="field item form-group">
@@ -372,8 +372,8 @@
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align">Dependente ${dependente_counter}<span class="required"></span></label>
                         <div class="col-md-6 col-sm-6 d-flex align-items-center">
-                            <button class="btn btn-success mr-2" onclick="addDependente(this)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-                            <button class="btn btn-danger mr-2 " onclick="remDependente(this)"><span class="btn-dependente-minus glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+                            <button class="btn btn-success mr-2" type="button" onclick="addDependente(this)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                            <button class="btn btn-danger mr-2 " type="button" onclick="remDependente(this)"><span class="btn-dependente-minus glyphicon glyphicon-minus" aria-hidden="true"></span></button>
                         </div>
                     </div>
                     <div class="field item form-group">
