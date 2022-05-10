@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Models;
-use App\Models\User;
-
+use Illuminate\Support\Facades\Hash;
 class Usuario extends BaseModel
 {
 
@@ -48,6 +47,17 @@ class Usuario extends BaseModel
     public function setCpfAttribute($value)
     {
         $this->attributes['cpf'] = $this->cleanCpf($value);
+    }
+
+    /**
+     * Inicializa cpf.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function setSenhaAttribute($value)
+    {
+        $this->attributes['senha'] =  Hash::make($value);
     }
 
     /**

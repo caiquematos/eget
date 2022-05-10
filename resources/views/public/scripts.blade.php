@@ -22,6 +22,48 @@
 </script>
 <!-- /Funções de inicialização -->
 
+<!-- Session functions AND Pnotify functions--> 
+    
+    <!-- Verifica se há erros na sessão -->
+    @if ($errors->any())
+        @php
+            $sessao_erros = "";
+            foreach ($errors->all() as $error):
+                $sessao_erros.= $error;
+            endforeach;
+        @endphp
+        <script>
+            console.log("{{$sessao_erros}}");
+            // new PNotify({
+            //     title: 'Opa!',
+            //     text: "{{$sessao_erros}}",
+            //     type: 'error',
+            //     styling: 'bootstrap3'
+            // });
+        </script>
+    @endif
+
+    <!-- Verifica se há mensagem de sucesso na sessão -->
+    @if (session("success"))
+        <script>
+            console.log("{{session('success')}}");
+            // new PNotify({
+            //     title: 'Sucesso',
+            //     text: "{{session('success')}}",
+            //     type: 'success',
+            //     styling: 'bootstrap3'
+            // });
+        </script>
+    @endif
+
+    @if (isset($success))
+        <script>
+        console.log("há uma mensagem 'success' returned as var.", "{{$success}}");
+        </script>
+    @endif
+
+<!-- /Session functions -->
+
 <!-- Funções -->
 <script>
 
@@ -85,24 +127,24 @@
      * @param {string} cpf 
      * @returns boolean
      */
-    function is_cpf_valid(inputCPF){
+    function is_cpf_valid(cpf){
         var soma = 0;
         var resto;
-        var inputCPF = document.getElementById('cpf').value;
+        var cpf = clean_cpf(cpf);
 
-        if(inputCPF == '00000000000') return false;
-        for(i=1; i<=9; i++) soma = soma + parseInt(inputCPF.substring(i-1, i)) * (11 - i);
+        if(cpf == '00000000000') return false;
+        for(i=1; i<=9; i++) soma = soma + parseInt(cpf.substring(i-1, i)) * (11 - i);
         resto = (soma * 10) % 11;
 
         if((resto == 10) || (resto == 11)) resto = 0;
-        if(resto != parseInt(inputCPF.substring(9, 10))) return false;
+        if(resto != parseInt(cpf.substring(9, 10))) return false;
 
         soma = 0;
-        for(i = 1; i <= 10; i++) soma = soma + parseInt(inputCPF.substring(i-1, i))*(12-i);
+        for(i = 1; i <= 10; i++) soma = soma + parseInt(cpf.substring(i-1, i))*(12-i);
         resto = (soma * 10) % 11;
 
         if((resto == 10) || (resto == 11)) resto = 0;
-        if(resto != parseInt(inputCPF.substring(10, 11))) return false;
+        if(resto != parseInt(cpf.substring(10, 11))) return false;
         return true;
     }
 
@@ -113,6 +155,14 @@
     function is_cep_valid(cep) {
         let regex = new RegExp("[0-9]{5}-[0-9]{3}");
         return regex.test(cep);
+    }
+
+    /**
+     * @param {string} cep 
+     * @returns boolean
+     */
+    function clean_cpf(cpf) {
+        return cpf.trim().replaceAll(".", "").replaceAll("-", "");
     }
 
 </script>

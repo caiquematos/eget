@@ -194,26 +194,41 @@
         height: auto !important;
     }
 
-    .buttonNext {
+    .buttonNext, .buttonPrevious {
+        display: none !important;
+    }
+
+    .next, .cadastrar, .buttonNext {
         color: #fff;
         background-color: #367e8c !important;
         border-color: #367e8c !important;
     }
 
-    .buttonNext:hover {
+    .next:hover, .cadastrar:hover, .buttonNext:hover {
         color: #fff;
         background-color: #169F85 !important;
         border-color: #169F85 !important;
     }
 
+    .cadastrar {
+        color: #fff;
+        background-color: #169F85 !important;
+        border-color: #169F85 !important;
+    }
+
+    .cadastrar:hover {
+        color: #fff;
+        background-color: #367e8c !important;
+        border-color: #367e8c !important;
+    }
     
-    .buttonPrevious  {
+    .prev, .buttonPrevious  {
         color: #fff;
         background-color: #34495E !important;
         border-color: #34495E !important;
     }
 
-    .buttonPrevious:hover {
+    .prev:hover, .buttonPrevious:hover {
         color: #fff;
         background-color: #243241 !important;
         border-color: #243241 !important;
@@ -225,6 +240,23 @@
         transition: background-color 5000s ease-in-out 0s;
     }
 
+    .wizard_steps {
+        height: 105px !important;
+    }
+
+    .feedback-error {
+        margin: 0px;
+        margin-top: -15px;
+        margin-left: 32px;
+        color: red;
+        margin-bottom: 0px;
+        font-size: small;
+        display: none;
+    }
+
+    .btn-add-dependente {
+        background-color: #3d88f8;
+    }
 
 </style>
 
@@ -409,17 +441,20 @@
                                 <h4 class="StepTitle text-center">Informações Pessoais</h4>
                                 <div class="form-group row justify-content-center">
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input type="text" name="nome" placeholder="Nome" class="form-control">
+                                    <input type="text" name="nome" placeholder="Nome*" required class="form-control">
+                                    <p class="feedback-error">Esse campo é obrigatório.</p>
                                 </div>
                                 </div>
                                 <div class="form-group row justify-content-center">
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input id="cliente-email" type="email" name="email" placeholder="Email" class="form-control">
+                                    <input id="cliente-email" type="email" name="email" placeholder="Email*" required class="form-control">
+                                    <p class="feedback-error">Utilize um email válido.</p>
                                 </div>
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" data-tipo="celular" name="celular" placeholder="Whatsapp" class="form-control">
+                                        <input type="text" data-tipo="celular" name="celular" placeholder="Whatsapp*" required class="form-control">
+                                        <p class="feedback-error">Esse campo é obrigatório.</p>
                                     </div>
                                 </div>
                             </div>
@@ -427,17 +462,20 @@
                                 <h4 class="StepTitle text-center">Informações de Login</h4>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" data-tipo="cpf" name="cpf" placeholder="CPF" class="form-control">
+                                        <input type="text" data-tipo="cpf" name="cpf" placeholder="CPF*" required class="form-control">
+                                        <p class="feedback-error">Utilize um CPF válido.</p>
                                     </div>
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="password" name="password" autocomplete="new-password" placeholder="Senha" class="form-control">
+                                        <input type="password" name="senha" autocomplete="new-password" placeholder="Senha*" required class="form-control">
+                                        <p class="feedback-error">Esse campo é obrigatório.</p>
                                     </div>
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="password" name="confirm-password" autocomplete="new-password" placeholder="Confirmar senha" class="form-control">
+                                        <input type="password" name="senha_confirmation" autocomplete="new-password" placeholder="Confirmar senha*" required class="form-control">
+                                        <p class="feedback-error">As senhas não combinam.</p>
                                     </div>
                                 </div>
                             </div>
@@ -445,17 +483,20 @@
                                 <h4 class="StepTitle text-center">Endereço</h4>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" data-tipo="cep" name="cep" placeholder="CEP" class="form-control">
+                                        <input type="text" data-tipo="cep" name="cep" placeholder="CEP*" required class="form-control">
+                                        <p class="feedback-error">Utilize um CEP válido.</p>
                                     </div>
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" data-tipo="endereco" name="logradouro" placeholder="Logradouro" class="form-control">
+                                        <input type="text" data-tipo="endereco" name="endereco" placeholder="endereco*" required class="form-control">
+                                        <p class="feedback-error">Esse campo é obrigatório.</p>
                                     </div>
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-2 col-sm-6 ">
-                                        <input type="text" data-tipo="numero" name="numero" placeholder="Número" class="form-control">
+                                        <input type="text" data-tipo="numero" name="numero" placeholder="Número*" required class="form-control">
+                                        <p class="feedback-error">Esse campo é obrigatório.</p>
                                     </div>
                                     <div class="col-md-4 col-sm-6 ">
                                         <input type="text" data-tipo="complemento" name="complemento" placeholder="Complemento" class="form-control">
@@ -463,15 +504,18 @@
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" data-tipo="bairro" name="bairro" placeholder="Bairro" class="form-control">
+                                        <input type="text" data-tipo="bairro" name="bairro" placeholder="Bairro*" required class="form-control">
+                                        <p class="feedback-error">Esse campo é obrigatório.</p>
                                     </div>
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-3 col-sm-6 ">
-                                        <input type="text" data-tipo="estado" name="estado" placeholder="Estado" class="form-control">
+                                        <input type="text" data-tipo="estado" name="estado" placeholder="Estado*" required class="form-control">
+                                        <p class="feedback-error">Esse campo é obrigatório.</p>
                                     </div>
                                     <div class="col-md-3 col-sm-6 ">
-                                        <input type="text" data-tipo="cidade" name="cidade" placeholder="Cidade" class="form-control">
+                                        <input type="text" data-tipo="cidade" name="cidade" placeholder="Cidade*" required class="form-control">
+                                        <p class="feedback-error">Esse campo é obrigatório.</p>
                                     </div>
                                 </div>
                             </div>
@@ -479,16 +523,18 @@
                                 <h4 class="StepTitle text-center">Dependentes</h4>
                                 <div id="btn_add_dependente" class="row justify-content-center">
                                     <div class="col-md-6 col-sm-6 d-flex align-items-center">
-                                        <button class="btn btn-success mx-auto" onclick="addDependente(this)"><span>Adicionar Dependente</span></button>
+                                        <button class="btn btn-success mx-auto btn-add-dependente" onclick="addDependente(this)"><span>Adicionar Dependente</span></button>
                                     </div>
                                 </div>
                                 <div id="dependentes"></div>
                             </div>
                         </div>
+                        <div class="wizard-btns-wrapper float-end">
+                            <button class="prev btn btn-danger m-1" type="button" disabled>Voltar</button>
+                            <button class="next btn btn-success m-1" type="button">Avançar</button>
+                            <button class="cadastrar btn m-1 d-none" type="submit">Cadastrar</button>
+                        </div>
                     </form>
-                    <div class="wizard-btns-wrapper float-end">
-                        <button class="next btn btn-danger m-1">Voltar</button><button class="next btn btn-success m-1">Avançar</button><button class="btn d-none m-1" type="submit"></button>
-                    </div>
                     <!-- End SmartWi zard Content -->
                 </div>
                 <!-- heading ends -->
@@ -646,7 +692,6 @@
             init_SmartWizard();
 
             $('.next').click(function() {
-                console.log("step", step);
                 switch (step) {
                     case 1:
                         if(!validar_step_1())
@@ -661,17 +706,36 @@
                             return;
                     break;
                 }
-                step++;
                 $('.buttonNext').click();
-
+                step++;
+                handleStep(step);
             });
 
             $('.prev').click(function() {
-                console.log("step", step);
-                step--;
+                if (step > 1) step--;
                 $('.buttonPrevious').click();
+                handleStep(step);
             });
         });
+
+        function handleStep(step) {
+            if (step > 1) {
+                $('.prev').prop('disabled', false);
+            } else {
+                $('.prev').prop('disabled', true);
+            } 
+            if (step == 4) {
+                console.log("step == 4");
+                 $('.next').addClass('d-none');
+                $('.cadastrar').removeClass('d-none');
+            }
+            else if (step < 4) {
+                console.log("step < 4");
+                $('.cadastrar').addClass('d-none');
+                $('.next').removeClass('d-none');
+            }
+            console.log("step", step);
+        }
 
         function init_SmartWizard() {
 
@@ -684,7 +748,7 @@
                     keyNavigation: true, // Enable/Disable keyboard navigation(left and right keys are used if enabled)
                     keyLeft: [37], // Left key code
                     keyRight: [39] // Right key code
-                },
+                }
             });
             $('.buttonNext').addClass('btn btn-success').text("Avançar");
             $('.buttonPrevious').addClass('btn btn-primary').text("Voltar");
@@ -714,7 +778,10 @@
             }
 
             if (cancelar) {
+                $(".feedback-error").hide();
                 input.focus();
+                let fb = $(input).next();
+                fb.fadeIn();
                 return false;
             }
 
@@ -724,11 +791,22 @@
         function validar_step_2() {
             let input, cancelar = false;
             let cpf = $("input[name=cpf]");
-            let password = $("input[name=password]");
-            let confirm_password = $("input[name=confirm-password]");
+            let password = $("input[name=senha]");
+            let confirm_password = $("input[name=senha_confirmation]");
+
+
+            if (confirm_password.val() !== password.val()) {
+                input = confirm_password;
+                cancelar = true;
+            }
 
             if (!confirm_password.val()) {
                 input = confirm_password;
+                cancelar = true;
+            }
+
+            if (!password.val()) {
+                input = password;
                 cancelar = true;
             }
 
@@ -737,13 +815,11 @@
                 cancelar = true;
             }
 
-            if (!password.val()) {
-                input = nome;
-                cancelar = true;
-            }
-
             if (cancelar) {
+                $(".feedback-error").hide();
                 input.focus();
+                let fb = $(input).next();
+                fb.fadeIn();
                 return false;
             }
 
@@ -751,7 +827,53 @@
         }
 
         function validar_step_3() {
+            let input, cancelar = false;
+            let cidade = $("input[name=cidade]");
+            let estado = $("input[name=estado]");
+            let bairro = $("input[name=bairro]");
+            let numero = $("input[name=numero]");
+            let endereco = $("input[name=endereco]");
+            let cep = $("input[name=cep]");
 
+            if (!cidade.val()) {
+                input = cidade;
+                cancelar = true;
+            }
+
+            if (!estado.val()) {
+                input = estado;
+                cancelar = true;
+            }
+
+            if (!bairro.val()) {
+                input = bairro;
+                cancelar = true;
+            }
+
+            if (!numero.val()) {
+                input = numero;
+                cancelar = true;
+            }
+
+            if (!endereco.val()) {
+                input = endereco;
+                cancelar = true;
+            }
+
+            if (!cep.val() || !is_cep_valid(cep.val())) {
+                input = cep;
+                cancelar = true;
+            }
+
+            if (cancelar) {
+                $(".feedback-error").hide();
+                input.focus();
+                let fb = $(input).next();
+                fb.fadeIn();
+                return false;
+            }
+
+            return true;
         }
 
     </script>
@@ -766,18 +888,20 @@
                 <div id="dependente_${dependente_counter}" class="dependente mb-4" style="display:none">
                     <div class="form-group row justify-content-center">
                         <div class="col-md-6 col-sm-6 ">
-                            <input type="text" name="dependentes[nome][]" placeholder="Nome" class="form-control">
+                            <input type="text" name="dependentes[nome][]" placeholder="Nome*" required class="form-control">
+                            <p class="feedback-error">Esse campo é obrigatório.</p>
                         </div>
                     </div>
                     <div class="form-group row justify-content-center">
                         <div class="col-md-6 col-sm-6 ">
-                            <input type="text" data-tipo="cpf" name="dependentes[cpf][]" placeholder="CPF" class="form-control">
+                            <input type="text" data-tipo="cpf" name="dependentes[cpf][]" placeholder="CPF*" required class="form-control">
+                            <p class="feedback-error">Esse campo é obrigatório.</p>
                         </div>
                     </div>
                     <div class="form-group row justify-content-center">
                         <div class="col-md-6 col-sm-6 ">
                             <select name="dependentes[sexo][]" class="select2_single" tabindex="-1" required='required'>
-                                <option selected>Selecione uma opção</option>
+                                <option selected>Selecione uma opção*</option>
                                 @foreach (GERAL_SEXO as $key=>$sexo)
                                     <option  {{old('dependentes.sexo.0') == $key ? 'selected': ''}} value={{$key}}>{{$sexo}}</option>
                                 @endforeach
@@ -787,7 +911,7 @@
                     <div class="form-group row justify-content-center">
                         <div class="col-md-6 col-sm-6 ">
                             <select name="dependentes[parentesco][]" class="select2_single" tabindex="-1" required='required'>
-                                <option selected>Selecione uma opção</option>
+                                <option selected>Selecione uma opção*</option>
                                 @foreach (DEPENDENTE_PARENTESCO as $key=>$parentesco)
                                 <option {{old('dependentes.parentesco.0') == $key ? 'selected': ''}} value={{$key}}>{{$parentesco}}</option>
                                 @endforeach

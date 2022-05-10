@@ -114,4 +114,21 @@ class ClienteController extends Controller
     {
         //
     }
+
+      /**
+     * Inverte o nível dos índices de um array.
+     * utilizado para vetores de inputs de tamanhos indefinidos.
+     * 
+     * @param  Array  $conjunto
+     * @return Array
+     */
+    private function mapear_form_array($conjunto) {
+        $conjunto_convertido = [];
+        foreach ($conjunto as $key1 => $item) {                                  
+            foreach ($item as $key2=>$value) {
+                $conjunto_convertido[$key2][$key1] = $value;
+            }
+        }
+        return $conjunto_convertido;
+    }
 }

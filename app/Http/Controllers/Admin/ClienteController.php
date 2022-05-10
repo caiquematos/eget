@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreDependenteRequest;
 use App\Http\Requests\StoreClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
@@ -67,7 +66,7 @@ class ClienteController extends Controller
         $cliente->numero = $request->numero;
         $cliente->profissao = $request->profissao;
         $cliente->renda = $request->renda;
-        $cliente->senha = Hash::make($request->senha);
+        $cliente->senha = $request->senha;
         $cliente->sexo = $request->sexo;
         $cliente->telefone = $request->telefone;
         $cliente->save();

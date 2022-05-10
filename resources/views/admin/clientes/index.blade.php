@@ -94,18 +94,18 @@
                       <tbody>
                             @foreach ($clientes as $cliente)
                                 <tr>
-                                    <td>{{$cliente->nome}}</td>
-                                    <td>{{$cliente->email}}</td>
+                                    <td>{{$cliente->nome ?? "-"}}</td>
+                                    <td>{{$cliente->email ?? "-"}}</td>
                                     <td>{!!"<span data-tipo='cpf'>$cliente->cpf</span>"!!}</td>
-                                    <td>{{$cliente->nascimento}}</td>
-                                    <td>{{GERAL_SEXO[$cliente->sexo]}}</td>
+                                    <td>{{$cliente->nascimento ?? "-"}}</td>
+                                    <td>{{GERAL_SEXO[$cliente->sexo] ?? "-"}}</td>
                                     <td>{{CLIENTE_ESTADO_CIVIL[$cliente->estado_civil] ?? "-"}}</td>
                                     <td>{!! !empty($cliente->celular) ? "<span data-tipo='celular'>$cliente->celular</span>" : "-" !!}</td>
                                     <td>{!! !empty($cliente->telefone) ? "<span data-tipo='telefone'>$cliente->telefone</span>"  : "-" !!}</td>
-                                    <td>{{$cliente->local_retirada}}</td>
-                                    <td>{{$cliente->como_conheceu}}</td>
+                                    <td>{{$cliente->local_retirada ?? "-"}}</td>
+                                    <td>{{$cliente->como_conheceu ?? "-"}}</td>
                                     <td>{{CLIENTE_RENDA[$cliente->renda] ?? "-"}}</td>
-                                    <td>{{$cliente->profissao}}</td>
+                                    <td>{{$cliente->profissao ?? "-"}}</td>
                                     <td>
                                         @if (now() > Carbon\Carbon::parse($cliente->data_pagamento)->addMonths(12))
                                             {!!"<p class='pagamento-status bg-danger text-white'>expirou</p>"!!}
