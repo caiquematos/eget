@@ -46,7 +46,7 @@
                     <li> <a class="nav-link" href="{{url('/')}}#services" role="menuitem" tabindex="-1">Vantagens</a> </li>
                     <li> <a class="nav-link" href="{{url('/')}}#faq" role="menuitem" tabindex="-1">Perguntas frequentes</a> </li>
                     <li> <a class="nav-link"  data-bs-toggle="modal" href="#contatoModal" role="menuitem" tabindex="-1">Contato</a> </li>
-                    <li> <a class="nav-link"  role="menuitem" tabindex="-1" href="@if(Auth::check()) {{ Auth::user()->hasRole(config("constants.ROLES.CLIENTE.name")) ? route('cliente.cartao') : route('cliente.login') }} @else {{ route('cliente.login') }} @endif">Meu Cartão</a> </li>
+                    <li> <a class="nav-link"  role="menuitem" tabindex="-1" href="@if(Auth::check()) {{ Auth::user()->hasRole(config("constants.ROLES.CLIENTE.name")) ? route('cliente.cartao') : route('cliente.login') }} @else {{ route('cliente.login') }} @endif">Meus Cartões</a> </li>
                     @if (Auth::check())
                     @if(Auth::user()->hasRole(config("constants.ROLES.CLIENTE.name")))
                         <li> <a class="nav-link" role="menuitem" tabindex="-1" href="{{route('cliente.logout')}}">Sair</a> </li>
@@ -84,7 +84,7 @@
                     <li> <a class="nav-link" href="{{url('/')}}#services">Vantagens</a> </li>
                     <li> <a class="nav-link" href="{{url('/')}}#faq">Perguntas frequentes</a> </li>
                     <li> <a class="nav-link" data-bs-toggle="modal" href="#contatoModal" role="button">Contato</a> </li>
-                    <li> <a class="nav-link meu-cartao" href="@if(Auth::check()) {{ Auth::user()->hasRole(config("constants.ROLES.CLIENTE.name")) ? route('cliente.cartao') : route('cliente.login') }} @else {{ route('cliente.login') }} @endif">Meu Cartão</a> </li>
+                    <li> <a class="nav-link meu-cartao" href="@if(Auth::check()) {{ Auth::user()->hasRole(config("constants.ROLES.CLIENTE.name")) ? route('cliente.cartao') : route('cliente.login') }} @else {{ route('cliente.login') }} @endif">Meus Cartões</a> </li>
                     @if (Auth::check())
                         @if(Auth::user()->hasRole(config("constants.ROLES.CLIENTE.name")))
                             <li class="ms-0"> <a class="nav-link my-2 btn-sair text-white" href="{{route('cliente.logout')}}">Sair</a> </li>

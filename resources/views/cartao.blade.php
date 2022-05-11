@@ -165,14 +165,33 @@
     .card-container {
         /* background-color: #3f8492 !important; */
         background-image:url("{{url('template/assets/img/card-bg-min.webp')}}");
-        width: 300px;
-        height: 190px;
+        width: 354px;
+        height: 225px;
         position: relative;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         border-radius: 3px;
         box-shadow: rgb(0 0 0 / 40%) 0px 2px 10px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+    }
+
+    .card-container p {
+        position: absolute;
+        font-size: small;
+        font-weight: 700;
+        left: 20px;
+    }
+
+    .card-container p:nth-child(1) {
+        bottom: 52px;
+    }
+
+    .card-container p:nth-child(2) {
+        bottom: 22px;
+    }
+
+    .card-container p:nth-child(3) {
+        bottom: 2px;
     }
 
 </style>
@@ -193,7 +212,7 @@
             <div class="row">
                 <div class="col d-flex">
                     <div class="m-auto">
-                        <h2 class="color-white fs-1">Meu Cartão</h2>
+                        <h2 class="color-white fs-1">Meus Cartões</h2>
                         </a>
                     </div>
                 </div>
@@ -221,21 +240,39 @@
                 <!-- heading ends -->
 
                 <!--== row 1 starts ==-->
-                <div class="row wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                   <div class="col-md-12">
-                    {{-- <div class="card text-white mb-3" style="max-width: 18rem;">
-                        <div class="card-header fs-4">Cartão 001</div>
-                        <div class="card-body fs-6">
-                            <h5 class="card-title text-light">Cartão em andamento</h5>
-                            <p class="card-text lh-sm">Estamos produzindo o seu cartão e te informaremos assim que ele estiver pronto.</p>
+                <div class="row wow fadeInUp mb-3" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <p class="fw-bold">Titular</p>
+                    <hr>
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
+                            <div class="card-container">
+                                <p>{{Auth::user()->nome}}</p>
+                                <p>{{Auth::user()->cpf}}</p>
+                                <p>{{Auth::user()->nascimento}}</p>
+                            </div>
                         </div>
-                    </div> --}}
-                    <div class="card-container">
-
                     </div>
-                   </div>
                 </div>
                 <!--== row 1 ends ==-->
+                <!--== row 2 starts ==-->
+                <div class="row wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                    <p class="fw-bold">Dependentes</p>
+                    <hr>
+                    <div class="row">
+                        @isset(Auth::user()->dependentes)
+                        @foreach (Auth::user()->dependentes as $dependente)
+                        <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
+                        <div class="card-container">
+                            <p>{{$dependente->nome}}</p>
+                            <p>{{$dependente->cpf}}</p>
+                            <p>{{$dependente->nascimento}}</p>
+                        </div>
+                        </div>
+                        @endforeach
+                        @endisset
+                    </div>
+                </div>
+                <!--== row 2 ends ==-->
 
             </div>
         </section>
