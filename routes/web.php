@@ -2,13 +2,14 @@
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\LoginController as AdminLoginController;
 use App\Http\Controllers\Admin\ClienteController as AdminClienteController;
 use App\Http\Controllers\Admin\DependenteController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\UsuarioController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Models\Dependente;
 use App\Models\Faq;
 use App\Models\Usuario;
@@ -24,7 +25,8 @@ use App\Models\Usuario;
 |
 */
 
-// Rotas 'Admin'
+/** Rotas 'Admin' */
+
 Route::prefix('/admin')->name('admin.')->group(function () {
 
     Route::middleware(['auth', 'role:admnistrador'])->group(function () {
@@ -74,13 +76,11 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     });
     
     // Rotas 'Auth'
-    Route::post('/login', [LoginController::class, 'index'])->name('logar');
+    Route::post('/login', [AdminLoginController::class, 'index'])->name('logar');
     Route::get('/login',  function () {
         return view('admin.login');
     })->name('login');
-
-
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/logout', [AdminLoginController::class, 'logout'])->name('logout');
 
 });
 
@@ -89,8 +89,24 @@ Route::get('/adm', function() {
     return redirect()->route('admin.usuario.index');
 })->name('adm')->middleware(['auth', 'role:admnistrador']);
 
-// Rotas 'Landing Page'
-Route::get('/cliente/cartao', [ClienteController::class, 'index'])->name('cliente.cartao');
+/** /Rotas 'Admin' */
+
+
+/** Rotas 'Landing Page' */
+
+// Rotas 'Cliente'
+Route::prefix('/cliente')->name('cliente.')->group(function () {
+    Route::get('/cartao', [ClienteController::class, 'index'])->name('cartao')->middleware('auth', 'role:cliente');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('/login',[LoginController::class, 'index'])->name('logar');
+    Route::get('/login', function() {
+        return view('login');
+    })->name('login');
+});
+
+// Outras
 Route::post('/contato', [HomeController::class, 'contato'])->name('contato');
 Route::resource("cliente", ClienteController::class);
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+/** /Rotas 'Landing Page' */

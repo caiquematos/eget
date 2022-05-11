@@ -19,8 +19,16 @@ class EnsureUserHasRole
       
         if ($request->user()->hasRole($role))
             return $next($request);
-        else   
-            return redirect()->route("admin.login")->withErrors(["permissao"=>"Esse usuário não tem permissão para acessar essa página."]);
+        else {
+            switch($role) {
+                case config("constants.ROLES.ADMNISTRADOR.name"):
+                    return redirect()->route("admin.login")->withErrors(["permissao"=>"Esse usuário não tem permissão para acessar essa página."]);
+                break;
+                case config("constants.ROLES.CLIENTE.name"):
+                    return redirect()->route("cliente.login")->withErrors(["permissao"=>"Esse usuário não tem permissão para acessar essa página."]);
+                break;
+            }
+        }
 
     }
 }

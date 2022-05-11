@@ -6,6 +6,10 @@ return [
         'CLIENTE' => [
             'id' => 4,
             'name' => 'cliente'
+        ],
+        'ADMNISTRADOR' => [
+            'id' => 1,
+            'name' => 'admnistrador'
         ]
     ],
     'SEXO' =>

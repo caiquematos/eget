@@ -7,6 +7,8 @@ use App\Models\Usuario;
 use App\Models\Pagamento;
 use App\Models\Dependente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class ClienteController extends Controller
 {
@@ -17,6 +19,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
+        
         return view('cartao');
     }
 
@@ -65,6 +68,13 @@ class ClienteController extends Controller
                  $dependente_obj->save();
             }
         }
+
+        if ($cliente->hasRole(config('constants.ROLES.CLIENTE.name'))) {
+            if (Auth::check())
+                Auth::logout();
+            Auth::login($cliente);
+        }
+
         $this->response["success"] = true;
         $this->response["cliente"] = $cliente;
         return redirect()->route('cliente.create')->with(["success"=>"Cadastro realizado com sucesso."]);
