@@ -120,8 +120,9 @@
                                       <input type="checkbox" data-cliente-id={{$cliente->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$cliente->ativo ? "checked" : ""}} />
                                   </td>
                                     <td>
-                                        <a href="{{route('admin.cliente.show', [$cliente->id])}}"><i class="fa fa-eye mx-1"></i></a>
-                                        <a href="{{route('admin.cliente.deletar', [$cliente->id])}}"><i class="fa fa-trash mx-1"></i></a>
+                                        <a href="{{route('admin.cliente.show', [$cliente->id])}}"><i class="fa fa-eye mx-1" title="Ver"></i></a>
+                                        <a href="{{route('admin.cartao.index', [$cliente->id])}}"><i class="fa fa-credit-card mx-1" title="Cartões"></i></a>
+                                        <a href="{{route('admin.cliente.deletar', [$cliente->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -162,7 +163,7 @@
     var dt = $("#datatable-clientes").DataTable({
         searchPanes: {
             viewTotal: true,
-            columns: [12],
+            columns: [6],
             layout: 'columns-1'
         },
         language: {
@@ -185,7 +186,7 @@
                     header: "Filtro por status do pagamento.",
                     show: true,
                 },
-                targets: [12]
+                targets: [6]
             },
           ],
           select: {

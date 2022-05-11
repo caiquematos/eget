@@ -38,4 +38,12 @@ class Dependente extends BaseModel
     {
         return date("d/m/Y", strtotime($value));
     }
+
+    /**
+     * Os cartões que pertencem ao dependente.
+     */
+    public function cartoes()
+    {
+        return $this->hasMany(Cartao::class);
+    }
 }

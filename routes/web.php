@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CartaoController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController as AdminLoginController;
@@ -38,6 +39,17 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             Route::get("deletar/{faq}", function(Faq $faq) {
                 return App::make('App\Http\Controllers\Admin\FaqController')->deletar($faq);
             })->name('deletar');
+        });
+
+        // Rotas 'Cartão'
+        Route::resource("cartao", CartaoController::class)->except(['create', 'index']);
+        Route::prefix('cartao')->name('cartao.')->group(function () {
+            Route::post("ativar",[CartaoController::class, 'ativar'])->name('ativar');
+            Route::get("index/{cliente}",[CartaoController::class, 'index'])->name('index');
+            Route::get("create/{cliente}", [CartaoController::class, 'create'])->name('create');
+            // Route::get("deletar/{dependente}", function(Dependente $dependente) {
+            //     return App::make('App\Http\Controllers\Admin\DependenteController')->deletar($dependente);
+            // })->name('deletar');
         });
 
         // Rotas 'Dependente'

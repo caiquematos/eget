@@ -15,7 +15,7 @@ class Usuario extends BaseModel
     ];
 
     /**
-     * The roles that belong to the user.
+     * Os papéis que pertencem ao usuário.
      */
     public function roles()
     {
@@ -23,7 +23,7 @@ class Usuario extends BaseModel
     }
 
     /**
-     * The roles that belong to the user.
+     * Os dependentes que pertencem ao usuário.
      */
     public function dependentes()
     {
@@ -31,11 +31,19 @@ class Usuario extends BaseModel
     }
 
     /**
-     * The roles that belong to the user.
+     * Os pagamentos que pertencem ao usuário.
      */
     public function pagamentos()
     {
         return $this->hasMany(Pagamento::class, 'id_usuario', 'id');
+    }
+
+    /**
+     * Os cartões que pertencem ao usuário.
+     */
+    public function cartoes()
+    {
+        return $this->hasMany(Cartao::class);
     }
 
     /**
