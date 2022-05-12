@@ -9,12 +9,12 @@
  <!-- /head -->
 
   <style>
-    .pagamento-status {
+    .cartao-status {
       padding: 3px 5px;
       border-radius: 5px;
       font-weight: bold;
       font-size: smaller;
-      width:69px;
+      width:90px;
       text-align: center;
     }
   </style>
@@ -22,8 +22,8 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-      
-       
+
+
         <!-- side menu -->
         @include("admin.build.side-menu")
         <!-- /side menu -->
@@ -41,7 +41,7 @@
               </div>
 
               <div class="title_right">
-                <a class="btn btn-primary pull-right text-white" href="{{url('admin/cliente/create')}}">Adicionar</a>
+                <a class="btn btn-primary pull-right text-white" href="{{url('admin/cartao/create')}}">Adicionar</a>
               </div>
             </div>
 
@@ -64,8 +64,9 @@
                   <div class="x_content">
                       <div class="row">
                           <div class="col-sm-12">
+                            <p class="ms-4"  style="margin-left: 1rem">Filtrar por status:</p>
                             <div class="card-box table-responsive">
-                                <table id="datatable-cartoes" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                <table id="datatable-cartoes-titular" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                   <thead>
                                     <tr>
                                       <th data-priority="1">id</th>
@@ -79,15 +80,14 @@
                                         @foreach ($cliente->cartoes as $cartao)
                                             <tr>
                                                 <td>{{$cartao->id}}</td>
-                                                <td>{{$cartao->status ?? "-"}}</td>
+                                                <td>{!!CARTAO_STATUS[$cartao->status] ?? "-"!!}</td>
                                                 <td>{{$cartao->created_at ?? "-"}}</td>
                                                 <td>
                                                     <input type="checkbox" data-cartao-id={{$cartao->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$cartao->ativo ? "checked" : ""}} />
                                                 </td>
                                                 <td>
-                                                    <a href="{{route('admin.cliente.show', [$cliente->id])}}"><i class="fa fa-eye mx-1" title="Ver"></i></a>
-                                                    <a href="{{route('admin.cartao.index', [$cliente->id])}}"><i class="fa fa-credit-card mx-1" title="Cartões"></i></a>
-                                                    <a href="{{route('admin.cliente.deletar', [$cliente->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a>
+                                                    <a href="{{route('admin.cartao.show', [$cartao->id])}}"><i class="fa fa-eye mx-1" title="Ver"></i></a>
+                                                    <a href="{{route('admin.cartao.deletar', [$cartao->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -118,16 +118,18 @@
                   <div class="x_content">
                       <div class="row">
                           <div class="col-sm-12">
+                            <p class="ms-4" style="margin-left: 1rem">Filtrar por status:</p>
                             <div class="card-box table-responsive">
-                                <table id="datatable-cartoes" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                <table id="datatable-cartoes-dependentes" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                   <thead>
                                     <tr>
                                       <th data-priority="1">id</th>
-                                      <th data-priority="2">Nome</th>
-                                      <th data-priority="3">Status</th>
+                                      <th data-priority="2">CPF</th>
+                                      <th data-priority="3">Nome</th>
+                                      <th data-priority="4">Status</th>
                                       <th>Data de Criação</th>
                                       <th>Ativo</th>
-                                      <th data-priority="4">Ações</th>
+                                      <th data-priority="5">Ações</th>
                                     </tr>
                                   </thead>
                                   <tbody>
@@ -135,31 +137,20 @@
                                       @foreach ($dependente->cartoes as $cartao)
                                         <tr>
                                             <td>{{$cartao->id}}</td>
+                                            <td>{!!"<span data-tipo='cpf'>$dependente->cpf</span>"!!}</td>
                                             <td>{{$dependente->nome}}</td>
-                                            <td>{{$cartao->status ?? "-"}}</td>
+                                            <td>{!!CARTAO_STATUS[$cartao->status] ?? "-"!!}</td>
                                             <td>{{$cartao->created_at ?? "-"}}</td>
                                             <td>
                                                 <input type="checkbox" data-cartao-id={{$cartao->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$cartao->ativo ? "checked" : ""}} />
                                             </td>
                                             <td>
-
+                                                <a href="{{route('admin.cartao.show', [$cartao->id])}}"><i class="fa fa-eye mx-1" title="Ver"></i></a>
+                                                <a href="{{route('admin.cartao.deletar', [$cartao->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a>
                                             </td>
                                         </tr>
                                       @endforeach
                                     @endforeach
-                                        {{-- @foreach ($cliente->dependentes->cartoes as $cartao)
-                                            <tr>
-                                                <td>{{$cartao->id}}</td>
-                                                <td>{{$cartao->status ?? "-"}}</td>
-                                                <td>{{$cartao->created_at ?? "-"}}</td>
-                                                <td>
-                                                    <input type="checkbox" data-cartao-id={{$cartao->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$cartao->ativo ? "checked" : ""}} />
-                                                </td>
-                                                <td>
-
-                                                </td>
-                                            </tr>
-                                        @endforeach --}}
                                   </tbody>
                                 </table>
                             </div>
@@ -192,67 +183,114 @@
     <script src="vendors/iCheck/icheck.min.js"></script>
 
     <script>
-    var dt = $("#datatable-clientes").DataTable({
-        searchPanes: {
-            viewTotal: true,
-            columns: [6],
-            layout: 'columns-1'
-        },
-        language: {
-            url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
-            searchPanes: {
-                title: {
-                    _: 'Filtros Selecionados - %d',
-                    0: 'Nenhum Filtro Selecionado',
-                    1: 'Um Filtro Selecionado'
-                },
-                count: '{total} encontrado',
-                countFiltered: '{shown} ({total})'
-            }
-        },
-        dom: 'Plfrtip',
-        columnDefs: [
-            {
-                orderable: false,
+        $(function() {
+            var dt = $("#datatable-cartoes-titular").DataTable({
                 searchPanes: {
-                    header: "Filtro por status do pagamento.",
-                    show: true,
+                    viewTotal: true,
+                    columns: [1],
+                    layout: 'columns-1'
                 },
-                targets: [6]
-            },
-          ],
-          select: {
-              style:    'os',
-              selector: 'td:first-child'
-          },
-      });
+                language: {
+                    url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
+                    searchPanes: {
+                        title: {
+                            _: 'Filtros Selecionados - %d',
+                            0: 'Nenhum Filtro Selecionado',
+                            1: 'Um Filtro Selecionado'
+                        },
+                        count: '{total} encontrado',
+                        countFiltered: '{shown} ({total})'
+                    }
+                },
+                dom: 'Plfrtip',
+                columnDefs: [
+                    {
+                        orderable: false,
+                        searchPanes: {
+                            header: "Status do cartão.",
+                            show: true,
+                        },
+                        targets: [1]
+                    },
+                ],
+                select: {
+                    style:    'os',
+                    selector: 'td:first-child'
+                }
+            });
 
-      
-    dt.on('select.dt', () => {          
-        dt.searchPanes.rebuildPane(0, true);
-    });
- 
-    dt.on('deselect.dt', () => {
-        dt.searchPanes.rebuildPane(0, true);
+
+            dt.on('select.dt', () => {
+                dt.searchPanes.rebuildPane(0, true);
+            });
+
+            dt.on('deselect.dt', () => {
+                dt.searchPanes.rebuildPane(0, true);
+            });
+
+            var dt2 = $("#datatable-cartoes-dependentes").DataTable({
+                searchPanes: {
+                    viewTotal: true,
+                    columns: [3],
+                    layout: 'columns-1'
+                },
+                language: {
+                    url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
+                    searchPanes: {
+                        title: {
+                            _: 'Filtros Selecionados - %d',
+                            0: 'Nenhum Filtro Selecionado',
+                            1: 'Um Filtro Selecionado'
+                        },
+                        count: '{total} encontrado',
+                        countFiltered: '{shown} ({total})'
+                    }
+                },
+                dom: 'Plfrtip',
+                columnDefs: [
+                    {
+                        orderable: false,
+                        searchPanes: {
+                            header: "Status do cartão.",
+                            show: true,
+                        },
+                        targets: [3]
+                    },
+                ],
+                select: {
+                    style:    'os',
+                    selector: 'td:first-child'
+                },
+            });
+
+
+            dt2.on('select.dt', () => {
+                console.log("selecionado");
+                dt2.searchPanes.rebuildPane(0, true);
+            });
+
+            dt2.on('deselect.dt', () => {
+                dt2.searchPanes.rebuildPane(0, true);
+            });
     });
 
-    // Gerencia ativação do cliente.
+    // Gerencia ativação do cartao.
     function toggleAtivacao(e) {
-            var cliente_id = $(e).data("cliente-id");
+            var cartao_id = $(e).data("cartao-id");
             var status = $(e).is(":checked");
-            var url = `{{route('admin.cliente.ativar')}}`;
+            var url = `{{route('admin.cartao.ativar')}}`;
             $.ajax({
                 url: url,
                 type: "POST",
-                data: {'status':status, "_token": "{{ csrf_token() }}","cliente_id":cliente_id},
+                data: {'status':status, "_token": "{{ csrf_token() }}","cartao_id":cartao_id},
                 dataType: "json",
                 success: function (data) {
-                    if (data.cliente) {
-                        if(data.cliente.ativo) {
-                            mensagem = "Cliente ativado com sucesso."
+                    if (data.cartao) {
+                        if(data.cartao.ativo) {
+                            mensagem = "Cartão ativado com sucesso."
                         }
                         else {
-                            mensagem = "Cliente desativado com sucesso."
+                            mensagem = "Cartão desativado com sucesso."
                         }
 
                         new PNotify({
@@ -266,7 +304,7 @@
                 error: function (xhr, status) {
                     new PNotify({
                         title: 'Opa!',
-                        text: "Não foi possível atualizar o status do cliente.",
+                        text: "Não foi possível atualizar o status do cartao.",
                         type: 'error',
                         styling: 'bootstrap3'
                     });
@@ -275,7 +313,11 @@
             });
         }
     </script>
-    
+
+    <script>
+
+    </script>
+
 
   </body>
 </html>

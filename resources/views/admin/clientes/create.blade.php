@@ -290,7 +290,7 @@
                                                 <div class="field item form-group">
                                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Nome<span class="required">*</span></label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <input class="form-control" data-validate-length-range="2,100" value="{{old('dependentes.nome.0')}}"  name="dependentes.nome.0" required="required" />
+                                                        <input class="form-control" data-validate-length-range="2,100" value="{{old('dependentes.nome.0')}}"  name="dependentes[nome][]" required="required" />
                                                     </div>
                                                 </div>
                                                 <div class="field item form-group">
@@ -392,7 +392,7 @@
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Sexo<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-12 ">
                             <select name="dependentes[sexo][]" class="select2_single form-control" tabindex="-1" required='required'>
-                                <option></option>
+                                <option selected>Selecione uma opção</option>
                                 <option value=0>Feminino</option>
                                 <option value=1>Masculino</option>
                                 <option value=2>Outro</option>
@@ -403,10 +403,12 @@
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Parentesco<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-12 ">
                             <select name="dependentes[parentesco][]" class="select2_single form-control" tabindex="-1" required='required'>
-                                <option></option>
-                                <option value="AK">Conjuge</option>
-                                <option value="HI">Filhos abaixo de 21 anos</option>
-                                <option value="CA">Pais acima de 60 anos</option>
+                                <option selected>Selecione uma opção</option>
+                                <option value="0">Filho(a)</option>
+                                <option value="1">Pai</option>
+                                <option value="2">Mãe</option>
+                                <option value="3">Irmã(o)</option>
+                                <option value="4">Outro</option>
                             </select>
                         </div>
                     </div>

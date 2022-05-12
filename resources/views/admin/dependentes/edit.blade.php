@@ -56,7 +56,7 @@
                         <div class="col-md-12 col-sm-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2><a href="{{route('admin.cliente.edit', $dependente->id_usuario)}}">Cliente</a></h2><h2><i class="fa fa-chevron-right mx-2"></i></h2><h2>Atualizar Dependente</h2>
+                                    <h2><a href="{{route('admin.cliente.edit', $dependente->cliente->id)}}">{{$dependente->cliente->nome}}</a></h2><h2><i class="fa fa-chevron-right mx-2"></i></h2><h2>Atualizar Dependente</h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>

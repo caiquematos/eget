@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10-Maio-2022 às 15:59
+-- Tempo de geração: 12-Maio-2022 às 16:53
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 7.3.27
 
@@ -20,6 +20,39 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `cdi`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cartoes`
+--
+
+CREATE TABLE `cartoes` (
+  `id` int(11) NOT NULL,
+  `usuario_id` int(11) DEFAULT NULL,
+  `dependente_id` int(11) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0-Andamento, 1-Finalizado, 2-Entregue',
+  `ativo` tinyint(4) NOT NULL DEFAULT 1,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `cartoes`
+--
+
+INSERT INTO `cartoes` (`id`, `usuario_id`, `dependente_id`, `status`, `ativo`, `deleted_at`, `updated_at`, `created_at`) VALUES
+(1, 67, NULL, 0, 1, NULL, '2022-05-11 20:35:58', '2022-05-11 20:35:58'),
+(2, NULL, 28, 0, 1, NULL, '2022-05-11 20:44:07', '2022-05-11 20:44:07'),
+(3, NULL, 24, 0, 1, NULL, '2022-05-11 20:44:07', '2022-05-11 20:44:07'),
+(4, 77, NULL, 0, 1, NULL, '2022-05-12 12:43:34', '2022-05-12 12:43:34'),
+(5, NULL, 31, 0, 1, NULL, '2022-05-12 12:43:34', '2022-05-12 12:43:34'),
+(6, 78, NULL, 0, 1, NULL, '2022-05-12 13:17:54', '2022-05-12 13:17:54'),
+(7, NULL, 32, 0, 1, NULL, '2022-05-12 13:17:54', '2022-05-12 13:17:54'),
+(8, 79, NULL, 0, 1, NULL, '2022-05-12 13:58:16', '2022-05-12 13:36:34'),
+(9, NULL, 33, 0, 1, NULL, '2022-05-12 13:36:34', '2022-05-12 13:36:34'),
+(10, NULL, 34, 0, 1, '2022-05-12 14:06:00', '2022-05-12 14:06:00', '2022-05-12 13:36:34');
 
 -- --------------------------------------------------------
 
@@ -57,7 +90,17 @@ INSERT INTO `dependentes` (`id`, `id_usuario`, `cpf`, `nome`, `sexo`, `parentesc
 (21, 62, '75286806058', 'Rupios', 0, '1', '2021-10-04 03:00:00', 1, '2022-05-02 14:59:44', '2022-05-02 14:59:44', NULL),
 (22, 62, '75286806058', 'Líbios', 0, 'HI', '2021-10-20 03:00:00', 1, '2022-05-02 14:59:44', '2022-05-02 14:59:44', NULL),
 (23, 63, '68033128011', 'Caique Matos Teste', 1, '0', '2022-05-19 03:00:00', 1, '2022-05-03 17:26:52', '2022-05-02 15:08:33', NULL),
-(24, 67, '56202518022', 'Jovi', 1, '0', '2022-05-03 03:00:00', 1, '2022-05-06 11:24:35', '2022-05-06 11:24:35', NULL);
+(24, 67, '56202518022', 'Jovi', 1, '0', '2022-05-03 03:00:00', 1, '2022-05-06 11:24:35', '2022-05-06 11:24:35', NULL),
+(25, 71, '08229173001', 'Carlos Sampaio', 1, '0', '2022-04-05 03:00:00', 1, '2022-05-10 15:23:41', '2022-05-10 15:23:41', NULL),
+(26, 73, '04688888888', 'Raimundo Rosano', 1, '3', '2022-05-05 03:00:00', 1, '2022-05-10 20:39:45', '2022-05-10 20:39:45', NULL),
+(27, 75, '08229173001', 'Dependente 1', 1, '0', '2022-05-04 03:00:00', 1, '2022-05-11 17:33:44', '2022-05-11 17:33:44', NULL),
+(28, 67, '53227540088', 'Joana Cabral', 0, '3', '2022-05-02 03:00:00', 1, '2022-05-11 18:55:26', '2022-05-11 18:55:26', NULL),
+(29, 76, '04688888888', 'Zendaya', 0, '0', '2022-05-19 03:00:00', 1, '2022-05-12 12:01:33', '2022-05-12 12:01:33', NULL),
+(30, 76, '08229173001', 'Tom Holland', 1, '0', '2022-05-19 03:00:00', 1, '2022-05-12 12:01:33', '2022-05-12 12:01:33', NULL),
+(31, 77, '47720770064', 'Cebolinha Andrade', 1, '0', '2022-05-02 03:00:00', 1, '2022-05-12 12:43:34', '2022-05-12 12:43:34', NULL),
+(32, 78, '19564323029', 'Hermione Granger', 1, '0', '2022-05-01 03:00:00', 1, '2022-05-12 13:17:54', '2022-05-12 13:17:54', NULL),
+(33, 79, '00512219001', 'Marvolo Riddle', 1, '0', '1998-12-12 03:00:00', 1, '2022-05-12 13:36:34', '2022-05-12 13:36:34', NULL),
+(34, 79, '94935671092', 'Vicência Santos', 0, '3', '2000-12-12 03:00:00', 1, '2022-05-12 13:36:34', '2022-05-12 13:36:34', NULL);
 
 -- --------------------------------------------------------
 
@@ -182,7 +225,19 @@ INSERT INTO `pagamentos` (`id`, `id_usuario`, `nome_titular`, `cpf_titular`, `nu
 (13, 61, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-02 14:57:42', '2022-05-02 14:57:42', '2022-05-02 14:57:42'),
 (14, 62, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-02 14:59:44', '2022-05-02 14:59:44', '2022-05-02 14:59:44'),
 (15, 63, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-02 15:08:33', '2022-05-02 15:08:33', '2022-05-02 15:08:33'),
-(16, 67, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-06 11:24:35', '2022-05-06 11:24:35', '2022-05-06 11:24:35');
+(16, 67, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-06 11:24:35', '2022-05-06 11:24:35', '2022-05-06 11:24:35'),
+(17, 68, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-10 14:15:16', '2022-05-10 14:15:16', '2022-05-10 14:15:16'),
+(18, 69, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-10 14:25:25', '2022-05-10 14:25:25', '2022-05-10 14:25:25'),
+(19, 70, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-10 15:21:10', '2022-05-10 15:21:10', '2022-05-10 15:21:10'),
+(20, 71, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-10 15:23:41', '2022-05-10 15:23:41', '2022-05-10 15:23:41'),
+(21, 72, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-10 18:31:51', '2022-05-10 18:31:51', '2022-05-10 18:31:51'),
+(22, 73, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-10 20:39:45', '2022-05-10 20:39:45', '2022-05-10 20:39:45'),
+(23, 74, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-11 14:40:25', '2022-05-11 14:40:25', '2022-05-11 14:40:25'),
+(24, 75, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-11 17:33:44', '2022-05-11 17:33:44', '2022-05-11 17:33:44'),
+(25, 76, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-12 12:01:33', '2022-05-12 12:01:33', '2022-05-12 12:01:33'),
+(26, 77, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-12 12:43:34', '2022-05-12 12:43:34', '2022-05-12 12:43:34'),
+(27, 78, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-12 13:17:54', '2022-05-12 13:17:54', '2022-05-12 13:17:54'),
+(28, 79, NULL, NULL, NULL, NULL, 0, NULL, 1, '2022-05-12 13:36:34', '2022-05-12 13:36:34', '2022-05-12 13:36:34');
 
 -- --------------------------------------------------------
 
@@ -278,7 +333,19 @@ INSERT INTO `role_usuario` (`id_role`, `id_usuario`, `updated_at`, `created_at`)
 (3, 66, '2022-05-05 20:11:50', '2022-05-05 20:11:50'),
 (2, 65, '2022-05-05 20:12:02', '2022-05-05 20:12:02'),
 (4, 67, '2022-05-06 11:24:35', '2022-05-06 11:24:35'),
-(1, 64, '2022-05-06 15:42:26', '2022-05-06 15:42:26');
+(1, 64, '2022-05-06 15:42:26', '2022-05-06 15:42:26'),
+(4, 68, '2022-05-10 14:15:16', '2022-05-10 14:15:16'),
+(4, 69, '2022-05-10 14:25:25', '2022-05-10 14:25:25'),
+(4, 70, '2022-05-10 15:21:10', '2022-05-10 15:21:10'),
+(4, 71, '2022-05-10 15:23:41', '2022-05-10 15:23:41'),
+(4, 72, '2022-05-10 18:31:51', '2022-05-10 18:31:51'),
+(4, 73, '2022-05-10 20:39:45', '2022-05-10 20:39:45'),
+(4, 74, '2022-05-11 14:40:25', '2022-05-11 14:40:25'),
+(4, 75, '2022-05-11 17:33:44', '2022-05-11 17:33:44'),
+(4, 76, '2022-05-12 12:01:33', '2022-05-12 12:01:33'),
+(4, 77, '2022-05-12 12:43:34', '2022-05-12 12:43:34'),
+(4, 78, '2022-05-12 13:17:54', '2022-05-12 13:17:54'),
+(4, 79, '2022-05-12 13:36:34', '2022-05-12 13:36:34');
 
 -- --------------------------------------------------------
 
@@ -292,7 +359,7 @@ CREATE TABLE `usuarios` (
   `email` varchar(255) NOT NULL,
   `senha` varchar(100) DEFAULT NULL,
   `cpf` varchar(11) NOT NULL,
-  `nascimento` timestamp NULL DEFAULT current_timestamp(),
+  `nascimento` timestamp NULL DEFAULT NULL,
   `ativo` tinyint(4) NOT NULL DEFAULT 1,
   `sexo` tinyint(4) DEFAULT NULL,
   `estado_civil` tinyint(4) DEFAULT NULL,
@@ -324,11 +391,29 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `cpf`, `nascimento`, `at
 (64, 'Aroldo Pascoale', 'aroldo@gmail.com', '$2y$10$0uAPEy5TotTMWeXNAOb8ve7KiM70RQSdFweR3TTOsUgxe8BaE/iA.', '08588922002', '2022-05-02 03:00:00', 1, 0, NULL, '74999111111', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-05-06 15:34:39', '2022-05-05 19:24:43'),
 (65, 'Roberto Marinho', 'roberto@gmail.com', '$2y$10$4QPoFjoQ18Ks99Q4JqU6xuXfjB8za83UIzSHtf1vGZUx64/xNB/ju', '18264008003', '2022-05-02 03:00:00', 1, 1, NULL, '74999999999', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-05-05 20:12:02', '2022-05-05 20:07:28'),
 (66, 'Rosa Maria', 'rosamaria@gmail.com', '$2y$10$MhA0yQho1uwaqv7.gQVJ6e8VZBPSl/ImXIhn5WdLk8j.ATOL/R8b2', '09307242089', '2022-05-09 03:00:00', 1, 0, NULL, '87999999999', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-05-05 20:11:50', '2022-05-05 20:11:50'),
-(67, 'Seu Leôncio', 'seuleoncio@gmail.como', '$2y$10$GtmZGUGdadVsnBKJI6wuTu4qu7oMxmCHN6ooWhjOizjW/8RohHRUq', '66349648072', '2022-05-01 03:00:00', 1, 1, 2, '98777777777', '9887777777', 'AK', '4', 4, 'Latifundiário', '56327010', 'Rua Pantanal', '23', 'Casarão', 'Boa Esperança', 'Petrolina', 'PE', NULL, NULL, NULL, '2022-05-06 11:37:02', '2022-05-06 11:24:34');
+(67, 'Seu Leôncio', 'seuleoncio@gmail.como', '$2y$10$GtmZGUGdadVsnBKJI6wuTu4qu7oMxmCHN6ooWhjOizjW/8RohHRUq', '66349648072', '2022-05-01 03:00:00', 1, 1, 2, '98777777777', '9887777777', 'AK', '4', 4, 'Latifundiário', '56327010', 'Rua Pantanal', '23', 'Casarão', 'Boa Esperança', 'Petrolina', 'PE', NULL, NULL, NULL, '2022-05-06 11:37:02', '2022-05-06 11:24:34'),
+(68, 'Caique Sócio', 'caiquetesterj@gmail.com', 'testes', '04682477501', NULL, 1, NULL, NULL, '74991104890', NULL, NULL, NULL, NULL, NULL, '48903150', 'Rua Professor Olavo Balbino', '23', 'Proximo a rua 20', 'Santo Antônio', 'Juazeiro', 'BA', NULL, NULL, '2022-05-12 14:51:05', '2022-05-12 14:51:05', '2022-05-10 14:15:16'),
+(69, 'CAIQUE NEIVA PIRES MATOS', 'caiquecliente@gmail.com', '$2y$10$mU6WwCqgr3A2KoU/CrnGVeK6vEJgenkinsrN/ABjK/wr9fwpR3DH6', '11992039046', NULL, 1, NULL, NULL, '74991104890', NULL, NULL, NULL, NULL, NULL, '48903150', 'Rua Professor Olavo Balbino', '51', 'Proximo a rua 20', 'Santo Antônio', 'Juazeiro', 'BA', NULL, NULL, '2022-05-12 14:51:15', '2022-05-12 14:51:15', '2022-05-10 14:25:25'),
+(70, 'Caique Matos Teste', 'caiquepiressoc@gmail.com', '$2y$10$vFyPFVm3zC3SsRWgvwj6mONWy9NgVrBMzA4dcEDFBLouyrmBqfLC2', '40230618081', NULL, 1, NULL, NULL, '74991104890', NULL, NULL, NULL, NULL, NULL, '48903150', 'Rua Professor Olavo Balbino', '118', 'Proximo a rua 20', 'Santo Antônio', 'Juazeiro', 'BA', NULL, NULL, '2022-05-12 14:51:10', '2022-05-12 14:51:10', '2022-05-10 15:21:10'),
+(71, 'CAIQUE NEIVA PIRES MATOS', 'caique@gmail.com', '$2y$10$wJnYhDOTVH/2FoDhzDCYa.fOELgV0cUoBz5A9fEpdjo7SzWoXw.7.', '08229173001', NULL, 1, NULL, NULL, '74991104890', NULL, NULL, NULL, NULL, NULL, '48903150', 'Rua Professor Olavo Balbino', '123', 'Casa', 'Santo Antônio', 'Juazeiro', 'BA', NULL, NULL, '2022-05-12 14:51:17', '2022-05-12 14:51:17', '2022-05-10 15:23:41'),
+(72, 'CAIQUE NEIVA PIRES MATOS', 'caiquepires91@gmail.com', '$2y$10$sc6EPgYoryRUx6z3sQU4Ne.he6Wwof7ZkES9GdXJBmNDAp2FYzDvG', '75157701047', NULL, 1, NULL, NULL, '74991104890', NULL, NULL, NULL, NULL, NULL, '48903150', 'Rua Professor Olavo Balbino', '118', 'Proximo a rua 20', 'Santo Antônio', 'Juazeiro', 'BA', NULL, NULL, '2022-05-12 14:51:20', '2022-05-12 14:51:20', '2022-05-10 18:31:51'),
+(73, 'Renato Azevedo', 'renatoazevedo@gmail.com', '$2y$10$rkLchKNSNZFO2/SxhnSxc.0omyc0rFM/MiU5TDERYSn5yFzQvnIyW', '11138860050', NULL, 1, NULL, NULL, '74991104890', NULL, NULL, NULL, NULL, NULL, '48903150', 'Rua Professor Olavo Balbino', '118', 'Proximo a rua 20', 'Santo Antônio', 'Juazeiro', 'BA', NULL, NULL, '2022-05-12 14:52:15', '2022-05-12 14:52:15', '2022-05-10 20:39:45'),
+(74, 'Morgana Valéria', 'morganavaleria@gmail.com', '$2y$10$rdtJI4BCvkfLz.EPh.ZqhOTn1SAFAmZpZqrrH7Dh0LtPD2.z5gU7S', '16485873058', NULL, 1, NULL, NULL, '74999999999', NULL, NULL, NULL, NULL, NULL, '48903150', 'Rua Professor Olavo Balbino', '118', NULL, 'Santo Antônio', 'Juazeiro', 'BA', NULL, NULL, '2022-05-12 14:51:25', '2022-05-12 14:51:25', '2022-05-11 14:40:25'),
+(75, 'Caique Matos', 'teste@gmail.com', '$2y$10$TDqNY4ck0my7mAM7BJ7rFuwjWrVLYWP41PqlLcS9rpm9Ddp1/nphq', '53227540088', NULL, 1, NULL, NULL, '74991104890', NULL, NULL, NULL, NULL, NULL, '48903150', 'Rua Professor Olavo Balbino', '118', NULL, 'Santo Antônio', 'Juazeiro', 'BA', NULL, NULL, '2022-05-12 14:51:12', '2022-05-12 14:51:12', '2022-05-11 17:33:44'),
+(76, 'Rosa Maria', 'rosamariadasneves@gmail.com', '$2y$10$v4zL3RqLIsXAXhySX4mMD.cCRL/TjUJ.5gZg7S3oxmtPuI2VLkwAu', '19999811035', NULL, 1, NULL, NULL, '74991104890', NULL, NULL, NULL, NULL, NULL, '48903150', 'Rua Professor Olavo Balbino', '118', 'Proximo a rua 20', 'Santo Antônio', 'Juazeiro', 'BA', NULL, NULL, '2022-05-12 14:51:43', '2022-05-12 14:51:43', '2022-05-12 12:01:33'),
+(77, 'Mônica Ferreria', 'monicaferreira@gmail.com', '$2y$10$byGDyjlFBgzOseADRAoAruFzDRb2S1XuWK/SC7dKbug7BnY5oe.r2', '47720770064', '2022-05-04 03:00:00', 1, 0, NULL, '74999999999', '', NULL, NULL, NULL, NULL, '48903150', 'Rua Professor Olavo Balbino', '118', NULL, 'Santo Antônio', 'Juazeiro', 'BA', NULL, NULL, NULL, '2022-05-12 12:43:34', '2022-05-12 12:43:34'),
+(78, 'Belatrix Lestrange', 'belatrix@gmail.com', '$2y$10$k4Nj8RTAigBlc73Jj0dccuoIPadIHymlg6j/yJ50p84bBGz.ePr0u', '68417803025', '2022-05-03 03:00:00', 1, 1, NULL, '74999999999', '', NULL, NULL, NULL, NULL, '48903150', 'Rua Professor Olavo Balbino', '118', NULL, 'Santo Antônio', 'Juazeiro', 'BA', NULL, NULL, NULL, '2022-05-12 13:17:54', '2022-05-12 13:17:54'),
+(79, 'Luna Lovegood', 'lunaluna@gmail.com', '$2y$10$EHg.KXcadMR/IGnreQJQbuG44l.Omi7ZLILjlH17uQ2BK7zbrlNr6', '63136709063', '1991-12-12 03:00:00', 1, 0, NULL, '73999999999', '', NULL, NULL, NULL, NULL, '44905000', 'Rua das Pontes', '87', NULL, 'Aguada Nova', 'Lapão', 'BA', NULL, NULL, NULL, '2022-05-12 13:36:34', '2022-05-12 13:36:34');
 
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `cartoes`
+--
+ALTER TABLE `cartoes`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `dependentes`
@@ -413,10 +498,16 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de tabela `cartoes`
+--
+ALTER TABLE `cartoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT de tabela `dependentes`
 --
 ALTER TABLE `dependentes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de tabela `failed_jobs`
@@ -440,7 +531,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de tabela `pagamentos`
 --
 ALTER TABLE `pagamentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de tabela `permissions`
@@ -458,7 +549,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- Restrições para despejos de tabelas

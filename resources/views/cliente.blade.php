@@ -338,7 +338,12 @@
                                 </li>
                             </ul>
                             <div id="step-1">
-                                <h4 class="StepTitle text-center">Informações Pessoais</h4>
+                                <h4 class="StepTitle text-center">Informações Pessoais </h4>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 col-sm-6 d-flex align-items-center">
+                                        <button class="btn btn-danger me-auto m-1 tooltip" title="Remover dependente" onclick="remDependente(this)"><i class="fa fa-trash white-text" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
                                 <div class="form-group row justify-content-center">
                                 <div class="col-md-6 col-sm-6 ">
                                     <input type="text" name="nome"  value="{{ old('nome') }}" placeholder="Nome*" required class="form-control">
@@ -421,12 +426,12 @@
                             </div>
                             <div id="step-4">
                                 <h4 class="StepTitle text-center">Dependentes</h4>
+                                <div id="dependentes"></div>
                                 <div id="btn_add_dependente" class="row justify-content-center">
                                     <div class="col-md-6 col-sm-6 d-flex align-items-center">
                                         <button class="btn btn-success mx-auto btn-add-dependente" onclick="addDependente(this)"><span>Adicionar Dependente</span></button>
                                     </div>
                                 </div>
-                                <div id="dependentes"></div>
                             </div>
                         </div>
                         <div class="wizard-btns-wrapper float-end">
@@ -679,10 +684,15 @@
     <script>
         var dependente_counter = 1;
         function addDependente() {
-            $("#btn_add_dependente").fadeOut();
+            // $("#btn_add_dependente").fadeOut();
             $("#dependentes").append(
                 `
                 <div id="dependente_${dependente_counter}" class="dependente mb-4" style="display:none">
+                    <div class="form-group row justify-content-center">
+                        <div class="col-md-6 col-sm-6 ">
+                            <p class="ms-4 m-1 fw-bold"> Dependente ${dependente_counter} </p>
+                        </div>
+                    </div>
                     <div class="form-group row justify-content-center">
                         <div class="col-md-6 col-sm-6 ">
                             <input type="text" name="dependentes[nome][]" placeholder="Nome*" required class="form-control">
@@ -722,13 +732,13 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-6 col-sm-6 d-flex align-items-center">
-                            <button class="btn btn-success ms-auto m-1" onclick="addDependente(this)"><span class="glyphicon glyphicon-plus" aria-hidden="true">Adicionar</span></button>
-                            <button class="btn btn-danger me-auto m-1" onclick="remDependente(this)"><span class="glyphicon glyphicon-minus" aria-hidden="true">Remover</span></button>
+                            <button class="btn btn-danger ms-auto me-4 m-1" title="Remover dependente" onclick="remDependente(this)"><i class="fa fa-trash white-text" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </div>
                 `
             );
+            // <button class="btn btn-success ms-auto m-1" onclick="addDependente(this)"><span class="glyphicon glyphicon-plus" aria-hidden="true">Adicionar</span></button>
             $(`input[name="dependentes[cpf][]"]`).mask("000.000.000-00");
             $(`#dependente_${dependente_counter}`).slideDown("normal");
             dependente_counter++;

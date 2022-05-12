@@ -48,7 +48,7 @@ class CartaoController extends Controller
      */
     public function show(Cartao $cartao)
     {
-        //
+        return view("admin.cartoes.edit")->with("cartao", $cartao);
     }
 
     /**
@@ -59,7 +59,7 @@ class CartaoController extends Controller
      */
     public function edit(Cartao $cartao)
     {
-        //
+        return view("admin.cartoes.edit")->with("cartao", $cartao);
     }
 
     /**
@@ -82,10 +82,23 @@ class CartaoController extends Controller
      */
     public function destroy(Cartao $cartao)
     {
-        //
+        $cartao->delete();
+        return redirect()->back()->with("success", "Cartão removido com sucesso.");
     }
 
-     /**
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Cartao  $cartao
+     * @return \Illuminate\Http\Response
+     */
+    public function deletar(Cartao $cartao)
+    {
+        $cartao->delete();
+        return redirect()->back()->with("success", "Cartão removido com sucesso.");
+    }
+
+    /**
      * Marca recurso como ativado no db.
      *
      * @param  \App\Models\Request  $request

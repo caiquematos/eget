@@ -29,7 +29,7 @@
     <!-- FullCalendar -->
     <link href="{{url('admin/vendors/fullcalendar/dist/fullcalendar.min.css')}}" rel="stylesheet">
     <link href="{{url('admin/vendors/fullcalendar/dist/fullcalendar.print.css')}}" rel="stylesheet" media="print">
-    <!-- Datatables --> 
+    <!-- Datatables -->
     <link href="{{url('admin/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
@@ -73,6 +73,7 @@
     <style>
         .dtsp-panesContainer {
             width:390px;
+            margin-bottom: 3rem !important;
         }
 
         div.dtsp-panesContainer div.dtsp-searchPanes div.dtsp-searchPane {
@@ -81,7 +82,9 @@
 
         div.dtsp-panesContainer .dataTables_scrollBody {
             max-height:100px;
-        }
+            overflow: hidden !important;
+            height: 40px !important;
+        }   
 
         div.dtsp-panesContainer div.dataTables_wrapper div.dataTables_scrollBody div.dtsp-nameCont span.dtsp-name p {
             margin:0px !important;
@@ -94,6 +97,11 @@
         div.dtsp-panesContainer .dtsp-titleRow button {
             margin-bottom: 0px !important;
         }
+
+        div.dtsp-topRow, div.dtsp-titleRow {
+            display: none;
+        }
+
     </style>
 
 

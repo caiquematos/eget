@@ -28,8 +28,8 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-      
-       
+
+
         <!-- side menu -->
         @include("admin.build.side-menu")
         <!-- /side menu -->
@@ -70,49 +70,47 @@
                   <div class="x_content">
                       <div class="row">
                           <div class="col-sm-12">
+                            <p class="ms-4"  style="margin-left: 1rem">Filtrar por funções:</p>
                             <div class="card-box table-responsive">
-					
-                    <table id="datatable-usuarios" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                      <thead>
-                        <tr>
-                          <th data-priority="1">Nome</th>
-                          <th data-priority="2">E-mail</th>
-                          <th class="cpf" data-priority="3">CPF</th>
-                          <th>Celular</th>
-                          <th>Funções</th>
-                          <th data-priority="6">Ativo</th>
-                          <th data-priority="5">Ações</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                            @foreach ($usuarios as $usuario)
-                                <tr>
-                                    <td>{{$usuario->nome}}</td>
-                                    <td>{{$usuario->email}}</td>
-                                    <td>{!!"<span data-tipo='cpf'>$usuario->cpf</span>"!!}</td>
-                                    <td>{!!"<span data-tipo='celular'>$usuario->celular</span>"!!}</td>
-                                    <td>
-                                      @if($usuario->roles->count())
-                                        @foreach ($usuario->roles as $role)
-                                          <p><span class="role-label">{{$role->name}}</span></p>
-                                        @endforeach
-                                      @else
-                                        <p><span class="role-label">usuário</span></p>
-                                      @endif
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" data-usuario-id={{$usuario->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$usuario->ativo ? "checked" : ""}} />
-                                    </td>
-                                    <td>
-                                        <a href="{{route('admin.usuario.show', [$usuario->id])}}"><i class="fa fa-eye mx-1"></i></a>
-                                        <a href="{{route('admin.usuario.deletar', [$usuario->id])}}"><i class="fa fa-trash mx-1"></i></a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                      </tbody>
-                    </table>
-					
-					
+                                <table id="datatable-usuarios" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                        <th data-priority="1">Nome</th>
+                                        <th data-priority="2">E-mail</th>
+                                        <th class="cpf" data-priority="3">CPF</th>
+                                        <th>Celular</th>
+                                        <th>Funções</th>
+                                        <th data-priority="6">Ativo</th>
+                                        <th data-priority="5">Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            @foreach ($usuarios as $usuario)
+                                                <tr>
+                                                    <td>{{$usuario->nome}}</td>
+                                                    <td>{{$usuario->email}}</td>
+                                                    <td>{!!"<span data-tipo='cpf'>$usuario->cpf</span>"!!}</td>
+                                                    <td>{!!"<span data-tipo='celular'>$usuario->celular</span>"!!}</td>
+                                                    <td>
+                                                    @if($usuario->roles->count())
+                                                        @foreach ($usuario->roles as $role)
+                                                        <p><span class="role-label">{{$role->name}}</span></p>
+                                                        @endforeach
+                                                    @else
+                                                        <p><span class="role-label">usuário</span></p>
+                                                    @endif
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox" data-usuario-id={{$usuario->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$usuario->ativo ? "checked" : ""}} />
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{route('admin.usuario.show', [$usuario->id])}}"><i class="fa fa-eye mx-1"></i></a>
+                                                        <a href="{{route('admin.usuario.deletar', [$usuario->id])}}"><i class="fa fa-trash mx-1"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                    </tbody>
+                                </table>
                   </div>
                 </div>
               </div>
@@ -143,48 +141,50 @@
     <script src="vendors/iCheck/icheck.min.js"></script>
 
     <script>
-    var dt = $("#datatable-usuarios").DataTable({
-      searchPanes: {
-          viewTotal: true,
-          columns: [4],
-          layout: 'columns-1'
-      },
-      language: {
-          url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
-          searchPanes: {
-              title: {
-                  _: 'Filtros Selecionados - %d',
-                  0: 'Nenhum Filtro Selecionado',
-                  1: 'Um Filtro Selecionado'
-              },
-              count: '{total} encontrado',
-              countFiltered: '{shown} ({total})'
-          }
-      },
-      dom: 'Plfrtip',
-      columnDefs: [
-          {
-              orderable: false,
-              searchPanes: {
-                  header: "Filtro por tipo de usuário.",
-                  show: true,
-              },
-              targets: [4]
-          },
-        ],
-        select: {
-            style:    'os',
-            selector: 'td:first-child'
-        },
-    });
+        $(function(){
+            var dt = $("#datatable-usuarios").DataTable({
+                searchPanes: {
+                    viewTotal: true,
+                    columns: [4],
+                    layout: 'columns-1'
+                },
+                language: {
+                    url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
+                    searchPanes: {
+                        title: {
+                            _: 'Filtros Selecionados - %d',
+                            0: 'Nenhum Filtro Selecionado',
+                            1: 'Um Filtro Selecionado'
+                        },
+                        count: '{total} encontrado',
+                        countFiltered: '{shown} ({total})'
+                    }
+                },
+                dom: 'Plfrtip',
+                columnDefs: [
+                {
+                    orderable: false,
+                    searchPanes: {
+                        header: "Filtro por tipo de usuário.",
+                        show: true,
+                    },
+                    targets: [4]
+                },
+                ],
+                select: {
+                    style:    'os',
+                    selector: 'td:first-child'
+                }
+            });
 
-    dt.on('select.dt', () => {          
-        dt.searchPanes.rebuildPane(0, true);
-    });
- 
-    dt.on('deselect.dt', () => {
-        dt.searchPanes.rebuildPane(0, true);
-    });
+            dt.on('select.dt', () => {
+                dt.searchPanes.rebuildPane(0, true);
+            });
+
+            dt.on('deselect.dt', () => {
+                dt.searchPanes.rebuildPane(0, true);
+            });
+        });
 
     // Gerencia ativação do cliente.
     function toggleAtivacao(e) {
@@ -265,7 +265,7 @@
     }
 
     </script>
-    
+
 
   </body>
 </html>

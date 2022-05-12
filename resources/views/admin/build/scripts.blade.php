@@ -21,8 +21,8 @@
 
 {{-- <script src="{{ mix('build/js/common.js') }}"></script> --}}
 
-<!-- Session functions AND Pnotify functions--> 
-    
+<!-- Session functions AND Pnotify functions-->
+
     <!-- Verifica se há erros na sessão -->
     @if ($errors->any())
         @php
@@ -80,8 +80,8 @@
 <script>
 
     /**
-     * 
-     * @param {string} date 
+     *
+     * @param {string} date
      * @returns string
      */
     function date_pt_en(date) {
@@ -90,7 +90,7 @@
     }
 
     /**
-     * @param {string} date 
+     * @param {string} date
      * @returns string
      */
     function date_en_pt(date) {
@@ -101,7 +101,7 @@
     // Busca dados por CEP.
     $("input[data-tipo='cep']").blur(consultar_cep);
     /**
-     * @param {string} date 
+     * @param {string} date
      * @returns string
      */
     function consultar_cep() {
@@ -126,8 +126,15 @@
     }
 
 </script>
+
+<script>
+    $(".dtsp-nameColumn").click(function() {
+        console.log("clickado");
+    });
+</script>
+
 <!-- /Funções -->
 
-  
+
 <!-- Custom Theme Scripts -->
 <script src="{{url('admin/build/js/custom.min.js')}}"></script>

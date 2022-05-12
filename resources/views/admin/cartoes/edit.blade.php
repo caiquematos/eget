@@ -11,26 +11,13 @@
 
 <!-- style -->
 <style>
-    .btn-dependente {
-        cursor: pointer;
-        transition-duration: .2s;
-    }
-
-    .btn-dependente:hover {
-        transform: scale(1.2);
-        color:green;
-    }
-
-    .btn-dependente-minus:hover {
-        color:red !important;
-    }
 </style>
 <!-- /style -->
 
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
-            
+
             <!-- side menu -->
             @include("admin.build.side-menu")
             <!-- /side menu -->
@@ -56,7 +43,7 @@
                         <div class="col-md-12 col-sm-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2><a href="{{route('admin.cliente.edit', $dependente->id_usuario)}}">Cliente</a></h2><h2><i class="fa fa-chevron-right mx-2"></i></h2><h2>Atualizar Dependente</h2>
+                                    <h2><a href="{{route('admin.cartao.index', $cartao->usuario_id ?? $cartao->dependente->id_usuario)}}">Cartões</a></h2><h2><i class="fa fa-chevron-right mx-2"></i></h2><h2>Atualizar Cartão</h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -66,11 +53,11 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <form id="form_atualizar_dependente" action="{{route('admin.dependente.update', $dependente->id)}}" method="post" novalidate>
+                                    <form id="form_atualizar_cartao" action="{{route('admin.cartao.update', $cartao->id)}}" method="post" novalidate>
                                         @csrf
                                         @method('PUT')
                                         <span class="section">Informações Pessoais</span>
-                                        <div class="field item form-group">
+                                        {{-- <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">CPF<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" data-validate-length-range="13" value="{{ $dependente->cpf }}" data-mask="000.000.000-00" name="cpf" required="required" />
@@ -107,7 +94,7 @@
                                                     @endforeach
 												</select>
 											</div>
-                                        </div>                            
+                                        </div> --}}
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-6 offset-md-3">
@@ -142,7 +129,7 @@
     <script src="{{url('admin/assets/js/chance.min.js')}}"></script>
     <script src="{{url('admin/vendors/validator/multifield.js')}}"></script>
     <script src="{{url('admin/vendors/validator/validator.js')}}"></script>
-{{-- 
+{{--
     <!-- Verifica se cliente foi atualizado -->
     @if (isset($dependente->atualizado))
         <script>
@@ -155,18 +142,16 @@
             });
         </script>
     @endif --}}
-    
+
     <!-- Javascript functions	-->
     <script>
-        var dependente = @json($dependente,JSON_PRETTY_PRINT);
-        console.log("dependente", dependente);
     </script>
 
     <script>
         $(function() {
-            $("input[name=nascimento]").val(date_pt_en(dependente.nascimento)).change();
-            $("select[name=sexo]").val(dependente.sexo).change();
-            $("select[name=parentesco]").val(dependente.parentesco).change();
+            // $("input[name=nascimento]").val(date_pt_en(dependente.nascimento)).change();
+            // $("select[name=sexo]").val(dependente.sexo).change();
+            // $("select[name=parentesco]").val(dependente.parentesco).change();
         });
 
         function date_pt_en(date) {

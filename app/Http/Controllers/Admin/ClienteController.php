@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Usuario;
 use App\Models\Dependente;
 use App\Models\Pagamento;
+use App\Models\Cartao;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreDependenteRequest;
 use App\Http\Requests\StoreClienteRequest;
@@ -80,7 +81,12 @@ class ClienteController extends Controller
             $pagamento->id_usuario = $cliente->id;
             $pagamento->status = 1;
             $pagamento->save();
-
+            
+            // Gerencia cartão titular.
+            $cartao = new Cartao();
+            $cartao->usuario_id = $cliente->id;
+            $cartao->save();
+            
             // Gerencia dependentes.
             if (!empty($request->input("dependentes"))) {
                $dependentes = $this->mapear_form_array($request->input("dependentes"));
@@ -100,6 +106,12 @@ class ClienteController extends Controller
                     $dependente_obj->parentesco = $dependente->parentesco;
                     $dependente_obj->nascimento = $dependente->nascimento;
                     $dependente_obj->save();
+                    if ($dependente_obj) {
+                        // Gerencia cartão dependente.
+                        $cartao = new Cartao();
+                        $cartao->dependente_id = $dependente_obj->id;
+                        $cartao->save();
+                    }
                }
             }
             $this->response["success"] = true;

@@ -17,10 +17,10 @@ class Cartao extends Model
      */
     public function cliente()
     {
-        return $this->belongsTo(Cartao::class);
+        return $this->belongsTo(Usuario::class);
     }
 
-    
+
     /**
      * Retorna o cliente proprietário do cartão.
      */

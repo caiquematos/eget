@@ -47,9 +47,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             Route::post("ativar",[CartaoController::class, 'ativar'])->name('ativar');
             Route::get("index/{cliente}",[CartaoController::class, 'index'])->name('index');
             Route::get("create/{cliente}", [CartaoController::class, 'create'])->name('create');
-            // Route::get("deletar/{dependente}", function(Dependente $dependente) {
-            //     return App::make('App\Http\Controllers\Admin\DependenteController')->deletar($dependente);
-            // })->name('deletar');
+            Route::get("deletar/{cartao}", [CartaoController::class, 'deletar'])->name('deletar');
         });
 
         // Rotas 'Dependente'
@@ -86,7 +84,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
         Route::get('/home', [UsuarioController::class, 'index'])->name('home');
 
     });
-    
+
     // Rotas 'Auth'
     Route::post('/login', [AdminLoginController::class, 'index'])->name('logar');
     Route::get('/login',  function () {

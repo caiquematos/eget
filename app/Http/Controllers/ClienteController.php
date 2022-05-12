@@ -6,6 +6,7 @@ use App\Http\Requests\StoreClienteRequest;
 use App\Models\Usuario;
 use App\Models\Pagamento;
 use App\Models\Dependente;
+use App\Models\Cartao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,22 +54,34 @@ class ClienteController extends Controller
         $pagamento->status = 1;
         $pagamento->save();
 
+        // Gerencia cartão titular.
+        $cartao = new Cartao();
+        $cartao->usuario_id = $cliente->id;
+        $cartao->save();
+
         // Gerencia dependentes.
         if (!empty($request->input("dependentes"))) {
             $dependentes = $this->mapear_form_array($request->input("dependentes"));
             foreach($dependentes as $dependente) {
-                 $dependente = (Object) $dependente;
-                 $dependente_obj = new Dependente();
-                 $dependente_obj->id_usuario = $cliente->id;
-                 $dependente_obj->cpf = $dependente->cpf;
-                 $dependente_obj->nome = $dependente->nome;
-                 $dependente_obj->sexo = $dependente->sexo;
-                 $dependente_obj->parentesco = $dependente->parentesco;
-                 $dependente_obj->nascimento = $dependente->nascimento;
-                 $dependente_obj->save();
+                $dependente = (Object) $dependente;
+                $dependente_obj = new Dependente();
+                $dependente_obj->id_usuario = $cliente->id;
+                $dependente_obj->cpf = $dependente->cpf;
+                $dependente_obj->nome = $dependente->nome;
+                $dependente_obj->sexo = $dependente->sexo;
+                $dependente_obj->parentesco = $dependente->parentesco;
+                $dependente_obj->nascimento = $dependente->nascimento;
+                $dependente_obj->save();
+                if ($dependente_obj) {
+                    // Gerencia cartão dependente.
+                    $cartao = new Cartao();
+                    $cartao->dependente_id = $dependente_obj->id;
+                    $cartao->save();
+                }
             }
         }
 
+        // Faz login do cliente que acabou de fazer cadastro.
         if ($cliente->hasRole(config('constants.ROLES.CLIENTE.name'))) {
             if (Auth::check())
                 Auth::logout();

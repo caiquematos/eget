@@ -12,7 +12,7 @@
 <style>
 
     @media (max-width: 1400px) {
-       
+
     }
 
     html {
@@ -261,13 +261,17 @@
                     <div class="row">
                         @isset(Auth::user()->dependentes)
                         @foreach (Auth::user()->dependentes as $dependente)
-                        <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
-                        <div class="card-container">
-                            <p>{{$dependente->nome}}</p>
-                            <p>{{$dependente->cpf}}</p>
-                            <p>{{$dependente->nascimento}}</p>
-                        </div>
-                        </div>
+                            @foreach ($dependente->cartoes as $cartao)
+                            <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
+                                <div class="card-container">
+                                    <p>{{$dependente->nome}}</p>
+                                    <p>{{$dependente->cpf}}</p>
+                                    <p>{{$dependente->nascimento}}</p>
+                                    <div class="status">
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                         @endforeach
                         @endisset
                     </div>

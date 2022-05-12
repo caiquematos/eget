@@ -21,14 +21,14 @@ class Dependente extends BaseModel
     /**
      * Inicializa cpf.
      *
-     * @param  string  $value
+     * @param  string  $,
      * @return string
      */
     public function setCpfAttribute($value)
     {
         $this->attributes['cpf'] = $this->cleanCpf($value);
     }
-    
+
     /**
      * Get data de nascimento do dependente.
      *
