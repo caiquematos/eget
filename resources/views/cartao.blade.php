@@ -179,20 +179,32 @@
         position: absolute;
         font-size: small;
         font-weight: 700;
-        left: 20px;
     }
 
     .card-container p:nth-child(1) {
+        left: 20px;
         bottom: 52px;
     }
 
     .card-container p:nth-child(2) {
+        left: 20px;
         bottom: 22px;
     }
 
     .card-container p:nth-child(3) {
-        bottom: 2px;
+        left: 20px;
+        bottom: -6px;
     }
+
+    .card-container p:nth-child(4) {
+        bottom: 13px;
+        right: 20px;
+        padding: 0px 9px;
+        box-shadow: rgb(0 0 0 / 35%) 0px 5px 5px 2px;
+        border-radius: 5px;
+        border: 2px white solid;
+    }
+
 
 </style>
 
@@ -246,9 +258,16 @@
                     <div class="row">
                         <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
                             <div class="card-container">
-                                <p>{{Auth::user()->nome}}</p>
-                                <p>{{Auth::user()->cpf}}</p>
-                                <p>{{Auth::user()->nascimento}}</p>
+                                @foreach (Auth::user()->cartoes as $cartao)
+                                <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
+                                    <div class="card-container">
+                                        <p>{{Auth::user()->nome}}</p>
+                                        <p>{{Auth::user()->cpf}}</p>
+                                        <p>{{Auth::user()->nascimento}}</p>
+                                        {!!CARTAO_STATUS[$cartao->status]!!}
+                                    </div>
+                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -267,8 +286,7 @@
                                     <p>{{$dependente->nome}}</p>
                                     <p>{{$dependente->cpf}}</p>
                                     <p>{{$dependente->nascimento}}</p>
-                                    <div class="status">
-                                    </div>
+                                    {!!CARTAO_STATUS[$cartao->status]!!}
                                 </div>
                             </div>
                             @endforeach

@@ -6,6 +6,7 @@ use App\Http\Requests\StoreDependenteRequest;
 use App\Http\Requests\UpdateDependenteRequest;
 use App\Models\Dependente;
 use App\Models\Usuario;
+use App\Models\Cartao;
 use Illuminate\Http\Request;
 
 class DependenteController extends Controller
@@ -38,7 +39,7 @@ class DependenteController extends Controller
     public function create()
     {
         return view("admin.dependentes.create");
-        
+
     }
 
     /**
@@ -53,6 +54,11 @@ class DependenteController extends Controller
         $dependente->fill($request->validated());
         $dependente->id_usuario = $request->input("id_usuario");
         $dependente->save();
+
+        // Gerencia cartão titular.
+        $cartao = new Cartao();
+        $cartao->dependente_id = $dependente->id;
+        $cartao->save();
 
         $cliente = Usuario::find($dependente->id_usuario);
         return redirect()->back()->with(["success"=>"Dependente adicionado com sucesso.", "cliente"=>$cliente]);
@@ -104,7 +110,7 @@ class DependenteController extends Controller
     {
     }
 
-    
+
     /**
      * Marca recurso como deletado no db.
      *
