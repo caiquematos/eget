@@ -56,7 +56,17 @@
                                     <form id="form_atualizar_cartao" action="{{route('admin.cartao.update', $cartao->id)}}" method="post" novalidate>
                                         @csrf
                                         @method('PUT')
-                                        <span class="section">Informações Pessoais</span>
+                                        <span class="section">Cartão N°{{$cartao->id}}</span>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Status<span class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-12  ">
+												<select name="status" class="select2_single form-control" tabindex="-1" required='required'>
+													@foreach (CARTAO_STATUS as $key=>$status)
+                                                        <option value={{$key}}>{!!$status!!}</option>
+                                                    @endforeach
+												</select>
+											</div>
+                                        </div>
                                         {{-- <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">CPF<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
@@ -145,13 +155,12 @@
 
     <!-- Javascript functions	-->
     <script>
+        var cartao = @json($cartao);
     </script>
 
     <script>
         $(function() {
-            // $("input[name=nascimento]").val(date_pt_en(dependente.nascimento)).change();
-            // $("select[name=sexo]").val(dependente.sexo).change();
-            // $("select[name=parentesco]").val(dependente.parentesco).change();
+            $("select[name=status]").val(cartao.status).change();
         });
 
         function date_pt_en(date) {

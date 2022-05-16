@@ -72,6 +72,21 @@
         $('[data-tipo=cep]').mask('00000-000', {
             reverse: true
         });
+
+        // Iniciallização do filtro.
+        $(".filtro").click(function() {
+            console.log("clicado");
+            $(this).toggleClass("active");
+            var div = $("div.dtsp-panesContainer div.dtsp-searchPanes div.dtsp-searchPane");
+            if ($(this).hasClass("active")) {
+                div.slideDown();
+                $(".filtro-subtitle").slideDown();
+            } else {
+                div.slideUp();
+                $(".filtro-subtitle").slideUp();
+            }
+        });
+
     });
 </script>
 <!-- /Funções de inicialização -->

@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 return [
-	'ROLES' => 
+	'ROLES' =>
     [
         'CLIENTE' => [
             'id' => 4,
@@ -26,5 +26,12 @@ return [
         'VIUVO' => 3,
         'OUTRO' => 4,
     ],
-    
+    'STATUS_CARTAO' =>
+    [
+        'ANDAMENTO' => 0,
+        'FINALIZADO' => 1,
+        'ENTREGUE' => 2,
+        'CANCELADO' => 3,
+    ],
+
 ];

@@ -64,12 +64,13 @@
                   <div class="x_content">
                       <div class="row">
                           <div class="col-sm-12">
-                            <p class="ms-4"  style="margin-left: 1rem">Filtrar por status:</p>
+                            <p class="filtro active" class="ms-4"  style="margin-left: 1rem">Filtrar por Status <i class="fa fa-chevron-circle-up"></i></p>
+                            <p class="filtro-subtitle">selecione uma ou mais opções</p>
                             <div class="card-box table-responsive">
                                 <table id="datatable-cartoes-titular" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                   <thead>
                                     <tr>
-                                      <th data-priority="1">id</th>
+                                      <th data-priority="1">Código</th>
                                       <th data-priority="2">Status</th>
                                       <th>Data de Criação</th>
                                       <th>Ativo</th>
@@ -87,6 +88,7 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{route('admin.cartao.show', [$cartao->id])}}"><i class="fa fa-eye mx-1" title="Ver"></i></a>
+                                                    <a href="{{route('admin.cartao.store', [$cartao->id])}}"><i class="fa fa-repeat mx-1" title="Gerar um novo cartão"></i></a>
                                                     <a href="{{route('admin.cartao.deletar', [$cartao->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a>
                                                 </td>
                                             </tr>
@@ -118,12 +120,13 @@
                   <div class="x_content">
                       <div class="row">
                           <div class="col-sm-12">
-                            <p class="ms-4" style="margin-left: 1rem">Filtrar por status:</p>
+                            <p class="filtro active" class="ms-4"  style="margin-left: 1rem">Filtrar por Pagamento <i class="fa fa-chevron-circle-up"></i></p>
+                            <p class="filtro-subtitle">selecione uma ou mais opções</p>
                             <div class="card-box table-responsive">
                                 <table id="datatable-cartoes-dependentes" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                   <thead>
                                     <tr>
-                                      <th data-priority="1">id</th>
+                                      <th data-priority="1">Código</th>
                                       <th data-priority="2">CPF</th>
                                       <th data-priority="3">Nome</th>
                                       <th data-priority="4">Status</th>
@@ -146,6 +149,7 @@
                                             </td>
                                             <td>
                                                 <a href="{{route('admin.cartao.show', [$cartao->id])}}"><i class="fa fa-eye mx-1" title="Ver"></i></a>
+                                                <a href="{{route('admin.cartao.store', [$cartao->id])}}"><i class="fa fa-repeat mx-1" title="Gerar um novo cartão"></i></a>
                                                 <a href="{{route('admin.cartao.deletar', [$cartao->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a>
                                             </td>
                                         </tr>
@@ -219,7 +223,6 @@
                 }
             });
 
-
             dt.on('select.dt', () => {
                 dt.searchPanes.rebuildPane(0, true);
             });
@@ -263,7 +266,6 @@
                 },
             });
 
-
             dt2.on('select.dt', () => {
                 console.log("selecionado");
                 dt2.searchPanes.rebuildPane(0, true);
@@ -272,7 +274,7 @@
             dt2.on('deselect.dt', () => {
                 dt2.searchPanes.rebuildPane(0, true);
             });
-    });
+        });
 
     // Gerencia ativação do cartao.
     function toggleAtivacao(e) {

@@ -79,12 +79,11 @@
         div.dtsp-panesContainer div.dtsp-searchPanes div.dtsp-searchPane {
             margin-top:0px !important;
         }
-
         div.dtsp-panesContainer .dataTables_scrollBody {
             max-height:100px;
-            overflow: hidden !important;
-            height: 40px !important;
-        }   
+            /* overflow: hidden !important; */
+            /* height: 40px !important; */
+        }
 
         div.dtsp-panesContainer div.dataTables_wrapper div.dataTables_scrollBody div.dtsp-nameCont span.dtsp-name p {
             margin:0px !important;
@@ -100,6 +99,35 @@
 
         div.dtsp-topRow, div.dtsp-titleRow {
             display: none;
+        }
+
+        .filtro {
+            cursor: pointer;
+            width:fit-content;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 8px;
+        }
+
+        .filtro-subtitle {
+            margin-left: 1.2rem;
+            margin-top: -11px;
+            margin-bottom: 0px;
+        }
+
+        .filtro:hover, .filtro.active {
+        color: white;
+        background-color:#73879c;
+        }
+
+        .filtro i {
+            font-size: 20px;
+            vertical-align: middle;
+            transition: 0.5s;
+            transform: rotate(0.0turn);
+        }
+        .filtro.active i{
+            transform: rotate(0.5turn);
         }
 
     </style>

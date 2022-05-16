@@ -22,11 +22,18 @@ class Cartao extends Model
 
 
     /**
-     * Retorna o cliente proprietário do cartão.
+     * Retorna o dependente proprietário do cartão.
      */
     public function dependente()
     {
         return $this->belongsTo(Dependente::class);
+    }
+
+    /**
+     * Retorna o proprietário do cartão.
+     */
+    public function dono() {
+        return !empty($this->attributes['usuario_id']) ? $this->belongsTo(Usuario::class) : $this->belongsTo(Dependente::class);
     }
 
 }

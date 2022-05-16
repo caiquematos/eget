@@ -42,11 +42,12 @@ Route::prefix('/admin')->name('admin.')->group(function () {
         });
 
         // Rotas 'Cartão'
-        Route::resource("cartao", CartaoController::class)->except(['create', 'index']);
+        Route::resource("cartao", CartaoController::class)->except(['create', 'index', 'store']);
         Route::prefix('cartao')->name('cartao.')->group(function () {
             Route::post("ativar",[CartaoController::class, 'ativar'])->name('ativar');
             Route::get("index/{cliente}",[CartaoController::class, 'index'])->name('index');
             Route::get("create/{cliente}", [CartaoController::class, 'create'])->name('create');
+            Route::get("store/{cartao}", [CartaoController::class, 'store'])->name('store');
             Route::get("deletar/{cartao}", [CartaoController::class, 'deletar'])->name('deletar');
         });
 

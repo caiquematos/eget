@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cartao;
+use App\Models\Dependente;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
@@ -35,9 +36,15 @@ class CartaoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Cartao $cartao)
     {
-        //
+        $novo_cartao = new Cartao();
+        $novo_cartao->fill($cartao->toArray());
+        $cartao->delete();
+        $novo_cartao->status = config("constants.STATUS_CARTAO.ANDAMENTO");
+        $novo_cartao->save();
+        return redirect()->back()->with("success", "Novo cartão gerado com sucesso.");
+
     }
 
     /**
@@ -71,7 +78,19 @@ class CartaoController extends Controller
      */
     public function update(Request $request, Cartao $cartao)
     {
-        //
+        $inputs = $request->validate([
+            'status' => 'required|numeric'
+        ]);
+        $cartao->fill($inputs)->save();
+
+        // is owner dependente ou titular?
+        $titular_id = $cartao->usuario_id;
+        if (!$cartao->usuario_id) {
+            $dependente = Dependente::find($cartao->dependente_id);
+            $titular = Usuario::find($dependente->id_usuario);
+            $titular_id = $titular->id;
+        }
+        return redirect()->route("admin.cartao.index", $titular_id)->with("success", "Cartão atualizado com sucesso.");
     }
 
     /**

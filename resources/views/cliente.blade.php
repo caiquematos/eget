@@ -14,7 +14,7 @@
 <style>
 
     @media (max-width: 1400px) {
-       
+
     }
 
     html {
@@ -221,7 +221,7 @@
         background-color: #367e8c !important;
         border-color: #367e8c !important;
     }
-    
+
     .prev, .buttonPrevious  {
         color: #fff;
         background-color: #34495E !important;
@@ -506,7 +506,7 @@
                 $('.prev').prop('disabled', false);
             } else {
                 $('.prev').prop('disabled', true);
-            } 
+            }
             if (step == 4) {
                 console.log("step == 4");
                  $('.next').addClass('d-none');
@@ -528,10 +528,12 @@
             smartwizard = $('#wizard').smartWizard({
                 justified: true,
                 keyboardSettings: {
-                    keyNavigation: true, // Enable/Disable keyboard navigation(left and right keys are used if enabled)
-                    keyLeft: [37], // Left key code
-                    keyRight: [39] // Right key code
-                }
+                    keyNavigation: false, // Enable/Disable keyboard navigation(left and right keys are used if enabled)
+                },
+                anchorSettings: {
+                    anchorClickable: false, // Enable/Disable anchor navigation
+                    enableAllAnchors: false, // Activates all anchors clickable all times
+                },
             });
             $('.buttonNext').addClass('btn btn-success').text("Avançar");
             $('.buttonPrevious').addClass('btn btn-primary').text("Voltar");
@@ -746,7 +748,7 @@
         }
         function remDependente(e) {
             let dependente_item = $(e).closest('.dependente');
-            dependente_item.slideUp("normal", function() { 
+            dependente_item.slideUp("normal", function() {
                 $(this).remove();
                 console.log("hasclass", $('#dependentes').find('.dependente').length);
                 if (! $('#dependentes').find('.dependente').length) {

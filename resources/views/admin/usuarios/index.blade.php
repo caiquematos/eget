@@ -70,7 +70,8 @@
                   <div class="x_content">
                       <div class="row">
                           <div class="col-sm-12">
-                            <p class="ms-4"  style="margin-left: 1rem">Filtrar por funções:</p>
+                            <p class="filtro active" class="ms-4"  style="margin-left: 1rem">Filtrar por Funções <i class="fa fa-chevron-circle-up"></i></p>
+                            <p class="filtro-subtitle">selecione uma ou mais opções</p>
                             <div class="card-box table-responsive">
                                 <table id="datatable-usuarios" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                     <thead>
