@@ -36,13 +36,13 @@
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
-              <div class="title_left">
+              {{-- <div class="title_left">
                 <h3>Cartões de Vantagens</h3>
               </div>
 
               <div class="title_right">
                 <a class="btn btn-primary pull-right text-white" href="{{url('admin/cartao/create')}}">Adicionar</a>
-              </div>
+              </div> --}}
             </div>
 
             <div class="clearfix"></div>
@@ -52,7 +52,7 @@
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2><a href="{{route('admin.cliente.index')}}">Clientes</a></h2><h2><i class="fa fa-chevron-right mx-2"></i></h2><h2>{{$cliente->nome}}</h2>
+                    <h2><a href="{{route('admin.cliente.index')}}">Clientes</a></h2><h2><i class="fa fa-chevron-right mx-2"></i></h2><h2>Cartões do(a) Titular <strong>{{$cliente->nome}}</strong></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -70,7 +70,7 @@
                                 <table id="datatable-cartoes-titular" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                   <thead>
                                     <tr>
-                                      <th data-priority="1">Código</th>
+                                      <th data-priority="1">Nº da Sorte</th>
                                       <th data-priority="2">Status</th>
                                       <th>Data de Criação</th>
                                       <th>Ativo</th>
@@ -108,7 +108,7 @@
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Dependentes</h2>
+                    <h2>Cartões dos Dependentes</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -126,7 +126,7 @@
                                 <table id="datatable-cartoes-dependentes" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                   <thead>
                                     <tr>
-                                      <th data-priority="1">Código</th>
+                                      <th data-priority="1">Nº da Sorte</th>
                                       <th data-priority="2">CPF</th>
                                       <th data-priority="3">Nome</th>
                                       <th data-priority="4">Status</th>

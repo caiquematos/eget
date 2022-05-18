@@ -260,11 +260,6 @@
         background-color: #3d88f8;
     }
 
-    .esqueceu {
-        color: #6c757d;
-        font-size: smaller;
-    }
-
 </style>
 <body>
 <div id="dtr-wrapper" class="clearfix">
@@ -312,29 +307,17 @@
                 <!--== row 1 starts ==-->
                 <div class="row wow fadeInUp justify-content-center" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                    <div class="col-md-6 align-items-center">
-                       <form action="{{route('cliente.logar')}}" method="POST">
+                       <form action="{{route('cliente.recuperacao')}}" method="POST">
                         @csrf
-                        <h4 class="StepTitle text-center">Meu Cartão</h4>
-                        <div class="form-group row justify-content-center">
-                        <div class="col-md-6 col-sm-6 ">
-                            <input type="text" name="cpf"  value="{{ old('cpf') }}" placeholder="CPF*" required class="form-control">
-                            <p class="feedback-error">Utilize um CPF válido.</p>
-                        </div>
-                        </div>
+                        <h4 class="StepTitle text-center">Recuperação de Senha</h4>
                         <div class="form-group row justify-content-center">
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="password"  name="password" placeholder="Senha*" required class="form-control">
-                                <p class="feedback-error">Esse campo é obrigatório.</p>
+                                <input type="text" name="cpf" value="{{ old('cpf') }}" placeholder="CPF*" required class="form-control">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col d-flex">
-                                <button class="cadastrar btn m-auto mb-4" type="submit">Entrar</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col items-align-center justify-content-center d-flex">
-                                <a class="m-auto esqueceu" href="{{route("cliente.recuperacao")}}">Esqueceu a senha?</a>
+                                <button class="cadastrar btn m-auto mt-3" type="submit">Enviar link de recuperação</button>
                             </div>
                         </div>
                        </form>
@@ -371,7 +354,6 @@
 
     </script>
 
-
     <!-- Verifica se há mensagem de sucesso na sessão -->
     @if (session("success"))
         <script>
@@ -386,6 +368,5 @@
             });
         </script>
     @endif
-
 
 </body></html>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DependenteController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\UsuarioController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\EsqueciSenhaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Models\Dependente;
@@ -107,6 +108,10 @@ Route::get('/adm', function() {
 
 // Rotas 'Cliente'
 Route::prefix('/cliente')->name('cliente.')->group(function () {
+    Route::post('/recuperar',[EsqueciSenhaController::class, 'reset'])->name("reset");
+    Route::get('/recuperar/{token}',[EsqueciSenhaController::class, 'showFormRecuperar'])->name("recuperar");
+    Route::post('/recuperacao',[EsqueciSenhaController::class, 'enviarEmail'])->name("recuperacao");
+    Route::get('/recuperacao',[EsqueciSenhaController::class, 'showFormRecuperacao'])->name("recuperacao");
     Route::get('/cartao', [ClienteController::class, 'index'])->name('cartao')->middleware('auth', 'role:cliente');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::post('/login',[LoginController::class, 'index'])->name('logar');

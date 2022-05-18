@@ -71,7 +71,7 @@ class ClienteController extends Controller
         $cliente->sexo = $request->sexo;
         $cliente->telefone = $request->telefone;
         $cliente->save();
-        
+
         if ($cliente){
             // Gerencia papel do usuário.
             $cliente->roles()->sync([config('constants.ROLES.CLIENTE.id')]);
@@ -81,22 +81,21 @@ class ClienteController extends Controller
             $pagamento->id_usuario = $cliente->id;
             $pagamento->status = 1;
             $pagamento->save();
-            
+
             // Gerencia cartão titular.
             $cartao = new Cartao();
             $cartao->usuario_id = $cliente->id;
             $cartao->save();
-            
+
             // Gerencia dependentes.
+            $validator_errors = [];
             if (!empty($request->input("dependentes"))) {
                $dependentes = $this->mapear_form_array($request->input("dependentes"));
-               foreach($dependentes as $dependente) {
-                    // if ($validator = $this->validarDependente($dependente)){
-                    //     break;
-                    //     return back()
-                    //     ->withErrors($validator)
-                    //     ->withInput();
-                    // }
+               foreach($dependentes as $key=>$dependente) {
+                    if (!$this->validarDependente($dependente)){
+                        $validator_errors["dependente-$key"] = "Dependente $dependente[nome] não foi inserido: CPF utilizado já cadastrado!";
+                        continue;
+                    }
                     $dependente = (Object) $dependente;
                     $dependente_obj = new Dependente();
                     $dependente_obj->id_usuario = $cliente->id;
@@ -116,7 +115,7 @@ class ClienteController extends Controller
             }
             $this->response["success"] = true;
             $this->response["cliente"] = $cliente;
-            return redirect()->route('admin.cliente.create')->with(["success"=>"Cliente adicionado com sucesso."]);
+            return redirect()->route('admin.cliente.create')->with(["success"=>"Cliente adicionado com sucesso."])->withErrors($validator_errors);
         }
 
         return back()->withInput();
@@ -178,13 +177,13 @@ class ClienteController extends Controller
     /**
      * Inverte o nível dos índices de um array.
      * utilizado para vetores de inputs de tamanhos indefinidos.
-     * 
+     *
      * @param  Array  $conjunto
      * @return Array
      */
     private function mapear_form_array($conjunto) {
         $conjunto_convertido = [];
-        foreach ($conjunto as $key1 => $item) {                                  
+        foreach ($conjunto as $key1 => $item) {
             foreach ($item as $key2=>$value) {
                 $conjunto_convertido[$key2][$key1] = $value;
             }
@@ -224,10 +223,8 @@ class ClienteController extends Controller
 
     private function validarDependente($dependente) {
         $dependente['cpf'] = $this->cleanCpf($dependente['cpf']);
-        $validator = Validator::make($dependente, (new StoreDependenteRequest)->rules());
-        if ($validator->fails()) {
-            return $validator;
-        }
-        return false;
+        $has_dependente = Dependente::whereCpf($dependente["cpf"])->first();
+        if ($has_dependente) return false;
+        return true;
     }
 }
