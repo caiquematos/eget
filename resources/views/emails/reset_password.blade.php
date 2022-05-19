@@ -3,7 +3,7 @@
 
 Clique no botão abaixo para criar uma nova senha.
 
-@component('mail::button', ['url' => "http://www.cdidevantagens/site/recuperar/{{$token}}"])
+@component('mail::button', ['url' => "http://www.cdidevantagens.com.br/cliente/recuperar/$token"])
 Recuperar Senha
 @endcomponent
 

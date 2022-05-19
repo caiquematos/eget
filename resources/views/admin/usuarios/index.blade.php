@@ -189,21 +189,21 @@
 
     // Gerencia ativação do cliente.
     function toggleAtivacao(e) {
-            var cliente_id = $(e).data("cliente-id");
+            var usuario_id = $(e).data("usuario-id");
             var status = $(e).is(":checked");
-            var url = `{{route('admin.cliente.ativar')}}`;
+            var url = `{{route('admin.usuario.ativar')}}`;
             $.ajax({
                 url: url,
                 type: "POST",
-                data: {'status':status, "_token": "{{ csrf_token() }}","cliente_id":cliente_id},
+                data: {'status':status, "_token": "{{ csrf_token() }}","usuario_id":usuario_id},
                 dataType: "json",
                 success: function (data) {
-                    if (data.cliente) {
-                        if(data.cliente.ativo) {
-                            mensagem = "Cliente ativado com sucesso."
+                    if (data.usuario) {
+                        if(data.usuario.ativo) {
+                            mensagem = "Usuário ativado com sucesso."
                         }
                         else {
-                            mensagem = "Cliente desativado com sucesso."
+                            mensagem = "Usuário desativado com sucesso."
                         }
 
                         new PNotify({
@@ -217,7 +217,7 @@
                 error: function (xhr, status) {
                     new PNotify({
                         title: 'Opa!',
-                        text: "Não foi possível atualizar o status do cliente.",
+                        text: "Não foi possível atualizar o status do usuario.",
                         type: 'error',
                         styling: 'bootstrap3'
                     });
