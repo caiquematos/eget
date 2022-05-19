@@ -226,45 +226,6 @@
             });
         }
 
-      // Gerencia ativação do cliente.
-      function toggleAtivacao(e) {
-        var usuario_id = $(e).data("usuario-id");
-        var status = $(e).is(":checked");
-        var url = `{{route('admin.usuario.ativar')}}`;
-        $.ajax({
-            url: url,
-            type: "POST",
-            data: {'status':status, "_token": "{{ csrf_token() }}","usuario_id":usuario_id},
-            dataType: "json",
-            success: function (data) {
-                if (data.usuario) {
-                    if(data.usuario.ativo) {
-                        mensagem = "Usuário ativado com sucesso."
-                    }
-                    else {
-                        mensagem = "Usuário desativado com sucesso."
-                    }
-
-                    new PNotify({
-                        title: 'Sucesso',
-                        text: mensagem,
-                        type: 'success',
-                        styling: 'bootstrap3'
-                    });
-                }
-            },
-            error: function (xhr, status) {
-                new PNotify({
-                    title: 'Opa!',
-                    text: "Não foi possível atualizar o status do usuário.",
-                    type: 'error',
-                    styling: 'bootstrap3'
-                });
-                console.log("ativação falhou.");
-            }
-        });
-    }
-
     </script>
 
 

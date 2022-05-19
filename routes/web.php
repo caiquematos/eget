@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController as AdminLoginController;
 use App\Http\Controllers\Admin\ClienteController as AdminClienteController;
+use App\Http\Controllers\Admin\ContatoController;
 use App\Http\Controllers\Admin\DependenteController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\UsuarioController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EsqueciSenhaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Models\Contato;
 use App\Models\Dependente;
 use App\Models\Faq;
 use App\Models\Usuario;
@@ -32,6 +34,15 @@ use App\Models\Usuario;
 Route::prefix('/admin')->name('admin.')->group(function () {
 
     Route::middleware(['auth', 'role:admnistrador'])->group(function () {
+
+        // Rotas 'Contato'
+        Route::resource("contato", ContatoController::class);
+        Route::prefix('contato')->name('contato.')->group(function () {
+            Route::post("ativar",[ContatoController::class, 'ativar'])->name('ativar');
+            Route::get("deletar/{contato}", function(Contato $contato) {
+                return App::make('App\Http\Controllers\Admin\ContatoController')->deletar($contato);
+            })->name('deletar');
+        });
 
         // Rotas 'Faq'
         Route::resource("faq", FaqController::class);

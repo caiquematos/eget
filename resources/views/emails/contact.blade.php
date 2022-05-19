@@ -3,9 +3,9 @@
 
 Mensagem de Contato.
 
-#Email: {{$contato["email"]}}
-#Assunto: {{$contato["assunto"]}}
-#Mensagem: {{$contato["mensagem"]}}
+<strong>Email:</strong> {{$contato["email"]}}<br>
+<strong>Assunto:</strong> {{$contato["assunto"]}}<br>
+<strong>Mensagem:</strong> {{$contato["mensagem"]}}<br>
 
 Obrigado,<br>
 {{ config('app.name') }}

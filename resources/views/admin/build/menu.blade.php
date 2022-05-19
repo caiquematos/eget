@@ -20,5 +20,10 @@
             <li><a href="{{url('admin/faq/create')}}">Adicionar</a></li>
           </ul>
         </li>
+        <li><a><i class="fa fa-phone"></i> Contatos <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+                <li><a href="{{url('admin/contato')}}">Listar</a></li>
+            </ul>
+        </li>
     </div>
   </div>
