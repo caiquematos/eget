@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Maio-2022 às 22:57
+-- Tempo de geração: 19-Maio-2022 às 20:19
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 7.3.27
 
@@ -33,6 +33,23 @@ CREATE TABLE `cartoes` (
   `dependente_id` int(11) DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0-Andamento, 1-Finalizado, 2-Entregue, 3-Cancelado',
   `ativo` tinyint(4) NOT NULL DEFAULT 1,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `contatos`
+--
+
+CREATE TABLE `contatos` (
+  `id` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `assunto` varchar(100) NOT NULL,
+  `mensagem` text NOT NULL,
+  `lida` tinyint(4) NOT NULL DEFAULT 0,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
@@ -258,6 +275,12 @@ ALTER TABLE `cartoes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `contatos`
+--
+ALTER TABLE `contatos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `dependentes`
 --
 ALTER TABLE `dependentes`
@@ -343,6 +366,12 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `cartoes`
 --
 ALTER TABLE `cartoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `contatos`
+--
+ALTER TABLE `contatos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

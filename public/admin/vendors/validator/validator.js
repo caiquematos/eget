@@ -31,23 +31,23 @@
     FormValidator.prototype = {
         // Validation error texts
         texts : {
-            invalid         : 'inupt is not as expected',
-            short           : 'input is too short',
-            long            : 'input is too long',
-            checked         : 'must be checked',
-            empty           : 'please put something here',
-            select          : 'Please select an option',
-            number_min      : 'too low',
-            number_max      : 'too high',
-            url             : 'invalid URL',
-            number          : 'not a number',
-            email           : 'email address is invalid',
-            email_repeat    : 'emails do not match',
-            date            : 'invalid date',
-            time            : 'invalid time',
-            password_repeat : 'passwords do not match',
-            no_match        : 'no match',
-            complete        : 'input is not complete'
+            invalid         : 'valor não esperado',
+            short           : 'muito curto',
+            long            : 'muito longo',
+            checked         : 'deve estar marcado',
+            empty           : 'preencha esse campo',
+            select          : 'selecione uma opção',
+            number_min      : 'muito baixo',
+            number_max      : 'muito alto',
+            url             : 'URL inválida',
+            number          : 'não é um valor numérico',
+            email           : 'email inválido',
+            email_repeat    : 'os emails não combinam',
+            date            : 'data inválida',
+            time            : 'tempo inválido',
+            password_repeat : 'senhas não combinam',
+            no_match        : 'não combinam',
+            complete        : 'campo incompleto'
         },
 
         // default settings
