@@ -24,8 +24,8 @@ class StoreContatoRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|string',
-            'assunto' => 'required|string',
+            'email' => 'required|string|max:100',
+            'assunto' => 'required|string|max:100',
             'mensagem' => 'required|string',
         ];
     }

@@ -25,8 +25,8 @@
 </script>
 <!-- /Funções de inicialização -->
 
-<!-- Session functions AND Pnotify functions--> 
-    
+<!-- Session functions AND Pnotify functions-->
+
     <!-- Verifica se há erros na sessão -->
     @if ($errors->any())
         @php
@@ -62,14 +62,29 @@
         </script>
     @endif
 
+    <!-- Verifica se há mensagem de sucesso na sessão -->
+    @if (session("success"))
+        <script>
+            Swal.fire({
+                title: 'Sucesso!',
+                icon: 'success',
+                html:"{!!session('success')!!}",
+                showCloseButton: false,
+                showCancelButton: false,
+                focusConfirm: false,
+                confirmButtonText:'OK',
+            });
+        </script>
+    @endif
+
 <!-- /Session functions -->
 
 <!-- Funções -->
 <script>
 
     /**
-     * 
-     * @param {string} date 
+     *
+     * @param {string} date
      * @returns string
      */
     function date_pt_en(date) {
@@ -78,7 +93,7 @@
     }
 
     /**
-     * @param {string} date 
+     * @param {string} date
      * @returns string
      */
     function date_en_pt(date) {
@@ -89,7 +104,7 @@
     // Busca dados por CEP.
     $("input[data-tipo='cep']").blur(consultar_cep);
     /**
-     * @param {string} date 
+     * @param {string} date
      * @returns string
      */
     function consultar_cep() {
@@ -114,7 +129,7 @@
     }
 
     /**
-     * @param {string} email 
+     * @param {string} email
      * @returns boolean
      */
     function is_email_valid(email) {
@@ -124,7 +139,7 @@
     }
 
     /**
-     * @param {string} cpf 
+     * @param {string} cpf
      * @returns boolean
      */
     function is_cpf_valid(cpf){
@@ -149,7 +164,7 @@
     }
 
     /**
-     * @param {string} cep 
+     * @param {string} cep
      * @returns boolean
      */
     function is_cep_valid(cep) {
@@ -158,7 +173,7 @@
     }
 
     /**
-     * @param {string} cep 
+     * @param {string} cep
      * @returns boolean
      */
     function clean_cpf(cpf) {

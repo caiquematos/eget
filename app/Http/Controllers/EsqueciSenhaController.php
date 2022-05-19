@@ -29,8 +29,8 @@ class EsqueciSenhaController extends Controller
         $user->save();
 
         // envia email.
-        $enviou = Mail::to($user->email)->send(new ResetPassword($user->remember_token));
-        if ($enviou) {
+        Mail::to($user->email)->send(new ResetPassword($user->remember_token));
+        if (count(Mail::failures()) == 0) {
             return back()->with("success", "Verifique o seu e-mail (".$user->email.") e clique no link de recuperação de senha.");
         } else {
             return back()->withErrors("email", "Não foi possível enviar o email de recuperação.");

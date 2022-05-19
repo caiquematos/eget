@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreContatoRequest;
+use App\Mail\Contato as ContatoMailable;
 use Illuminate\Http\Request;
 use App\Models\Faq;
+use App\Models\Contato;
 
 class HomeController extends Controller
 {
@@ -15,6 +17,10 @@ class HomeController extends Controller
 
     public function contato(StoreContatoRequest $request)
     {
-       return $request->all();
+       $contato = new Contato();
+       $contato->fill($request->all());
+       $contato->save();
+
+       return back()->with("success", "Mensagem enviada com sucesso.");
     }
 }

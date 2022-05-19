@@ -260,6 +260,14 @@
         background-color: #3d88f8;
     }
 
+    form p {
+        width: 300px;
+        font-size: medium;
+        line-height: 19px;
+        margin: auto;
+        text-align: center;
+    }
+
 </style>
 <body>
 <div id="dtr-wrapper" class="clearfix">
@@ -310,7 +318,8 @@
                        <form action="{{route('cliente.recuperacao')}}" method="POST">
                         @csrf
                         <h4 class="StepTitle text-center">Recuperação de Senha</h4>
-                        <div class="form-group row justify-content-center">
+                        <p>Informe seu CPF para enviarmos o link de recuperação para o seu email.</p>
+                        <div class="form-group row justify-content-center mt-3">
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="text" name="cpf" value="{{ old('cpf') }}" placeholder="CPF*" required class="form-control">
                             </div>
@@ -354,7 +363,7 @@
 
     </script>
 
-    <!-- Verifica se há mensagem de sucesso na sessão -->
+    {{-- <!-- Verifica se há mensagem de sucesso na sessão -->
     @if (session("success"))
         <script>
             Swal.fire({
@@ -367,6 +376,6 @@
                 confirmButtonText:'OK',
             });
         </script>
-    @endif
+    @endif --}}
 
 </body></html>
