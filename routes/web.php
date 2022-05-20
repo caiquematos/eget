@@ -107,7 +107,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 
 });
 
-// Rotas 'Admin' (por algum motivo o laravel não aceita 'admin' como rota)
+// Rotas 'Admin' (O laravel não aceita 'admin' como rota, por conter pasta chamada 'admin' na pasta public)
 Route::get('/adm', function() {
     return redirect()->route('admin.usuario.index');
 })->name('adm')->middleware(['auth', 'role:admnistrador']);
