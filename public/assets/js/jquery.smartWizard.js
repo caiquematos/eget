@@ -83,28 +83,28 @@ function SmartWizard(target, options) {
             return false;
         });
 
-        $($this.steps).bind("click", function(e){
-            if($this.steps.index(this) == $this.curStepIdx){
-                return false;
-            }
-            var nextStepIdx = $this.steps.index(this);
-            var isDone = $this.steps.eq(nextStepIdx).attr("isDone") - 0;
-            if(isDone == 1){
-                _loadContent($this, nextStepIdx);
-            }
-            return false;
-        });
+        // $($this.steps).bind("click", function(e){
+        //     if($this.steps.index(this) == $this.curStepIdx){
+        //         return false;
+        //     }
+        //     var nextStepIdx = $this.steps.index(this);
+        //     var isDone = $this.steps.eq(nextStepIdx).attr("isDone") - 0;
+        //     if(isDone == 1){
+        //         _loadContent($this, nextStepIdx);
+        //     }
+        //     return false;
+        // });
 
         // Enable keyboard navigation
-        if($this.options.keyNavigation){
-            $(document).keyup(function(e){
-                if(e.which==39){ // Right Arrow
-                    $this.goForward();
-                }else if(e.which==37){ // Left Arrow
-                    $this.goBackward();
-                }
-            });
-        }
+        // if($this.options.keyNavigation){
+        //     $(document).keyup(function(e){
+        //         if(e.which==39){ // Right Arrow
+        //             $this.goForward();
+        //         }else if(e.which==37){ // Left Arrow
+        //             $this.goBackward();
+        //         }
+        //     });
+        // }
         //  Prepare the steps
         _prepareSteps($this);
         // Show the first slected step
