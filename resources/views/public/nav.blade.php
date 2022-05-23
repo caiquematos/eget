@@ -19,7 +19,7 @@
         margin-right: 10px;
     }
 </style>
- 
+
  <!-- preloader starts -->
  <div class="dtr-preloader" style="display: none;">
     <div class="dtr-preloader-inner">
@@ -34,17 +34,17 @@
     <div class="container">
 
         <!-- small devices logo -->
-        <div class="dtr-responsive-header-left"> <a class="dtr-logo" href="{{url('/')}}#home"><img src="{{url('template/assets/img/logo.png')}}" alt="CDI Cartão de Vantagens"></a> </div>
+        <div class="dtr-responsive-header-left"> <a class="dtr-logo" href="{{route('home')}}#home"><img src="{{url('template/assets/img/logo.png')}}" alt="CDI Cartão de Vantagens"></a> </div>
         <!-- small devices logo ends -->
 
         <!-- menu button -->
         <button id="dtr-menu-button" class="dtr-hamburger" type="button"><span class="dtr-hamburger-lines-wrapper"><span class="dtr-hamburger-lines"></span></span></button>
     </div>
     <div class="dtr-responsive-header-menu"><div class="slicknav_menu"><ul class="slicknav_nav slicknav_hidden" style="touch-action: pan-y; display: none;" aria-hidden="true" role="menu">
-                    <li> <a class="nav-link active" href="{{url('/')}}#home" role="menuitem" tabindex="-1">Home</a> </li>
-                    <li> <a class="nav-link" href="{{url('/')}}#process" role="menuitem" tabindex="-1">Quem somos</a> </li>
-                    <li> <a class="nav-link" href="{{url('/')}}#services" role="menuitem" tabindex="-1">Vantagens</a> </li>
-                    <li> <a class="nav-link" href="{{url('/')}}#faq" role="menuitem" tabindex="-1">Perguntas frequentes</a> </li>
+                    <li> <a class="nav-link active" href="{{route('home')}}#home" role="menuitem" tabindex="-1">Home</a> </li>
+                    <li> <a class="nav-link" href="{{route('home')}}#process" role="menuitem" tabindex="-1">Quem somos</a> </li>
+                    <li> <a class="nav-link" href="{{route('home')}}#services" role="menuitem" tabindex="-1">Vantagens</a> </li>
+                    <li> <a class="nav-link" href="{{route('home')}}#faq" role="menuitem" tabindex="-1">Perguntas frequentes</a> </li>
                     <li> <a class="nav-link"  data-bs-toggle="modal" href="#contatoModal" role="menuitem" tabindex="-1">Contato</a> </li>
                     <li> <a class="nav-link"  role="menuitem" tabindex="-1" href="@if(Auth::check()) {{ Auth::user()->hasRole(config("constants.ROLES.CLIENTE.name")) ? route('cliente.cartao') : route('cliente.login') }} @else {{ route('cliente.login') }} @endif">Meus Cartões</a> </li>
                     @if (Auth::check())
@@ -67,10 +67,10 @@
             <div class="dtr-header-left">
 
                 <!-- logo -->
-                <a class="logo-default dtr-scroll-link" href="{{url('/')}}#home"><img src="{{url('template/assets/img/logo.png')}}" alt="CDI Cartão de Vantagens"></a>
+                <a class="logo-default dtr-scroll-link" href="{{route('home')}}#home"><img src="{{url('template/assets/img/logo.png')}}" alt="CDI Cartão de Vantagens"></a>
 
                 <!-- logo on scroll -->
-                <a class="logo-alt dtr-scroll-link" href="{{url('/')}}#home"><h1><img src="{{url('template/assets/img/logo.png')}}" alt="CDI Cartão de Vantagens"></h1></a>
+                <a class="logo-alt dtr-scroll-link" href="{{route('home')}}#home"><h1><img src="{{url('template/assets/img/logo.png')}}" alt="CDI Cartão de Vantagens"></h1></a>
                 <!-- logo on scroll ends -->
 
             </div>
@@ -79,10 +79,10 @@
             <!-- menu starts-->
             <div class="main-navigation">
                 <ul class="sf-menu dtr-nav dark-nav-on-load dark-nav-on-scroll dtr-menu-dark sf-js-enabled sf-arrows" style="touch-action: pan-y;">
-                    <li> <a class="nav-link active" href="{{url('/')}}#home">Home</a> </li>
-                    <li> <a class="nav-link" href="{{url('/')}}#process">Quem somos</a> </li>
-                    <li> <a class="nav-link" href="{{url('/')}}#services">Vantagens</a> </li>
-                    <li> <a class="nav-link" href="{{url('/')}}#faq">Perguntas frequentes</a> </li>
+                    <li> <a class="nav-link active" href="{{route('home')}}#home">Home</a> </li>
+                    <li> <a class="nav-link" href="{{route('home')}}#process">Quem somos</a> </li>
+                    <li> <a class="nav-link" href="{{route('home')}}#services">Vantagens</a> </li>
+                    <li> <a class="nav-link" href="{{route('home')}}#faq">Perguntas frequentes</a> </li>
                     <li> <a class="nav-link" data-bs-toggle="modal" href="#contatoModal" role="button">Contato</a> </li>
                     <li> <a class="nav-link meu-cartao" href="@if(Auth::check()) {{ Auth::user()->hasRole(config("constants.ROLES.CLIENTE.name")) ? route('cliente.cartao') : route('cliente.login') }} @else {{ route('cliente.login') }} @endif">Meus Cartões</a> </li>
                     @if (Auth::check())

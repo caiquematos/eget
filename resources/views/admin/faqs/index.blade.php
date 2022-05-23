@@ -22,8 +22,8 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-      
-       
+
+
         <!-- side menu -->
         @include("admin.build.side-menu")
         <!-- /side menu -->
@@ -41,7 +41,7 @@
               </div>
 
               <div class="title_right">
-                <a class="btn btn-primary pull-right text-white" href="{{url('admin/faq/create')}}">Adicionar</a>
+                <a class="btn btn-primary pull-right text-white" href="{{route('admin.faq.create')}}">Adicionar</a>
               </div>
             </div>
 
@@ -65,7 +65,7 @@
                       <div class="row">
                           <div class="col-sm-12">
                             <div class="card-box table-responsive">
-					
+
                     <table id="datatable-faqs" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
@@ -95,8 +95,8 @@
                             @endforeach
                       </tbody>
                     </table>
-					
-					
+
+
                   </div>
                 </div>
               </div>
@@ -166,7 +166,7 @@
             });
         }
     </script>
-    
+
 
   </body>
 </html>

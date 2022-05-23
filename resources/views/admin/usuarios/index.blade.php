@@ -47,7 +47,7 @@
               </div>
 
               <div class="title_right">
-                <a class="btn btn-primary pull-right text-white" href="{{url('admin/usuario/create')}}">Adicionar</a>
+                <a class="btn btn-primary pull-right text-white" href="{{route('admin.usuario.create')}}">Adicionar</a>
               </div>
             </div>
 

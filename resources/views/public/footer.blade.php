@@ -9,7 +9,7 @@
             <div class="row">
 
                 <!--== column 1 starts ==-->
-                <div class="col-12 col-md-6 col-lg-5"><a class="dtr-scroll-link" href="{{url('/')}}#home"><img src="{{url('template/assets/img/logo_branca.png')}}" alt="CDI Cartão de Vantagens" style="width: 132px"></a>
+                <div class="col-12 col-md-6 col-lg-5"><a class="dtr-scroll-link" href="{{route('home')}}#home"><img src="{{url('template/assets/img/logo_branca.png')}}" alt="CDI Cartão de Vantagens" style="width: 132px"></a>
                     <p class="dtr-mt-20 dtr-mb-40">There are many variations of passages of<br>
                         lorem ipsum available but the majority<br>
                         have suffered alteration.</p>
@@ -46,13 +46,13 @@
                     <h6>CDI</h6>
                     <ul class="dtr-list-line line-accent">
                         <li>
-                            <p><a href="{{url('/')}}#process">Quem somos</a></p>
+                            <p><a href="{{route('home')}}#process">Quem somos</a></p>
                         </li>
                         <li>
-                            <p><a href="{{url('/')}}#services">Vantagens</a></p>
+                            <p><a href="{{route('home')}}#services">Vantagens</a></p>
                         </li>
                         <li>
-                            <p><a href="{{url('/')}}#faq">FAQ</a></p>
+                            <p><a href="{{route('home')}}#faq">FAQ</a></p>
                         </li>
                         <li>
                             <p><a  data-bs-toggle="modal" href="#contatoModal" role="button">Contato</a></p>
