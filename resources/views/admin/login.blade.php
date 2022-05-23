@@ -14,7 +14,7 @@
           <section class="login_content">
             <form method="POST" action="{{ route('admin.logar') }}">
               @csrf
-              
+
               <h1>Admin</h1>
               <div>
                 <input type="text" class="form-control" data-tipo="cpf" name="cpf" placeholder="000.000.000-00
@@ -27,7 +27,7 @@
                 <button type="submit" class="btn btn-default">Entrar</button>
                 {{-- <a class="reset_pass" href="#">Lost your password?</a> --}}
               </div>
-              
+
               <div class="clearfix"></div>
 
               <div class="separator">
@@ -36,7 +36,7 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> CDI - Cartões de Vantagens!</h1>
+                  <h1><img src="{{url('icon.png')}}" width="40" alt="CDI - Cartão de Vantages" style="margin-right: 8px;"> {{env('APP_NAME')}}</h1>
                   {{-- <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p> --}}
                 </div>
               </div>
