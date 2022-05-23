@@ -47,7 +47,7 @@
 
     #section-1 {
         height: 600px;
-        background-image: url("{{url('template/assets/img/banner_mob.webp'}}");
+        background-image: url("{{url('template/assets/img/banner_mob.webp')}}");
         background-position: center;
         background-size: cover;
         margin-top: 89px;
