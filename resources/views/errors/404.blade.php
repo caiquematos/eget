@@ -1,7 +1,7 @@
 <style>
     @import url(https://fonts.googleapis.com/css?family=opensans:500);
     body{
-        background: #4bc192;
+        background: linear-gradient(45deg, #4bc192, #4592a3);;
         color:#fff;
         font-family: 'Open Sans', sans-serif;
         max-height:700px;
@@ -87,7 +87,6 @@
         top: -0.75em;
         font-size: 2em;
         padding: 0 0.2em;
-        background: #33cc99;
     }
 
     .cloud {
