@@ -86,7 +86,7 @@
     }
 
     #section-3 {
-        background-image: url('template/assets/img/fundo-03.webp');
+        background-image: url("{{url('template/assets/img/fundo-03.webp')}}");
         height: 450px;
         background-position: center;
         background-size: cover;
@@ -119,7 +119,7 @@
     }
 
     #process {
-        background-image: url('template/assets/img/banner-02.webp');
+        background-image: url("{{url('template/assets/img/banner-02.webp')}}");
         background-position: right;
         background-size: cover;
         background-repeat: no-repeat;
@@ -196,7 +196,7 @@
             width: 100% !important;
         }
         #section-1 {
-            background-image: url('template/assets/img/banner_mob.webp');
+            background-image: url("{{url('template/assets/img/banner_mob.webp')}}");
         }
 
         #section-1 .dtr-btn-text {
