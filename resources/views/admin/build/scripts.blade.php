@@ -73,21 +73,30 @@
             reverse: true
         });
 
-        // Iniciallização do filtro.
+        // Iniciallização do filtro. OBS.: Sempre deverá haver uma classe 'col-sm-12' como pai.
         $(".filtro").click(function() {
-            console.log("clicado");
+            let parent = $(this).parent(".col-sm-12");
+            let div = parent.find("div.dtsp-panesContainer div.dtsp-searchPanes div.dtsp-searchPane")[0];
+            let filtro_subtitle = parent.find(".filtro-subtitle")[0];
             $(this).toggleClass("active");
-            var div = $("div.dtsp-panesContainer div.dtsp-searchPanes div.dtsp-searchPane");
+            // var div = $("div.dtsp-panesContainer div.dtsp-searchPanes div.dtsp-searchPane");
             if ($(this).hasClass("active")) {
-                div.slideDown();
-                $(".filtro-subtitle").slideDown();
+                $(div).slideDown();
+                $(filtro_subtitle).slideDown();
             } else {
-                div.slideUp();
-                $(".filtro-subtitle").slideUp();
+                $(div).slideUp();
+                $(filtro_subtitle).slideUp();
             }
         });
-
     });
+
+    function init_filtro() {
+        console.log("init_filtro");
+        let origem = $(".filtro");
+        let parent = origem.parent(".col-sm-12");
+        let div = parent.find("div.dtsp-panesContainer div.dtsp-searchPanes div.dtsp-searchPane")[0];
+        $(div).slideDown();
+    }
 </script>
 <!-- /Funções de inicialização -->
 

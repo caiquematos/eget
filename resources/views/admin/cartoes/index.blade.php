@@ -274,6 +274,9 @@
             dt2.on('deselect.dt', () => {
                 dt2.searchPanes.rebuildPane(0, true);
             });
+
+            init_filtro();
+
         });
 
     // Gerencia ativação do cartao.
