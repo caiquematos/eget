@@ -236,5 +236,5 @@
     <hr>
     <div class='_1'>PÁGINA</div>
     <div class='_2'>NÃO ENCONTRADA</div>
-    <a class='btn' href='{{route('home')}}'>DE VOLTA PARA PÁGINA INICIAL</a>
+    <a class='btn' href='{{route('home')}}'>IR PARA PÁGINA INICIAL</a>
 </div>
