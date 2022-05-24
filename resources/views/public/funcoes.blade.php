@@ -57,4 +57,12 @@ const CARTAO_STATUS = [
     '4' => "<p class='cartao-status bg-danger text-white'>Cancelado</p>",
 ];
 
+// Situação do cartão
+const CARTAO_STATUS_RAW = [
+    '0' => "Em andamento",
+    '1' => "Finalizado",
+    '2' => "Entregue",
+    '4' => "Cancelado",
+];
+
 ?>

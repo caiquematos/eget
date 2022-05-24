@@ -11,8 +11,8 @@
                 <!--== column 1 starts ==-->
                 <div class="col-12 col-md-6 col-lg-5"><a class="dtr-scroll-link" href="{{route('home')}}#home"><img src="{{url('template/assets/img/logo_branca.png')}}" alt="CDI Cartão de Vantagens" style="width: 132px"></a>
                     <p class="dtr-mt-20 dtr-mb-40">O CDI Cartão de Vantagens é para você<br>cuidar da sua saúde com mais<br>economia e praticiadade.</p>
-                    <p class="d-flex align-items-center"><i class="icon-phone-call-fill dtr-mr-10 color-blue"></i>1-800-234 567 89</p>
-                    <p class="d-flex align-items-center"><i class="icon-envelope-simple-fill dtr-mr-10 color-blue"></i>sales@example.com</p>
+                    <p class="d-flex align-items-center"><a href="tel:123-456-7890"><i class="fa fa-phone me-2"></i> (87) 2101-3099</a></p>
+                    <p class="d-flex align-items-center"><a href="https://goo.gl/maps/4zNrWtbCFNKdLnuK7" target="_blank"><i class="fa fa-map-marker me-2"></i> Rua Tobias Barreto, 7. Centro, Petrolina - PE.</a></p>
                 </div>
                 <!--== column 1 ends ==-->
 
@@ -55,6 +55,9 @@
                         <li>
                             <p><a  data-bs-toggle="modal" href="#contatoModal" role="button">Contato</a></p>
                         </li>
+                        <li>
+                            <p><a href="{{route('cliente.login')}}">Meu Cartão</a></p>
+                        </li>
                     </ul>
                 </div>
                 <!--== column 3 ends ==-->
@@ -89,9 +92,10 @@
 
                     <!-- social starts -->
                     <ul class="dtr-social dtr-social-list">
-                        <li><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" class="dtr-twitter" target="_blank" title="twitter"></a></li>
+                        <li><a href="https://re9agencia.com.br/" target="_blank"><img src="{{url('template/assets/img/logo-menor-re9.png')}}" alt="Re9 Agência" style="width: 30px;margin-right: 5px;"> Desenvolvido por Re9 Agência.</a></li>
+                        {{-- <li><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" class="dtr-twitter" target="_blank" title="twitter"></a></li>
                         <li><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" class="dtr-facebook" target="_blank" title="facebook"></a></li>
-                        <li><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" class="dtr-linkedin" target="_blank" title="linkedin"></a></li>
+                        <li><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#" class="dtr-linkedin" target="_blank" title="linkedin"></a></li> --}}
                     </ul>
                     <!-- social ends -->
 
@@ -100,7 +104,7 @@
 
                 <!--== column 2 starts ==-->
                 <div class="col-12 col-md-6 text-end small-device-space">
-                    <p>© 2021 XaaSvik. All rights reserved</p>
+                    <p>© {{date('Y')}} {{env('APP_NAME')}}. Todos os direitos reservados.</p>
                 </div>
                 <!--== column 2 ends ==-->
 
