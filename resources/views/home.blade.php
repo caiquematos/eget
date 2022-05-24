@@ -258,7 +258,7 @@
                             <div class="my-auto">
                                 <h2 class="color-white fs-2">O CDI Cartão de Vantagens é para você cuidar da sua saúde com mais economia e praticiadade.</h2>
                                 <div class="d-flex dtr-my-40"><div class="faixa-1"></div><div class="faixa-2"></div></div>
-                                <p class="dtr-intro-content color-white">Agende exames com descontos especiais, sem carência ou mensalidade e ainda obtenha cacheback.</p>
+                                <p class="dtr-intro-content color-white">Agende exames com descontos especiais, sem carência ou mensalidade e ainda obtenha cashback.</p>
                                 <!-- button starts -->
                                 <a class="dtr-btn dtr-btn-small dtr-mt-50 my-sm-auto w-sm-100" href="{{route('cliente.create')}}" role="button">
                                     <p style="text-align: center" class="dtr-btn-text">Quero fazer meu cartão!</p>
@@ -425,7 +425,7 @@
                                     <h4 class="dtr-servicebox-heading text-white">Ganhe<br>
                                         cashback </h4>
                                 </div>
-                                <div class="dtr-servicebox-content">Você pagará bem menos para realizar exames como tomografia, ressonância e ultrassom.</div>
+                                <div class="dtr-servicebox-content">Receba parte do valor pago de volta.</div>
                             </div>
                         </div>
                     </div>
@@ -436,11 +436,11 @@
                         <div class="dtr-servicebox-wrapper dtr-servicebox-offset-border dtr-box-rounded">
                             <div class="dtr-servicebox dtr-shadow bg-my-blue color-dark"> <span class="dtr-servicebox-number">03</span>
                                 <div class="dtr-servicebox-head">
-                                    <div class="dtr-servicebox-icon color-sky-blue"> <img  class="ico-size-6"  src="{{url('template/assets/img/card-02.png')}}" alt="Cartão de Vantagens - Cashback"> </div>
-                                    <h4 class="dtr-servicebox-heading text-white">Ganhe<br>
-                                        cashback </h4>
+                                    <div class="dtr-servicebox-icon color-sky-blue"> <img  class="ico-size-5"  src="{{url('template/assets/img/card-04.png')}}" alt="Cartão de Vantagens - Sem carência"> </div>
+                                    <h4 class="dtr-servicebox-heading text-white">Sem<br>
+                                        carência </h4>
                                 </div>
-                                <div class="dtr-servicebox-content">Você pagará bem menos para realizar exames como tomografia, ressonância e ultrassom.</div>
+                                <div class="dtr-servicebox-content">Assim que você fizer o seu cartão, já pode utilizá-lo.</div>
                             </div>
                         </div>
                     </div>
@@ -457,11 +457,11 @@
                         <div class="dtr-servicebox-wrapper dtr-servicebox-offset-border dtr-box-rounded">
                             <div class="dtr-servicebox dtr-shadow bg-my-light-blue color-dark mh"> <span class="dtr-servicebox-number">04</span>
                                 <div class="dtr-servicebox-head">
-                                    <div class="dtr-servicebox-icon color-dark"><img  class="ico-size-5"  src="{{url('template/assets/img/card-04.png')}}" alt="Cartão de Vantagens - Zero carência"></div>
-                                    <h4 class="dtr-servicebox-heading text-dark">Zero<br>
-                                        carência</h4>
+                                    <div class="dtr-servicebox-icon color-dark"><img  class="ico-size-5"  src="{{url('template/assets/img/card-04.png')}}" alt="Cartão de Vantagens - Praticidade e rapidez"></div>
+                                    <h4 class="dtr-servicebox-heading text-dark">Praticidade<br>
+                                        e rapidez</h4>
                                 </div>
-                                <div class="dtr-servicebox-content"> <div class="dtr-servicebox-content">Você pagará bem menos para realizar exames como tomografia, e ultrassom.</div> </div>
+                                <div class="dtr-servicebox-content"> <div class="dtr-servicebox-content">Sem filas ou demora nos agendamentos. Resolva tudo da sua casa e tenha seus exames agendados para até 15 dias.</div> </div>
                             </div>
                         </div>
                     </div>
@@ -472,11 +472,11 @@
                         <div class="dtr-servicebox-wrapper dtr-servicebox-offset-border dtr-box-rounded">
                             <div class="dtr-servicebox dtr-shadow bg-my-light-green color-dark"> <span class="dtr-servicebox-number">05</span>
                                 <div class="dtr-servicebox-head">
-                                    <div class="dtr-servicebox-icon color-dark"> <img  class="ico-size-6"  src="{{url('template/assets/img/card-05.png')}}" alt="Cartão de Vantagens - Sem custo para você"> </div>
-                                    <h4 class="dtr-servicebox-heading text-dark">Sem custo<br>
-                                        para você*</h4>
+                                    <div class="dtr-servicebox-icon color-dark"> <img  class="ico-size-6"  src="{{url('template/assets/img/card-05.png')}}" alt="Cartão de Vantagens - Use o quanto quiser">  </div>
+                                    <h4 class="dtr-servicebox-heading text-dark">Use o quanto<br>
+                                        quiser</h4>
                                 </div>
-                                <div class="dtr-servicebox-content">Você não paga nada para fazer seu cartão e também não precisa se preocupar com mensalidades. </div>
+                                <div class="dtr-servicebox-content">Marque exames sempre que for necessário, sem se preocupar com limites.</div>
                             </div>
                         </div>
                     </div>
@@ -489,9 +489,9 @@
                                 <div class="dtr-servicebox-head">
                                     <div class="dtr-servicebox-icon color-blue"> <img  class="ico-size-6"  src="{{url('template/assets/img/card-05.png')}}" alt="Cartão de Vantagens - Sem custo para você"> </div>
                                     <h4 class="dtr-servicebox-heading text-dark">Sem custo<br>
-                                        para você*</h4>
+                                        para você</h4>
                                 </div>
-                                <div class="dtr-servicebox-content">Você não paga nada para fazer seu cartão e também não precisa se preocupar com mensalidades. </div>
+                                <div class="dtr-servicebox-content">Você não paga nada para fazer seu cartão e também não precisa se preocupar com mensalidades.</div>
                             </div>
                         </div>
                     </div>
@@ -1068,8 +1068,7 @@
                         <p class="dtr-intro-subheading">FAQ</p>
                     </div>
                     <h2 class="dtr-intro-heading">Dúvidas sobre o Cartão de Vantagens?</h2>
-                    <p class="dtr-intro-content">There are many variations of passages of lorem ipsum available<br>
-                        but the majority have suffered alteration</p>
+                    <p class="dtr-intro-content">Tire suas dúvidas sobre cadastro, benefícios, formas de pagamento e agendamentos.</p>
                 </div>
                 <!-- heading ends -->
 

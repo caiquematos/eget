@@ -314,7 +314,7 @@
                    <div class="col-md-6 align-items-center">
                        <form action="{{route('cliente.logar')}}" method="POST">
                         @csrf
-                        <h4 class="StepTitle text-center">Meus Cartões</h4>
+                        <h4 class="StepTitle text-center">Meu Cartão</h4>
                         <div class="form-group row justify-content-center">
                         <div class="col-md-6 col-sm-6 ">
                             <input type="text" name="cpf"  value="{{ old('cpf') }}" placeholder="CPF*" required class="form-control">

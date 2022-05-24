@@ -564,7 +564,8 @@ form label.error { font-size: 10px; }
 .dtr-servicebox-number { display: block; position: absolute; top: -25px; right: 20px; font-size: 115px; line-height: 115px; z-index: 1; font-weight: 900; text-align: right; }
 .dtr-servicebox-head { position: relative; display: flex; align-items: center; z-index: 9; }
 .dtr-servicebox-icon { font-size: 48px; line-height: 1em; margin-right: 20px; }
-.dtr-servicebox-content, .dtr-line-hover { margin-top: 20px; }
+.dtr-servicebox-content, .dtr-line-hover { margin-top: 20px; min-height: 123px; }
+@media (max-width: 1400px) {.dtr-servicebox-content, .dtr-line-hover { margin-top: 20px; min-height: 153px; }}
 .dtr-servicebox-heading { margin: 0; padding: 0; }
 .dtr-servicebox-button { display: inline-block; }
 .dtr-servicebox-offset-border { border: 1px solid #e0e1e4; }

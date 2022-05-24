@@ -4,6 +4,15 @@
   @include("admin.build.head", ['title'=>"CDI - Cartão de Vantagens | "])
   <!-- /head -->
 
+  <style>
+      button {
+        border: 1px solid #cccccc;
+        font-weight: 500;
+        color: white !important;
+        background: linear-gradient(45deg, #30a775, #3f8492);
+      }
+  </style>
+
   <body class="login">
     <div>
       <a class="hiddenanchor" id="signup"></a>

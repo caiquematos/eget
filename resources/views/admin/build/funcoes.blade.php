@@ -53,7 +53,7 @@ const CARTAO_STATUS = [
     '0' => "<p class='cartao-status bg-warning text-white'>Em andamento</p>",
     '1' => "<p class='cartao-status bg-primary text-white'>Finalizado</p>",
     '2' => "<p class='cartao-status bg-success text-white'>Entregue</p>",
-    '4' => "<p class='cartao-status bg-danger text-white'>Cancelado</p>",
+    '3' => "<p class='cartao-status bg-danger text-white'>Cancelado</p>",
 ];
 
 ?>

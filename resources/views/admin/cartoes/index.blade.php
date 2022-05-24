@@ -84,11 +84,13 @@
                                                 <td>{!!CARTAO_STATUS[$cartao->status] ?? "-"!!}</td>
                                                 <td>{{$cartao->created_at ?? "-"}}</td>
                                                 <td>
-                                                    <input type="checkbox" data-cartao-id={{$cartao->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$cartao->ativo ? "checked" : ""}} />
+                                                    <input type="checkbox" data-cartao-id={{$cartao->id}} onchange="toggleAtivacao(this)" class="js-switch"  {{$cartao->status == config("constants.STATUS_CARTAO.CANCELADO") ? "disabled" : ""}} {{$cartao->ativo ? "checked" : ""}} />
                                                 </td>
                                                 <td>
                                                     <a href="{{route('admin.cartao.show', [$cartao->id])}}"><i class="fa fa-eye mx-1" title="Ver"></i></a>
-                                                    <a href="{{route('admin.cartao.store', [$cartao->id])}}"><i class="fa fa-repeat mx-1" title="Gerar um novo cartão"></i></a>
+                                                    @if ($cartao->status != config("constants.STATUS_CARTAO.CANCELADO"))
+                                                    <a href="{{route('admin.cartao.store', [$cartao->id])}}"><i class="fa fa-plus-square mx-1" title="Gerar um novo cartão"></i></a>
+                                                    @endif
                                                     <a href="{{route('admin.cartao.deletar', [$cartao->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a>
                                                 </td>
                                             </tr>
@@ -145,11 +147,13 @@
                                             <td>{!!CARTAO_STATUS[$cartao->status] ?? "-"!!}</td>
                                             <td>{{$cartao->created_at ?? "-"}}</td>
                                             <td>
-                                                <input type="checkbox" data-cartao-id={{$cartao->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$cartao->ativo ? "checked" : ""}} />
+                                                <input type="checkbox" data-cartao-id={{$cartao->id}} onchange="toggleAtivacao(this)" class="js-switch"  {{$cartao->status == config("constants.STATUS_CARTAO.CANCELADO") ? "disabled" : ""}}  {{$cartao->ativo ? "checked" : ""}} />
                                             </td>
                                             <td>
                                                 <a href="{{route('admin.cartao.show', [$cartao->id])}}"><i class="fa fa-eye mx-1" title="Ver"></i></a>
-                                                <a href="{{route('admin.cartao.store', [$cartao->id])}}"><i class="fa fa-repeat mx-1" title="Gerar um novo cartão"></i></a>
+                                                @if ($cartao->status != config("constants.STATUS_CARTAO.CANCELADO"))
+                                                    <a href="{{route('admin.cartao.store', [$cartao->id])}}"><i class="fa fa-plus-square mx-1" title="Gerar um novo cartão"></i></a>
+                                                @endif
                                                 <a href="{{route('admin.cartao.deletar', [$cartao->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a>
                                             </td>
                                         </tr>

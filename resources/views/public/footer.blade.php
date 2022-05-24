@@ -10,16 +10,14 @@
 
                 <!--== column 1 starts ==-->
                 <div class="col-12 col-md-6 col-lg-5"><a class="dtr-scroll-link" href="{{route('home')}}#home"><img src="{{url('template/assets/img/logo_branca.png')}}" alt="CDI Cartão de Vantagens" style="width: 132px"></a>
-                    <p class="dtr-mt-20 dtr-mb-40">There are many variations of passages of<br>
-                        lorem ipsum available but the majority<br>
-                        have suffered alteration.</p>
+                    <p class="dtr-mt-20 dtr-mb-40">O CDI Cartão de Vantagens é para você<br>cuidar da sua saúde com mais<br>economia e praticiadade.</p>
                     <p class="d-flex align-items-center"><i class="icon-phone-call-fill dtr-mr-10 color-blue"></i>1-800-234 567 89</p>
                     <p class="d-flex align-items-center"><i class="icon-envelope-simple-fill dtr-mr-10 color-blue"></i>sales@example.com</p>
                 </div>
                 <!--== column 1 ends ==-->
 
                 <!--== column 2 starts ==-->
-                <div class="col-12 col-md-6 col-lg-2 small-device-space">
+                {{-- <div class="col-12 col-md-6 col-lg-2 small-device-space">
                     <h6>Resources</h6>
                     <ul class="dtr-list-line line-accent">
                         <li>
@@ -38,7 +36,7 @@
                             <p><a href="http://tanshcreative.com/xaasvik-lp-preview/?storefront=envato-elements#">Templates</a></p>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
                 <!--== column 2 ends ==-->
 
                 <!--== column 3 starts ==-->
@@ -62,7 +60,7 @@
                 <!--== column 3 ends ==-->
 
                 <!--== column 4 starts ==-->
-                <div class="col-12 col-md-6 col-lg-3">
+                {{-- <div class="col-12 col-md-6 col-lg-3">
                     <h6>Subscribe</h6>
                     <p>Get all updates and notifications by subscribing to our newsletter.</p>
 
@@ -73,7 +71,7 @@
                     </div>
                     <!-- form ends -->
 
-                </div>
+                </div> --}}
                 <!--== column 4 ends ==-->
 
             </div>

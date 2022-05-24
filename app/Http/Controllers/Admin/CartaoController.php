@@ -40,7 +40,9 @@ class CartaoController extends Controller
     {
         $novo_cartao = new Cartao();
         $novo_cartao->fill($cartao->toArray());
-        $cartao->delete();
+        $cartao->status = config("constants.STATUS_CARTAO.CANCELADO");
+        $cartao->ativo = 0;
+        $cartao->save();
         $novo_cartao->status = config("constants.STATUS_CARTAO.ANDAMENTO");
         $novo_cartao->save();
         return redirect()->back()->with("success", "Novo cartão gerado com sucesso.");
