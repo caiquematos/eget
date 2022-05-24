@@ -267,7 +267,7 @@
                                         {!!CARTAO_STATUS[$cartao->status]!!}
                                     </div>
                                     <div class="clearfix"></div>
-                                    <p>{{CARTAO_STATUS_RAW[$cartao->status]}}</p>
+                                    {{-- <p>{{CARTAO_STATUS_RAW[$cartao->status]}}</p> --}}
                                 </div>
                                 @endforeach
                             </div>
