@@ -128,8 +128,14 @@
     <script src="vendors/iCheck/icheck.min.js"></script>
 
     <script>
-    // Gerencia ativação do contato.
-    function toggleAtivacao(e) {
+        var dt = $("#datatable-contatos").DataTable({
+            language: {
+                url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
+            },
+        });
+
+        // Gerencia ativação do contato.
+        function toggleAtivacao(e) {
             var contato_id = $(e).data("contato-id");
             var status = $(e).is(":checked");
             var url = `{{route('admin.contato.ativar')}}`;

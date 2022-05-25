@@ -64,8 +64,8 @@
                     <div class="x_content">
                         <div class="row">
                             <div class="col-sm-12">
-                                <p class="filtro active" class="ms-4"  style="margin-left: 1rem">Filtrar por Pagamento <i class="fa fa-chevron-circle-up"></i></p>
-                                <p class="filtro-subtitle">selecione uma ou mais opções</p>
+                                {{-- <p class="filtro active" class="ms-4"  style="margin-left: 1rem">Filtrar por Pagamento <i class="fa fa-chevron-circle-up"></i></p>
+                                <p class="filtro-subtitle">selecione uma ou mais opções</p> --}}
                                 <div class="card-box table-responsive">
 
                                     <table id="datatable-clientes" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
@@ -166,11 +166,11 @@
     <script>
 
         var dt = $("#datatable-clientes").DataTable({
-            searchPanes: {
-                viewTotal: true,
-                columns: [6],
-                layout: 'columns-1'
-            },
+            // searchPanes: {
+            //     viewTotal: true,
+            //     columns: [6],
+            //     layout: 'columns-1'
+            // },
             language: {
                 url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
                 searchPanes: {
@@ -183,30 +183,30 @@
                     countFiltered: '{shown} ({total})'
                 }
             },
-            dom: 'Plfrtip',
-            columnDefs: [
-                {
-                    orderable: false,
-                    searchPanes: {
-                        header: "Filtro por status do pagamento.",
-                        show: true,
-                    },
-                    targets: [6]
-                },
-            ],
-            select: {
-                style:    'os',
-                selector: 'td:first-child'
-            },
+            // dom: 'Plfrtip',
+            // columnDefs: [
+            //     {
+            //         orderable: false,
+            //         searchPanes: {
+            //             header: "Filtro por status do pagamento.",
+            //             show: true,
+            //         },
+            //         targets: [6]
+            //     },
+            // ],
+            // select: {
+            //     style:    'os',
+            //     selector: 'td:first-child'
+            // },
         });
 
-        dt.on('select.dt', () => {
-            dt.searchPanes.rebuildPane(0, true);
-        });
+        // dt.on('select.dt', () => {
+        //     dt.searchPanes.rebuildPane(0, true);
+        // });
 
-        dt.on('deselect.dt', () => {
-            dt.searchPanes.rebuildPane(0, true);
-        });
+        // dt.on('deselect.dt', () => {
+        //     dt.searchPanes.rebuildPane(0, true);
+        // });
 
         // Gerencia ativação do cliente.
         function toggleAtivacao(e) {

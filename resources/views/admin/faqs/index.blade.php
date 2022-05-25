@@ -69,12 +69,12 @@
                     <table id="datatable-faqs" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
-                          <th data-priority="1">ID</th>
-                          <th data-priority="2">Pergunta</th>
-                          <th width="50%" data-priority="3">Resposta</th>
-                          <th data-priority="5">Ativo</th>
-                          <th data-priority="6">Adicionada em</th>
-                          <th data-priority="4">Ações</th>
+                          <th>ID</th>
+                          <th>Pergunta</th>
+                          <th>Resposta</th>
+                          <th>Ativo</th>
+                          <th>Adicionada em</th>
+                          <th>Ações</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -130,8 +130,14 @@
 
     <script>
 
-    // Gerencia ativação do faq.
-    function toggleAtivacao(e) {
+        var dt = $("#datatable-faqs").DataTable({
+            language: {
+                url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
+            },
+        });
+
+        // Gerencia ativação do faq.
+        function toggleAtivacao(e) {
             var faq_id = $(e).data("faq-id");
             var status = $(e).is(":checked");
             var url = `{{route('admin.faq.ativar')}}`;

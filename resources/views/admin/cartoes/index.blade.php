@@ -64,8 +64,8 @@
                   <div class="x_content">
                       <div class="row">
                           <div class="col-sm-12">
-                            <p class="filtro active" class="ms-4"  style="margin-left: 1rem">Filtrar por Status <i class="fa fa-chevron-circle-up"></i></p>
-                            <p class="filtro-subtitle">selecione uma ou mais opções</p>
+                            {{-- <p class="filtro active" class="ms-4"  style="margin-left: 1rem">Filtrar por Status <i class="fa fa-chevron-circle-up"></i></p>
+                            <p class="filtro-subtitle">selecione uma ou mais opções</p> --}}
                             <div class="card-box table-responsive">
                                 <table id="datatable-cartoes-titular" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                   <thead>
@@ -124,8 +124,8 @@
                   <div class="x_content">
                       <div class="row">
                           <div class="col-sm-12">
-                            <p class="filtro active" class="ms-4"  style="margin-left: 1rem">Filtrar por Pagamento <i class="fa fa-chevron-circle-up"></i></p>
-                            <p class="filtro-subtitle">selecione uma ou mais opções</p>
+                            {{-- <p class="filtro active" class="ms-4"  style="margin-left: 1rem">Filtrar por Pagamento <i class="fa fa-chevron-circle-up"></i></p>
+                            <p class="filtro-subtitle">selecione uma ou mais opções</p> --}}
                             <div class="card-box table-responsive">
                                 <table id="datatable-cartoes-dependentes" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                   <thead>
@@ -224,11 +224,6 @@
     <script>
         $(function() {
             var dt = $("#datatable-cartoes-titular").DataTable({
-                searchPanes: {
-                    viewTotal: true,
-                    columns: [1],
-                    layout: 'columns-1'
-                },
                 language: {
                     url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
                     searchPanes: {
@@ -241,37 +236,17 @@
                         countFiltered: '{shown} ({total})'
                     }
                 },
-                dom: 'Plfrtip',
-                columnDefs: [
-                    {
-                        orderable: false,
-                        searchPanes: {
-                            header: "Status do cartão.",
-                            show: true,
-                        },
-                        targets: [1]
-                    },
-                ],
-                select: {
-                    style:    'os',
-                    selector: 'td:first-child'
-                }
             });
 
-            dt.on('select.dt', () => {
-                dt.searchPanes.rebuildPane(0, true);
-            });
+            // dt.on('select.dt', () => {
+            //     dt.searchPanes.rebuildPane(0, true);
+            // });
 
-            dt.on('deselect.dt', () => {
-                dt.searchPanes.rebuildPane(0, true);
-            });
+            // dt.on('deselect.dt', () => {
+            //     dt.searchPanes.rebuildPane(0, true);
+            // });
 
             var dt2 = $("#datatable-cartoes-dependentes").DataTable({
-                searchPanes: {
-                    viewTotal: true,
-                    columns: [3],
-                    layout: 'columns-1'
-                },
                 language: {
                     url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
                     searchPanes: {
@@ -284,33 +259,18 @@
                         countFiltered: '{shown} ({total})'
                     }
                 },
-                dom: 'Plfrtip',
-                columnDefs: [
-                    {
-                        orderable: false,
-                        searchPanes: {
-                            header: "Status do cartão.",
-                            show: true,
-                        },
-                        targets: [3]
-                    },
-                ],
-                select: {
-                    style:    'os',
-                    selector: 'td:first-child'
-                },
             });
 
-            dt2.on('select.dt', () => {
-                console.log("selecionado");
-                dt2.searchPanes.rebuildPane(0, true);
-            });
+            // dt2.on('select.dt', () => {
+            //     console.log("selecionado");
+            //     dt2.searchPanes.rebuildPane(0, true);
+            // });
 
-            dt2.on('deselect.dt', () => {
-                dt2.searchPanes.rebuildPane(0, true);
-            });
+            // dt2.on('deselect.dt', () => {
+            //     dt2.searchPanes.rebuildPane(0, true);
+            // });
 
-            init_filtro();
+            // init_filtro();
 
         });
 
