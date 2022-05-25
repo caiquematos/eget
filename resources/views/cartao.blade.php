@@ -204,8 +204,6 @@
         border-radius: 5px;
         border: 2px white solid;
     }
-
-
 </style>
 
 <body>
@@ -256,22 +254,18 @@
                     <p class="fw-bold">Titular</p>
                     <hr>
                     <div class="row">
-                        <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
-                            <div class="card-container">
-                                @foreach (Auth::user()->cartoes as $cartao)
-                                <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
-                                    <div class="card-container">
-                                        <p>{{Auth::user()->nome}}</p>
-                                        <p>{{Auth::user()->cpf}}</p>
-                                        <p>{{Auth::user()->nascimento}}</p>
-                                        {!!CARTAO_STATUS[$cartao->status]!!}
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    {{-- <p>{{CARTAO_STATUS_RAW[$cartao->status]}}</p> --}}
+                        @foreach (Auth::user()->cartoes as $cartao)
+                            <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
+                                <div class="card-container">
+                                    <p>{{Auth::user()->nome}}</p>
+                                    <p>{{Auth::user()->cpf}}</p>
+                                    <p>{{Auth::user()->nascimento}}</p>
+                                    {!!CARTAO_STATUS[$cartao->status]!!}
                                 </div>
-                                @endforeach
+                                {{-- <div class="clearfix"></div>
+                                <p>{!!CARTAO_STATUS_TEXTO[$cartao->status]!!}</p> --}}
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <!--== row 1 ends ==-->

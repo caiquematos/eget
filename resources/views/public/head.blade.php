@@ -27,5 +27,11 @@
             border-color: #4bc192 !important;
             outline: none;
         }
+
+        .cartao-status-texto {
+            padding: 0px 5px;
+            font-weight: 700;
+            border-radius: 3px;
+        }
     </style>
 </head>

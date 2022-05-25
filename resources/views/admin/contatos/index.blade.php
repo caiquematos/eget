@@ -90,7 +90,8 @@
                                                         <input type="checkbox" data-contato-id={{$contato->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$contato->lida ? "checked" : ""}} />
                                                     </td>
                                                     <td>
-                                                        <a href="{{route('admin.contato.deletar', [$contato->id])}}"><i class="fa fa-trash mx-1"></i></a>
+                                                        {{-- <a href="{{route('admin.contato.deletar', [$contato->id])}}"><i class="fa fa-trash mx-1"></i></a> --}}
+                                                        <a href="#"><i class="fa fa-trash mx-1" title="Deletar" data-action="{{route("admin.contato.destroy", [0])}}" data-title="Deletar" data-content="Tem certeza que deseja deletar essa mensagem?" onclick="deletar({{$contato->id}}, this)"></i></a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -120,6 +121,7 @@
 
     <!-- scripts -->
     @include("admin.build.scripts", [])
+    @include('admin.build.modais')
     @include("admin.build.datatables")
     <!-- /scripts -->
     <!-- iCheck -->

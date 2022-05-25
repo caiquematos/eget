@@ -171,7 +171,8 @@ class ClienteController extends Controller
      */
     public function destroy(Usuario $cliente)
     {
-        //
+        $cliente->delete();
+        return redirect()->back()->with("success", "Cliente removido com sucesso.");
     }
 
     /**

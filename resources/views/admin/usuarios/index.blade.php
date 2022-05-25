@@ -105,9 +105,9 @@
                                                         <input type="checkbox" data-usuario-id={{$usuario->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$usuario->ativo ? "checked" : ""}} />
                                                     </td>
                                                     <td>
-                                                        <a href="{{route('admin.usuario.show', [$usuario->id])}}"><i class="fa fa-eye mx-1"></i></a>
-                                                        <a href="{{route('admin.usuario.deletar', [$usuario->id])}}"><i class="fa fa-trash mx-1"></i></a>
-                                                    </td>
+                                                        <a href="{{route('admin.usuario.show', [$usuario->id])}}"><i class="fa fa-eye mx-1" title="Ver"></i></a>
+                                                        {{-- <a href="{{route('admin.usuario.deletar', [$usuario->id])}}"><i class="fa fa-trash mx-1"></i></a> --}}
+                                                        <a href="#"><i class="fa fa-trash mx-1" title="Deletar" data-action="{{route("admin.usuario.destroy", [0])}}" data-title="Deletar" data-content="Tem certeza que deseja deletar esse usuário?" onclick="deletar({{$usuario->id}}, this)"></i></a>
                                                 </tr>
                                             @endforeach
                                     </tbody>
@@ -136,6 +136,7 @@
 
     <!-- scripts -->
     @include("admin.build.scripts", [])
+    @include("admin.build.modais")
     @include("admin.build.datatables")
     <!-- /scripts -->
     <!-- iCheck -->
@@ -143,6 +144,7 @@
 
     <script>
         $(function(){
+            // $("#modal-delete").modal('show');
             var dt = $("#datatable-usuarios").DataTable({
                 language: {
                     url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
@@ -159,8 +161,8 @@
             });
         });
 
-    // Gerencia ativação do cliente.
-    function toggleAtivacao(e) {
+        // Gerencia ativação do cliente.
+        function toggleAtivacao(e) {
             var usuario_id = $(e).data("usuario-id");
             var status = $(e).is(":checked");
             var url = `{{route('admin.usuario.ativar')}}`;

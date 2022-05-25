@@ -124,7 +124,8 @@
                                                     <td>
                                                         <a href="{{route('admin.cliente.show', [$cliente->id])}}"><i class="fa fa-eye mx-1" title="Ver"></i></a>
                                                         <a href="{{route('admin.cartao.index', [$cliente->id])}}"><i class="fa fa-credit-card mx-1" title="Ver cartões"></i></a>
-                                                        <a href="{{route('admin.cliente.deletar', [$cliente->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a>
+                                                        {{-- <a href="{{route('admin.cliente.deletar', [$cliente->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a> --}}
+                                                        <a href="#"><i class="fa fa-trash mx-1" title="Deletar" data-action="{{route("admin.cliente.destroy", [0])}}" data-title="Deletar" data-content="Tem certeza que deseja deletar esse cliente?" onclick="deletar({{$cliente->id}}, this)"></i></a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -156,6 +157,7 @@
 
     <!-- scripts -->
     @include("admin.build.scripts", [])
+    @include("admin.build.modais")
     @include("admin.build.datatables")
     <!-- /scripts -->
     <!-- iCheck -->

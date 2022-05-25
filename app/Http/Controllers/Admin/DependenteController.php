@@ -108,6 +108,11 @@ class DependenteController extends Controller
      */
     public function destroy(Dependente $dependente)
     {
+        $cliente = Usuario::find($dependente->id_usuario);
+        $dependente->delete();
+        $dependentes = Dependente::whereIdUsuario($cliente->id)->get();
+        $cliente->dependentes = $dependentes;
+        return redirect()->route("admin.cliente.edit", ["cliente"=>$cliente])->with("success", "Dependente removido com sucesso.");
     }
 
 

@@ -88,8 +88,9 @@
                                     </td>
                                     <td>{{date("d/m/Y", strtotime($faq->created_at))}}</td>
                                     <td>
-                                        <a href="{{route('admin.faq.show', [$faq->id])}}"><i class="fa fa-eye mx-1"></i></a>
-                                        <a href="{{route('admin.faq.deletar', [$faq->id])}}"><i class="fa fa-trash mx-1"></i></a>
+                                        <a href="{{route('admin.faq.show', [$faq->id])}}"><i class="fa fa-eye mx-1" title="Ver"></i></a>
+                                        {{-- <a href="{{route('admin.faq.deletar', [$faq->id])}}"><i class="fa fa-trash mx-1"></i></a> --}}
+                                        <a href="#"><i class="fa fa-trash mx-1" title="Deletar" data-action="{{route("admin.faq.destroy", [0])}}" data-title="Deletar" data-content="Tem certeza que deseja deletar essa faq?" onclick="deletar({{$faq->id}}, this)"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -121,6 +122,7 @@
 
     <!-- scripts -->
     @include("admin.build.scripts", [])
+    @include('admin.build.modais')
     @include("admin.build.datatables")
     <!-- /scripts -->
     <!-- iCheck -->

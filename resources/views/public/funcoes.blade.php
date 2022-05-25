@@ -54,7 +54,15 @@ const CARTAO_STATUS = [
     '0' => "<p class='cartao-status bg-warning text-white'>Em andamento</p>",
     '1' => "<p class='cartao-status bg-primary text-white'>Finalizado</p>",
     '2' => "<p class='cartao-status bg-success text-white'>Entregue</p>",
-    '4' => "<p class='cartao-status bg-danger text-white'>Cancelado</p>",
+    '3' => "<p class='cartao-status bg-danger text-white'>Cancelado</p>",
+];
+
+// Situação do cartão
+const CARTAO_STATUS_TEXTO = [
+    '0' => "<p class='cartao-status-texto' style='background-color: #ffc10775'>Em andamento</p>",
+    '1' => "<p class='cartao-status-texto' style='background-color:#0d6efd75'>Finalizado</p>",
+    '2' => "<p class='cartao-status-texto' style='background-color:#19875475'>Entregue</p>",
+    '3' => "<p class='cartao-status-texto' style='background-color:#dc354575'>Cancelado</p>",
 ];
 
 // Situação do cartão
@@ -62,7 +70,7 @@ const CARTAO_STATUS_RAW = [
     '0' => "Em andamento",
     '1' => "Finalizado",
     '2' => "Entregue",
-    '4' => "Cancelado",
+    '3' => "Cancelado",
 ];
 
 ?>

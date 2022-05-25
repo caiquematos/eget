@@ -30,7 +30,7 @@
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
-            
+
             <!-- side menu -->
             @include("admin.build.side-menu")
             <!-- /side menu -->
@@ -209,7 +209,7 @@
                                             <div class="col-md-3 col-sm-12 ">
                                                 <input name="cidade" data-tipo="cidade" value="{{ $cliente->cidade }}" class="select2_single form-control" tabindex="-1"/>
 											</div>
-                                        </div>                                        
+                                        </div>
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-6 offset-md-3">
@@ -225,12 +225,12 @@
                             <div class="title_left">
                                 <h3></h3>
                             </div>
-                
+
                             <div class="title_right">
                                 <a class="btn btn-primary pull-right text-white" href="{{route('admin.dependente.adicionar', $cliente->id)}}">Adicionar dependente</a>
                             </div>
                             </div>
-                
+
                             <div class="clearfix"></div>
                             <div class="x_panel">
                                 <div class="x_title">
@@ -271,8 +271,9 @@
                                                                 <input type="checkbox" data-dependente-id={{$dependente->id}} onchange="toggleAtivacao(this)" class="js-switch" {{$dependente->ativo ? "checked" : ""}} />
                                                             </td>
                                                             <td>
-                                                                <a href="{{route('admin.dependente.show', [$dependente->id])}}"><i class="fa fa-eye mx-1"></i></a>
-                                                                <a href="{{route('admin.dependente.deletar', [$dependente->id])}}"><i class="fa fa-trash mx-1"></i></a>
+                                                                <a href="{{route('admin.dependente.show', [$dependente->id])}}"><i class="fa fa-eye mx-1" title="Ver"></i></a>
+                                                                {{-- <a href="{{route('admin.dependente.deletar', [$dependente->id])}}"><i class="fa fa-trash mx-1"></i></a> --}}
+                                                                <a href="#"><i class="fa fa-trash mx-1" title="Deletar" data-action="{{route("admin.dependente.destroy", [0])}}" data-title="Deletar" data-content="Tem certeza que deseja deletar esse dependente?" onclick="deletar({{$dependente->id}}, this)"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -303,6 +304,7 @@
 
     <!-- scripts -->
     @include("admin.build.scripts", [])
+    @include('admin.build.modais')
     @include("admin.build.datatables")
     <!-- /scripts -->
     <script src="{{url('admin/assets/js/chance.min.js')}}"></script>
@@ -321,7 +323,7 @@
             });
         </script>
     @endif
-    
+
     <!-- Javascript functions	-->
     <script>
         var cliente = @json($cliente,JSON_PRETTY_PRINT);

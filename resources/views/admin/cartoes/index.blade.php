@@ -91,7 +91,8 @@
                                                     @if ($cartao->status != config("constants.STATUS_CARTAO.CANCELADO"))
                                                     <a href="{{route('admin.cartao.store', [$cartao->id])}}"><i class="fa fa-plus-square mx-1" title="Gerar um novo cartão"></i></a>
                                                     @endif
-                                                    <a href="{{route('admin.cartao.deletar', [$cartao->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a>
+                                                    {{-- <a href="{{route('admin.cartao.deletar', [$cartao->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a> --}}
+                                                    <a href="#"><i class="fa fa-trash mx-1" title="Deletar" data-action="{{route("admin.cartao.destroy", [0])}}" data-title="Deletar" data-content="Tem certeza que deseja deletar esse cartão?" onclick="deletar({{$cartao->id}}, this)"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -154,7 +155,8 @@
                                                 @if ($cartao->status != config("constants.STATUS_CARTAO.CANCELADO"))
                                                     <a href="{{route('admin.cartao.store', [$cartao->id])}}"><i class="fa fa-plus-square mx-1" title="Gerar um novo cartão"></i></a>
                                                 @endif
-                                                <a href="{{route('admin.cartao.deletar', [$cartao->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a>
+                                                {{-- <a href="{{route('admin.cartao.deletar', [$cartao->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a> --}}
+                                                <a href="#"><i class="fa fa-trash mx-1" title="Deletar" data-action="{{route("admin.cartao.destroy", [0])}}" data-title="Deletar" data-content="Tem certeza que deseja deletar esse cartão?" onclick="deletar({{$cartao->id}}, this)"></i></a>
                                             </td>
                                         </tr>
                                       @endforeach
@@ -185,6 +187,7 @@
 
     <!-- scripts -->
     @include("admin.build.scripts", [])
+    @include('admin.build.modais')
     @include("admin.build.datatables")
     <!-- /scripts -->
     <!-- iCheck -->
