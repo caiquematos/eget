@@ -6,10 +6,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController as AdminLoginController;
 use App\Http\Controllers\Admin\ClienteController as AdminClienteController;
 use App\Http\Controllers\Admin\ContatoController;
-use App\Http\Controllers\Admin\DependenteController;
+use App\Http\Controllers\Admin\DependenteController as AdminDependenteController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\UsuarioController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\DependenteController;
 use App\Http\Controllers\EsqueciSenhaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -66,9 +67,9 @@ Route::prefix('/site')->group(function () {
             });
 
             // Rotas 'Dependente'
-            Route::resource("dependente", DependenteController::class);
+            Route::resource("dependente", AdminDependenteController::class);
             Route::prefix('dependente')->name('dependente.')->group(function () {
-                Route::post("ativar",[DependenteController::class, 'ativar'])->name('ativar');
+                Route::post("ativar",[AdminDependenteController::class, 'ativar'])->name('ativar');
                 Route::get("adicionar/{cliente}", function(Usuario $cliente) {
                     return App::make('App\Http\Controllers\Admin\DependenteController')->adicionar($cliente);
                 })->name('adicionar');
@@ -121,6 +122,12 @@ Route::prefix('/site')->group(function () {
 
     // Rotas 'Cliente'
     Route::prefix('/cliente')->name('cliente.')->group(function () {
+
+        Route::middleware(['auth', 'role:cliente'])->group(function(){
+            Route::resource("dependente", DependenteController::class)->except(['create']);
+            Route::get('dependente/create/{cliente}', [DependenteController::class, 'create'])->name('dependente.create');
+        });
+
         Route::post('/recuperar',[EsqueciSenhaController::class, 'reset'])->name("reset");
         Route::get('/recuperar/{token}',[EsqueciSenhaController::class, 'showFormRecuperar'])->name("recuperar");
         Route::post('/recuperacao',[EsqueciSenhaController::class, 'enviarEmail'])->name("recuperacao");

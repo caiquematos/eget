@@ -207,6 +207,38 @@
 </style>
 
 
+<style>
+    select, textarea, input[type="text"], input[type="date"], input[type="email"], input[type="url"], input[type="password"], input[type="number"], input[type="tel"], input[type="search"] {
+        background-color: #e9e9e9 !important;
+    }
+    .feedback-error {
+        margin: 0px;
+        margin-top: -15px;
+        margin-left: 32px;
+        color: red;
+        margin-bottom: 0px;
+        font-size: small;
+        display: none;
+    }
+    .StepTitle {
+        color: #525252;
+    }
+    #adicionar-dependente form {
+        flex-direction: column;
+    }
+    .breadcrumb {
+        background-color: #cccccc2e;
+        padding: 16px 3px 2px 26px;
+        border-radius: 4px;
+    }
+    .breadcrumb-item a {
+        color: #2c9f98;
+    }
+    .breadcrumb-row {
+        margin-top: -60px;
+    }
+</style>
+
 <body>
 <div id="dtr-wrapper" class="clearfix">
 
@@ -223,7 +255,7 @@
             <div class="row">
                 <div class="col d-flex">
                     <div class="m-auto">
-                        <h2 class="color-white fs-1">Meus Cartões</h2>
+                        <h2 class="color-white fs-1">Adicionar Dependente</h2>
                         </a>
                     </div>
                 </div>
@@ -237,61 +269,67 @@
 
         <!-- services section starts
 ================================================== -->
-        <section id="services" class="dtr-section dtr-pt-100 dtr-pb-70 bg-white">
+        <section id="adicionar-dependente" class="dtr-section dtr-pt-100 dtr-pb-70 bg-white">
             <div class="container">
 
-                <!-- heading starts -->
-                <div class="dtr-section-intro text-left dtr-mb-50">
-                    <div class="dtr-intro-subheading-wrapper">
-                        <p class="dtr-intro-subheading">Cartões CDI</p>
+                <div class="row mb-5 breadcrumb-row">
+                    <div class="col">
+                        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="{{route('cliente.cartao')}}">Meu Cartão</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">Adicionar Dependente</li>
+                            </ol>
+                        </nav>
                     </div>
-                    <!-- <h2 class="dtr-intro-heading">Cadastro - Cartão de Vantagens</h2> -->
-                    <p>Olá, {{Auth::user()->nome}}.<br>Veja nas informações abaixo o andamento dos seus cartões.</p>
                 </div>
-                <!-- heading ends -->
 
                 <!--== row 1 starts ==-->
                 <div class="row wow fadeInUp mb-3" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                    <p class="fw-bold">Titular</p>
-                    <hr>
-                    <div class="row">
-                        @foreach (Auth::user()->cartoes as $cartao)
-                            <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
-                                <div class="card-container">
-                                    <p>{{Auth::user()->nome}}</p>
-                                    <p>{{Auth::user()->cpf}}</p>
-                                    <p>{{Auth::user()->nascimento}}</p>
-                                    {!!CARTAO_STATUS[$cartao->status]!!}
-                                </div>
-                                {{-- <div class="clearfix"></div>
-                                <p>{!!CARTAO_STATUS_TEXTO[$cartao->status]!!}</p> --}}
+                    <h4 class="StepTitle text-center">Informações do Dependente </h4>
+                    <form class="d-flex" action="{{route('cliente.dependente.store')}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="id_usuario" value="{{$cliente->id}}">
+                        <div class="form-group row justify-content-center">
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" name="cpf" data-tipo="cpf" value="{{ old('cpf') }}" placeholder="CPF*" required class="form-control">
+                                <p class="feedback-error">Esse campo é obrigatório.</p>
                             </div>
-                        @endforeach
-                    </div>
+                        </div>
+                        <div class="form-group row justify-content-center">
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" name="nome" value="{{ old('nome') }}" placeholder="Nome Completo*" required class="form-control">
+                                <p class="feedback-error">Esse campo é obrigatório.</p>
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-center">
+                            <div class="col-md-6 col-sm-6 ">
+                                <select name="sexo" class="select2_single" tabindex="-1" required='required'>
+                                    <option selected>Selecione uma opção*</option>
+                                    @foreach (GERAL_SEXO as $key=>$sexo)
+                                        <option  {{old('sexo') == $key ? 'selected': ''}} value={{$key}}>{{$sexo}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-center">
+                            <div class="col-md-6 col-sm-6 ">
+                                <select name="parentesco" class="select2_single" tabindex="-1" required='required'>
+                                    <option selected>Selecione uma opção*</option>
+                                    @foreach (DEPENDENTE_PARENTESCO as $key=>$parentesco)
+                                    <option {{old('parentesco') == $key ? 'selected': ''}} value={{$key}}>{{$parentesco}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-center">
+                            <div class="col-md-6 col-sm-6 ">
+                                <input class="form-control" class='date' type="date" name="nascimento" value="{{old('nascimento')}}" required='required'>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success mx-auto mt-3">Adicionar</button>
+                    </form>
                 </div>
                 <!--== row 1 ends ==-->
-                <!--== row 2 starts ==-->
-                <div class="row wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-                    <p class="fw-bold">Dependentes <span style="float: right"><a class="btn btn-primary" href="{{route('cliente.dependente.create', Auth::user()->id)}}">Adicionar Dependente</a></span></p>
-                    <hr>
-                    <div class="row">
-                        @isset(Auth::user()->dependentes)
-                        @foreach (Auth::user()->dependentes as $dependente)
-                            @foreach ($dependente->cartoes as $cartao)
-                            <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
-                                <div class="card-container">
-                                    <p>{{$dependente->nome}}</p>
-                                    <p>{{$dependente->cpf}}</p>
-                                    <p>{{$dependente->nascimento}}</p>
-                                    {!!CARTAO_STATUS[$cartao->status]!!}
-                                </div>
-                            </div>
-                            @endforeach
-                        @endforeach
-                        @endisset
-                    </div>
-                </div>
-                <!--== row 2 ends ==-->
 
             </div>
         </section>
