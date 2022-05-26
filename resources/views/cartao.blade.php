@@ -285,6 +285,8 @@
                                     <p>{{$dependente->nascimento}}</p>
                                     {!!CARTAO_STATUS[$cartao->status]!!}
                                 </div>
+                                 {{-- <div class="clearfix"></div>
+                                <p>{!!CARTAO_STATUS_TEXTO[$cartao->status]!!}</p> --}}
                             </div>
                             @endforeach
                         @endforeach

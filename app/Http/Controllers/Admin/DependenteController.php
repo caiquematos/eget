@@ -50,8 +50,6 @@ class DependenteController extends Controller
      */
     public function store(StoreDependenteRequest $request)
     {
-
-        dd($request->all());
         $dependente = new Dependente();
         $dependente->fill($request->validated());
         $dependente->id_usuario = $request->input("id_usuario");
