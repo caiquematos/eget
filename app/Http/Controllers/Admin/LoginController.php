@@ -22,16 +22,20 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
         $credentials["cpf"] = $this->cleanCpf($credentials["cpf"]);
-        Auth::attempt($credentials);
 
+
+        // verifica se usuário está ativo.
+        $usuario = Usuario::whereCpf($credentials["cpf"])->whereAtivo(1)->first();
+        if (!$usuario)
+            return back()->withErrors(['login' => 'Esse usuário não tem permissão para acessar essa área.',]);
+
+        Auth::attempt($credentials);
         if (Auth::check()) {
             $request->session()->regenerate();
             return redirect()->route('admin.usuario.index');
         }
 
-        return back()->withErrors([
-            'login' => 'CPF ou Senha não encontrado.',
-        ]);
+        return back()->withErrors(['login' => 'CPF ou Senha não encontrado.',]);
     }
 
     /**
@@ -42,11 +46,11 @@ class LoginController extends Controller
      */
     public function logout(Request $request){
         Auth::logout();
-    
+
         $request->session()->invalidate();
-    
+
         $request->session()->regenerateToken();
-    
+
         return redirect()->route('admin.login');
     }
 }
