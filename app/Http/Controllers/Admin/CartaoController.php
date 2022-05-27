@@ -48,7 +48,6 @@ class CartaoController extends Controller
         $novo_cartao->status = config("constants.STATUS_CARTAO.ANDAMENTO");
         $novo_cartao->save();
         return redirect()->back()->with("success", "Novo cartão gerado com sucesso.");
-
     }
 
     /**
@@ -102,7 +101,7 @@ class CartaoController extends Controller
 
         // verificar se é possível atualizar o status.
         if ($hasCartaoAtivo && $request->input("status") != config("constants.STATUS_CARTAO.CANCELADO"))
-            return back()->withErrors("status", "Esse usuário já possui um cartão ativo, para realziar essa operação é necessário cancelar todos os cartões ativos.");
+            return back()->withErrors(["status"=>"Esse usuário já possui um cartão ativo, para realziar essa operação é necessário cancelar todos os cartões ativos."]);
 
         // atualiza status do cartão
         $cartao->fill($inputs)->save();

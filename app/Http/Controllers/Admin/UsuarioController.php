@@ -43,6 +43,9 @@ class UsuarioController extends Controller
      */
     public function store(StoreUsuarioRequest $request)
     {
+        if(!$this->isCpfValido($request->cpf))
+            return back()->withErrors(["cpf"=>"Digite um CPF válido."]);
+
         $usuario = new Usuario();
         $usuario->fill($request->except(["tipo"]));
         $senha = trim(substr($request->input("cpf"), 0, 6));
