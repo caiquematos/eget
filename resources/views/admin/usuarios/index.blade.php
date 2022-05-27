@@ -107,7 +107,7 @@
                                                     <td>
                                                         <a href="{{route('admin.usuario.show', [$usuario->id])}}"><i class="fa fa-eye mx-1" title="Ver"></i></a>
                                                         {{-- <a href="{{route('admin.usuario.deletar', [$usuario->id])}}"><i class="fa fa-trash mx-1"></i></a> --}}
-                                                        <a href="#"><i class="fa fa-trash mx-1" title="Deletar" data-action="{{route("admin.usuario.destroy", [0])}}" data-title="Deletar" data-content="Tem certeza que deseja deletar esse usuário?" onclick="deletar({{$usuario->id}}, this)"></i></a>
+                                                        {{-- <a href="#"><i class="fa fa-trash mx-1" title="Deletar" data-action="{{route("admin.usuario.destroy", [0])}}" data-title="Deletar" data-content="Tem certeza que deseja deletar esse usuário?" onclick="deletar({{$usuario->id}}, this)"></i></a> --}}
                                                 </tr>
                                             @endforeach
                                     </tbody>

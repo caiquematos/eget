@@ -256,6 +256,7 @@
                     <hr>
                     <div class="row">
                         @foreach (Auth::user()->cartoes as $cartao)
+                            @continue($cartao->status == config("constants.STATUS_CARTAO.CANCELADO"))
                             <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
                                 <div class="card-container">
                                     <p>{{Auth::user()->nome}}</p>
@@ -264,7 +265,7 @@
                                     {!!CARTAO_STATUS[$cartao->status]!!}
                                 </div>
                                 {{-- <div class="clearfix"></div>
-                                <p>{!!CARTAO_STATUS_TEXTO[$cartao->status]!!}</p> --}}
+                                <p>{!!CARTAO_STATUS_EL[$cartao->status]!!}</p> --}}
                             </div>
                         @endforeach
                     </div>
@@ -278,16 +279,17 @@
                         @isset(Auth::user()->dependentes)
                         @foreach (Auth::user()->dependentes as $dependente)
                             @foreach ($dependente->cartoes as $cartao)
-                            <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
-                                <div class="card-container">
-                                    <p>{{$dependente->nome}}</p>
-                                    <p>{{$dependente->cpf}}</p>
-                                    <p>{{$dependente->nascimento}}</p>
-                                    {!!CARTAO_STATUS[$cartao->status]!!}
+                                @continue($cartao->status == config("constants.STATUS_CARTAO.CANCELADO"))
+                                <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
+                                    <div class="card-container">
+                                        <p>{{$dependente->nome}}</p>
+                                        <p>{{$dependente->cpf}}</p>
+                                        <p>{{$dependente->nascimento}}</p>
+                                        {!!CARTAO_STATUS[$cartao->status]!!}
+                                    </div>
+                                    {{-- <div class="clearfix"></div>
+                                    <p>{!!CARTAO_STATUS_EL[$cartao->status]!!}</p> --}}
                                 </div>
-                                 {{-- <div class="clearfix"></div>
-                                <p>{!!CARTAO_STATUS_TEXTO[$cartao->status]!!}</p> --}}
-                            </div>
                             @endforeach
                         @endforeach
                         @endisset

@@ -14,7 +14,7 @@
       border-radius: 5px;
       font-weight: bold;
       font-size: smaller;
-      width:90px;
+      width:fit-content;
       text-align: center;
     }
   </style>
@@ -93,7 +93,7 @@
                                                     <a href="#"><i class="fa fa-plus-square mx-1" title="Gerar Novo Cartão" data-action="{{route("admin.cartao.store", [0])}}" data-title="Gerar Novo Cartão" data-content="O cartão atual será cancelado e um novo cartão será gerado. Tem certeza que deseja gerar um novo cartão?" onclick="gerar({{$cartao->id}}, this)"></i></a>
                                                     @endif
                                                     {{-- <a href="{{route('admin.cartao.deletar', [$cartao->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a> --}}
-                                                    <a href="#"><i class="fa fa-trash mx-1" title="Deletar" data-action="{{route("admin.cartao.destroy", [0])}}" data-title="Deletar" data-content="Tem certeza que deseja deletar esse cartão?" onclick="deletar({{$cartao->id}}, this)"></i></a>
+                                                    {{-- <a href="#"><i class="fa fa-trash mx-1" title="Deletar" data-action="{{route("admin.cartao.destroy", [0])}}" data-title="Deletar" data-content="Tem certeza que deseja deletar esse cartão?" onclick="deletar({{$cartao->id}}, this)"></i></a> --}}
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -155,10 +155,10 @@
                                                 <a href="{{route('admin.cartao.show', [$cartao->id])}}"><i class="fa fa-eye mx-1" title="Ver"></i></a>
                                                 @if ($cartao->status != config("constants.STATUS_CARTAO.CANCELADO"))
                                                     {{-- <a href="{{route('admin.cartao.store', [$cartao->id])}}"><i class="fa fa-plus-square mx-1" title="Gerar um novo cartão"></i></a> --}}
-                                                    <a href="#"><i class="fa fa-plus-square mx-1" title="Deletar" data-action="{{route("admin.cartao.store", [0])}}" data-title="Gerar Novo Cartão" data-content="O cartão atual será cancelado e um novo cartão será gerado. Tem certeza que deseja gerar um novo cartão?" onclick="gerar({{$cartao->id}}, this)"></i></a>
+                                                    <a href="#"><i class="fa fa-plus-square mx-1" title="Gerar Novo Cartão" data-action="{{route("admin.cartao.store", [0])}}" data-title="Gerar Novo Cartão" data-content="O cartão atual será cancelado e um novo cartão será gerado. Tem certeza que deseja gerar um novo cartão?" onclick="gerar({{$cartao->id}}, this)"></i></a>
                                                 @endif
                                                 {{-- <a href="{{route('admin.cartao.deletar', [$cartao->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a> --}}
-                                                <a href="#"><i class="fa fa-trash mx-1" title="Deletar" data-action="{{route("admin.cartao.destroy", [0])}}" data-title="Deletar" data-content="Tem certeza que deseja deletar esse cartão?" onclick="deletar({{$cartao->id}}, this)"></i></a>
+                                                {{-- <a href="#"><i class="fa fa-trash mx-1" title="Deletar" data-action="{{route("admin.cartao.destroy", [0])}}" data-title="Deletar" data-content="Tem certeza que deseja deletar esse cartão?" onclick="deletar({{$cartao->id}}, this)"></i></a> --}}
                                             </td>
                                         </tr>
                                       @endforeach

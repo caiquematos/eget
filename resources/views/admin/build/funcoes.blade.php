@@ -51,9 +51,17 @@ const DEPENDENTE_PARENTESCO = [
 // Situação do cartão
 const CARTAO_STATUS = [
     '0' => "<p class='cartao-status bg-warning text-white'>Em andamento</p>",
-    '1' => "<p class='cartao-status bg-primary text-white'>Finalizado</p>",
+    '1' => "<p class='cartao-status bg-primary text-white'>Aguardando Retirada</p>",
     '2' => "<p class='cartao-status bg-success text-white'>Entregue</p>",
     '3' => "<p class='cartao-status bg-danger text-white'>Cancelado</p>",
+];
+
+// Situação do pagamento
+const PAGAMENTO_STATUS_EL = [
+    '0' => "<p class='pagamento-status text-white bg-warning'>Pendente</p>",
+    '1' => "<p class='pagamento-status text-white bg-success'>Confirmado</p>",
+    '2' => "<p class='pagamento-status text-white bg-danger'>Cancelado</p>",
+    '3' => "<p class='pagamento-status text-white bg-primary'>Cortesia</p>",
 ];
 
 ?>

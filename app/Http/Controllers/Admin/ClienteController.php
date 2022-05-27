@@ -79,7 +79,7 @@ class ClienteController extends Controller
             // Gerencia pagamento.
             $pagamento = new Pagamento();
             $pagamento->id_usuario = $cliente->id;
-            $pagamento->status = 1;
+            $pagamento->status = config("constants.PAGAMENTO.CORTESIA");
             $pagamento->save();
 
             // Gerencia cartão titular.

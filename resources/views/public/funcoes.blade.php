@@ -52,15 +52,15 @@ const DEPENDENTE_PARENTESCO = [
 // Situação do cartão
 const CARTAO_STATUS = [
     '0' => "<p class='cartao-status bg-warning text-white'>Em andamento</p>",
-    '1' => "<p class='cartao-status bg-primary text-white'>Finalizado</p>",
+    '1' => "<p class='cartao-status bg-primary text-white'>Aguardando retirada</p>",
     '2' => "<p class='cartao-status bg-success text-white'>Entregue</p>",
     '3' => "<p class='cartao-status bg-danger text-white'>Cancelado</p>",
 ];
 
 // Situação do cartão
-const CARTAO_STATUS_TEXTO = [
+const CARTAO_STATUS_EL = [
     '0' => "<p class='cartao-status-texto' style='background-color: #ffc10775'>Em andamento</p>",
-    '1' => "<p class='cartao-status-texto' style='background-color:#0d6efd75'>Finalizado</p>",
+    '1' => "<p class='cartao-status-texto' style='background-color:#0d6efd75'>Aguardando retirada</p>",
     '2' => "<p class='cartao-status-texto' style='background-color:#19875475'>Entregue</p>",
     '3' => "<p class='cartao-status-texto' style='background-color:#dc354575'>Cancelado</p>",
 ];

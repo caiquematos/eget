@@ -8,6 +8,8 @@ use App\Models\Dependente;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\returnSelf;
+
 class CartaoController extends Controller
 {
     /**
@@ -83,15 +85,28 @@ class CartaoController extends Controller
         $inputs = $request->validate([
             'status' => 'required|numeric'
         ]);
-        $cartao->fill($inputs)->save();
 
         // is owner dependente ou titular?
         $titular_id = $cartao->usuario_id;
         if (!$cartao->usuario_id) {
+            // owner is a dependente
             $dependente = Dependente::find($cartao->dependente_id);
+            $hasCartaoAtivo = $dependente->cartoes->where("status", "!=", 3)->first();
             $titular = Usuario::find($dependente->id_usuario);
             $titular_id = $titular->id;
+        } else {
+            // owner is a titular
+            $cliente = Usuario::find($cartao->usuario_id);
+            $hasCartaoAtivo = $cliente->cartoes->where("status", "!=", 3)->first();
         }
+
+        // verificar se é possível atualizar o status.
+        if ($hasCartaoAtivo && $request->input("status") != config("constants.STATUS_CARTAO.CANCELADO"))
+            return back()->withErrors("status", "Esse usuário já possui um cartão ativo, para realziar essa operação é necessário cancelar todos os cartões ativos.");
+
+        // atualiza status do cartão
+        $cartao->fill($inputs)->save();
+
         return redirect()->route("admin.cartao.index", $titular_id)->with("success", "Cartão atualizado com sucesso.");
     }
 

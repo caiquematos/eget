@@ -33,5 +33,12 @@ return [
         'ENTREGUE' => 2,
         'CANCELADO' => 3,
     ],
+    'PAGAMENTO' =>
+    [
+        'PENDENTE' => 0,
+        'CONFIRMADO' => 1,
+        'CANCELADO' => 2,
+        'CORTESIA' => 3,
+    ]
 
 ];
