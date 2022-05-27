@@ -90,13 +90,13 @@ class CartaoController extends Controller
         if (!$cartao->usuario_id) {
             // owner is a dependente
             $dependente = Dependente::find($cartao->dependente_id);
-            $hasCartaoAtivo = $dependente->cartoes->where("status", "!=", 3)->first();
+            $hasCartaoAtivo = $dependente->cartoes->where("id", "!=", $cartao->id)->where("status", "!=", 3)->first();
             $titular = Usuario::find($dependente->id_usuario);
             $titular_id = $titular->id;
         } else {
             // owner is a titular
             $cliente = Usuario::find($cartao->usuario_id);
-            $hasCartaoAtivo = $cliente->cartoes->where("status", "!=", 3)->first();
+            $hasCartaoAtivo = $cliente->cartoes->where("id", "!=", $cartao->id)->where("status", "!=", 3)->first();
         }
 
         // verificar se é possível atualizar o status.
