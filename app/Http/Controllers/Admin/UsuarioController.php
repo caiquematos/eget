@@ -105,6 +105,9 @@ class UsuarioController extends Controller
      */
     public function update(UpdateUsuarioRequest $request, usuario $usuario)
     {
+        if(!$this->isCpfValido($request->cpf))
+            return back()->withInput()->withErrors(["cpf"=>"Digite um CPF válido."]);
+
         $usuario->fill($request->except(["tipo"]))->save();
         if (!empty($request->input("tipo"))) {
             $usuario->roles()->sync([$request->input("tipo")]);

@@ -42,6 +42,9 @@ class ClienteController extends Controller
      */
     public function store(StoreClienteRequest $request)
     {
+        if(!$this->isCpfValido($request->cpf))
+            return back()->withInput()->withErrors(["cpf"=>"Digite um CPF válido."]);
+
         $cliente = new Usuario();
         $cliente->fill($request->all())->save();
 
