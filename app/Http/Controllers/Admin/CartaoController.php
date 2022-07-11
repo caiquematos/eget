@@ -85,6 +85,13 @@ class CartaoController extends Controller
             'status' => 'required|numeric'
         ]);
 
+        if ($request->input("status") == config("constants.STATUS_CARTAO.ENTREGUE")) {
+            $inputs = $request->validate([
+                'status' => 'required|numeric',
+                'codigo' => 'required|numeric|digits:4'
+            ]);
+        }
+
         // is owner dependente ou titular?
         $titular_id = $cartao->usuario_id;
         if (!$cartao->usuario_id) {

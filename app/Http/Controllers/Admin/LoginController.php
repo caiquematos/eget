@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Usuario;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Usuario;
 
 class LoginController extends Controller
 {
