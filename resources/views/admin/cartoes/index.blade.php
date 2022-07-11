@@ -49,18 +49,18 @@
                                 aria-label="Close"><i class="fa fa-times"></i></a>
                         </div>
                         <div class="modal-body">
-                            <p>Obs.: Após clicar em imprimir, na página de impressão, selecionar <span>Disposição:
-                                    Horizontal</span> e <span>Mais Definições > Margens: Nenhumas.</span></p>
+                            <p>Obs.: Após clicar em imprimir, na página de impressão, selecionar <span
+                                    style="background: #e7e7e7;
+                                border-radius: 3px;
+                                padding: 2px;">Disposição:
+                                    Horizontal</span> e <span
+                                    style="background: #e7e7e7;
+                                    border-radius: 3px;
+                                    padding: 2px;">Mais
+                                    Definições > Margens: Nenhumas.</span></p>
                             <hr>
                             <div class="block"
-                                style="display:none;
-                                width: 7.8cm;
-                                height:4.7cm;
-                            padding: 5px;
-                            padding-left:0.3cm;font-size: 10px;
-                            /* display: flex; */
-                    flex-direction: column;
-                    justify-content: flex-end;">
+                                style="width: 7.8cm;height:4.7cm;padding: 5px;padding-left:0.3cm;font-size: 10px;display: flex;flex-direction: column;justify-content: flex-end;">
                                 <p class="nome"
                                     style="text-transform: uppercase;margin-bottom: .02cm;font-weight:900;font-family:Arial, Helvetica, sans-serif;">
                                     Maria Rosana</p>
@@ -454,7 +454,7 @@
         function imprimir() {
             let data = document.querySelector("#modal-cartao .modal-body .block");
             console.log(data.innerHtml);
-            $(data).css("display", "flex");
+            // $(data).css("display", "flex");
             let html = "<html>";
             html +=
                 "<style>@media print {@page {margin - top: 0;margin - bottom: 0;} body {padding-top: 0px;padding-bottom: 0px ;}}</style>";
