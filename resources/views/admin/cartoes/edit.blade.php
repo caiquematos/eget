@@ -88,7 +88,8 @@
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-6 offset-md-3">
-                                                <button type='submit' class="btn btn-success">Atualizar</button>
+                                                <button type='submit' class="btn btn-success"
+                                                    onclick="return empty()">Atualizar</button>
                                             </div>
                                         </div>
                                     </form>
@@ -157,6 +158,22 @@
         function date_pt_en(date) {
             var date_array = date.trim().split("/");
             return "".concat(date_array[2], "-").concat(date_array[1], "-").concat(date_array[0]);
+        }
+
+        function empty() {
+            if ($("input[name=codigo]").is(':disabled')) return true;
+            var x;
+            x = $("#input-code input").val();
+            console.log("aqui", x);
+            if (!x) {
+                new PNotify({
+                    title: 'Opa!',
+                    text: "Insira um código válido!",
+                    type: 'warning',
+                    styling: 'bootstrap3'
+                });
+                return false;
+            };
         }
     </script>
 

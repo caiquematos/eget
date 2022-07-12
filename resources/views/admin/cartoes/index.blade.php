@@ -59,6 +59,9 @@
                                     padding: 2px;">Mais
                                     Definições > Margens: Nenhumas.</span></p>
                             <hr>
+                            <p class="mb-1">Nome usuário: <b><span class="nome"></span></b></p>
+                            <p class="mb-1">Matrícula: <b><span class="matricula"></span></b></p>
+                            <p class="mb-1">Nascimento: <b><span class="nascimento"></span></b></p>
                             <div class="block"
                                 style="width: 7.8cm;height:4.7cm;padding: 5px;padding-left:0.3cm;font-size: 10px;display: flex;flex-direction: column;justify-content: flex-end;">
                                 <p class="nome"
@@ -440,27 +443,32 @@
             modal.modal("show");
         }
 
+        var modal_html = "",
+            modal_html_serialized = "";
+
         function prever_impressao(e) {
             let modal = $("#modal-cartao");
-            // console.log($(e).data("cliente-nome"));
-            // console.log($(e).data("cliente-matricula"));
-            // console.log($(e).data("cliente-nascimento"));
             $("#modal-cartao .modal-body .nome").text($(e).data("cliente-nome"));
             $("#modal-cartao .modal-body .matricula").text($(e).data("cliente-matricula"));
             $("#modal-cartao .modal-body .nascimento").text($(e).data("cliente-nascimento"));
             $("#modal-cartao").modal("show");
+            $("#modal-cartao .modal-body .block").show();
+            modal_html = document.querySelector("#modal-cartao .modal-body .block");
+            modal_html_serialized = new XMLSerializer().serializeToString(modal_html);
+            // console.log("modal", modal_html);
+            $("#modal-cartao .modal-body .block").hide();
+            // console.log("modal", modal_html);
         }
 
         function imprimir() {
-            let data = document.querySelector("#modal-cartao .modal-body .block");
-            console.log(data.innerHtml);
-            // $(data).css("display", "flex");
+            // let data = document.querySelector("#modal-cartao .modal-body .block");
+            console.log(modal_html.innerHtml);
             let html = "<html>";
             html +=
                 "<style>@media print {@page {margin - top: 0;margin - bottom: 0;} body {padding-top: 0px;padding-bottom: 0px ;}}</style>";
-            html += new XMLSerializer().serializeToString(data);
+            html += modal_html_serialized;
             html += "</html>";
-            // console.log(html);
+            console.log(html);
             var printWin = window.open('', '', 'left=0,top =0,width=1400,height=700,toolbar=0,scrollbars=0,status  =0');
             printWin.document.write(html);
             printWin.document.close();

@@ -88,7 +88,7 @@ class CartaoController extends Controller
         if ($request->input("status") == config("constants.STATUS_CARTAO.ENTREGUE")) {
             $inputs = $request->validate([
                 'status' => 'required|numeric',
-                'codigo' => 'required|numeric|digits:4'
+                'codigo' => 'required|numeric|digits:4|unique:cartoes,codigo'
             ]);
         }
 
