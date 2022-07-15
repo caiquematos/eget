@@ -67,8 +67,7 @@
                                         <div class="col-sm-12">
                                             <div class="card-box table-responsive">
 
-                                                <table id="datatable-faqs"
-                                                    class="table table-striped table-bordered dt-responsive nowrap"
+                                                <table id="datatable-faqs" class="table table-striped table-bordered"
                                                     cellspacing="0" width="100%">
                                                     <thead>
                                                         <tr>
@@ -96,7 +95,8 @@
                                                                 <td>{{ date('d/m/Y', strtotime($faq->created_at)) }}
                                                                 </td>
                                                                 <td>
-                                                                    <a href="{{ route('admin.faq.show', [$faq->id]) }}"><i
+                                                                    <a
+                                                                        href="{{ route('admin.faq.show', [$faq->id]) }}"><i
                                                                             class="fa fa-eye mx-1"
                                                                             title="Ver"></i></a>
                                                                     {{-- <a href="{{route('admin.faq.deletar', [$faq->id])}}"><i class="fa fa-trash mx-1"></i></a> --}}
