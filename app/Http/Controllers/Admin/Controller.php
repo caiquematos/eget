@@ -63,5 +63,7 @@ class Controller extends BaseController
                 return false;
             }
         }
+
+        return true;
     }
 }

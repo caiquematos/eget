@@ -138,6 +138,13 @@
                                                     required />
                                             </div>
                                         </div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3 label-align">Senha</label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" type="text" class='text' name="senha"
+                                                    autocomplete="new-password" />
+                                            </div>
+                                        </div>
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-6 offset-md-3">

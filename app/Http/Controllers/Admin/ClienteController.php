@@ -49,7 +49,7 @@ class ClienteController extends Controller
      */
     public function store(StoreClienteRequest $request)
     {
-        if(!$this->isCpfValido($request->cpf))
+        if(!$this->isCpfValido($request->input('cpf')))
             return back()->withInput()->withErrors(["cpf"=>"Digite um CPF válido."]);
 
         $cliente = new Usuario();
@@ -59,7 +59,7 @@ class ClienteController extends Controller
         $cliente->cidade = $request->cidade;
         $cliente->como_conheceu = $request->como_conheceu;
         $cliente->complemento = $request->complemento;
-        $cliente->cpf = $request->cpf;
+        $cliente->cpf = $request->input('cpf');
         $cliente->email = $request->email;
         $cliente->endereco = $request->endereco;
         $cliente->estado = $request->estado;
@@ -159,10 +159,12 @@ class ClienteController extends Controller
      */
     public function update(UpdateClienteRequest $request, Usuario $cliente)
     {
-        if(!$this->isCpfValido($request->cpf))
+        if(!$this->isCpfValido($request->input("cpf")))
             return back()->withInput()->withErrors(["cpf"=>"Digite um CPF válido."]);
 
         $cliente->fill($request->all())->save();
+        if ($request->input("senha") != "")
+            $cliente->senha = $request->input("senha");
         $dependentes = Dependente::whereIdUsuario($cliente->id)->get();
         $cliente->dependentes = $dependentes;
         $cliente->atualizado = true;

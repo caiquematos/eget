@@ -43,7 +43,7 @@ class UsuarioController extends Controller
      */
     public function store(StoreUsuarioRequest $request)
     {
-        if(!$this->isCpfValido($request->cpf))
+        if(!$this->isCpfValido($request->input('cpf')))
             return back()->withErrors(["cpf"=>"Digite um CPF válido."]);
 
         $usuario = new Usuario();
@@ -105,10 +105,13 @@ class UsuarioController extends Controller
      */
     public function update(UpdateUsuarioRequest $request, usuario $usuario)
     {
-        if(!$this->isCpfValido($request->cpf))
+        if(!$this->isCpfValido($request->input('cpf')))
             return back()->withInput()->withErrors(["cpf"=>"Digite um CPF válido."]);
 
         $usuario->fill($request->except(["tipo"]))->save();
+        if ($request->input("senha") != "") {
+            $usuario->senha = $request->input("senha");
+        }
         if (!empty($request->input("tipo"))) {
             $usuario->roles()->sync([$request->input("tipo")]);
         }
