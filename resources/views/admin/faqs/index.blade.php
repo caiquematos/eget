@@ -42,7 +42,11 @@
 
                         <div class="title_right">
                             <a class="btn btn-primary pull-right text-white" href="{{ route('admin.faq.create') }}"><i
-                                    class="fa fa-question-circle"></i> Adicionar</a>
+                                    class="fa fa-question-circle"
+                                    style="
+                                    margin-right: .3rem;
+                                "></i>
+                                Adicionar faq</a>
                         </div>
                     </div>
 

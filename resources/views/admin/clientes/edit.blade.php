@@ -222,7 +222,11 @@
                                 <div class="title_right">
                                     <a class="btn btn-primary pull-right text-white"
                                         href="{{ route('admin.dependente.adicionar', $cliente->id) }}"><i
-                                            class="fa fa-child"></i> Adicionar
+                                            class="fa fa-child"
+                                            style="
+                                            margin-right: .3rem;
+                                        "></i>
+                                        Adicionar
                                         dependente</a>
                                 </div>
                             </div>

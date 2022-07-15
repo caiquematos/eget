@@ -42,7 +42,12 @@
 
                         <div class="title_right">
                             <a class="btn btn-primary pull-right text-white"
-                                href="{{ route('admin.cliente.create') }}"><i class="fa fa-users"></i> Adicionar</a>
+                                href="{{ route('admin.cliente.create') }}"><i class="fa fa-users"
+                                    style="
+                                margin-right: .3rem;
+                            "></i>
+                                Adicionar
+                                cliente</a>
                         </div>
                     </div>
 

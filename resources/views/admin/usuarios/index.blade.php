@@ -49,7 +49,12 @@
 
                         <div class="title_right">
                             <a class="btn btn-primary pull-right text-white"
-                                href="{{ route('admin.usuario.create') }}"><i class="fa fa-user"></i> Adicionar</a>
+                                href="{{ route('admin.usuario.create') }}"><i class="fa fa-user"
+                                    style="
+                                margin-right: .3rem;
+                            "></i>
+                                Adicionar
+                                usuário</a>
                         </div>
                     </div>
 
