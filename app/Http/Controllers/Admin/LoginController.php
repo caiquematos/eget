@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Usuario;
+use App\Http\Requests\StoreUsuarioRequest;
 
 class LoginController extends Controller
 {
@@ -15,7 +16,8 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
 
         $credentials = $request->validate([
             'cpf' => 'required',
@@ -32,10 +34,42 @@ class LoginController extends Controller
         Auth::attempt($credentials);
         if (Auth::check()) {
             $request->session()->regenerate();
-            return redirect()->route('admin.usuario.index');
+            return redirect()->route('admin.cliente.index');
         }
 
-        return back()->withErrors(['login' => 'CPF ou Senha não encontrado.',]);
+        return back()->withInput()->withErrors(['login' => 'CPF ou Senha não encontrado.',]);
+    }
+
+    /**
+     * Log the user in the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function cadastrar(StoreUsuarioRequest $request)
+    {
+
+        $credentials = $request->validate([
+            'cpf' => 'required',
+            'senha' => 'required'
+        ]);
+        $usuario = new Usuario();
+        $usuario->fill($request->all())->save();
+
+        if ($usuario) {
+            // Gerencia papel do usuário.
+            $usuario->roles()->sync([config('constants.ROLES.ADMNISTRADOR.id')]);
+
+            // realiza login
+            // dd($credentials);
+            Auth::attempt($credentials);
+            if (Auth::check()) {
+                $request->session()->regenerate();
+                return redirect()->route('admin.cliente.index')->with(["success" => "Cadastro realizado com sucesso."]);
+            }
+        }
+
+        return back()->withInput()->withErrors(['cadastro' => 'Algo deu errado']);
     }
 
     /**
@@ -44,7 +78,8 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout();
 
         $request->session()->invalidate();

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- head -->
-@include('admin.build.head', ['title' => 'CDI - Cartão de Vantagens | '])
+@include('admin.build.head', ['title' => env('APP_NAME')])
 <!-- /head -->
 
 <style>
@@ -27,22 +27,36 @@
         <div class="login_wrapper">
             <div class="animate form login_form">
                 <section class="login_content">
-                    <form method="POST" action="{{ route('admin.logar') }}">
+                    <form method="POST" action="{{ route('admin.cadastrar') }}">
                         @csrf
 
                         <h1>Gerenciar Clientes</h1>
                         <div>
-                            <input type="text" class="form-control" data-tipo="cpf" name="cpf"
-                                placeholder="000.000.000-00
+                            <input type="text" class="form-control" name="nome" value="{{ old('nome') }}"
+                                placeholder="Nome
                 " required="" />
                         </div>
                         <div>
-                            <input type="password" class="form-control" name="password" placeholder="Password"
+                            <input type="text" class="form-control" data-tipo="cpf" name="cpf"
+                                value="{{ old('cpf') }}" placeholder="CPF
+                " required="" />
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" data-tipo="email" name="email"
+                                value="{{ old('email') }}" placeholder="E-mail
+                " required="" />
+                        </div>
+                        <div>
+                            <input type="password" class="form-control" name="senha" placeholder="Senha"
                                 required="" />
                         </div>
+                        <div>
+                            <input type="password" class="form-control" name="confirma-senha"
+                                placeholder="Confirmar senha" required="" />
+                        </div>
                         <div class="button-wrapper">
-                            <button type="submit" class="btn btn-default">Entrar</button>
-                            <a href="{{ route('admin.cadastrar') }}">Criar conta</a>
+                            <button type="submit" class="btn btn-default">Cadastrar</button>
+                            <a href="{{ route('admin.login') }}">Entrar</a>
                         </div>
 
                         <div class="clearfix"></div>

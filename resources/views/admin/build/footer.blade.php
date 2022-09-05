@@ -1,6 +1,6 @@
-<footer>
-    <div class="pull-right">
-        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-    </div>
-    <div class="clearfix"></div>
-</footer>
+ <footer>
+     <div class="pull-right">
+         <a href="https://www.e-get.com.br/">{{ env('APP_NAME') }}</a>
+     </div>
+     <div class="clearfix"></div>
+ </footer>

@@ -19,9 +19,9 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuarios = Usuario::whereHas('roles', function ($query) {
-            $query->where('name','!=', config('constants.ROLES.CLIENTE.name'));
+            $query->where('name', '!=', config('constants.ROLES.CLIENTE.name'));
         })->get();
-        return view("admin.usuarios.index")->with(["usuarios"=> $usuarios]);
+        return view("admin.usuarios.index")->with(["usuarios" => $usuarios]);
     }
 
     /**
@@ -32,7 +32,7 @@ class UsuarioController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view("admin.usuarios.create")->with(["roles"=> $roles]);
+        return view("admin.usuarios.create")->with(["roles" => $roles]);
     }
 
     /**
@@ -43,8 +43,8 @@ class UsuarioController extends Controller
      */
     public function store(StoreUsuarioRequest $request)
     {
-        if(!$this->isCpfValido($request->input('cpf')))
-            return back()->withErrors(["cpf"=>"Digite um CPF válido."]);
+        if (!$this->isCpfValido($request->input('cpf')))
+            return back()->withErrors(["cpf" => "Digite um CPF válido."]);
 
         $usuario = new Usuario();
         $usuario->fill($request->except(["tipo"]));
@@ -57,7 +57,7 @@ class UsuarioController extends Controller
             $usuario->roles()->sync([$request->input("tipo")]);
         }
 
-        return redirect()->back()->with("success","Usuário adicionado com sucesso.");
+        return redirect()->back()->with("success", "Usuário adicionado com sucesso.");
     }
 
     /**
@@ -68,14 +68,14 @@ class UsuarioController extends Controller
      */
     public function show(usuario $usuario)
     {
-        if(count($usuario->roles)){
-            foreach($usuario->roles as $role) {
+        if (count($usuario->roles)) {
+            foreach ($usuario->roles as $role) {
                 $usuario->tipo = $role->id;
                 break;
             }
         };
         $roles = Role::all();
-        return view("admin.usuarios.edit", ["usuario"=>$usuario, "roles"=> $roles]);
+        return view("admin.usuarios.edit", ["usuario" => $usuario, "roles" => $roles]);
     }
 
     /**
@@ -86,14 +86,14 @@ class UsuarioController extends Controller
      */
     public function edit(usuario $usuario)
     {
-        if(count($usuario->roles)){
-            foreach($usuario->roles as $role) {
+        if (count($usuario->roles)) {
+            foreach ($usuario->roles as $role) {
                 $usuario->tipo = $role->id;
                 break;
             }
         };
         $roles = Role::all();
-        return view("admin.usuarios.edit", ["usuario"=>$usuario, "roles"=> $roles]);
+        return view("admin.usuarios.edit", ["usuario" => $usuario, "roles" => $roles]);
     }
 
     /**
@@ -105,8 +105,8 @@ class UsuarioController extends Controller
      */
     public function update(UpdateUsuarioRequest $request, usuario $usuario)
     {
-        if(!$this->isCpfValido($request->input('cpf')))
-            return back()->withInput()->withErrors(["cpf"=>"Digite um CPF válido."]);
+        if (!$this->isCpfValido($request->input('cpf')))
+            return back()->withInput()->withErrors(["cpf" => "Digite um CPF válido."]);
 
         $usuario->fill($request->except(["tipo"]))->save();
         if ($request->input("senha") != "") {
@@ -115,14 +115,14 @@ class UsuarioController extends Controller
         if (!empty($request->input("tipo"))) {
             $usuario->roles()->sync([$request->input("tipo")]);
         }
-        if(count($usuario->roles)){
-            foreach($usuario->roles as $role) {
+        if (count($usuario->roles)) {
+            foreach ($usuario->roles as $role) {
                 $usuario->tipo = $role->id;
                 break;
             }
         };
         $usuario->atualizado = true;
-        return redirect()->back()->with("success","Usuário atualizado com sucesso.");
+        return redirect()->back()->with("success", "Usuário atualizado com sucesso.");
     }
 
     /**
@@ -137,7 +137,7 @@ class UsuarioController extends Controller
         return redirect()->back()->with("success", "Usuário removido com sucesso.");
     }
 
-      /**
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\usuario  $usuario

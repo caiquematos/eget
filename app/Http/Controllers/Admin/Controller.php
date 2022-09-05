@@ -10,16 +10,14 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    protected $response;
 
     /**
      * Create a new controller instance.
      *
      * @return void
-    */
+     */
     public function __construct()
     {
-        $this->response = ["success"=>false, "message"=>"Não foi possível concluir a operação, tente novamente."];
     }
 
     /**
@@ -28,7 +26,8 @@ class Controller extends BaseController
      * @param  string  $cpf
      * @return string
      */
-    protected function cleanCpf($cpf) {
+    protected function cleanCpf($cpf)
+    {
         $chars = ['.', '-'];
         return str_replace($chars, "", trim($cpf));
     }
@@ -39,9 +38,10 @@ class Controller extends BaseController
      * @param  string  $cpf
      * @return boolean
      */
-    protected function isCpfValido($cpf) {
+    protected function isCpfValido($cpf)
+    {
         // Extrai somente os números
-        $cpf = preg_replace( '/[^0-9]/is', '', $cpf );
+        $cpf = preg_replace('/[^0-9]/is', '', $cpf);
 
         // Verifica se foi informado todos os digitos corretamente
         if (strlen($cpf) != 11) {

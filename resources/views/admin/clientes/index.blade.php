@@ -5,7 +5,7 @@
 <!-- /funcoes -->
 
 <!-- head -->
-@include('admin.build.head', ['title' => 'CDI - Cartões de Vantagens'])
+@include('admin.build.head', ['title' => env('APP_NAME')])
 <!-- /head -->
 
 <style>
@@ -80,24 +80,9 @@
                                                     <thead>
                                                         <tr>
                                                             <th data-priority="1">Nome</th>
-                                                            <th data-priority="2">E-mail</th>
                                                             <th class="cpf" data-priority="3">CPF</th>
-                                                            {{-- <th>Região</th>
-                                        <th>Assinatura</th> --}}
-                                                            <th>Data de Nascimento</th>
-                                                            {{-- <th>Sexo</th>
-                                        <th>Estado Civil</th> --}}
+                                                            <th>Categoria</th>
                                                             <th>Celular</th>
-                                                            {{-- <th>Telefone</th> --}}
-                                                            <th>Dependentes</th>
-                                                            {{-- <th>Local de Retirada</th>
-                                        <th>Como Conheceu?</th>
-                                        <th>Renda</th>
-                                        <th>Profissão</th> --}}
-                                                            {{-- <th>Animal</th> --}}
-                                                            {{-- <th>Ofertas</th> --}}
-                                                            <th data-priority="4">Pagamento</th>
-                                                            <th data-priority="7">Data Pagamento</th>
                                                             <th data-priority="6">Ativo</th>
                                                             <th data-priority="5">Ações</th>
                                                         </tr>
@@ -106,26 +91,9 @@
                                                         @foreach ($clientes as $cliente)
                                                             <tr>
                                                                 <td>{{ $cliente->nome ?? '-' }}</td>
-                                                                <td>{{ $cliente->email ?? '-' }}</td>
                                                                 <td>{!! "<span data-tipo='cpf'>$cliente->cpf</span>" !!}</td>
-                                                                <td>{{ $cliente->nascimento ?? '-' }}</td>
-                                                                {{-- <td>{{GERAL_SEXO[$cliente->sexo] ?? "-"}}</td>
-                                                    <td>{{CLIENTE_ESTADO_CIVIL[$cliente->estado_civil] ?? "-"}}</td> --}}
+                                                                <td>{{ $cliente->categoria ?? '-' }}</td>
                                                                 <td>{!! !empty($cliente->celular) ? "<span data-tipo='celular'>$cliente->celular</span>" : '-' !!}</td>
-                                                                {{-- <td>{!! !empty($cliente->telefone) ? "<span data-tipo='telefone'>$cliente->telefone</span>"  : "-" !!}</td> --}}
-                                                                <td>{{ $cliente->dependentes->count() }}</td>
-                                                                {{-- <td>{{$cliente->local_retirada ?? "-"}}</td>
-                                                    <td>{{$cliente->como_conheceu ?? "-"}}</td>
-                                                    <td>{{CLIENTE_RENDA[$cliente->renda] ?? "-"}}</td>
-                                                    <td>{{$cliente->profissao ?? "-"}}</td> --}}
-                                                                <td>
-                                                                    @if (now() > Carbon\Carbon::parse($cliente->data_pagamento)->addMonths(12))
-                                                                        {!! "<p class='pagamento-status bg-danger text-white'>expirou</p>" !!}
-                                                                    @else
-                                                                        {!! PAGAMENTO_STATUS_EL[$cliente->status] !!}
-                                                                    @endif
-                                                                </td>
-                                                                <td>{{ $cliente->data_pagamento ?? '-' }}</td>
                                                                 <td>
                                                                     <input type="checkbox"
                                                                         data-cliente-id={{ $cliente->id }}
@@ -137,13 +105,13 @@
                                                                     <a
                                                                         href="{{ route('admin.cliente.show', [$cliente->id]) }}"><i
                                                                             class="fa fa-eye mx-1"
-                                                                            title="Ver"></i></a>
-                                                                    <a
-                                                                        href="{{ route('admin.cartao.index', [$cliente->id]) }}"><i
-                                                                            class="fa fa-credit-card mx-1"
-                                                                            title="Ver cartões"></i></a>
-                                                                    {{-- <a href="{{route('admin.cliente.deletar', [$cliente->id])}}"><i class="fa fa-trash mx-1" title="Deletar"></i></a> --}}
-                                                                    {{-- <a href="#"><i class="fa fa-trash mx-1" title="Deletar" data-action="{{route("admin.cliente.destroy", [0])}}" data-title="Deletar" data-content="Tem certeza que deseja deletar esse cliente?" onclick="deletar({{$cliente->id}}, this)"></i></a> --}}
+                                                                            title="Ver/Editar"></i></a>
+                                                                    <a href="#"><i class="fa fa-trash mx-1"
+                                                                            title="Deletar"
+                                                                            data-action="{{ route('admin.cliente.destroy', [$cliente->id]) }}"
+                                                                            data-title="Deletar"
+                                                                            data-content="Tem certeza que deseja deletar esse cliente?"
+                                                                            onclick="deletar(this)"></i></a>
                                                                 </td>
                                                             </tr>
                                                         @endforeach
@@ -162,13 +130,9 @@
             </div>
             <!-- /page content -->
 
+
             <!-- footer content -->
-            <footer>
-                <div class="pull-right">
-                    {{ env('APP_NAME') }} <a href="https://re9agencia.com.br/">Re9 Agência</a>
-                </div>
-                <div class="clearfix"></div>
-            </footer>
+            @include('admin.build.footer')
             <!-- /footer content -->
         </div>
     </div>
@@ -183,11 +147,6 @@
 
     <script>
         var dt = $("#datatable-clientes").DataTable({
-            // searchPanes: {
-            //     viewTotal: true,
-            //     columns: [6],
-            //     layout: 'columns-1'
-            // },
             language: {
                 url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
                 searchPanes: {
@@ -200,30 +159,7 @@
                     countFiltered: '{shown} ({total})'
                 }
             },
-            // dom: 'Plfrtip',
-            // columnDefs: [
-            //     {
-            //         orderable: false,
-            //         searchPanes: {
-            //             header: "Filtro por status do pagamento.",
-            //             show: true,
-            //         },
-            //         targets: [6]
-            //     },
-            // ],
-            // select: {
-            //     style:    'os',
-            //     selector: 'td:first-child'
-            // },
         });
-
-        // dt.on('select.dt', () => {
-        //     dt.searchPanes.rebuildPane(0, true);
-        // });
-
-        // dt.on('deselect.dt', () => {
-        //     dt.searchPanes.rebuildPane(0, true);
-        // });
 
         // Gerencia ativação do cliente.
         function toggleAtivacao(e) {

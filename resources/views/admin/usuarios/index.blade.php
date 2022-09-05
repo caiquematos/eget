@@ -5,7 +5,7 @@
 <!-- /funcoes -->
 
 <!-- head -->
-@include('admin.build.head', ['title' => 'CDI - Cartões de Vantagens'])
+@include('admin.build.head', ['title' => env('APP_NAME')])
 <!-- /head -->
 
 <style>
@@ -98,7 +98,7 @@
                                                         @foreach ($usuarios as $usuario)
                                                             <tr>
                                                                 <td>{{ $usuario->nome }}</td>
-                                                                <td>{{ $usuario->email }}</td>
+                                                                <td>{{ $usuario->email ?? '-' }}</td>
                                                                 <td>{!! "<span data-tipo='cpf'>$usuario->cpf</span>" !!}</td>
                                                                 <td>{!! "<span data-tipo='celular'>$usuario->celular</span>" !!}</td>
                                                                 <td>
@@ -124,8 +124,12 @@
                                                                         href="{{ route('admin.usuario.show', [$usuario->id]) }}"><i
                                                                             class="fa fa-eye mx-1"
                                                                             title="Ver"></i></a>
-                                                                    {{-- <a href="{{route('admin.usuario.deletar', [$usuario->id])}}"><i class="fa fa-trash mx-1"></i></a> --}}
-                                                                    {{-- <a href="#"><i class="fa fa-trash mx-1" title="Deletar" data-action="{{route("admin.usuario.destroy", [0])}}" data-title="Deletar" data-content="Tem certeza que deseja deletar esse usuário?" onclick="deletar({{$usuario->id}}, this)"></i></a> --}}
+                                                                    <a href="#"><i class="fa fa-trash mx-1"
+                                                                            title="Deletar"
+                                                                            data-action="{{ route('admin.usuario.destroy', [$usuario->id]) }}"
+                                                                            data-title="Deletar"
+                                                                            data-content="Tem certeza que deseja deletar esse usuário?"
+                                                                            onclick="deletar(this)"></i></a>
                                                             </tr>
                                                         @endforeach
                                                     </tbody>

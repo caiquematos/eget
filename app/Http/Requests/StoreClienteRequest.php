@@ -35,22 +35,11 @@ class StoreClienteRequest extends FormRequest
             'celular' => 'required|string|max:16',
             'cep' => 'required|string|max:9',
             'cidade' => 'string',
-            'como_conheceu' => 'string|max:50',
             'complemento' => 'max:80',
-            'email' => 'required|email|unique:usuarios,email,NULL,id,deleted_at,NULL',
             'cpf' => 'required|size:11|unique:usuarios,cpf,NULL,id,deleted_at,NULL',
             'endereco' => 'required|string|max:255',
             'estado' => 'required|string|max:2',
-            'estado_civil' => 'numeric',
-            'local_retirada' => 'string|max:50',
-            'nascimento' => 'date',
             'nome' => 'required|string|max:255',
-            'numero' => 'required|string|max:6',
-            'profissao' => 'string|max:255',
-            'renda' => 'numeric',
-            'senha' => 'required|confirmed',
-            'senha_confirmation' => 'required',
-            'sexo' => 'numeric',
             'telefone' => 'string|max:14',
 
         ];
@@ -62,7 +51,8 @@ class StoreClienteRequest extends FormRequest
      * @param  string  $value
      * @return void
      */
-    private function cleanCpf($cpf) {
+    private function cleanCpf($cpf)
+    {
         $chars = ['.', '-'];
         return str_replace($chars, "", trim($cpf));
     }

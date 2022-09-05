@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- head -->
-@include('admin.build.head', ['title' => 'CDI - Cartão de Vantagens'])
+@include('admin.build.head', ['title' => env('APP_NAME')])
 <!-- /head -->
 
 <!-- style -->
@@ -107,27 +107,7 @@
                                             </div>
                                         </div>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Data de
-                                                nascimento</label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" class='date' type="date"
-                                                    name="nascimento" value="{{ old('nascimento') }}">
-                                            </div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Sexo</label>
-                                            <div class="col-md-6 col-sm-12  ">
-                                                <select name="sexo" class="select2_single form-control"
-                                                    tabindex="-1">
-                                                    <option></option>
-                                                    <option value=0>Feminino</option>
-                                                    <option value=1>Masculino</option>
-                                                    <option value=2>Outro</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Celular<span
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Telefone<span
                                                     class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" type="text" class='tel' name="celular"

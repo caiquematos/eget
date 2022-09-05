@@ -6,7 +6,7 @@
 <!-- /funcoes -->
 
 <!-- head -->
-@include('admin.build.head', ['title' => 'CDI - Cartão de Vantagens'])
+@include('admin.build.head', ['title' => env('APP_NAME')])
 <!-- /head -->
 
 <!-- style -->
@@ -79,8 +79,8 @@
                                                 completo<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" data-validate-length-range="6"
-                                                    value="{{ $cliente->nome }}" data-validate-words="2"
-                                                    name="nome" required="required" />
+                                                    value="{{ $cliente->nome }}" data-validate-words="2" name="nome"
+                                                    required="required" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
@@ -93,49 +93,21 @@
                                             </div>
                                         </div>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">E-mail<span
-                                                    class="required">*</span></label>
+                                            <label
+                                                class="col-form-label col-md-3 col-sm-3  label-align">Categoria</label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" name="email"
-                                                    value="{{ $cliente->email }}" class='email' required="required"
-                                                    type="email" />
+                                                <input class="form-control" name="categoria"
+                                                    value="{{ $cliente->categoria }}" class='categoria'
+                                                    type="text" />
                                             </div>
                                         </div>
+
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Data de
-                                                nascimento</label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" class='date' type="date"
-                                                    name="nascimento"
-                                                    value="{{ date('Y-m-d', strtotime($cliente->nascimento)) }}">
-                                            </div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Sexo</label>
-                                            <div class="col-md-6 col-sm-12  ">
-                                                <select name="sexo" class="select2_single form-control"
-                                                    tabindex="-1">
-                                                    <option selected>Selecione uma opção</option>
-                                                    @foreach (GERAL_SEXO as $key => $sexo)
-                                                        <option value={{ $key }}>{{ $sexo }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Celular<span
-                                                    class="required">*</span></label>
+                                            <label
+                                                class="col-form-label col-md-3 col-sm-3  label-align">Telefone</label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" type="text" class='tel' name="celular"
-                                                    value="{{ $cliente->celular }}" data-mask="(00) 0 0000-0000"
-                                                    required='required' />
-                                            </div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align">Senha</label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" type="text" class='text' name="senha"
-                                                    autocomplete="new-password" />
+                                                    value="{{ $cliente->celular }}" data-mask="(00) 0 0000-0000" />
                                             </div>
                                         </div>
                                         <span class="section">Endereço</span>
@@ -149,44 +121,29 @@
                                             </div>
                                         </div>
                                         <div class="field item form-group">
-                                            <label
-                                                class="col-form-label col-md-3 col-sm-3  label-align">Logradouro<span
-                                                    class="required">*</span></label>
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Rua</label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" data-tipo="endereco"
                                                     data-validate-length-range="3,50" name="endereco"
-                                                    value="{{ $cliente->endereco }}" required="required" />
+                                                    value="{{ $cliente->endereco }}" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Número<span
-                                                    class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" name="numero"
-                                                    value="{{ $cliente->numero }}" required="required" />
-                                            </div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label
-                                                class="col-form-label col-md-3 col-sm-3  label-align">Complemento<span
-                                                    class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" data-validate-length-range="0,50"
-                                                    name="complemento" value="{{ $cliente->complemento }}"
-                                                    required="required" />
-                                            </div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Bairro<span
-                                                    class="required">*</span></label>
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Bairro</label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" data-tipo="bairro" name="bairro"
-                                                    value="{{ $cliente->bairro }}" required="required" />
+                                                    value="{{ $cliente->bairro }}" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Estado<span
-                                                    class="required">*</span></label>
+                                            <label class="col-form-label col-md-3 col-sm-3 label-align">Cidade</label>
+                                            <div class="col-md-3 col-sm-12 ">
+                                                <input name="cidade" data-tipo="cidade" value="{{ $cliente->cidade }}"
+                                                    class="select2_single form-control" tabindex="-1" />
+                                            </div>
+                                        </div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">UF</label>
                                             <div class="col-md-3 col-sm-12 ">
                                                 <input name="estado" data-tipo="estado"
                                                     value="{{ $cliente->estado }}" placeholder="Ex.: BA, PE..."
@@ -195,12 +152,11 @@
                                             </div>
                                         </div>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align">Cidade<span
-                                                    class="required">*</span></label>
-                                            <div class="col-md-3 col-sm-12 ">
-                                                <input name="cidade" data-tipo="cidade"
-                                                    value="{{ $cliente->cidade }}"
-                                                    class="select2_single form-control" tabindex="-1" />
+                                            <label
+                                                class="col-form-label col-md-3 col-sm-3  label-align">Complemento</label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" data-validate-length-range="0,50"
+                                                    name="complemento" value="{{ $cliente->complemento }}" />
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>
@@ -213,92 +169,6 @@
 
                                 </div>
                             </div>
-                            <!-- Dependentes -->
-                            <div class="page-title">
-                                <div class="title_left">
-                                    <h3></h3>
-                                </div>
-
-                                <div class="title_right">
-                                    <a class="btn btn-primary pull-right text-white"
-                                        href="{{ route('admin.dependente.adicionar', $cliente->id) }}"><i
-                                            class="fa fa-child"
-                                            style="
-                                            margin-right: .3rem;
-                                        "></i>
-                                        Adicionar
-                                        dependente</a>
-                                </div>
-                            </div>
-
-                            <div class="clearfix"></div>
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>Dependentes</h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="card-box table-responsive">
-                                                <table id="datatable-dependentes"
-                                                    class="table table-striped table-bordered dt-responsive nowrap"
-                                                    cellspacing="0" width="100%">
-                                                    <thead>
-                                                        <tr>
-                                                            <th data-priority="1">Nome</th>
-                                                            <th data-priority="2">CPF</th>
-                                                            <th>Data de Nascimento</th>
-                                                            <th>Sexo</th>
-                                                            <th>Parentesco</th>
-                                                            <th data-priority="6">Ativo</th>
-                                                            <th data-priority="5">Ações</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($cliente->dependentes as $dependente)
-                                                            <tr>
-                                                                <td>{{ $dependente->nome }}</td>
-                                                                <td>{!! "<span data-tipo='cpf'>$dependente->cpf</span>" !!}</td>
-                                                                <td>{{ $dependente->nascimento }}</td>
-                                                                <td>{{ GERAL_SEXO[$dependente->sexo] }}</td>
-                                                                <td>{{ DEPENDENTE_PARENTESCO[$dependente->parentesco] ?? '-' }}
-                                                                </td>
-                                                                <td>
-                                                                    <input type="checkbox"
-                                                                        data-dependente-id={{ $dependente->id }}
-                                                                        onchange="toggleAtivacao(this)"
-                                                                        class="js-switch"
-                                                                        {{ $dependente->ativo ? 'checked' : '' }} />
-                                                                </td>
-                                                                <td>
-                                                                    <a
-                                                                        href="{{ route('admin.dependente.show', [$dependente->id]) }}"><i
-                                                                            class="fa fa-eye mx-1"
-                                                                            title="Ver"></i></a>
-                                                                    {{-- <a href="{{route('admin.dependente.deletar', [$dependente->id])}}"><i class="fa fa-trash mx-1"></i></a> --}}
-                                                                    <a href="#"><i class="fa fa-trash mx-1"
-                                                                            title="Deletar"
-                                                                            data-action="{{ route('admin.dependente.destroy', [0]) }}"
-                                                                            data-title="Deletar"
-                                                                            data-content="Tem certeza que deseja deletar esse dependente?"
-                                                                            onclick="deletar({{ $dependente->id }}, this)"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -306,12 +176,7 @@
             <!-- /page content -->
 
             <!-- footer content -->
-            <footer>
-                <div class="pull-right">
-                    <a href="https://re9agencia.com.br/">Re9 Agência</a>
-                </div>
-                <div class="clearfix"></div>
-            </footer>
+            @include('admin.build.footer')
             <!-- /footer content -->
         </div>
     </div>
@@ -347,12 +212,6 @@
 
     <script>
         $(function() {
-            $("input[name=nascimento]").val(date_pt_en(cliente.nascimento)).change();
-            $("select[name=sexo]").val(cliente.sexo).change();
-            $("select[name=estado_civil]").val(cliente.estado_civil).change();
-            $("select[name=local_retirada]").val(cliente.local_retirada).change();
-            $("select[name=como_conheceu]").val(cliente.como_conheceu).change();
-            $("select[name=renda]").val(cliente.renda).change();
             $("select[name=estado]").val(cliente.estado).change();
             $("select[name=cidade]").val(cliente.cidade).change();
             $("#datatable-dependentes").DataTable({
@@ -403,34 +262,6 @@
             });
         }
     </script>
-
-    {{-- <script>
-        // initialize a validator instance from the "FormValidator" constructor.
-        // A "<form>" element is optionally passed as an argument, but is not a must
-        var validator = new FormValidator({
-            "events": ['blur', 'input', 'change'],
-        }, document.forms[0]);
-
-        // on form "submit" event
-        document.forms[0].onsubmit = function(e) {
-            var submit = true,
-                validatorResult = validator.checkAll(this);
-            console.log("validatorResult", validatorResult);
-            return !!validatorResult.valid;
-        };
-        // on form "reset" event
-        document.forms[0].onreset = function(e) {
-            validator.reset();
-        };
-        // stuff related ONLY for this demo page:
-        $('.toggleValidationTooltips').change(function() {
-            validator.settings.alerts = !this.checked;
-            if (this.checked)
-                $('form .alert').remove();
-        }).prop('checked', false);
-
-    </script> --}}
-
 
 </body>
 

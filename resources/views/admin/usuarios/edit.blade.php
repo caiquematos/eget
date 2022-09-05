@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- head -->
-@include('admin.build.head', ['title' => 'CDI - Cartão de Vantagens'])
+@include('admin.build.head', ['title' => env('APP_NAME')])
 <!-- /head -->
 
 <!-- style -->
@@ -75,8 +75,8 @@
                                                 completo<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" data-validate-length-range="6"
-                                                    value="{{ $usuario->nome }}" data-validate-words="2"
-                                                    name="nome" required="required" />
+                                                    value="{{ $usuario->nome }}" data-validate-words="2" name="nome"
+                                                    required="required" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
@@ -89,12 +89,10 @@
                                             </div>
                                         </div>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">E-mail<span
-                                                    class="required">*</span></label>
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">E-mail</label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" name="email"
-                                                    value="{{ $usuario->email }}" class='email' required="required"
-                                                    type="email" />
+                                                <input class="form-control" name="email" value="{{ $usuario->email }}"
+                                                    class='email' type="email" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
@@ -110,27 +108,7 @@
                                             </div>
                                         </div>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Data de
-                                                nascimento</label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" class='date' type="date"
-                                                    name="nascimento" value="{{ $usuario->nascimento }}">
-                                            </div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Sexo</label>
-                                            <div class="col-md-6 col-sm-12  ">
-                                                <select name="sexo" class="select2_single form-control"
-                                                    tabindex="-1">
-                                                    <option></option>
-                                                    <option value=0>Feminino</option>
-                                                    <option value=1>Masculino</option>
-                                                    <option value=2>Outro</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Celular<span
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Telefone<span
                                                     class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" type="text" class='tel' name="celular"

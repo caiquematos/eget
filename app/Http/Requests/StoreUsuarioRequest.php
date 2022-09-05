@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUsuarioRequest extends FormRequest
 {
-     /**
+    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -34,7 +34,7 @@ class StoreUsuarioRequest extends FormRequest
             'email' => 'required|email|unique:usuarios,email,NULL,id,deleted_at,NULL',
             'cpf' => 'required|size:11|unique:usuarios,cpf,NULL,id,deleted_at,NULL',
             'nome' => 'required|string|max:255',
-            'tipo' => 'required|numeric',
+            // 'tipo' => 'required|numeric',
         ];
     }
 
@@ -44,7 +44,8 @@ class StoreUsuarioRequest extends FormRequest
      * @param  string  $value
      * @return void
      */
-    private function cleanCpf($cpf) {
+    private function cleanCpf($cpf)
+    {
         $chars = ['.', '-'];
         return str_replace($chars, "", trim($cpf));
     }
