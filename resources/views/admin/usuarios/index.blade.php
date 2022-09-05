@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- funcoes -->
-@include('admin.build.funcoes')
-<!-- /funcoes -->
 
 <!-- head -->
 @include('admin.build.head', ['title' => env('APP_NAME')])

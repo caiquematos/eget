@@ -12,7 +12,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('admin.usuario.show', [Auth::user()->id]) }}">
-                            Profile</a>
+                            Perfil</a>
                         {{-- <a class="dropdown-item"  href="javascript:;">
                   <span class="badge bg-red pull-right">50%</span>
                   <span>Settings</span>

@@ -1,69 +1,69 @@
 <!-- jQuery -->
-<script src="{{url('admin/vendors/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{ url('admin/vendors/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap -->
-<script src="{{url('admin/vendors/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ url('admin/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 <!-- FastClick -->
-<script src="{{url('admin/vendors/fastclick/lib/fastclick.js')}}"></script>
+<script src="{{ url('admin/vendors/fastclick/lib/fastclick.js') }}"></script>
 <!-- NProgress -->
-<script src="{{url('admin/vendors/nprogress/nprogress.js')}}"></script>
+<script src="{{ url('admin/vendors/nprogress/nprogress.js') }}"></script>
 <!-- jQuery Mask -->
-<script src="{{url('admin/assets/js/jquery.mask.min.js')}}"></script>
+<script src="{{ url('admin/assets/js/jquery.mask.min.js') }}"></script>
 <!-- PNotify -->
-<script src="{{url('admin/vendors/pnotify/dist/pnotify.js')}}"></script>
-<script src="{{url('admin/vendors/pnotify/dist/pnotify.buttons.js')}}"></script>
-<script src="{{url('admin/vendors/pnotify/dist/pnotify.nonblock.js')}}"></script>
+<script src="{{ url('admin/vendors/pnotify/dist/pnotify.js') }}"></script>
+<script src="{{ url('admin/vendors/pnotify/dist/pnotify.buttons.js') }}"></script>
+<script src="{{ url('admin/vendors/pnotify/dist/pnotify.nonblock.js') }}"></script>
 <!-- iCheck -->
-<script src="{{url('admin/vendors/iCheck/icheck.min.js')}}"></script>
+<script src="{{ url('admin/vendors/iCheck/icheck.min.js') }}"></script>
 <!-- jQuery Tags Input -->
-<script src="{{url('admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js')}}"></script>
+<script src="{{ url('admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js') }}"></script>
 <!-- Switchery -->
-<script src="{{url('admin/vendors/switchery/dist/switchery.min.js')}}"></script>
+<script src="{{ url('admin/vendors/switchery/dist/switchery.min.js') }}"></script>
 
 {{-- <script src="{{ mix('build/js/common.js') }}"></script> --}}
 
 <!-- Session functions AND Pnotify functions-->
 
-    <!-- Verifica se há erros na sessão -->
-    @if ($errors->any())
-        @php
-            $sessao_erros = "";
-            foreach ($errors->all() as $error):
-                $sessao_erros.= $error;
-            endforeach;
-        @endphp
-        <script>
-            new PNotify({
-                title: 'Opa!',
-                text: "{{$sessao_erros}}",
-                type: 'error',
-                styling: 'bootstrap3'
-            });
-        </script>
-    @endif
+<!-- Verifica se há erros na sessão -->
+@if ($errors->any())
+    @php
+        $sessao_erros = '';
+        foreach ($errors->all() as $error):
+            $sessao_erros .= $error;
+        endforeach;
+    @endphp
+    <script>
+        new PNotify({
+            title: 'Opa!',
+            text: "{{ $sessao_erros }}",
+            type: 'error',
+            styling: 'bootstrap3'
+        });
+    </script>
+@endif
 
-    <!-- Verifica se há mensagem de sucesso na sessão -->
-    @if (session("success"))
-        <script>
-            new PNotify({
-                title: 'Sucesso',
-                text: "{{session('success')}}",
-                type: 'success',
-                styling: 'bootstrap3'
-            });
-        </script>
-    @endif
+<!-- Verifica se há mensagem de sucesso na sessão -->
+@if (session('success'))
+    <script>
+        new PNotify({
+            title: 'Sucesso',
+            text: "{{ session('success') }}",
+            type: 'success',
+            styling: 'bootstrap3'
+        });
+    </script>
+@endif
 
-    @if (isset($success))
-        <script>
-        console.log("há uma mensagem 'success' returned as var.", "{{$success}}");
-        </script>
-    @endif
+@if (isset($success))
+    <script>
+        console.log("há uma mensagem 'success' returned as var.", "{{ $success }}");
+    </script>
+@endif
 
 <!-- /Session functions -->
 
 <!-- Funções de inicialização -->
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         $('[data-tipo=cpf]').mask('000.000.000-00', {
             reverse: true
         });
@@ -72,37 +72,12 @@
         $('[data-tipo=cep]').mask('00000-000', {
             reverse: true
         });
-
-        // Iniciallização do filtro. OBS.: Sempre deverá haver uma classe 'col-sm-12' como pai.
-        $(".filtro").click(function() {
-            let parent = $(this).parent(".col-sm-12");
-            let div = parent.find("div.dtsp-panesContainer div.dtsp-searchPanes div.dtsp-searchPane")[0];
-            let filtro_subtitle = parent.find(".filtro-subtitle")[0];
-            $(this).toggleClass("active");
-            // var div = $("div.dtsp-panesContainer div.dtsp-searchPanes div.dtsp-searchPane");
-            if ($(this).hasClass("active")) {
-                $(div).slideDown();
-                $(filtro_subtitle).slideDown();
-            } else {
-                $(div).slideUp();
-                $(filtro_subtitle).slideUp();
-            }
-        });
     });
-
-    function init_filtro() {
-        console.log("init_filtro");
-        let origem = $(".filtro");
-        let parent = origem.parent(".col-sm-12");
-        let div = parent.find("div.dtsp-panesContainer div.dtsp-searchPanes div.dtsp-searchPane")[0];
-        $(div).slideDown();
-    }
 </script>
 <!-- /Funções de inicialização -->
 
 <!-- Funções -->
 <script>
-
     /**
      *
      * @param {string} date
@@ -148,17 +123,8 @@
             }
         });
     }
-
 </script>
-
-<script>
-    $(".dtsp-nameColumn").click(function() {
-        console.log("clickado");
-    });
-</script>
-
 <!-- /Funções -->
 
-
 <!-- Custom Theme Scripts -->
-<script src="{{url('admin/build/js/custom.min.js')}}"></script>
+<script src="{{ url('admin/build/js/custom.min.js') }}"></script>

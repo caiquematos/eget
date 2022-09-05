@@ -58,6 +58,7 @@ class ClienteController extends Controller
         $cliente->bairro = $request->bairro;
         $cliente->celular = $request->celular;
         $cliente->cep = $request->cep;
+        $cliente->categoria = $request->categoria;
         $cliente->cidade = $request->cidade;
         $cliente->complemento = $request->complemento;
         $cliente->cpf = $request->input('cpf');

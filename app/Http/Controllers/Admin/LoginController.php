@@ -59,14 +59,15 @@ class LoginController extends Controller
         if ($usuario) {
             // Gerencia papel do usuário.
             $usuario->roles()->sync([config('constants.ROLES.ADMNISTRADOR.id')]);
+            return redirect()->route('admin.login')->with(["success" => "Cadastro realizado com sucesso! Faça login para entrar no sistema."]);
 
             // realiza login
             // dd($credentials);
-            Auth::attempt($credentials);
-            if (Auth::check()) {
-                $request->session()->regenerate();
-                return redirect()->route('admin.cliente.index')->with(["success" => "Cadastro realizado com sucesso."]);
-            }
+            // Auth::attempt($credentials);
+            // if (Auth::check()) {
+            //     $request->session()->regenerate();
+            //     return redirect()->route('admin.cliente.index')->with(["success" => "Cadastro realizado com sucesso."]);
+            // }
         }
 
         return back()->withInput()->withErrors(['cadastro' => 'Algo deu errado']);

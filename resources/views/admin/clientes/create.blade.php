@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- funcoes -->
-@include('admin.build.funcoes')
-<!-- /funcoes -->
-
 <!-- head -->
 @include('admin.build.head', ['title' => env('APP_NAME')])
 <!-- /head -->
@@ -44,7 +40,6 @@
                 <div class="">
                     <div class="page-title">
                         <div class="title_left">
-                            {{-- <h3>Adicionar Cliente</h3> --}}
                         </div>
 
                         <div class="title_right">

@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="{{ route('admin.home') }}" class="site_title"><img src="{{ url('logo.png') }}" width="50"
+            <a href="{{ route('admin.cliente.index') }}" class="site_title"><img src="{{ url('logo.png') }}" width="50"
                     alt="{{ env('APP_NAME') }}" style="margin-right: 1px;margin-top: -6px"> <span
                     style="font-size: large">{{ env('APP_NAME') }}</span></a>
         </div>
