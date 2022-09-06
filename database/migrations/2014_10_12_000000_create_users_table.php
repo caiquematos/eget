@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->integer('usuario_id')->nullable();
             $table->string('nome', 255);
             $table->string('email', 80)->unique()->nullable();
-            $table->string('senha', 100);
+            $table->string('senha', 100)->nullable();
             $table->string('cpf', 11)->unique();
             $table->string('categoria', 40)->nullable();
             $table->string('celular', 11)->nullable();
@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('estado', 2)->nullable();
             $table->string('complemento')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->tinyInteger('ativo')->default(0);
+            $table->tinyInteger('ativo')->default(1);
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
