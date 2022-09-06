@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
+            $table->integer('usuario_id')->nullable();
             $table->string('nome', 255);
             $table->string('email', 80)->unique()->nullable();
             $table->string('senha', 100);
@@ -22,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('categoria', 40)->nullable();
             $table->string('celular', 11)->nullable();
             $table->string('telefone', 10)->nullable();
-            $table->string('cep', 8);
+            $table->string('cep', 8)->nullable();
             $table->string('endereco', 255)->nullable();
             $table->string('bairro', 50)->nullable();
             $table->string('cidade', 50)->nullable();
@@ -33,12 +34,6 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
-        });
-
-        //Adiciono o relacionamento com a tabela usuarios
-        Schema::table('usuarios', function (Blueprint $table) {
-            $table->unsignedBigInteger('usuario_id')->nullable();
-            $table->foreign('usuario_id')->references('id')->on('usuarios');
         });
     }
 

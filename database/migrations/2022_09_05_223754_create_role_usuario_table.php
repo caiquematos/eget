@@ -15,20 +15,22 @@ class CreateRoleUsuarioTable extends Migration
     {
         Schema::create('role_usuario', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_role');
+            $table->integer('id_usuario');
             $table->timestamps();
         });
 
-        //Adiciono o relacionamento com a tabela usuarios
-        Schema::table('role_usuario', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
-        });
+        // //Adiciono o relacionamento com a tabela usuarios
+        // Schema::table('role_usuario', function (Blueprint $table) {
+        //     $table->unsignedBigInteger('id_usuario');
+        //     $table->foreign('id_usuario')->references('id')->on('usuarios');
+        // });
 
-        //Adiciono o relacionamento com a tabela roles
-        Schema::table('role_usuario', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_role');
-            $table->foreign('id_role')->references('id')->on('roles');
-        });
+        // //Adiciono o relacionamento com a tabela roles
+        // Schema::table('role_usuario', function (Blueprint $table) {
+        //     $table->unsignedBigInteger('id_role');
+        //     $table->foreign('id_role')->references('id')->on('roles');
+        // });
     }
 
     /**
