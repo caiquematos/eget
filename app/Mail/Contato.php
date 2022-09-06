@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Contato as ModelsContato;
+use App\Models\Usuario;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,16 +14,16 @@ class Contato extends Mailable
 {
     use Queueable, SerializesModels, SoftDeletes;
 
-    private $contato;
+    private $usuario;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(ModelsContato $contato)
+    public function __construct(Usuario $usuario)
     {
-        $this->contato = $contato;
+        $this->usuario = $usuario;
     }
 
     /**
@@ -32,6 +33,6 @@ class Contato extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.contact')->with(["contato"=>$this->contato]);
+        return $this->markdown('emails.contact')->with(["usuario" => $this->usuario]);
     }
 }

@@ -203,60 +203,13 @@
     <!-- Javascript functions	-->
     <script>
         var cliente = @json($cliente, JSON_PRETTY_PRINT);
-        console.log("cliente", cliente);
     </script>
 
     <script>
         $(function() {
             $("select[name=estado]").val(cliente.estado).change();
             $("select[name=cidade]").val(cliente.cidade).change();
-            $("#datatable-dependentes").DataTable({
-                language: {
-                    url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
-                }
-            });
         });
-
-        function toggleAtivacao(e) {
-            var dependente_id = $(e).data("dependente-id");
-            var status = $(e).is(":checked");
-            var url = `{{ route('admin.dependente.ativar') }}`;
-            $.ajax({
-                url: url,
-                type: "POST",
-                data: {
-                    'status': status,
-                    "_token": "{{ csrf_token() }}",
-                    "dependente_id": dependente_id
-                },
-                dataType: "json",
-                success: function(data) {
-                    if (data.dependente) {
-                        if (data.dependente.ativo) {
-                            mensagem = "Dependente ativado com sucesso."
-                        } else {
-                            mensagem = "Dependente desativado com sucesso."
-                        }
-
-                        new PNotify({
-                            title: 'Sucesso',
-                            text: mensagem,
-                            type: 'success',
-                            styling: 'bootstrap3'
-                        });
-                    }
-                },
-                error: function(xhr, status) {
-                    new PNotify({
-                        title: 'Opa!',
-                        text: "Não foi possível atualizar o status do dependente.",
-                        type: 'error',
-                        styling: 'bootstrap3'
-                    });
-                    console.log("ativação falhou.");
-                }
-            });
-        }
     </script>
 
 </body>

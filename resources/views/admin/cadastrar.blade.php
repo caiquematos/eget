@@ -86,8 +86,9 @@
                             <label class="col-form-label col-md-3 col-sm-3  label-align">Confirmar senha<span
                                     class="required">*</span>:</label>
                             <div class="col-md-6 col-sm-6">
-                                <input class="form-control" type="password" data-tipo="passoword" name="senha"
-                                    autocomplete="new-password" data-validate-length-range="6" required="required" />
+                                <input class="form-control" type="password" data-tipo="passoword"
+                                    name="senha_confirmation" autocomplete="new-password" data-validate-length-range="6"
+                                    required="required" />
                             </div>
                         </div>
                         <div class="button-wrapper">
@@ -116,12 +117,11 @@
     <!-- scripts -->
     @include('admin.build.scripts')
     <!-- /scripts -->
+
     <script src="{{ url('admin/assets/js/chance.min.js') }}"></script>
     <script src="{{ url('admin/vendors/validator/multifield.js') }}"></script>
     <script src="{{ url('admin/vendors/validator/validator.js') }}"></script>
 
-
-    <!-- Javascript functions	-->
     <script>
         // initialize a validator instance from the "FormValidator" constructor.
         // A "<form>" element is optionally passed as an argument, but is not a must
@@ -133,7 +133,6 @@
         document.forms[0].onsubmit = function(e) {
             var submit = true,
                 validatorResult = validator.checkAll(this);
-            console.log("validatorResult", validatorResult);
             return !!validatorResult.valid;
         };
         // on form "reset" event

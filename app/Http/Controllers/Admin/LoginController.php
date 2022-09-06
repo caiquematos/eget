@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Usuario;
 use App\Http\Requests\StoreUsuarioRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Contato;
 
 class LoginController extends Controller
 {
@@ -41,7 +43,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Log the user in the application.
+     * Register the user in the application.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -59,15 +61,14 @@ class LoginController extends Controller
         if ($usuario) {
             // Gerencia papel do usuário.
             $usuario->roles()->sync([config('constants.ROLES.ADMNISTRADOR.id')]);
-            return redirect()->route('admin.login')->with(["success" => "Cadastro realizado com sucesso! Faça login para entrar no sistema."]);
 
-            // realiza login
-            // dd($credentials);
-            // Auth::attempt($credentials);
-            // if (Auth::check()) {
-            //     $request->session()->regenerate();
-            //     return redirect()->route('admin.cliente.index')->with(["success" => "Cadastro realizado com sucesso."]);
-            // }
+            // envia email.
+            Mail::to($usuario->email)->send(new Contato($usuario));
+            if (count(Mail::failures()) != 0)
+                return redirect()->route('admin.login')->with(["success" => "Cadastro realizado com sucesso! Faça login para entrar no sistema."])->withErrors("email", "E-mail de confirmação não pôde ser enviado. Mas não se preocupe, você pode continuar com o login.");
+
+            // Redirect
+            return redirect()->route('admin.login')->with(["success" => "Cadastro realizado com sucesso! Faça login para entrar no sistema."]);
         }
 
         return back()->withInput()->withErrors(['cadastro' => 'Algo deu errado']);
@@ -82,11 +83,8 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect()->route('admin.login');
     }
 }

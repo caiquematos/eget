@@ -1,12 +1,13 @@
 @component('mail::message')
-# CDI - Cartão de Vantagens
+    # E-GET Gerenciador de Clientes
 
-Mensagem de Contato.
+    Olá,
+    {{ $usuario['nome'] }}.
 
-<strong>Email:</strong> {{$contato["email"]}}<br>
-<strong>Assunto:</strong> {{$contato["assunto"]}}<br>
-<strong>Mensagem:</strong> {{$contato["mensagem"]}}<br>
+    Seja bem-vindo ao Gerenciador de Clientes da e-Get.
+    Seu cadastro foi realizado com sucesso.
+    Agora você já pode acessar a nossa plataforma!
 
-Obrigado,<br>
-{{ config('app.name') }}
+    Obrigado,
+    {{ config('app.name') }}
 @endcomponent

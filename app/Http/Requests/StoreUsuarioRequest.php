@@ -34,7 +34,8 @@ class StoreUsuarioRequest extends FormRequest
             'email' => 'required|email|unique:usuarios,email,NULL,id,deleted_at,NULL',
             'cpf' => 'required|size:11|unique:usuarios,cpf,NULL,id,deleted_at,NULL',
             'nome' => 'required|string|max:255',
-            // 'tipo' => 'required|numeric',
+            'senha' => 'required|confirmed|string|min:6',
+            'senha_confirmation' => 'required|string|min:6',
         ];
     }
 
