@@ -13,14 +13,32 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('nome', 255);
+            $table->string('email', 80)->unique()->nullable();
+            $table->string('senha', 100);
+            $table->string('cpf', 11)->unique();
+            $table->string('categoria', 40)->nullable();
+            $table->string('celular', 11)->nullable();
+            $table->string('telefone', 10)->nullable();
+            $table->string('cep', 8);
+            $table->string('endereco', 255)->nullable();
+            $table->string('bairro', 50)->nullable();
+            $table->string('cidade', 50)->nullable();
+            $table->string('estado', 2)->nullable();
+            $table->string('complemento')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->tinyInteger('ativo')->default(0);
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
+        });
+
+        //Adiciono o relacionamento com a tabela usuarios
+        Schema::table('usuarios', function (Blueprint $table) {
+            $table->unsignedBigInteger('usuario_id')->nullable();
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
         });
     }
 
