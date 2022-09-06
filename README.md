@@ -1,11 +1,11 @@
-<p align="center"><a href="https://www.e-get.com.br/" target="_blank">e-Get</a></p>
+<h1 align="center"><a href="https://www.e-get.com.br/" target="_blank">e-Get</a></h1>
 
 ## Importante
 
-Os usuários cadastrados na aplicação desempenham dois papéis: cliente e administrador.
-Portanto, o esquema de tabelas contém a tabela 'roles' que possui funções predefinidas cadastradas.
+Os usuários cadastrados na aplicação desempenham dois papéis: <b>cliente</b> e <b>administrador</b>.<br>
+Portanto, o esquema de tabelas contém a tabela <i>'roles'</i> que possui funções predefinidas cadastradas.<br>
 Para preencher essa tabela é necessário executar o seguintes comandos para criá-las e em seguida alimentá-las:
 
--   php artisan migrate:fresh --seed
+-   php artisan migrate:fresh <b>--seed<b/>
 
-Happy coding!
+Happy coding! :D
