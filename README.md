@@ -4,7 +4,7 @@
 
 Os usuários cadastrados na aplicação desempenham dois papéis: <b>cliente</b> e <b>administrador</b>.<br>
 Portanto, o esquema de tabelas contém a tabela <i>'roles'</i> que possui funções predefinidas cadastradas.<br>
-Para preencher essa tabela é necessário executar o seguintes comandos para criá-las e em seguida alimentá-las:
+Para preencher essa tabela é necessário executar o seguinte comando para criá-las e em seguida alimentá-las:
 
 -   php artisan migrate:fresh <b>--seed<b/>
 
